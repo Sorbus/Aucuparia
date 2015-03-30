@@ -1,0 +1,35 @@
+<% content_for :head do %>
+	<title><%= @category.name %></title>
+<% end %>
+ 
+<div id="content">
+	<span id="actions">
+		<%= link_to 'All Categories', categories_path %>
+		<span class="tab"></span>
+		<%= link_to 'Create', new_item_path %>
+	</span>
+	<div id="definition">
+		<strong><%= @category.name %></strong><br/>
+		<hr>
+		<%= markdown(@category.summary).html_safe %>
+	</div>
+	<% @category.items.each do |item| %>
+		<hr>
+		<div id="entry">
+			<span id="actions">
+				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
+				<%= link_to 'Change', edit_item_path(item) %>
+				<span class="tab"></span>
+				<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
+			</span>
+			<div id="title">
+				<%= link_to item.title, item_path(item) %>
+			</div>
+			<div id="sample">
+				<%= markdown(item.summary).html_safe %>
+			</div>
+		</div>
+	<% end %>
+	<hr>
+	<%= will_paginate @posts =%>
+</div>

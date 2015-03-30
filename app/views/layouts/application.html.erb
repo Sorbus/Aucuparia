@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= yield :head %>
+  <%= stylesheet_link_tag '/css/style' %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<%= render "welcome/menu" %>
+
+<%= yield %>
+
+<%= render "welcome/footer" %>
+
+</body>
+</html>

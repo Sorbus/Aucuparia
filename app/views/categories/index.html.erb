@@ -1,0 +1,32 @@
+<% content_for :head do %>
+	<title>Category Index</title>
+<% end %>
+ 
+<div id="content">
+	<div id="definition">
+		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
+	</div>
+	<% @categories.each do |category| %>
+	<hr>
+	<div id="entry">
+		<div id="title">
+			<%= link_to category.name, category_path(category) %>
+			<span id="actions">
+				<%= link_to 'Change', edit_category_path(category) %>
+				<span class="tab"></span>
+				<%= link_to 'Destroy', category_path(category),method: :delete,data: { confirm: 'Are you sure?' } %>
+			</span>
+		</div>
+	</div>
+	<% end %>
+	<hr>
+	<div id="entry">
+		<div id="title">
+			<span id="actions">
+				<%= link_to 'Create', new_category_path %>
+				<span class="tab"></span><a>Change</a><span class="tab"></span><a>Destroy</a>
+			</span>
+		</div>
+		&nbsp
+	</div>
+</div>

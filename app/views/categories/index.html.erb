@@ -11,22 +11,26 @@
 	<div id="entry">
 		<div id="title">
 			<%= link_to category.name, category_path(category) %>
-			<span id="actions">
-				<%= link_to 'Change', edit_category_path(category) %>
-				<span class="tab"></span>
-				<%= link_to 'Destroy', category_path(category),method: :delete,data: { confirm: 'Are you sure?' } %>
-			</span>
+			<% if current_user %>
+				<span id="actions">
+					<%= link_to 'Change', edit_category_path(category) %>
+					<span class="tab"></span>
+					<%= link_to 'Destroy', category_path(category),method: :delete,data: { confirm: 'Are you sure?' } %>
+				</span>
+			<% end %>
 		</div>
 	</div>
 	<% end %>
+	<% if current_user %>
 	<hr>
-	<div id="entry">
-		<div id="title">
-			<span id="actions">
-				<%= link_to 'Create', new_category_path %>
-				<span class="tab"></span><a>Change</a><span class="tab"></span><a>Destroy</a>
-			</span>
+		<div id="entry">
+			<div id="title">
+				<span id="actions">
+					<%= link_to 'Create', new_category_path %>
+					<span class="tab"></span><a>Change</a><span class="tab"></span><a>Destroy</a>
+				</span>
+			</div>
+			&nbsp
 		</div>
-		&nbsp
-	</div>
+	<% end %>
 </div>

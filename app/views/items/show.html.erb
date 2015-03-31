@@ -4,9 +4,11 @@
  
 <div id="content">
 	<span id="actions">
-		<%= link_to 'Change', edit_item_path(@item) %>
-		<span class="tab"></span>
-		<%= link_to 'Destroy', item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
+		<% if current_user %>
+			<%= link_to 'Change', edit_item_path(@item) %>
+			<span class="tab"></span>
+			<%= link_to 'Destroy', item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
+		<% end %>
 	</span>
 	<div id="definition">
 		<strong><%= @item.title %></strong>

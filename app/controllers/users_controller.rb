@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 	before_filter :require_no_user, only: [:new, :create]
-	before_filter :require_user, only: [:show, :edit, :update]
+	before_filter :require_user, only: [:show, :edit, :update, :index]
 	http_basic_authenticate_with name: "secret", password: "secret", only: [:new, :create]
+	
+	def index
+		@user = @current_user
+		render :show
+	end
 	
 	def new
 		@user = User.new

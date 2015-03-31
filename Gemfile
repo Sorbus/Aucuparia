@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'redcarpet', '~> 3.2.2'
 gem 'will_paginate', '~> 3.0.7'
+gem 'authlogic', '~> 3.4.5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

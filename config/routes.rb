@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   
   resources :items
   
+  resources :user_sessions do
+	root 'user_sessions#new'
+  end
+  
+  resources :users
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

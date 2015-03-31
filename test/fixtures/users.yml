@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  perishable_token: MyString
+  access_tier: 1
+  login_count: 1
+  failed_login_count: 1
+  last_request_at: 2015-03-30 14:53:41
+  current_login_at: 2015-03-30 14:53:41
+  last_login_at: 2015-03-30 14:53:41
+  current_login_ip: MyString
+  last_login_ip: MyString
+  display_name: MyString
+  biography: MyText
+  website: MyString
+
+two:
+  email: MyString
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  perishable_token: MyString
+  access_tier: 1
+  login_count: 1
+  failed_login_count: 1
+  last_request_at: 2015-03-30 14:53:41
+  current_login_at: 2015-03-30 14:53:41
+  last_login_at: 2015-03-30 14:53:41
+  current_login_ip: MyString
+  last_login_ip: MyString
+  display_name: MyString
+  biography: MyText
+  website: MyString

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330015010) do
+ActiveRecord::Schema.define(version: 20150330215341) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -30,5 +30,26 @@ ActiveRecord::Schema.define(version: 20150330015010) do
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.string   "perishable_token"
+    t.integer  "access_tier"
+    t.integer  "login_count"
+    t.integer  "failed_login_count"
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.string   "display_name"
+    t.text     "biography"
+    t.string   "website"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
 end

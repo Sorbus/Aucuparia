@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	http_basic_authenticate_with name: "rja", password: "secret", except: [:index, :show]
+	before_action :require_user, except: [:index, :show]
 
 	def index 
 		@items = Item.find_each(start: ((params[:page].to_i - 1) * 5), batch_size: 5)

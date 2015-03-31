@@ -1,0 +1,43 @@
+<% content_for :head do %>
+	<title><%= @user.display_name %></title>
+<% end %>
+
+<div id="content">
+	<div id="definition">
+		<strong>Identity</strong> - <em>n</em>. 
+	</div>
+	<p>
+	  <strong>Login:</strong>
+	  <%= @user.email %>
+	</p>
+
+	<p>
+	  <strong>Login count:</strong>
+	  <%= @user.login_count %>
+	</p>
+
+	<p>
+	  <strong>Last request at:</strong>
+	  <%= @user.last_request_at %>
+	</p>
+
+	<p>
+	  <strong>Last login at:</strong>
+	  <%= @user.last_login_at %>
+	</p>
+
+	<p>
+	  <strong>Current login at:</strong>
+	  <%= @user.current_login_at %>
+	</p>
+
+	<p>
+	  <strong>Last login ip:</strong>
+	  <%= @user.last_login_ip %>
+	</p>
+
+	<p>
+	  <strong>Current login ip:</strong>
+	  <%= @user.current_login_ip %>
+	</p>
+</div>

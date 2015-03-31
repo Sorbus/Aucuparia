@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-   http_basic_authenticate_with name: "rja", password: "secret", except: [:index, :show]
+   before_action :require_user, except: [:index, :show]
 
    def index
       @categories = Category.all

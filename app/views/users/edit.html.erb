@@ -6,7 +6,7 @@
 	<div id="definition">
 		<strong>Change</strong> - <em>v</em>. To become different.
 	</div>
-	<% form_for @user, url: account_path do |f| %>
+	<%= form_for @user, url: user_path(@user) do |f| %>
 		<% if @user.errors.any? %>
 			<div id="error_explanation">
 				<h2>
@@ -20,20 +20,33 @@
 			</div>
 		<% end %>
 		<p>
-			<%= f.label :email %>
-			<%= f.text_field :email %>
+			<%= f.label :display_name %>
+			<%= f.text_field :display_name %>
 		</p>
 		<p>
-			<%= f.label 'change password' %>
-			<%= f.password_field :password %>
+			<%= f.label :website %>
+			<%= f.text_field :website %>
 		</p>
 		<p>
-			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation %>
+			<%= f.label :biography %>
+			<%= f.text_area :biography %>
 		</p>
+		<div id="dangerous">
+			<p>
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</p>
+			<p>
+				<%= f.label 'change password' %>
+				<%= f.password_field :password %>
+			</p>
+			<p>
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation %>
+			</p>
+		</div>
 		<p>
 			<%= f.submit "Commit" %>
 		</p>
 	<% end %>
-	<%= link_to "Profile", account_path %>
 </div>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_filter :require_no_user, only: [:new, :create]
 	before_filter :require_user, only: [:show, :edit, :update]
-	http_basic_authenticate_with name: "rja", password: "secret", only: [:new, :create]
+	http_basic_authenticate_with name: "secret", password: "secret", only: [:new, :create]
 	
 	def new
 		@user = User.new
@@ -31,9 +31,12 @@ class UsersController < ApplicationController
 	
 	def update
 		@user = @current_user # makes our views "cleaner" and more consistent
+		if params[:password].to_s.empty?
+			params.delete :password
+		end
 		if @user.update_attributes(user_params)
 			flash[:notice] = "Account updated!"
-		redirect_to @user
+			redirect_to @user
 		else
 			render 'edit'
 		end
@@ -41,6 +44,6 @@ class UsersController < ApplicationController
 	
 	private
 		def user_params
-			params.require(:user).permit(:email, :password, :password_confirmation)
+			params.require(:user).permit(:email, :password, :password_confirmation, :display_name, :biography, :website)
 		end
 end

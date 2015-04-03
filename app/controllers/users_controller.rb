@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :require_no_user, only: [:new, :create]
-	before_filter :require_user, only: [:show, :edit, :update, :index]
+	before_filter :require_user, only: [:edit, :update, :index]
 	http_basic_authenticate_with name: "secret", password: "secret", only: [:new, :create]
 	
 	def index
@@ -28,6 +28,8 @@ class UsersController < ApplicationController
 		else
 			@user = User.find(params[:id])
 		end
+		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
+		@items = @user.items.find_each(start: ((params[:page].to_i - 1) * 5), batch_size: 5)
 	end
 
 	def edit
@@ -35,9 +37,13 @@ class UsersController < ApplicationController
 	end
 	
 	def update
-		@user = @current_user # makes our views "cleaner" and more consistent
-		if params[:password].to_s.empty?
-			params.delete :password
+		@user = @current_user
+		if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+			params[:user].delete("password")
+			params[:user].delete("password_confirmation")
+		end
+		if params[:user][:email].to_s != @user.email.to_s
+			# add in logic to require entering the current password to change email or password.
 		end
 		if @user.update_attributes(user_params)
 			flash[:notice] = "Account updated!"

@@ -5,9 +5,11 @@ class CreateItems < ActiveRecord::Migration
       t.text :content
       t.string :summary
       t.references :category, index: true
+	  t.references :user, index: true
 
       t.timestamps null: false
     end
     add_foreign_key :items, :categories
+	add_foreign_key :items, :users
   end
 end

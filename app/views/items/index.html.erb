@@ -14,7 +14,7 @@
 	<% @items.each do |item| %>
 		<hr>
 		<div id="entry">
-			<% if current_user %>
+			<% if current_user && current_user == item.user %>
 				<span id="actions">
 					<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 					<%= link_to 'Change', edit_item_path(item) %>

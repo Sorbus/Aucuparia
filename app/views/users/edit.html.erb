@@ -6,7 +6,7 @@
 	<div id="definition">
 		<strong>Change</strong> - <em>v</em>. To become different.
 	</div>
-	<%= form_for @user, url: user_path(@user) do |f| %>
+	<%= form_for @user do |f| %>
 		<% if @user.errors.any? %>
 			<div id="error_explanation">
 				<h2>
@@ -33,16 +33,20 @@
 		</p>
 		<div id="dangerous">
 			<p>
+				<%= f.label 'current password' %>
+				<%= f.password_field :password_old %>
+			</p>
+			<p>
 				<%= f.label :email %>
-				<%= f.text_field :email %>
+				<%= f.text_field :email, readonly: true %>
 			</p>
 			<p>
 				<%= f.label 'change password' %>
-				<%= f.password_field :password %>
+				<%= f.password_field :password, readonly: true %>
 			</p>
 			<p>
 				<%= f.label :password_confirmation %>
-				<%= f.password_field :password_confirmation %>
+				<%= f.password_field :password_confirmation, readonly: true %>
 			</p>
 		</div>
 		<p>

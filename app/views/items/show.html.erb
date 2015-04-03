@@ -4,7 +4,7 @@
  
 <div id="content">
 	<span id="actions">
-		<% if current_user %>
+		<% if current_user && current_user == @item.user %>
 			<%= link_to 'Change', edit_item_path(@item) %>
 			<span class="tab"></span>
 			<%= link_to 'Destroy', item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
@@ -18,6 +18,7 @@
 	<%= markdown(@item.content).html_safe %>
 
 	<div id="created">
+		Written by: <%= link_to User.find_by_id(@item.user).display_name, user_path(@item.user) %><br>
 		Created: <%= @item.created_at.strftime("%H:%M, %a %b %d, %Y") %><br>
 		<% show_modified = (@item.created_at != @item.updated_at) %>
 		<% if show_modified %>
@@ -26,7 +27,7 @@
 	</div>
 	<div id="category">
 		<%= link_to Category.find_by_id(@item.category).name, category_path(@item.category) %>
-	</div>
+	</div><br>
 	<% if show_modified %>
 		<br>
 	<% end %>

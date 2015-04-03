@@ -7,52 +7,77 @@
 		<strong>Identity</strong> - <em>n</em>. 
 	</div>
 	<p>
-	  <strong>Name:</strong>
-	  <%= @user.display_name %>
+		<strong>Name:</strong>
+		<%= @user.display_name %>
 	</p>
 	
 	<p>
-	  <strong>Email:</strong>
-	  <%= @user.email %>
+		<strong>Email:</strong>
+		<%= @user.email %>
 	</p>
 	
 	<p>
 		<strong>Website:</strong>
-		<%= markdown(@user.website.to_s).html_safe %>
+		<%= link_to @user.website, @user.website %>
 	</p>
 	
 	<p>
-	  <strong>Biography:</strong>
-	  <%= markdown(@user.biography.to_s).html_safe %>
+		<strong>Biography:</strong>
+		<%= markdown(@user.biography.to_s).html_safe %>
 	</p>
 
 	<p>
-	  <strong>Login count:</strong>
-	  <%= @user.login_count %>
+		<strong>Login count:</strong>
+		<%= @user.login_count %>
 	</p>
 
 	<p>
-	  <strong>Last request at:</strong>
-	  <%= @user.last_request_at %>
+		<strong>Last request at:</strong>
+		<%= @user.last_request_at %>
 	</p>
 
 	<p>
-	  <strong>Last login at:</strong>
-	  <%= @user.last_login_at %>
+		<strong>Last login at:</strong>
+		<%= @user.last_login_at %>
 	</p>
 
 	<p>
-	  <strong>Current login at:</strong>
-	  <%= @user.current_login_at %>
+		<strong>Current login at:</strong>
+		<%= @user.current_login_at %>
 	</p>
 
 	<p>
-	  <strong>Last login ip:</strong>
-	  <%= @user.last_login_ip %>
+		<strong>Last login ip:</strong>
+		<%= @user.last_login_ip %>
 	</p>
 
 	<p>
-	  <strong>Current login ip:</strong>
-	  <%= @user.current_login_ip %>
+		<strong>Current login ip:</strong>
+		<%= @user.current_login_ip %>
 	</p>
+	
+	<p>
+		<strong>Authored Items:</strong>
+	</p>
+	
+	<% @items.each do |item| %>
+		<hr>
+		<div id="entry">
+			<span id="actions">
+				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
+				<% if current_user && current_user == @user %>
+					<%= link_to 'Change', edit_item_path(item) %>
+					<span class="tab"></span>
+					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
+				<% end %>
+			</span>
+			<div id="title">
+				<%= link_to item.title, item_path(item) %>
+			</div>
+			<div id="sample">
+				<%= markdown(item.summary).html_safe %>
+			</div>
+		</div>
+	<% end %>
+	<%= will_paginate @posts =%>
 </div>

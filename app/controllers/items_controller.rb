@@ -17,17 +17,21 @@ class ItemsController < ApplicationController
 
 	def edit
 		@item = Item.find(params[:id])
+		if current_user != @item.user
+			redirect_to @item
+		end # Defragment by moving this bit of code (or at least the test) into a defined method.
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 	end
 	
 	def preview
-		@item = Item.new(item_params)
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+		@item = Item.new(item_params)
 	end
  
 	def create
 		@item = Item.new(item_params)
 		@item.category = Category.find(params[:item][:category_id])
+		@item.user = User.find(current_user.id)
 #		render plain: params[:item].inspect
 		
 		if params[:commit] == 'commit'
@@ -47,23 +51,31 @@ class ItemsController < ApplicationController
 		@item.category = Category.find(params[:item][:category_id])
 #		render plain: params[:item].inspect
 		
-		if params[:commit] == 'commit'
-			if @item.update(item_params)
-				redirect_to @item
-			else
-				render 'edit'
-			end
+		if current_user != @item.user
+			redirect_to @item
 		else
-			@cat_options = Category.all.map{|c| [ c.name, c.id ] }
-			render 'preview'
+			if params[:commit] == 'commit'
+				if @item.update(item_params)
+					redirect_to @item
+				else
+					@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+					render 'preview'
+				end
+			else
+				@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+				render 'preview'
+			end
 		end
 	end
 	
 	def destroy
 		@item = Item.find(params[:id])
-		@item.destroy
- 
-		redirect_to items_path
+		if current_user != @item.user
+			redirect_to @item
+		else
+			@item.destroy
+			redirect_to items_path
+		end
 	end
 	
 	private

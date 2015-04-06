@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
 	# You can have the root of your site routed with "root"
 	root 'welcome#index'
-	get 'beta' => 'welcome#index'
 	get 'about' => 'welcome#about'
 	
 	resources :categories
@@ -19,7 +18,8 @@ Rails.application.routes.draw do
 	resources :users, :only => [:show, :destroy]
 	
 	resource :profile, :only => [:show, :edit, :update], :controller => 'users'
-	
+
+	# Move this into a new namespace. Someday ...
 	resources :admin, :only => [:edit, :update], :controller => 'admins' 
 	
 	# Example of regular route:
@@ -70,7 +70,5 @@ Rails.application.routes.draw do
 	#		 # (app/controllers/admin/products_controller.rb)
 	#		 resources :products
 	#	 end
-	
-	get '/403', :to => redirect('/403.html')
 	
 end

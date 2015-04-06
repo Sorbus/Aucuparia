@@ -5,7 +5,7 @@
 <div id="content">
 	<div id="definition">
 		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
-		<% if current_user %>
+		<% if can? :create, @item %>
 			<span id="actions">
 				<%= link_to 'Create', new_item_path %>
 			</span>
@@ -14,7 +14,7 @@
 	<% @items.each do |item| %>
 		<hr>
 		<div id="entry">
-			<% if current_user && current_user == item.user %>
+			<% if can? :update, item %>
 				<span id="actions">
 					<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 					<%= link_to 'Change', edit_item_path(item) %>

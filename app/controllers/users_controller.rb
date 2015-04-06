@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :require_no_user, only: [:new, :create]
-	before_filter :require_user, only: [:edit, :update, :index]
+	load_and_authorize_resource
 	http_basic_authenticate_with name: "secret", password: "secret", only: [:new, :create]
 	
 	def index
@@ -14,6 +13,7 @@ class UsersController < ApplicationController
 	
 	def create
 		@user = User.new(user_params)
+		@user.access_tier = 1
 		if @user.save
 			flash[:notice] = "Account registered!"
 			redirect_to @user

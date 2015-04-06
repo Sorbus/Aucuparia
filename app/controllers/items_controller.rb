@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-	before_action :require_user, except: [:index, :show]
+	load_and_authorize_resource
+#	before_action :require_user, except: [:index, :show]
 
 	def index 
 		@items = Item.find_each(start: ((params[:page].to_i - 1) * 5), batch_size: 5)

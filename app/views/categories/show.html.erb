@@ -5,7 +5,7 @@
 <div id="content">
 	<span id="actions">
 		<%= link_to 'All Categories', categories_path %>
-		<% if current_user %>
+		<% if can? :update, @category %>
 			<span class="tab"></span>
 			<%= link_to 'Create', new_item_path %>
 		<% end %>
@@ -20,7 +20,7 @@
 		<div id="entry">
 			<span id="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
-				<% if current_user %>
+				<% if can? :update, item %>
 					<%= link_to 'Change', edit_item_path(item) %>
 					<span class="tab"></span>
 					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>

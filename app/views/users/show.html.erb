@@ -65,7 +65,7 @@
 		<div id="entry">
 			<span id="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
-				<% if current_user && current_user == @user %>
+				<% if can? :update, item %>
 					<%= link_to 'Change', edit_item_path(item) %>
 					<span class="tab"></span>
 					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>

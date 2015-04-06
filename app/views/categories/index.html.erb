@@ -11,7 +11,7 @@
 	<div id="entry">
 		<div id="title">
 			<%= link_to category.name, category_path(category) %>
-			<% if current_user %>
+			<% if can? :update, @category %>
 				<span id="actions">
 					<%= link_to 'Change', edit_category_path(category) %>
 					<span class="tab"></span>

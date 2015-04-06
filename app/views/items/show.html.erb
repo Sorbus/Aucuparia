@@ -4,7 +4,7 @@
  
 <div id="content">
 	<span id="actions">
-		<% if current_user && current_user == @item.user %>
+		<% if can? :update, @item %>
 			<%= link_to 'Change', edit_item_path(@item) %>
 			<span class="tab"></span>
 			<%= link_to 'Destroy', item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>

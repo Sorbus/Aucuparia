@@ -22,8 +22,8 @@ class ItemsController < ApplicationController
 	end
 	
 	def preview
-		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
-		@item = Item.new(item_params)
+#		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+#		@item = Item.new(item_params)
 	end
  
 	def create
@@ -54,10 +54,12 @@ class ItemsController < ApplicationController
 				if @item.update(item_params)
 					redirect_to @item
 				else
+					@item = Item.new(item_params)
 					@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 					render 'preview'
 				end
 			else
+				@item = Item.new(item_params)
 				@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 				render 'preview'
 			end

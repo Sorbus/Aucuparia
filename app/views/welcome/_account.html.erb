@@ -2,7 +2,7 @@
 	<div id="account">
 		<%= link_to current_user.display_name, user_path(current_user) %>
 		<span class="htab"></span>|<span class="htab"></span>
-		<%= link_to 'edit', edit_user_path(current_user) %>
+		<%= link_to 'edit', edit_profile_path %>
 		<div id="right">
 			<%= link_to 'logout', user_session_path(current_user),method: :delete,data: { confirm: 'Are you sure?' } %>
 		</div>

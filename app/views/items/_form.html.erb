@@ -29,7 +29,7 @@
 		
 	<p>	
 		<%= f.label :category_id %><br>
-		<%= f.select :category_id, options_for_select(@cat_options) %>		
+		<%= f.select :category_id, options_for_select(@cat_options, @item.category_id) %>		
 	</p>
 		
 	<p>

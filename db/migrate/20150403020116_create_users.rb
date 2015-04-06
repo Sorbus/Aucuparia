@@ -17,6 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :display_name
       t.text :biography
       t.string :website
+	  t.boolean :admin
 
       t.timestamps null: false
     end

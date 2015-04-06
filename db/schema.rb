@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403020112) do
+ActiveRecord::Schema.define(version: 20150403020117) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "summary"
+    t.integer  "website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["website_id"], name: "index_categories_on_website_id"
+
+  create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +40,13 @@ ActiveRecord::Schema.define(version: 20150403020112) do
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
   add_index "items", ["user_id"], name: "index_items_on_user_id"
+
+  create_table "registration_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -50,8 +65,17 @@ ActiveRecord::Schema.define(version: 20150403020112) do
     t.string   "display_name"
     t.text     "biography"
     t.string   "website"
+    t.boolean  "admin"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "websites", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "menu_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

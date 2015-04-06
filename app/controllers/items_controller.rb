@@ -18,9 +18,6 @@ class ItemsController < ApplicationController
 
 	def edit
 		@item = Item.find(params[:id])
-		if current_user != @item.user
-			redirect_to @item
-		end # Defragment by moving this bit of code (or at least the test) into a defined method.
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 	end
 	
@@ -52,9 +49,7 @@ class ItemsController < ApplicationController
 		@item.category = Category.find(params[:item][:category_id])
 #		render plain: params[:item].inspect
 		
-		if current_user != @item.user
-			redirect_to @item
-		else
+		if can? :update, @item
 			if params[:commit] == 'commit'
 				if @item.update(item_params)
 					redirect_to @item
@@ -66,16 +61,18 @@ class ItemsController < ApplicationController
 				@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 				render 'preview'
 			end
+		else
+			redirect_to @item
 		end
 	end
 	
 	def destroy
 		@item = Item.find(params[:id])
-		if current_user != @item.user
-			redirect_to @item
-		else
+		if can? :destroy, @item
 			@item.destroy
 			redirect_to items_path
+		else
+			redirect_to @item
 		end
 	end
 	

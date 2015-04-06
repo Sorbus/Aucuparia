@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<% end %>
-	<% if current_user %>
+	<% if can? :create, @category %>
 	<hr>
 		<div id="entry">
 			<div id="title">

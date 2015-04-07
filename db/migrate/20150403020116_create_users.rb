@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_salt
       t.string :persistence_token
       t.string :perishable_token
-      t.integer :access_tier
       t.integer :login_count
       t.integer :failed_login_count
       t.datetime :last_request_at
@@ -17,7 +16,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :display_name
       t.text :biography
       t.string :website
-	  t.boolean :admin
 
       t.timestamps null: false
     end

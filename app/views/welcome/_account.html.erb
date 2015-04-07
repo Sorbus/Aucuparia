@@ -3,7 +3,7 @@
 		<%= link_to current_user.display_name, user_path(current_user) %>
 		<span class="htab"></span>|<span class="htab"></span>
 		<%= link_to 'edit', edit_profile_path %>
-		<% if current_user.admin? %>
+		<% if can? :update, Website %>
 			<span class="htab"></span>|<span class="htab"></span>
 			<%= link_to 'admin tools', admin_root_path %>
 		<% end %>

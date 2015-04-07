@@ -20,4 +20,4 @@ Category.create(name: 'Otherwhen', summary: 'What exists in other times.', websi
 Category.create(name: 'Somniatus', summary: 'What exists within dream.', website: Website.second)
 Category.create(name: 'Mindless', summary: 'What does not exist.', website: Website.second)
 
-RegistrationToken.create(token: 'admin', is_superuser: true)
+RegistrationToken.create(token: 'superuser', is_superuser: true)

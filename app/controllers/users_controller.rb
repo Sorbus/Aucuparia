@@ -13,13 +13,11 @@ class UsersController < ApplicationController
 	
 	def create
 		@user = User.new(user_params)
-		@user.access_tier = 1
 		@token = RegistrationToken.find_by_token(params[:user][:access_token])
 #		render plain: params[:user].inspect
 #		render plain: @token.inspect
 		if !@token.nil?
 			if !@token.used
-				@user.access_tier = @token.access_tier
 				if @user.save
 					@token.used = true
 					@token.user_id = @user.id

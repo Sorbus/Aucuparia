@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407190219) do
+ActiveRecord::Schema.define(version: 20150407011712) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -41,8 +41,19 @@ ActiveRecord::Schema.define(version: 20150407190219) do
   add_index "items", ["category_id"], name: "index_items_on_category_id"
   add_index "items", ["user_id"], name: "index_items_on_user_id"
 
-# Could not dump table "registration_tokens" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "registration_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.boolean  "used"
+    t.boolean  "can_comment"
+    t.boolean  "can_author"
+    t.boolean  "is_moderator"
+    t.boolean  "is_editor"
+    t.boolean  "is_administrator"
+    t.boolean  "is_superuser"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -50,7 +61,6 @@ ActiveRecord::Schema.define(version: 20150407190219) do
     t.string   "password_salt"
     t.string   "persistence_token"
     t.string   "perishable_token"
-    t.integer  "access_tier"
     t.integer  "login_count"
     t.integer  "failed_login_count"
     t.datetime "last_request_at"
@@ -61,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150407190219) do
     t.string   "display_name"
     t.text     "biography"
     t.string   "website"
-    t.boolean  "admin"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

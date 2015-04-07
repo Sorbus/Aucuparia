@@ -3,7 +3,8 @@ class Ability
 
 	def initialize(user)
 		user ||= User.new # if necessary, create a guest user
-		if user.admin?
+		user.registration_token ||= RegistrationToken.new
+		if user.registration_token.is_superuser?
 			can :manage, :all
 		else
 			can :manage, User, :user_id => user.id
@@ -27,9 +28,6 @@ class Ability
 				can :create, RegistrationToken
 				can :update, RegistrationToken
 				can :destroy, RegistrationToken
-			end
-			if user.registration_token.is_superuser?
-				can :manage, :all
 			end
 		end
 		# Define abilities for the passed in user here. For example:

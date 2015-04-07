@@ -4,7 +4,11 @@
 
 <div id="content">
 	<% if can? :create, @keys %>
-		<span id="actions"><%= link_to 'Create a new key', new_admin_key_path %></span>
+		<span id="actions">
+			<%= link_to 'All admin tools', admin_root_path %>
+			<span class="tab"></span>
+			<%= link_to 'Create a new key', new_admin_key_path %>
+		</span>
 		<br>
 	<% end %>
 	<% @keys.each do |key| %>
@@ -14,8 +18,8 @@
 				<% if can?(:destroy, key) & !key.used? %>
 					<%= link_to 'Destroy', admin_key_path(key),method: :delete,data: { confirm: 'Are you sure?' } %>
 				<% end %>
-				<span class="tab"></span>
 				<% if can?(:update, key) %>
+					<span class="tab"></span>
 					<%= link_to 'Modify', edit_admin_key_path(key) %>
 				<% end %>
 			</span>
@@ -25,12 +29,15 @@
 			<div id="sample">
 				Created: <%= key.created_at.strftime("%H:%M, %a %b %d, %Y") %><br/>
 				Permissions:
-				<%= 'Commentator,' if key.can_comment? %>
-				<%= 'Author,' if key.can_author? %>
-				<%= 'Moderator,' if key.is_moderator? %>
-				<%= 'Editor,' if key.is_editor? %>
-				<%= 'Administrator' if key.is_administrator? %>
-				<%= 'Superuser' if key.is_superuser? %><br/>
+				<% if key.is_superuser? %>
+					Superuser.
+				<% else %>
+					<%= 'Commentator,' if key.can_comment? %>
+					<%= 'Author,' if key.can_author? %>
+					<%= 'Moderator,' if key.is_moderator? %>
+					<%= 'Editor,' if key.is_editor? %>
+					<%= 'Administrator' if key.is_administrator? %>
+				<% end %><br/>
 				<% if key.used? %>
 					Redeemed: <%= key.updated_at.strftime("%H:%M, %a %b %d, %Y") %><br/>
 					<% user = User.find_by_id(key.user_id) %>

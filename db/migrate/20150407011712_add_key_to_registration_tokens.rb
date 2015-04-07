@@ -1,8 +1,11 @@
 class AddKeyToRegistrationTokens < ActiveRecord::Migration
   def change
-    add_column :registration_tokens, :access_tier, :integer
     add_column :registration_tokens, :used, :boolean
-	add_column :registration_tokens, :user, :reference, index: true
+	add_column :registration_tokens, :can_comment, :boolean
+	add_column :registration_tokens, :can_author, :boolean
+	add_column :registration_tokens, :is_moderator, :boolean
+	add_column :registration_tokens, :is_editor, :boolean
+	add_column :registration_tokens, :is_administrator, :boolean
+	add_column :registration_tokens, :is_superuser, :boolean
   end
-  add_foreign_key :registration_tokens, :users
 end

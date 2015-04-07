@@ -1,0 +1,21 @@
+.pagination {
+	text-align:center;
+
+	.previous_page {
+		padding: 2px;
+	}
+
+	.next_page {
+		padding: 2px;
+	}
+
+	.current {
+		padding: 2px;
+		font-weight: bold;
+		font-style: normal;
+	}
+
+	a {
+		padding: 2px;
+	}
+}

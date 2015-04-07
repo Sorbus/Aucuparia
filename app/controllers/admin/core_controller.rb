@@ -1,9 +1,11 @@
-class AdminsController < ApplicationController
+class Admin::CoreController < ApplicationController
+
+	def index
+	end
 
 	def edit
-		#@page = Website.first
 		@page = Website.find(params[:id])
-		authorize! :edit, @page
+		authorize! :update, @page
 	end
 	
 	def preview
@@ -13,7 +15,7 @@ class AdminsController < ApplicationController
 	
 	def update
 		@page = Website.find(params[:id])
-		authorize! :edit, @page
+		authorize! :update, @page
 #		render plain: params[:item].inspect
 		
 		if can? :update, @page

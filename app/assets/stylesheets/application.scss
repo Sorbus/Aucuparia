@@ -1,0 +1,240 @@
+/*
+ *= require_self
+ */
+ 
+$primary-background: rgba(239, 237, 235, 1);
+$secondary-background: rgba(238, 238, 238, 1);
+$primary-foreground: rgba(118, 92, 57, 1);
+$secondary-foreground: rgba(132, 107, 77, 1);
+$tertiary-foreground: rgba(78, 61, 38, 1);
+
+@mixin boxy {
+	max-width:400px;
+	margin:0px auto;
+	text-align:left;
+	border:1px solid $primary-foreground;
+	background-color: $secondary-background;
+	color:$primary-foreground;
+	margin-bottom:20px;
+}
+
+@charset 'UTF-8';
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
+ 
+body {
+		margin-top:5%;
+		margin-bottom:50px;
+		padding:0px;
+		text-align:center;
+		background-color: $primary-background;
+	}
+	
+#content, .account {
+		@include boxy;
+		text-align:left;
+		padding:15px;
+		position:relative;
+		z-index:3
+	}
+	
+#content p:first-of-type {
+		margin-top:0px;
+	}
+	
+#menu {
+		@include boxy;
+		padding-left:15px;
+		padding-right:15px;
+		text-align:center;
+	}
+
+#definition {
+		text-align:justify;
+	}
+
+#navigation {
+		text-align:center;
+	}
+	
+#contact {
+		margin-top:20px;
+	}
+
+#created {
+		float:right;
+		text-align:right;
+		opacity:0.3;
+		margin-top:0.5em;
+}
+
+#category {
+		float:left;
+		text-align:right;
+		opacity:.3;
+		margin-top:0.5em;
+}
+
+#entry {
+		
+}
+
+#title {
+		margin-top:0.5em;
+}
+
+#actions {
+		float:right;
+		opacity:0.2;
+		font-size:small;
+		margin-left:1em;
+}
+
+#dangerous {
+		border: 1px solid red;
+		margin-top: 1em;
+		padding: 0em 1em 1em 1em;
+}
+	
+p	{
+		text-align:justify;
+		margin-bottom:0px;
+	}
+
+/*p:first-child:first-letter {
+		float: left;
+		color: black;
+		font-size: 75px;
+		line-height: 60px;
+		padding-top: 4px;
+		padding-right: 8px;
+		padding-left: 3px;
+	}*/
+	
+a	{
+		font-style: italic;
+		text-decoration: underline;
+		color: $secondary-foreground;
+		-moz-transition: color .25s ease-in-out;
+		-webkit-transition: color .25s ease-in-out;
+		-o-transition: color .25s ease-in-out;
+		-ms-transition: color .25s ease-in-out;
+		transition: color .25s ease-in-out;
+	}
+	
+a:hover {
+		text-decoration: none;
+	}
+	
+strong, b {
+		font-weight: 700;
+		color: #484d55;
+	}
+	
+mark {
+		font-color: $primary-foreground;
+}
+	
+blockquote {
+		border-left: solid 0.5em #ddd;
+		padding: 1em 0 1em 1em;
+		font-style: italic;
+		margin-top: 0.7em;
+		margin-bottom: 0.7em;
+		margin-left: 1em;
+	}
+	
+em, i {
+		font-style: italic;
+	}
+	
+hr {
+		border: 0;
+		border-top: solid 1px #ddd;
+	}
+	
+sub {
+		position: relative;
+		top: 0.5em;
+		font-size: 0.8em;
+	}
+	
+sup {
+		position: relative;
+		top: -0.5em;
+		font-size: 0.8em;
+	}
+	
+ul.dashed {
+		list-style: none;
+		margin-left: 0;
+		padding-left: 1em;
+	}
+
+ul.dashed li:before {
+		display: inline-block;
+		content: "-";
+		width: 1em;
+		margin-left: -1em;
+	}
+	
+span.tab{
+		padding: 0 1em;
+	}
+	
+span.htab{
+		padding: 0 0.5em;
+	}
+	
+span.clear { clear: left; display: block; }
+		
+.wrapper {
+		display: block;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		text-align: center;
+}
+
+.bottom {
+		padding: 0 4px;
+		padding-bottom: 20px;
+		display: inline-block;
+		z-index: 1;
+}
+
+#left {float:left;}
+
+#right {float:right;} /*Don't look at me, senpai! -Right Shark-chan */
+
+form {
+		margin-top: 1em;
+	}
+
+form #tab{
+		width: 4em;
+		float: left;
+	}
+
+input, select {
+		width: 100%;
+		max-width: 25em;
+		display: block;
+		background-color: $secondary-background;
+		border: 1px solid $primary-foreground;
+}
+
+textarea {
+		width: 99%;
+		height: 15em;
+		background-color: $secondary-background;
+		border: 1px solid $primary-foreground;
+		display:block;
+}
+
+input[type=submit] {
+		width: 10em;
+}
+
+@import 'menu';
+
+@import 'pagination'

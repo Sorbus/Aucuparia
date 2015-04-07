@@ -1,0 +1,18 @@
+<% content_for :head do %>
+	<title>Admin Tools</title>
+<% end %>
+
+<div id="content">
+	<p id="definition">
+		<strong>Admin Tools</strong>
+	</p>
+	<p>
+	<%= link_to 'Manage Registration Keys', admin_keys_path %>
+	</p>
+	<p>
+	<%= link_to 'View Users', admin_users_path %>
+	</p>
+	<p>
+	Presently, all other administrator tools are accessed from the page to which they apply.
+	</p>
+</div>

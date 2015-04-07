@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	load_and_authorize_resource
+	load_and_authorize_resource :except => [:new, :create]
 	http_basic_authenticate_with name: "secret", password: "secret", only: [:new, :create]
 	
 	def index
@@ -14,20 +14,33 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		@user.access_tier = 1
-		if @user.save
-			flash[:notice] = "Account registered!"
-			redirect_to @user
+		@token = RegistrationToken.find_by_token(params[:user][:access_token])
+#		render plain: params[:user].inspect
+#		render plain: @token.inspect
+		if !@token.nil?
+			if !@token.used
+				@user.access_tier = @token.access_tier
+				if @user.save
+					@token.used = true
+					@token.user_id = @user.id
+					@token.save
+					flash[:notice] = "Account registered!"
+					redirect_to @user
+				else
+					render 'new'
+				end
+			else
+				@user.errors.add(:access_token, "has already been used")
+				render 'new'
+			end
 		else
+			@user.errors.add(:access_token, "does not exist")
 			render 'new'
 		end
 	end
 	
 	def show
-		if params[:id] == 'self'
-			@user = @current_user
-		else
-			@user = User.find(params[:id])
-		end
+		@user = User.find(params[:id])
 		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
 		@items = @user.items.find_each(start: ((params[:page].to_i - 1) * 5), batch_size: 5)
 	end

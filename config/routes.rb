@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	# See how all your routes lay out with "rake routes".
 
 	# You can have the root of your site routed with "root"
+	
 	root 'welcome#index'
 	get 'about' => 'welcome#about'
 	
@@ -11,16 +12,20 @@ Rails.application.routes.draw do
 	
 	resources :items
 	
-	resources :user_sessions do
+	resources :user_sessions, :only => [:new, :create, :destroy] do
 		root 'user_sessions#new'
 	end
 	
-	resources :users, :only => [:show, :destroy]
+	resources :users, :only => [:show, :destroy, :new, :create, :index]
 	
 	resource :profile, :only => [:show, :edit, :update], :controller => 'users'
-
-	# Move this into a new namespace. Someday ...
-	resources :admin, :only => [:edit, :update], :controller => 'admins' 
+	
+	namespace :admin do
+		root 'core#index'
+		resources :core, :only => [:edit, :update]
+		resources :users, :only => [:index, :show, :edit, :update, :destroy]
+		resources :keys, :only => [:new, :create, :destroy, :index]
+	end
 	
 	# Example of regular route:
 	#	 get 'products/:id' => 'catalog#view'

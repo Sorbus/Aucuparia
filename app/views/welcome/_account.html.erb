@@ -1,8 +1,12 @@
 <% if current_user %>
-	<div id="account">
+	<div class="account">
 		<%= link_to current_user.display_name, user_path(current_user) %>
 		<span class="htab"></span>|<span class="htab"></span>
 		<%= link_to 'edit', edit_profile_path %>
+		<% if current_user.admin? %>
+			<span class="htab"></span>|<span class="htab"></span>
+			<%= link_to 'admin tools', admin_root_path %>
+		<% end %>
 		<div id="right">
 			<%= link_to 'logout', user_session_path(current_user),method: :delete,data: { confirm: 'Are you sure?' } %>
 		</div>

@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-	load_and_authorize_resource param_method: :category_sanitizer
+	load_and_authorize_resource
 
 	def index
 		@categories = Category.all

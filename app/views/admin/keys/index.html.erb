@@ -1,0 +1,37 @@
+<% content_for :head do %>
+	<title>Access Token List</title>
+<% end %>
+
+<div id="content">
+	<% if can? :create, @keys %>
+		<span id="actions"><%= link_to 'Create a new key', new_admin_key_path %></span>
+		<br>
+	<% end %>
+	<% @keys.each do |key| %>
+		<hr>
+		<div id="entry">
+			<% if can?(:destroy, key) & !key.used? %>
+				<span id="actions">
+					<%= link_to 'Destroy', admin_key_path(key),method: :delete,data: { confirm: 'Are you sure?' } %>
+				</span>
+			<% end %>
+			<div id="title">
+				<strong><%= key.token %></strong>
+			</div>
+			<div id="sample">
+				Created: <%= key.created_at.strftime("%H:%M, %a %b %d, %Y") %>
+				<span class="tab"></span>
+				Calibre: <%= key.access_tier %><br/>
+				<% if !key.used? %>
+					<%= 'Status: Unused' %>
+				<% else %>
+					Redeemed: <%= key.updated_at.strftime("%H:%M, %a %b %d, %Y") %><br/>
+					<% user = User.find_by_id(key.user_id) %>
+					Used By: <%= link_to user.email, user_path(user) %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<hr>
+	<%= will_paginate @pages =%>
+</div>

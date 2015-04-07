@@ -10,9 +10,9 @@
 			<%= link_to 'Destroy', item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
 		<% end %>
 	</span>
-	<div id="definition">
+	<p id="definition">
 		<strong><%= @item.title %></strong>
-	</div>
+	</p>
 	<hr>
  
 	<%= markdown(@item.content).html_safe %>

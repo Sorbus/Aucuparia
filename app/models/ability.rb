@@ -6,24 +6,30 @@ class Ability
 		if user.admin?
 			can :manage, :all
 		else
-			if user.access_tier == 7
-				can :manage, :all
-			elsif user.access_tier == 5 
-				can :manage, [Article, Comment], :user_id => user.id
-				can :destroy, Comment
-				can :update, Category
-				can :read, :all
-				can :update, User, :user_id => user.id
-			elsif user.access_tier == 3
-				can :manage, [Article, Comment], :user_id => user.id
-				can :read, :all
-				can :update, User, :user_id => user.id
-			elsif user.access_tier == 1
+			can :manage, User, :user_id => user.id
+			if user.registration_token.can_comment?
 				can :manage, Comment, :user_id => user.id
-				can :read, :all
-				can :update, User, :user_id => user.id
-			else # guest user
-				can :read, :all
+			end
+			if user.registration_token.can_author?
+				can :manage, Article, :user_id => user.id
+			end
+			if user.registration_token.is_moderator?
+				can :destroy, Comment
+				can :update, Comment
+			end
+			if user.registration_token.is_editor?
+				can :destroy, Article
+				can :update, Article
+			end
+			if user.registration_token.is_administrator?
+				can :update, Website
+				can :manage, User
+				can :create, RegistrationToken
+				can :update, RegistrationToken
+				can :destroy, RegistrationToken
+			end
+			if user.registration_token.is_superuser?
+				can :manage, :all
 			end
 		end
 		# Define abilities for the passed in user here. For example:

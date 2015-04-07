@@ -10,21 +10,28 @@
 	<% @keys.each do |key| %>
 		<hr>
 		<div id="entry">
-			<% if can?(:destroy, key) & !key.used? %>
-				<span id="actions">
+			<span id="actions">
+				<% if can?(:destroy, key) & !key.used? %>
 					<%= link_to 'Destroy', admin_key_path(key),method: :delete,data: { confirm: 'Are you sure?' } %>
-				</span>
-			<% end %>
+				<% end %>
+				<span class="tab"></span>
+				<% if can?(:update, key) %>
+					<%= link_to 'Modify', edit_admin_key_path(key) %>
+				<% end %>
+			</span>
 			<div id="title">
 				<strong><%= key.token %></strong>
 			</div>
 			<div id="sample">
-				Created: <%= key.created_at.strftime("%H:%M, %a %b %d, %Y") %>
-				<span class="tab"></span>
-				Calibre: <%= key.access_tier %><br/>
-				<% if !key.used? %>
-					<%= 'Status: Unused' %>
-				<% else %>
+				Created: <%= key.created_at.strftime("%H:%M, %a %b %d, %Y") %><br/>
+				Permissions:
+				<%= 'Commentator,' if key.can_comment? %>
+				<%= 'Author,' if key.can_author? %>
+				<%= 'Moderator,' if key.is_moderator? %>
+				<%= 'Editor,' if key.is_editor? %>
+				<%= 'Administrator' if key.is_administrator? %>
+				<%= 'Superuser' if key.is_superuser? %><br/>
+				<% if key.used? %>
 					Redeemed: <%= key.updated_at.strftime("%H:%M, %a %b %d, %Y") %><br/>
 					<% user = User.find_by_id(key.user_id) %>
 					Used By: <%= link_to user.email, user_path(user) %>

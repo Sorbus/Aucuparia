@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 		root 'core#index'
 		resources :core, :only => [:edit, :update]
 		resources :users, :only => [:index, :show, :edit, :update, :destroy]
-		resources :keys, :only => [:new, :create, :destroy, :index]
+		resources :keys, :only => [:new, :create, :destroy, :index, :edit, :update]
 	end
 	
 	# Example of regular route:

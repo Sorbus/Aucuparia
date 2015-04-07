@@ -223,6 +223,12 @@ input, select {
 		border: 1px solid $primary-foreground;
 }
 
+label {
+		padding-right:1em;
+		display:inline-block;
+		width:7em;
+}
+
 textarea {
 		width: 99%;
 		height: 15em;
@@ -233,6 +239,11 @@ textarea {
 
 input[type=submit] {
 		width: 10em;
+}
+
+input[type=checkbox] {
+		width: 1em;
+		display: initial;
 }
 
 @import 'menu';

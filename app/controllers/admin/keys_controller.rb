@@ -14,8 +14,9 @@ class Admin::KeysController < ApplicationController
 	def create
 		@key = RegistrationToken.new(key_params)
 		@key.token = SecureRandom.hex
-		@key.used = false
+#		@key.used = false
 		authorize! :create, @key
+#		render plain: @key.inspect
 		if @key.save
 			redirect_to admin_keys_path
 		else
@@ -23,11 +24,23 @@ class Admin::KeysController < ApplicationController
 		end
 	end
 	
+	def edit
+		@key = RegistrationToken.find(params[:id])
+		render 'edit'
+	end
+	
+	def update
+	end
+	
 	def destroy
 		@key = RegistrationToken.find(params[:id])
 		if can? :destroy, @key
-			@key.destroy
-			redirect_to admin_keys_path
+			if !key.used
+				@key.destroy
+				redirect_to admin_keys_path
+			else
+				redirect_to admin_keys_path
+			end
 		else
 			redirect_to user_sessions_root_path
 		end
@@ -35,6 +48,6 @@ class Admin::KeysController < ApplicationController
 	
 	private
 		def key_params
-			params.require(:registration_token).permit(:access_tier)
+			params.require(:registration_token).permit(:can_comment,:can_author,:is_moderator,:is_editor,:is_administrator)
 		end
 end

@@ -27,6 +27,14 @@ $view-max-width: 400px;
 	transition: $attribute $time ease-in-out;
 }
 
+@mixin animation($time, $name){
+	animation: $name $time;
+    -moz-animation: $name $time;
+    -webkit-animation: $name $time;
+    -o-animation: $name $time;
+	-ms-animation: $name $time;
+}
+
 @mixin session-core($side) {
 	text-align:center;
 	float:$side;
@@ -62,13 +70,21 @@ body {
 		padding:15px;
 		position:relative;
 		z-index:3;
-		margin-bottom:60px;
+		margin-bottom:20px;
 	}
 	
 .account {
 		@extend #content;
 		opacity:0.5;
 		@include transition(0.5s, opacity);
+		
+	.tools {
+		float:left;
+		}
+		
+	.logout {
+		float:right;
+		}
 	}
 
 .account:hover {
@@ -89,28 +105,34 @@ body {
 	.login:hover {
 			@include slide-in(1em);
 		}
-		
-	.logout {
-			width:5em;
-			@include session-core(right);
+	}
+	
+.notice-wrapper {
+		width: 100%;
+		position:fixed;
+		left: 0;
+		width: 100%;
+		z-index:1;
+		top:-2em;
+		@include animation(2s, slideup);
+	
+	.notice {
+			border:1px dotted $primary-foreground;
+			color:$primary-foreground;
+			padding:1em;
+			width:15em;
+			margin:0px auto;
+			@include session-core(center);
 			@include transition(0.5s, all);
 		}
 		
-	.logout:hover {
+	.notice:hover {
 			@include slide-in(1em);
 		}
-		
-	.tools {
-			max-width:18em;
-			padding-left:1em;
-			padding-right:1em;
-			@include session-core(left);
-			@include transition(0.5s, all);
-		}
-		
-	.tools:hover {
-			@include slide-in(1em);
-		}
+	}
+
+notifications:hover {
+		top: 10px;
 	}
 	
 #content p:first-of-type {
@@ -282,51 +304,10 @@ span.clear { clear: left; display: block; }
 
 #right {float:right;} /*Don't look at me, senpai! -Right Shark-chan */
 
-form {
-		margin-top: 1em;
-	}
-
-form #tab{
-		width: 4em;
-		float: left;
-	}
-
-input, select {
-		width: 100%;
-		max-width: 25em;
-		display: block;
-		background-color: $secondary-background;
-		border: 1px solid $primary-foreground;
-}
-
-input[readonly="readonly"]
-{
-    opacity: 0.5;
-}
-
-label {
-		padding-right:1em;
-		display:inline-block;
-		min-width:7em;
-}
-
-textarea {
-		width: 99%;
-		height: 15em;
-		background-color: $secondary-background;
-		border: 1px solid $primary-foreground;
-		display:block;
-}
-
-input[type=submit] {
-		width: 10em;
-}
-
-input[type=checkbox] {
-		width: 1em;
-		display: initial;
-}
-
 @import 'menu';
 
 @import 'pagination';
+
+@import 'forms';
+
+@import 'keyframes';

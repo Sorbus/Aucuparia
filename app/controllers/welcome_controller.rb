@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
 	def index
-		@page = Website.first
+		@page = Core.first
 	end
 	
 	def about
-		@page = Website.second
+		@page = Core.second
 	end
 end

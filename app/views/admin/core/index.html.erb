@@ -7,10 +7,13 @@
 		<strong>Admin Tools</strong>
 	</p>
 	<p>
-	<%= link_to 'Manage Registration Keys', admin_keys_path %>
+	<%= link_to :manage_keys, admin_keys_path %>
 	</p>
 	<p>
-	<%= link_to 'View Users', admin_users_path %>
+	<%= link_to :view_users, admin_users_path %>
+	</p>
+	<p>
+	<%= link_to :edit_menus, admin_menus_path %>
 	</p>
 	<p>
 	Presently, all other administrator tools are accessed from the page to which they apply.

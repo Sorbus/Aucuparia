@@ -56,9 +56,9 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		if can? :destroy, @item
 			@item.destroy
-			redirect_to new_user_session_path
+			redirect_to login_path
 		else
-			redirect_to admin_keys_path
+			redirect_to @item
 		end
 	end
 	

@@ -12,17 +12,17 @@ class CategoriesController < ApplicationController
 	
 	def new
 		@category = Category.new
-		@menu_options = Website.all.map{|c| [ c.menu_title, c.id ] }
+		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
 	end
 
 	def edit
 		@category = Category.find(params[:id])
-		@menu_options = Website.all.map{|c| [ c.menu_title, c.id ] }
+		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
 	end
  
 	def create
 		@category = Category.new(category_params)
-		@menu_options = Website.all.map{|c| [ c.menu_title, c.id ] }
+		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
 	  
 		if @category.save
 			redirect_to @category
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
 	
 	def update
 		@category = Category.find(params[:id])
-		@menu_options = Website.all.map{|c| [ c.menu_title, c.id ] }
+		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
  
 		if @category.update(category_params)
 			redirect_to @category
@@ -51,6 +51,6 @@ class CategoriesController < ApplicationController
 	
 	private
 		def category_params
-			params.require(:category).permit(:name, :summary, :website_id)
+			params.require(:category).permit(:name, :summary, :menu_id)
 		end
 end

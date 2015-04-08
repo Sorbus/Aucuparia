@@ -23,7 +23,7 @@ class Ability
 				can :update, Article
 			end
 			if user.registration_token.is_administrator?
-				can :update, Website
+				can :update, Core
 				can :manage, User
 				can :create, RegistrationToken
 				can :update, RegistrationToken

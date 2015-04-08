@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 		resources :core, :only => [:edit, :update]
 		resources :users, :only => [:index, :show, :edit, :update, :destroy]
 		resources :keys, :only => [:new, :create, :destroy, :index, :edit, :update]
+		resources :menus, :only => [:index, :update, :create, :new]
 	end
 	
 	# Example of regular route:

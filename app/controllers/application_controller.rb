@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	helper_method :current_user_session, :current_user
 	
 	rescue_from CanCan::AccessDenied do |exception|
-		redirect_to new_user_session_path, :alert => exception.message
+		redirect_to login_path, :alert => exception.message
 	end
 
 	private
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 			unless current_user
 				store_location
 				flash[:notice] = "You must be logged in to access this page"
-				redirect_to new_user_session_path
+				redirect_to login_path
 				return false
 			end
 		end

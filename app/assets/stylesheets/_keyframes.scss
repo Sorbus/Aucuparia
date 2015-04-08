@@ -1,0 +1,27 @@
+@keyframes slideup
+{
+0%   {top:-1em;}
+75%  {top:-1em;}
+100% {top:-2em;}
+}
+
+@-moz-keyframes slideup
+{
+0%   {top:-1em;}
+75%  {top:-1em;}
+100% {top:-2em;}
+}
+
+@-webkit-keyframes slideup
+{
+0%   {top:-1em;}
+75%  {top:-1em;}
+100% {top:-2em;}
+}
+
+@-o-keyframes slideup
+{
+0%   {top:-1em;}
+75%  {top:-1em;}
+100% {top:-2em;}
+}

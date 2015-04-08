@@ -11,13 +11,15 @@
 </head>
 <body>
 
-<%= render "welcome/menu" %>
+<%= render "shared/flash" if !flash.empty? %>
+
+<%= render "shared/menu" %>
 
 <%= yield %>
 
-<%= render "welcome/account" %>
+<%= render "shared/account" %>
 
-<%= render "welcome/footer" %>
+<%= render "shared/footer" %>
 
 </body>
 </html>

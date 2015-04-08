@@ -25,7 +25,7 @@
 	<% if can? :update, Website %>
 	<p>
 		<%= f.label 'Include in menu?' %><br>
-		<%= f.select :website_id, options_for_select(@menu_options, @category.website_id) %>	
+		<%= f.select :menu_id, options_for_select(@menu_options, @category.menu_id) %>	
 	</p>
 	<% end %>
 	

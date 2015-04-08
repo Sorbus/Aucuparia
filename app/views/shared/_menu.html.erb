@@ -1,0 +1,17 @@
+﻿<div id="menu">
+	<ul class="menu">
+		<li><a href="/">Home</a></li>
+		<li><a href="/about">About</a></li>
+		<% Menu.find_each do |menu| %>
+			<% if menu.visible? %>
+				<li><%= link_to menu.title, '#' %>
+				<ul class="submenu">
+					<% menu.categories.each do |category| %>
+						<li><%= link_to category.name, category_path(category) %></li>
+					<% end %>
+				</ul></li>
+			<% end %>
+		<% end %>
+	</ul>
+	<span class="clear"></span>
+</div>

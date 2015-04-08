@@ -27,6 +27,24 @@ $view-max-width: 400px;
 	transition: $attribute $time ease-in-out;
 }
 
+@mixin session-core($side) {
+	text-align:center;
+	float:$side;
+	padding-top:1em;
+	padding-bottom:1em;
+	border:1px solid $primary-foreground;
+	background-color: $secondary-background;
+	opacity:0.2;
+	z-index:0;
+	position:relative;
+}
+
+@mixin slide-in ($distance) {
+	opacity:1;
+	margin-top:$distance;
+	z-index:5;
+}
+
 @charset 'UTF-8';
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
  
@@ -43,7 +61,8 @@ body {
 		text-align:left;
 		padding:15px;
 		position:relative;
-		z-index:3
+		z-index:3;
+		margin-bottom:60px;
 	}
 	
 .account {
@@ -60,24 +79,38 @@ body {
 		max-width:$view-max-width;
 		margin:0px auto;
 		margin-top:-3em;
-	}
 
-.login {
-		text-align:center;
-		width:10em;
-		float:right;
-		padding-top:1em;
-		padding-bottom:1em;
-		border:1px solid $primary-foreground;
-		background-color: $secondary-background;
-		z-index:1;
-		opacity:0.1;
-		@include transition(0.5s, all);
-	}
-
-.login:hover {
-		opacity:1;
-		padding-top:2.5em;
+	.login {
+			width:10em;
+			@include session-core(right);
+			@include transition(0.5s, all);
+		}
+		
+	.login:hover {
+			@include slide-in(1em);
+		}
+		
+	.logout {
+			width:5em;
+			@include session-core(right);
+			@include transition(0.5s, all);
+		}
+		
+	.logout:hover {
+			@include slide-in(1em);
+		}
+		
+	.tools {
+			max-width:18em;
+			padding-left:1em;
+			padding-right:1em;
+			@include session-core(left);
+			@include transition(0.5s, all);
+		}
+		
+	.tools:hover {
+			@include slide-in(1em);
+		}
 	}
 	
 #content p:first-of-type {
@@ -222,6 +255,10 @@ span.tab{
 	
 span.htab{
 		padding: 0 0.5em;
+	}
+
+span.qtab{
+		padding: 0 0.25em;
 	}
 	
 span.clear { clear: left; display: block; }

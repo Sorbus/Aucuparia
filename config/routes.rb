@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 	
 	resources :items
 	
-	resources :user_sessions, :only => [:new, :create, :destroy] do
+	resource :user_session, :only => [:new, :create, :destroy] do
 		root 'user_sessions#new'
 	end
 	

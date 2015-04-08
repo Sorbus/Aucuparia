@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
 	
 	def show
 		@category = Category.find(params[:id])
-		@items = @category.items.find_each(start: ((params[:page].to_i - 1) * 5), batch_size: 5)
 		@posts = @category.items.paginate(:page => params[:page], :per_page => 5)
 	end
 	

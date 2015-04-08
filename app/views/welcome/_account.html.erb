@@ -8,7 +8,15 @@
 			<%= link_to 'admin tools', admin_root_path %>
 		<% end %>
 		<div id="right">
-			<%= link_to 'logout', user_session_path(current_user),method: :delete,data: { confirm: 'Are you sure?' } %>
+			<%= link_to :logout, user_session_path(current_user),method: :delete,data: { confirm: 'Are you sure?' } %>
+		</div>
+	</div>
+<% else %>
+	<div class="holder">
+		<div class="login">
+			<%= link_to :login, login_path %>
+			<span class="tab"></span>
+			<%= link_to :register, register_path %>
 		</div>
 	</div>
 <% end %>

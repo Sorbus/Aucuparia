@@ -2,7 +2,7 @@ class Admin::KeysController < ApplicationController
 
 	def index
 		authorize! :index, RegistrationToken
-		@keys = RegistrationToken.find_each(start: ((params[:page].to_i - 1) * 10), batch_size: 10)
+		@keys = RegistrationToken.find_each(start: ((params[:page].to_i - 1) * 10 + 1), batch_size: 10)
 		@pages = RegistrationToken.paginate(:page => params[:page], :per_page => 10)
 	end
 	

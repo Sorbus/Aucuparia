@@ -2,13 +2,13 @@
 	<ul class="menu">
 		<li><a href="/">Home</a></li>
 		<li><a href="/about">About</a></li>
-		<li><%= link_to Website.first.menu_title %>
+		<li><%= link_to Website.first.menu_title, '#' %>
 		<ul class="submenu">
 			<% Website.first.categories.each do |category| %>
 				<li><%= link_to category.name, category_path(category) %></li>
 			<% end %>
 		</ul></li>
-		<li><%= link_to Website.second.menu_title %>
+		<li><%= link_to Website.second.menu_title, '#' %>
 		<ul class="submenu">
 			<% Website.second.categories.each do |category| %>
 				<li><%= link_to category.name, category_path(category) %></li>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 	
 	root 'welcome#index'
 	get 'about' => 'welcome#about'
+	get 'login' => 'user_sessions#new'
+	get 'register' => 'users#new'
 	
 	resources :categories
 	

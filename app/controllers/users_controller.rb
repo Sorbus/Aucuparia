@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 	load_and_authorize_resource :except => [:new, :create]
-	http_basic_authenticate_with name: "secret", password: "secret", only: [:new, :create]
 	
 	def index
 		@user = @current_user
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
-		@items = @user.items.find_each(start: ((params[:page].to_i - 1) * 5), batch_size: 5)
 	end
 
 	def edit
@@ -49,18 +47,32 @@ class UsersController < ApplicationController
 	
 	def update
 		@user = @current_user
-		if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+		if !params[:user][:password].blank? or (params[:user][:email].to_s != @user.email.to_s)
+			if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+				params[:user].delete("password")
+				params[:user].delete("password_confirmation")
+			end
+			if @current_user.valid_password?(params[:user][:old_password])
+				if @user.update_attributes(user_params)
+					flash[:notice] = "Account updated!"
+					redirect_to @user
+				else
+					render 'edit'
+				end
+			else
+				@user.errors.add(:old_password, "is not valid")
+				render 'edit'
+			end
+		else
 			params[:user].delete("password")
 			params[:user].delete("password_confirmation")
-		end
-		if params[:user][:email].to_s != @user.email.to_s
-			# add in logic to require entering the current password to change email or password.
-		end
-		if @user.update_attributes(user_params)
-			flash[:notice] = "Account updated!"
-			redirect_to @user
-		else
-			render 'edit'
+			params[:user].delete("email")
+			if @user.update_attributes(user_params)
+				flash[:notice] = "Account updated!"
+				redirect_to @user
+			else
+				render 'edit'
+			end
 		end
 	end
 	

@@ -8,3 +8,8 @@
 	</p>
 	<%= render 'form' %>
 </div>
+<% if @page.content.present? %>
+	<div id="content">
+		<%= markdown(@page.content).html_safe =%>
+	</div>
+<% end %>

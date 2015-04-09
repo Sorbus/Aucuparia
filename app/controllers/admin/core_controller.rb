@@ -1,11 +1,11 @@
 class Admin::CoreController < ApplicationController
 
 	def index
-		authorize! :update, Core
+		authorize! :update, StaticPage
 	end
 
 	def edit
-		@page = Core.find(params[:id])
+		@page = StaticPage.find(params[:id])
 		authorize! :update, @page
 	end
 	
@@ -15,19 +15,14 @@ class Admin::CoreController < ApplicationController
 	end
 	
 	def update
-		@page = Core.find(params[:id])
+		@page = StaticPage.find(params[:id])
 		authorize! :update, @page
 #		render plain: params[:item].inspect
 		
-		if params[:commit] == 'commit'
-			if @page.update(page_params)
-				redirect_to root_path
-			else
-				@page = Core.new(page_params)
-				render 'preview'
-			end
+		if params[:commit] == 'commit' && @page.update(page_params)
+			redirect_to root_path
 		else
-			@page = Core.new(page_params)
+			@page = StaticPage.new(page_params)
 			render 'preview'
 		end
 	end

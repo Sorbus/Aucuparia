@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408191640) do
+ActiveRecord::Schema.define(version: 20150409013114) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -34,8 +34,11 @@ ActiveRecord::Schema.define(version: 20150408191640) do
   end
 
   create_table "cores", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
+    t.text     "twitter"
+    t.text     "github"
+    t.text     "email"
+    t.boolean  "show_icons"
+    t.boolean  "show_login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,6 +75,13 @@ ActiveRecord::Schema.define(version: 20150408191640) do
     t.boolean  "is_editor"
     t.boolean  "is_administrator"
     t.boolean  "is_superuser"
+  end
+
+  create_table "static_pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

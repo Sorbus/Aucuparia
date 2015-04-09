@@ -37,7 +37,11 @@ class UsersController < ApplicationController
 	end
 	
 	def show
-		@user = User.find(params[:id])
+		if !params[:id].present?
+			@user = User.find(current_user.id)
+		else
+			@user = User.find(params[:id])
+		end
 		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
 	end
 
@@ -55,7 +59,7 @@ class UsersController < ApplicationController
 			if @current_user.valid_password?(params[:user][:old_password])
 				if @user.update_attributes(user_params)
 					flash[:notice] = "Account updated!"
-					redirect_to @user
+					redirect_to profile_path
 				else
 					render 'edit'
 				end
@@ -69,7 +73,7 @@ class UsersController < ApplicationController
 			params[:user].delete("email")
 			if @user.update_attributes(user_params)
 				flash[:notice] = "Account updated!"
-				redirect_to @user
+				redirect_to profile_path
 			else
 				render 'edit'
 			end

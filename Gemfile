@@ -13,10 +13,18 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use RedCarpet for markdown interpreation
 gem 'redcarpet', '~> 3.2.2'
+# Use will_paginate to manage pagination
 gem 'will_paginate', '~> 3.0.7'
+# Use Authlogic for user authentication and management
 gem 'authlogic', '~> 3.4.5'
+# Use CanCanCan to manage permissions
 gem 'cancancan', '~> 1.10'
+# Use Valid_Email to verify email validity
+gem 'valid_email'
+# Use Validates URL to verify URLs
+gem 'validate_url'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

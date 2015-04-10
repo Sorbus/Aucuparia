@@ -1,5 +1,13 @@
 == README
 
+Aucuparia is a simple weblog-like website, with support for multiple users, configurable menus, categories, comments, tags, and a variety of other fun things.
+
+It primarily exists as a project to help the author learn Ruby on Rails, and is current under active development - not all advertised features are present, but they are in the process of being added. It should not be used in any sort of production environment.
+
+It is released under the MIT license.
+
+== Etc.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

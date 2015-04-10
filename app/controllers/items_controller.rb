@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
 	
 	def show
 		@item = Item.find(params[:id])
+		@comment = Comment.new
+		@comment.item_id = @item.id
 	end
 	
 	def new
@@ -56,26 +58,13 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		if can? :destroy, @item
 			@item.destroy
-			redirect_to login_path
+			redirect_to items_path
 		else
 			redirect_to @item
 		end
 	end
 	
 	private
-		def figure_it_out
-			if params[:commit] == 'commit'
-				if @item.save
-					redirect_to @item
-				else
-					render 'new'
-				end
-			else
-				@cat_options = Category.all.map{|c| [ c.name, c.id ] }
-				render 'preview'
-			end
-		end
-	
 		def item_params
 			params.require(:item).permit(:title, :content, :summary, :category_id)
 		end

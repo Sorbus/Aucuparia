@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 	
 	resources :categories
 	
-	resources :items
+	resources :items do
+		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
+	end
 	
 	resource :user_session, :only => [:new, :create, :destroy] do
 		root 'user_sessions#new'

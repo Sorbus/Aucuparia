@@ -14,7 +14,7 @@
 		</div>
 		&nbsp
 	</div>
-<% else %>
+<% elsif Core.first.show_login? %>
 	<div class="holder">
 		<div class="login">
 			<%= link_to :login, login_path %>

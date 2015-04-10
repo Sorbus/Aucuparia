@@ -64,13 +64,27 @@ body {
 		background-color: $primary-background;
 	}
 	
-#content {
-		@include boxy;
-		text-align:left;
-		padding:15px;
-		position:relative;
-		z-index:3;
-		margin-bottom:20px;
+#content, .comments {
+	@include boxy;
+	text-align:left;
+	padding:15px;
+	position:relative;
+	z-index:3;
+	margin-bottom:20px;
+		
+	p:first-of-type {
+		margin-top:0px;
+		}
+	}
+
+.comments {
+	form {
+		margin-top:0em;
+		}
+		
+	textarea {
+		height:5em;
+		}
 	}
 	
 .account {
@@ -133,10 +147,6 @@ body {
 
 notifications:hover {
 		top: 10px;
-	}
-	
-#content p:first-of-type {
-		margin-top:0px;
 	}
 	
 #menu {

@@ -8,19 +8,20 @@ class Ability
 			can :manage, :all
 		else
 			can :manage, User, :user_id => user.id
+			can :read, [Category, Item, Comment, User]
 			if user.registration_token.can_comment?
 				can :manage, Comment, :user_id => user.id
 			end
 			if user.registration_token.can_author?
-				can :manage, Article, :user_id => user.id
+				can :manage, Item, :user_id => user.id
 			end
 			if user.registration_token.is_moderator?
 				can :destroy, Comment
 				can :update, Comment
 			end
 			if user.registration_token.is_editor?
-				can :destroy, Article
-				can :update, Article
+				can :destroy, Item
+				can :update, Item
 			end
 			if user.registration_token.is_administrator?
 				can :update, Core

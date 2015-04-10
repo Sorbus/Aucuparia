@@ -13,12 +13,16 @@
 
 <%= render "shared/flash" if !flash.empty? %>
 
-<%= render "shared/menu" %>
+<div class="pagewrap">
 
-<%= yield %>
+	<%= render "shared/menu" %>
 
-<%= render "shared/account" %>
+	<%= yield %>
 
+	<%= render "shared/account" %>
+
+</div>
+	
 <%= render "shared/footer" %>
 
 </body>

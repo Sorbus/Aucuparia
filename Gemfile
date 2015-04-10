@@ -25,6 +25,8 @@ gem 'cancancan', '~> 1.10'
 gem 'valid_email'
 # Use Validates URL to verify URLs
 gem 'validate_url'
+# User Ancestry for nesting stuff!
+gem 'ancestry'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

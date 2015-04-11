@@ -2,19 +2,19 @@
 	<title>Thought Index</title>
 <% end %>
  
-<div id="content">
-	<p id="definition">
+<div class="content">
+	<p class="definition">
 		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
 		<% if can? :create, @item %>
-			<span id="actions">
+			<span class="actions">
 				<%= link_to 'Create', new_item_path %>
 			</span>
 		<% end %>
 	</p>
 	<% @posts.each do |item| %>
 		<hr>
-		<div id="entry">
-			<span id="actions">
+		<div class="entry">
+			<span class="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 				<% if can? :update, item %>
 					<%= link_to 'Change', edit_item_path(item) %>
@@ -22,10 +22,10 @@
 					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
 				<% end %>
 			</span>
-			<div id="title">
+			<div class="title">
 				<%= link_to item.title, item_path(item) %>
 			</div>
-			<div id="sample">
+			<div class="sample">
 				<%= markdown(item.summary).html_safe %>
 			</div>
 		</div>

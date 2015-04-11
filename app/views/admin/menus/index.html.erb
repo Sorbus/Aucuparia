@@ -2,8 +2,8 @@
 	<title>Manage Menus</title>
 <% end %>
 
-<div id="content" class="menu_edit">
-	<p id="definition">
+<div class="content menu_edit">
+	<p class="definition">
 		<strong>Menu</strong> - <em>n</em>. A list from which a user can select an option.
 	</p>
 	<%= @menus.each do |menu| %>
@@ -32,7 +32,6 @@
 			<p>
 				<%= f.submit 'commit', id: "left" %>
 			</p>
-			&nbsp
 		<% end %>
 	<% end %>
 	<%= form_for @menu, url: admin_menus_path do |f| %>
@@ -58,7 +57,7 @@
 		</p>
 			
 		<p>
-			<%= f.submit 'commit', id: "left" %>
+			<%= f.submit 'commit', class: "left" %>
 		</p>
 		&nbsp
 	<% end %>

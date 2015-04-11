@@ -2,14 +2,14 @@
 	<title>Change</title>
 <% end %>
 
-<div id="content">
-	<p id="definition">
+<div class="content">
+	<p class="definition">
 		<strong>Change</strong> - <em>v</em>. To become different.
 	</p>
 	<%= render 'form' %>
 </div>
 <% if @item.content.present? %>
-	<div id="content">
+	<div class="content">
 		<%= markdown(@item.content).html_safe =%>
 	</div>
 <% end %>

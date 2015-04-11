@@ -2,8 +2,8 @@
 	<title><%= @user.display_name %></title>
 <% end %>
 
-<div id="content">
-	<p id="definition">
+<div class="content">
+	<p class="definition">
 		<strong>Identity</strong> - <em>n</em>. 
 	</p>
 	<hr>
@@ -45,8 +45,8 @@
 	
 	<% @posts.each do |item| %>
 		<hr>
-		<div id="entry">
-			<span id="actions">
+		<div class="entry">
+			<span class="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 				<% if can? :update, item %>
 					<%= link_to 'Change', edit_item_path(item) %>
@@ -54,10 +54,10 @@
 					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
 				<% end %>
 			</span>
-			<div id="title">
+			<div class="title">
 				<%= link_to item.title, item_path(item) %>
 			</div>
-			<div id="sample">
+			<div class="sample">
 				<%= markdown(item.summary).html_safe %>
 			</div>
 		</div>

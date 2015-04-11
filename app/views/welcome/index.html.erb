@@ -2,8 +2,8 @@
 	<title><%= @page.title %></title>
 <% end %>
 
-<div id="content" class="main">
-	<span id="actions">
+<div class="content" id="main">
+	<span class="actions">
 		<% if can? :update, @page %>
 			<%= link_to 'Change', edit_admin_core_path(@page) %>
 		<% end %>

@@ -2,23 +2,23 @@
 	<title><%= @category.name %></title>
 <% end %>
  
-<div id="content">
-	<span id="actions">
+<div class="content">
+	<span class="actions">
 		<%= link_to 'All Categories', categories_path %>
 		<% if can? :update, @category %>
 			<span class="tab"></span>
 			<%= link_to 'Create', new_item_path %>
 		<% end %>
 	</span>
-	<p id="definition">
+	<p class="definition">
 		<strong><%= @category.name %></strong><br/>
 		<hr>
 		<%= markdown(@category.summary).html_safe %>
 	</p>
 	<% @posts.each do |item| %>
 		<hr>
-		<div id="entry">
-			<span id="actions">
+		<div class="entry">
+			<span class="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 				<% if can? :update, item %>
 					<%= link_to 'Change', edit_item_path(item) %>
@@ -26,10 +26,10 @@
 					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
 				<% end %>
 			</span>
-			<div id="title">
+			<div class="title">
 				<%= link_to item.title, item_path(item) %>
 			</div>
-			<div id="sample">
+			<div class="sample">
 				<%= markdown(item.summary).html_safe %>
 			</div>
 		</div>

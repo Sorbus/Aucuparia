@@ -2,17 +2,17 @@
 	<title>Category Index</title>
 <% end %>
  
-<div id="content">
-	<p id="definition">
+<div class="content">
+	<p class="definition">
 		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
 	</p>
 	<% @categories.each do |category| %>
 	<hr>
-	<div id="entry">
-		<div id="title">
+	<div class="entry">
+		<div class="title">
 			<%= link_to category.name, category_path(category) %>
 			<% if can? :update, @category %>
-				<span id="actions">
+				<span class="actions">
 					<%= link_to 'Change', edit_category_path(category) %>
 					<span class="tab"></span>
 					<%= link_to 'Destroy', category_path(category),method: :delete,data: { confirm: 'Are you sure?' } %>
@@ -23,9 +23,9 @@
 	<% end %>
 	<% if can? :create, @category %>
 	<hr>
-		<div id="entry">
-			<div id="title">
-				<span id="actions">
+		<div class="entry">
+			<div class="title">
+				<span class="actions">
 					<%= link_to 'Create', new_category_path %>
 					<span class="tab"></span><a>Change</a><span class="tab"></span><a>Destroy</a>
 				</span>

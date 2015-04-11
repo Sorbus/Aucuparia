@@ -64,7 +64,7 @@ body {
 		background-color: $primary-background;
 	}
 	
-#content, .comments {
+.content, .comments {
 	@include boxy;
 	text-align:left;
 	padding:15px;
@@ -88,7 +88,7 @@ body {
 	}
 	
 .account {
-		@extend #content;
+		@extend .content;
 		opacity:0.5;
 		@include transition(0.5s, opacity);
 		
@@ -156,7 +156,7 @@ notifications:hover {
 		text-align:center;
 	}
 
-#definition {
+.definition {
 		text-align:justify;
 	}
 
@@ -168,36 +168,36 @@ notifications:hover {
 		margin-top:20px;
 	}
 
-#created {
+.created {
 		float:right;
 		text-align:right;
 		opacity:0.3;
 		margin-top:0.5em;
 }
 
-#category {
+.category {
 		float:left;
 		text-align:right;
 		opacity:.3;
 		margin-top:0.5em;
 }
 
-#entry {
+.entry {
 		
 }
 
-#title {
+.title {
 		margin-top:0.5em;
 }
 
-#actions {
+.actions {
 		float:right;
 		opacity:0.4;
 		font-size:small;
 		margin-left:1em;
 }
 
-#dangerous {
+.dangerous {
 		border: 1px solid red;
 		margin-top: 1em;
 		padding: 0em 1em 1em 1em;
@@ -310,9 +310,9 @@ span.clear { clear: left; display: block; }
 		z-index: 1;
 }
 
-#left {float:left;}
+.left {float:left;}
 
-#right {float:right;} /*Don't look at me, senpai! -Right Shark-chan */
+.right {float:right;} /*Don't look at me, senpai! -Right Shark-chan */
 
 @import 'menu';
 

@@ -4,7 +4,7 @@
 	<% end %>
 	<% @item.comments.find_each do |comment| %>
 		<div class="comment">
-			<span id="actions">
+			<span class="actions">
 				<% if can? :update, comment %>
 					<%= link_to 'Change', edit_item_comment_path(@item, comment) %>
 					<span class="tab"></span>

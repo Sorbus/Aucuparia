@@ -11,13 +11,22 @@ class CommentsController < ApplicationController
 	
 	def create
 		authorize! :create, Comment
-		@comment = Comment.new(comment_params)
-		@comment.item_id = params[:item_id]
-		@comment.user_id = current_user.id
-		if params[:commit] == 'commit' && @comment.save
-			redirect_to item_path(@comment.item)
+		if params.has_key?(:reply_id)
+			if Comment.find(params[:reply_id]).children.create(comment_params)
+				
+			else  	
+			end
 		else
-			render 'new'
+			@comment = Comment.new(comment_params, item_id: params[:item_id], user_id: current_user.id)
+			@comment.item_id = params[:item_id]
+			@comment.user_id = current_user.id
+			if params[:commit] == 'commit' && @comment.save
+				flash[:notice] = "Comment created."
+				redirect_to item_path(:id => @comment.item_id)
+			else
+				flash[:alert] = "Comment not saved!"
+				redirect_to item_path(:id => @comment.item_id)
+			end
 		end
 	end
 	

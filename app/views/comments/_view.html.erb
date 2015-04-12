@@ -3,18 +3,9 @@
 		<%= render 'comments/form' %><hr>
 	<% end %>
 	<% @item.comments.find_each do |comment| %>
-		<div class="comment">
-			<span class="actions">
-				<% if can? :update, comment %>
-					<%= link_to 'Change', edit_item_comment_path(@item, comment) %>
-					<span class="tab"></span>
-					<%= link_to 'Destroy', item_comment_path(@item, comment),method: :delete,data: { confirm: 'Are you sure?' } %>
-				<% end %>
-			</span>
-			<p>
-				<%= comment.body %> <em>posted by</em>
-				<%= link_to comment.user.display_name, user_path(comment.user) %>
-			</p>
-		</div>
+		<% if comment.is_root? %>
+			<%= render partial: 'comments/comment', object: comment %>
+			<hr>
+		<% end %>
 	<% end %>
 </div>

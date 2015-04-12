@@ -1,0 +1,87 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-background: rgba(239, 237, 235, 1);
+$secondary-background: rgba(238, 238, 238, 1);
+$primary-foreground: rgba(118, 92, 57, 1);
+$secondary-foreground: rgba(132, 107, 77, 1);
+$tertiary-foreground: rgba(78, 61, 38, 1);
+$view-max-width: 400px;
+
+@mixin transition($time, $attribute) {
+	-moz-transition: $attribute $time ease-in-out;
+	-webkit-transition: $attribute $time ease-in-out;
+	-o-transition: $attribute $time ease-in-out;
+	-ms-transition: $attribute $time ease-in-out;
+	transition: $attribute $time ease-in-out;
+}
+
+.comments {
+	form {
+		margin-top:0em;
+		}
+		
+	textarea {
+		height:5em;
+		}
+	}
+
+.comment {
+	margin-bottom: 5px;
+	margin-right: 0px;
+	margin-top:0.1em;
+	
+	.byline {
+		margin-left:1em;
+		@include transition(0.5s, all);
+		}
+	
+	.byline:after {
+		content: " writes:";
+		}
+	
+	.children {
+		margin-top:0.1em;
+		padding-left: 0.5em;
+		border-left: 1px dashed $secondary-foreground;
+		border-bottom: 1px dashed $secondary-foreground;
+		border-top: 1px solid $primary-foreground;
+		}
+		
+	p {
+		position:relative;
+		z-index:4;
+		@include transition(0.5s, all);
+		width:100%;
+		}
+		
+	.comment_core {
+		padding-bottom:0.2em;
+		}
+		
+	/*.comment_core:hover {
+		p {
+			padding-left:1em;
+			padding-right:-1em;
+			}
+			
+		.byline {
+			margin-left:2em;
+			}
+		}*/
+		
+	.actions {
+		position:relative;
+		z-index:5
+		}
+	}
+	
+.odd {
+	background-color: $secondary-background;
+	}
+
+.even {
+	background-color: $primary-background;
+	}
+	

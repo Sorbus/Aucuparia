@@ -76,16 +76,6 @@ body {
 		margin-top:0px;
 		}
 	}
-
-.comments {
-	form {
-		margin-top:0em;
-		}
-		
-	textarea {
-		height:5em;
-		}
-	}
 	
 .account {
 		@extend .content;
@@ -143,6 +133,20 @@ body {
 	.notice:hover {
 			@include slide-in(1em);
 		}
+		
+	.alert {
+			border:1px dotted red;
+			color:$primary-foreground;
+			padding:1em;
+			width:15em;
+			margin:0px auto;
+			@include session-core(center);
+			@include transition(0.5s, all);
+		}
+		
+	.alert:hover {
+			@include slide-in(1em);
+		}
 	}
 
 notifications:hover {
@@ -195,6 +199,11 @@ notifications:hover {
 		opacity:0.4;
 		font-size:small;
 		margin-left:1em;
+		@include transition(0.5s, all);
+}
+
+.actions:hover {
+		opacity:1;
 }
 
 .dangerous {
@@ -319,5 +328,7 @@ span.clear { clear: left; display: block; }
 @import 'pagination';
 
 @import 'forms';
+
+@import 'comments';
 
 @import 'keyframes';

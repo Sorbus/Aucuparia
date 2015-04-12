@@ -121,13 +121,12 @@ body {
 		@include animation(2s, slideup);
 	
 	.notice {
-			border:1px dotted $primary-foreground;
-			color:$primary-foreground;
 			padding:1em;
 			width:15em;
 			margin:0px auto;
 			@include session-core(center);
 			@include transition(0.5s, all);
+			border:1px dotted $primary-foreground;
 		}
 		
 	.notice:hover {
@@ -135,13 +134,14 @@ body {
 		}
 		
 	.alert {
-			border:1px dotted red;
-			color:$primary-foreground;
 			padding:1em;
 			width:15em;
 			margin:0px auto;
 			@include session-core(center);
 			@include transition(0.5s, all);
+			border:1px dotted red;
+			background-color: #f9e3e3;
+			color:red;
 		}
 		
 	.alert:hover {

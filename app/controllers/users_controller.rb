@@ -61,6 +61,7 @@ class UsersController < ApplicationController
 					flash[:notice] = "Account updated!"
 					redirect_to profile_path
 				else
+					flash[:alert] = "Account update failed."
 					render 'edit'
 				end
 			else
@@ -75,6 +76,7 @@ class UsersController < ApplicationController
 				flash[:notice] = "Account updated!"
 				redirect_to profile_path
 			else
+				flash[:alert] = "Account update failed."
 				render 'edit'
 			end
 		end

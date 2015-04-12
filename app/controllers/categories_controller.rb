@@ -25,8 +25,10 @@ class CategoriesController < ApplicationController
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
 	  
 		if @category.save
+			flash[:notice] = "Category created."
 			redirect_to @category
 		else
+			flash[:alert] = "Category not created!"
 			render 'new'
 		end
 	end
@@ -36,8 +38,10 @@ class CategoriesController < ApplicationController
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
  
 		if @category.update(category_params)
+			flash[:notice] = "Category updated."
 			redirect_to @category
 		else
+			flash[:alert] = "Category not updated!"
 			render 'edit'
 		end
 	end

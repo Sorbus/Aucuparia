@@ -20,6 +20,7 @@ class Admin::CoreController < ApplicationController
 #		render plain: params[:item].inspect
 		
 		if params[:commit] == 'commit' && @page.update(page_params)
+			flash[:notice] = "Page updated"
 			redirect_to root_path
 		else
 			@page = StaticPage.new(page_params)

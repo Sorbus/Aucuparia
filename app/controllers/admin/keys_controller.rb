@@ -18,8 +18,10 @@ class Admin::KeysController < ApplicationController
 		authorize! :create, @key
 #		render plain: @key.inspect
 		if @key.save
+			flash[:notice] = "New key created"
 			redirect_to admin_keys_path
 		else
+			flash[:alert] = "Key creation failed"
 			render 'new'
 		end
 	end
@@ -30,6 +32,15 @@ class Admin::KeysController < ApplicationController
 	end
 	
 	def update
+		@key = RegistrationToken.find(params[:id])
+		authorize! :update, @key
+		if @key.update(key_params)
+			flash[:notice] = "Key updated."
+			redirect_to admin_keys_path
+		else
+			flash[:alert] = "Key update failed!"
+			redirect_to edit_admin_key_path(@key)
+		end
 	end
 	
 	def destroy
@@ -37,8 +48,10 @@ class Admin::KeysController < ApplicationController
 		if can? :destroy, @key
 			if !key.used
 				@key.destroy
+				flash[:notice] = "Key destroyed."
 				redirect_to admin_keys_path
 			else
+				flash[:alert] = "You can't do that!"
 				redirect_to admin_keys_path
 			end
 		else

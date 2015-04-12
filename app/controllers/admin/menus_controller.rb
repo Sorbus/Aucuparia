@@ -16,7 +16,7 @@ class Admin::MenusController < ApplicationController
 			flash[:notice] = "Menu successfully created."
 			redirect_to admin_menus_path
 		else
-			flash[:notice] = "Menu creation failed!"
+			flash[:alert] = "Menu creation failed!"
 			redirect_to admin_root_path
 		end
 	end
@@ -30,7 +30,7 @@ class Admin::MenusController < ApplicationController
 			flash[:notice] = "Menu successfully updated."
 			redirect_to admin_menus_path
 		else
-			flash[:notice] = "Menu update failed!"
+			flash[:alert] = "Menu update failed!"
 			redirect_to admin_root_path
 		end
 	end

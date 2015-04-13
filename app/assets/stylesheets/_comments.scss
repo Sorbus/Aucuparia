@@ -5,6 +5,7 @@
 $primary-background: rgba(239, 237, 235, 1);
 $secondary-background: rgba(238, 238, 238, 1);
 $primary-foreground: rgba(118, 92, 57, 1);
+$primary-foreground-fade: rgba(118, 92, 57, 0.5);
 $secondary-foreground: rgba(132, 107, 77, 1);
 $tertiary-foreground: rgba(78, 61, 38, 1);
 $view-max-width: 400px;
@@ -26,6 +27,7 @@ $view-max-width: 400px;
 		height:5em;
 		}
 	}
+	
 
 .comment {
 	margin-bottom: 5px;
@@ -33,12 +35,11 @@ $view-max-width: 400px;
 	margin-top:0.1em;
 	
 	.byline {
-		margin-left:1em;
+		margin-left:0em;
 		@include transition(0.5s, all);
 		}
 	
 	.byline:after {
-		content: " writes:";
 		}
 	
 	.children {
@@ -47,13 +48,27 @@ $view-max-width: 400px;
 		border-left: 1px dashed $secondary-foreground;
 		border-bottom: 1px dashed $secondary-foreground;
 		border-top: 1px solid $primary-foreground;
+		border-right: 1px solid $primary-foreground;
 		}
 		
 	p {
 		position:relative;
 		z-index:4;
+		margin-left:0em;
+		margin-top:0em;
+		padding-top:1em;
 		@include transition(0.5s, all);
 		width:100%;
+		border-left:.2em solid $primary-foreground-fade;
+		padding-left:.4em;
+		}
+		
+	p:first-of-type {
+		padding-top:0em;
+		}
+	
+	p:last-of-type {
+		padding-bottom:.5em;
 		}
 		
 	.comment_core {

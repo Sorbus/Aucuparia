@@ -1,0 +1,46 @@
+<div class="comment">
+	<span class="actions">
+		<% if can? :create, Comment %>
+			<%= link_to 'Reply', url: '#' %>
+		<% end %>
+		<% if can? :update, comment %>
+			<span class="htab"></span>
+			<%= link_to 'Change', edit_item_comment_path(item, comment.id) %>
+			<span class="htab"></span>
+			<%= link_to 'Destroy', item_comment_path(item, comment.id),method: :delete,data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</span>
+	<div class="comment_core">
+		<span class="byline">
+			<%= link_to comment.user.display_name, user_path(comment.user), title: comment.created_at.strftime("%H:%M, %a %b %d, %Y") %>
+			writes:
+		</span>
+		<%=  markdown(comment.body).html_safe %>
+	</div>
+	<% if comment.has_children? %>
+		<div class="children">
+			<% comment.descendants.each do |child| %>
+				<div class="comment">
+					<span class="actions">
+						<% if can? :create, Comment %>
+							<%= link_to 'Reply', url: '#' %>
+						<% end %>
+						<% if can? :update, comment %>
+							<span class="htab"></span>
+							<%= link_to 'Change', edit_item_comment_path(item, child.id) %>
+							<span class="htab"></span>
+							<%= link_to 'Destroy', item_comment_path(item, child.id),method: :delete,data: { confirm: 'Are you sure?' } %>
+						<% end %>
+					</span>
+					<div class="comment_core">
+						<span class="byline">
+							<%= link_to child.user.display_name, user_path(child.user), title: child.created_at.strftime("%H:%M, %a %b %d, %Y") %>
+							writes in reply to <%= link_to child.parent.user.display_name, :anchor => child.parent.id %>:
+						</span>
+						<%= markdown(child.body).html_safe %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

@@ -22,7 +22,9 @@
 			<% comment.descendants.each do |child| %>
 				<div class="comment">
 					<span class="actions">
-						<% link_to_if(can?(:create, Comment), 'Reply', url: '#') %>
+						<% if can? :create, Comment %>
+							<%= link_to 'Reply', url: '#' %>
+						<% end %>
 						<% if can? :update, comment %>
 							<span class="htab"></span>
 							<%= link_to 'Change', edit_item_comment_path(item, child.id) %>

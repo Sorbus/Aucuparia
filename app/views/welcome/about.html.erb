@@ -4,7 +4,9 @@
 
 <div class="content" id="about">
 	<span class="actions">
-	<%= link_to_if(can?(:update, @page), link_to 'Change', edit_admin_core_path(@page)) %>
+		<% if can? :update, @page %>
+			<%= link_to 'Change', edit_admin_core_path(@page) %>
+		<% end %>
 	</span>
 	<%= markdown(@page.content).html_safe %>
 	<br>

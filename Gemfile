@@ -18,7 +18,10 @@ gem 'redcarpet', '~> 3.2.2'
 # Use will_paginate to manage pagination
 gem 'will_paginate', '~> 3.0.7'
 # Use Authlogic for user authentication and management
-gem 'authlogic', '~> 3.4.5'
+# gem 'authlogic', '~> 3.4.5'
+# Moving to Devise ...
+gem 'devise', '~> 3.4.1'
+gem 'omniauth-twitter'
 # Use CanCanCan to manage permissions
 gem 'cancancan', '~> 1.10'
 # Use Valid_Email to verify email validity
@@ -27,6 +30,8 @@ gem 'valid_email'
 gem 'validate_url'
 # User Ancestry for nesting stuff!
 gem 'ancestry'
+
+gem 'figaro'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

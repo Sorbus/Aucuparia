@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409220213) do
+ActiveRecord::Schema.define(version: 20150414042040) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -71,18 +71,15 @@ ActiveRecord::Schema.define(version: 20150409220213) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "registration_tokens", force: :cascade do |t|
-    t.string   "token"
-    t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.boolean  "used"
-    t.boolean  "can_comment"
-    t.boolean  "can_author"
-    t.boolean  "is_moderator"
-    t.boolean  "is_editor"
-    t.boolean  "is_administrator"
-    t.boolean  "is_superuser"
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "static_pages", force: :cascade do |t|
@@ -94,22 +91,36 @@ ActiveRecord::Schema.define(version: 20150409220213) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "crypted_password"
+    t.string   "encrypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token"
-    t.string   "perishable_token"
-    t.integer  "login_count"
-    t.integer  "failed_login_count"
+    t.integer  "sign_in_count"
+    t.integer  "failed_attempts"
     t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.string   "display_name"
     t.text     "biography"
     t.string   "website"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.string   "remember_token",         limit: 255
+    t.datetime "remember_created_at"
+    t.string   "unlock_token",           limit: 255
+    t.datetime "locked_at"
+    t.string   "provider"
+    t.string   "uid"
   end
+
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
 end

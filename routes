@@ -1,0 +1,73 @@
+                  Prefix Verb     URI Pattern                                 Controller#Action
+        new_user_session GET      /users/sign_in(.:format)                    devise/sessions#new
+            user_session POST     /users/sign_in(.:format)                    devise/sessions#create
+    destroy_user_session DELETE   /users/sign_out(.:format)                   devise/sessions#destroy
+ user_omniauth_authorize GET|POST /users/auth/:provider(.:format)             users/omniauth_callbacks#passthru {:provider=>/twitter/}
+  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)      users/omniauth_callbacks#:action
+           user_password POST     /users/password(.:format)                   devise/passwords#create
+       new_user_password GET      /users/password/new(.:format)               devise/passwords#new
+      edit_user_password GET      /users/password/edit(.:format)              devise/passwords#edit
+                         PATCH    /users/password(.:format)                   devise/passwords#update
+                         PUT      /users/password(.:format)                   devise/passwords#update
+cancel_user_registration GET      /users/cancel(.:format)                     devise/registrations#cancel
+       user_registration POST     /users(.:format)                            devise/registrations#create
+   new_user_registration GET      /users/sign_up(.:format)                    devise/registrations#new
+  edit_user_registration GET      /users/edit(.:format)                       devise/registrations#edit
+                         PATCH    /users(.:format)                            devise/registrations#update
+                         PUT      /users(.:format)                            devise/registrations#update
+                         DELETE   /users(.:format)                            devise/registrations#destroy
+                    root GET      /                                           welcome#index
+                   about GET      /about(.:format)                            welcome#about
+              categories GET      /categories(.:format)                       categories#index
+                         POST     /categories(.:format)                       categories#create
+            new_category GET      /categories/new(.:format)                   categories#new
+           edit_category GET      /categories/:id/edit(.:format)              categories#edit
+                category GET      /categories/:id(.:format)                   categories#show
+                         PATCH    /categories/:id(.:format)                   categories#update
+                         PUT      /categories/:id(.:format)                   categories#update
+                         DELETE   /categories/:id(.:format)                   categories#destroy
+           item_comments POST     /items/:item_id/comments(.:format)          comments#create
+        new_item_comment GET      /items/:item_id/comments/new(.:format)      comments#new
+       edit_item_comment GET      /items/:item_id/comments/:id/edit(.:format) comments#edit
+            item_comment PATCH    /items/:item_id/comments/:id(.:format)      comments#update
+                         PUT      /items/:item_id/comments/:id(.:format)      comments#update
+                         DELETE   /items/:item_id/comments/:id(.:format)      comments#destroy
+                   items GET      /items(.:format)                            items#index
+                         POST     /items(.:format)                            items#create
+                new_item GET      /items/new(.:format)                        items#new
+               edit_item GET      /items/:id/edit(.:format)                   items#edit
+                    item GET      /items/:id(.:format)                        items#show
+                         PATCH    /items/:id(.:format)                        items#update
+                         PUT      /items/:id(.:format)                        items#update
+                         DELETE   /items/:id(.:format)                        items#destroy
+                   users GET      /users(.:format)                            users#index
+                         POST     /users(.:format)                            users#create
+                new_user GET      /users/new(.:format)                        users#new
+                    user GET      /users/:id(.:format)                        users#show
+                         DELETE   /users/:id(.:format)                        users#destroy
+            edit_profile GET      /profile/edit(.:format)                     users#edit
+                 profile GET      /profile(.:format)                          users#show
+                         PATCH    /profile(.:format)                          users#update
+                         PUT      /profile(.:format)                          users#update
+              admin_root GET      /admin(.:format)                            admin/core#index
+         edit_admin_core GET      /admin/core/:id/edit(.:format)              admin/core#edit
+              admin_core PATCH    /admin/core/:id(.:format)                   admin/core#update
+                         PUT      /admin/core/:id(.:format)                   admin/core#update
+             admin_users GET      /admin/users(.:format)                      admin/users#index
+         edit_admin_user GET      /admin/users/:id/edit(.:format)             admin/users#edit
+              admin_user GET      /admin/users/:id(.:format)                  admin/users#show
+                         PATCH    /admin/users/:id(.:format)                  admin/users#update
+                         PUT      /admin/users/:id(.:format)                  admin/users#update
+                         DELETE   /admin/users/:id(.:format)                  admin/users#destroy
+              admin_keys GET      /admin/keys(.:format)                       admin/keys#index
+                         POST     /admin/keys(.:format)                       admin/keys#create
+           new_admin_key GET      /admin/keys/new(.:format)                   admin/keys#new
+          edit_admin_key GET      /admin/keys/:id/edit(.:format)              admin/keys#edit
+               admin_key PATCH    /admin/keys/:id(.:format)                   admin/keys#update
+                         PUT      /admin/keys/:id(.:format)                   admin/keys#update
+                         DELETE   /admin/keys/:id(.:format)                   admin/keys#destroy
+             admin_menus GET      /admin/menus(.:format)                      admin/menus#index
+                         POST     /admin/menus(.:format)                      admin/menus#create
+          new_admin_menu GET      /admin/menus/new(.:format)                  admin/menus#new
+              admin_menu PATCH    /admin/menus/:id(.:format)                  admin/menus#update
+                         PUT      /admin/menus/:id(.:format)                  admin/menus#update

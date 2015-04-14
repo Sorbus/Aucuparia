@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
 	load_and_authorize_resource
+	before_filter :authenticate_user!, :except => [:index, :show]
 
 	def index
 		@categories = Category.all

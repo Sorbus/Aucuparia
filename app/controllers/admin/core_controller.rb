@@ -1,4 +1,5 @@
 class Admin::CoreController < ApplicationController
+	before_filter :authenticate_user!
 
 	def index
 		authorize! :update, StaticPage

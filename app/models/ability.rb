@@ -3,34 +3,26 @@ class Ability
 
 	def initialize(user)
 		user ||= User.new # if necessary, create a guest user
-		user.registration_token ||= RegistrationToken.new
-		if user.registration_token.is_superuser?
+
+		can :manage, User, :user_id => user.id
+		can :read, [Category, Item, Comment, User]
+		
+		if user.role? :super_admin
 			can :manage, :all
-		else
-			can :manage, User, :user_id => user.id
-			can :read, [Category, Item, Comment, User]
-			if user.registration_token.can_comment?
-				can :manage, Comment, :user_id => user.id
-			end
-			if user.registration_token.can_author?
-				can :manage, Item, :user_id => user.id
-			end
-			if user.registration_token.is_moderator?
-				can :destroy, Comment
-				can :update, Comment
-			end
-			if user.registration_token.is_editor?
-				can :destroy, Item
-				can :update, Item
-			end
-			if user.registration_token.is_administrator?
-				can :update, Core
-				can :manage, User
-				can :create, RegistrationToken
-				can :update, RegistrationToken
-				can :destroy, RegistrationToken
-			end
+		elsif user.role? :moderator
+			can :destroy, Comment
+			can :update, Comment
+		elsif user.role? :editor
+			can :destroy, Item
+			can :update, Item
+			can :manage, Comment, :user_id => user.id
+		elsif user.role? :author
+			can :manage, Item, :user_id => user.id
+			can :manage, Comment, :user_id => user.id
+		elsif user.role? :commentor
+			can :manage, Comment, :user_id => user.id
 		end
+		
 		# Define abilities for the passed in user here. For example:
 		#
 		#	 user ||= User.new # guest user (not logged in)

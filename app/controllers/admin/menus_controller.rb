@@ -1,4 +1,6 @@
 class Admin::MenusController < ApplicationController
+	before_filter :authenticate_user!
+
 	def index
 		authorize! :update, ::Menu
 		@menus = Menu.find_each

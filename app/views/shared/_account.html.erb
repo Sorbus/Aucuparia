@@ -10,16 +10,16 @@
 			<% end %>
 		</div>
 		<div class="logout">
-			<%= link_to :logout, user_session_path,method: :delete,data: { confirm: 'Are you sure?' } %>
+			<%= link_to :logout, destroy_user_session_path, method: :delete,data: { confirm: 'Are you sure?' } %>
 		</div>
 		&nbsp
 	</div>
-<% elsif Core.first.show_login? %>
+<% elsif Core.first.show_login? && (controller_name != 'sessions') && (controller_name != 'registrations') %>
 	<div class="holder">
 		<div class="login">
-			<%= link_to :login, login_path %>
+			<%= link_to :login, new_user_session_path %>
 			<span class="tab"></span>
-			<%= link_to :register, register_path %>
+			<%= link_to :register, new_user_registration_path %>
 		</div>
 	</div>
 <% end %>

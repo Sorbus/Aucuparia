@@ -26,3 +26,10 @@ Category.create(name: 'Somniatus', summary: 'What exists within dream.', menu_id
 Category.create(name: 'Mindless', summary: 'What does not exist.', menu_id: Menu.second.id)
 
 Core.create(twitter: 'S_aucuparia', github: 'Sorbus/aucuparia', email: 'rowan@aucuparia.net', show_icons: true, show_login: true)
+
+Role.create(name: 'SuperAdmin')
+Role.create(name: 'Admin')
+Role.create(name: 'Moderator')
+Role.create(name: 'Editor')
+Role.create(name: 'Author')
+Role.create(name: 'Commenter')

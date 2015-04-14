@@ -9,9 +9,14 @@ class Ability
 		
 		if user.role? :super_admin
 			can :manage, :all
+		elsif user.role? :admin
+			can :manage, Comment
+			can :manage, Item
+			can :manage, Category
 		elsif user.role? :moderator
 			can :destroy, Comment
 			can :update, Comment
+			can :manage, Comment, :user_id => user.id
 		elsif user.role? :editor
 			can :destroy, Item
 			can :update, Item
@@ -19,7 +24,7 @@ class Ability
 		elsif user.role? :author
 			can :manage, Item, :user_id => user.id
 			can :manage, Comment, :user_id => user.id
-		elsif user.role? :commentor
+		elsif user.role? :commenter
 			can :manage, Comment, :user_id => user.id
 		end
 		

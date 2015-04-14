@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 #		root 'user_sessions#new'
 #	end
 	
-	resources :users, :only => [:show, :destroy, :new, :create, :index]
+	resources :users, :only => [:show, :create, :index]
 	
 	resource :profile, :only => [:show, :edit, :update], :controller => 'users'
 	

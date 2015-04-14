@@ -31,26 +31,11 @@
 			<%= f.label :biography %>
 			<%= f.text_area :biography %>
 		</p>
-		<div id="dangerous">
-			<p>
-				<%= f.label :old_password %>
-				<%= f.password_field :old_password %>
-			</p>
-			<p>
-				<%= f.label :email %>
-				<%= f.text_field :email, readonly: true %>
-			</p>
-			<p>
-				<%= f.label :change_password %>
-				<%= f.password_field :password, readonly: true %>
-			</p>
-			<p>
-				<%= f.label :password_confirmation %>
-				<%= f.password_field :password_confirmation, readonly: true %>
-			</p>
-		</div>
 		<p>
 			<%= f.submit "Commit" %>
 		</p>
 	<% end %>
+	<p>
+		<%= link_to 'Modify Account Settings', edit_user_registration_path %>
+	</p>
 </div>

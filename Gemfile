@@ -22,6 +22,8 @@ gem 'will_paginate', '~> 3.0.7'
 # Moving to Devise ...
 gem 'devise', '~> 3.4.1'
 gem 'omniauth-twitter'
+# Use RoleModel to deal with user roles
+gem 'role_model'
 # Use CanCanCan to manage permissions
 gem 'cancancan', '~> 1.10'
 # Use Valid_Email to verify email validity

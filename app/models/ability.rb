@@ -7,25 +7,24 @@ class Ability
 		can :manage, User, :user_id => user.id
 		can :read, [Category, Item, Comment, User]
 		
-		if user.role? :super_admin
+		if user.has_role? :superadmin
 			can :manage, :all
-		elsif user.role? :admin
-			can :manage, Comment
-			can :manage, Item
-			can :manage, Category
-		elsif user.role? :moderator
-			can :destroy, Comment
-			can :update, Comment
-			can :manage, Comment, :user_id => user.id
-		elsif user.role? :editor
-			can :destroy, Item
-			can :update, Item
-			can :manage, Comment, :user_id => user.id
-		elsif user.role? :author
-			can :manage, Item, :user_id => user.id
-			can :manage, Comment, :user_id => user.id
-		elsif user.role? :commenter
-			can :manage, Comment, :user_id => user.id
+		else
+			if user.has_role? :admin
+				can :manage, [Comment, Item, Category, User, StaticPage, Menu]
+			end
+			if user.has_role? :moderator
+				can :manage, Comment
+			end
+			if user.has_role? :editor
+				can :manage, Item
+			end
+			if user.has_role? :author
+				can :manage, Item, :user_id => user.id
+			end
+			if user.has_role? :commenter
+				can :manage, Comment, :user_id => user.id
+			end
 		end
 		
 		# Define abilities for the passed in user here. For example:

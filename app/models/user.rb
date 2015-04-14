@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+	include RoleModel
+	roles_attribute :roles_mask
+	roles :superadmin, :admin, :moderator, :editor, :author, :commenter
+	
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable, 
@@ -7,7 +11,6 @@ class User < ActiveRecord::Base
 	has_many :items
 	has_many :comments
 	# has_one :registration_token
-	has_and_belongs_to_many :roles
 	validates :password, presence: true, on: :create
 	validates :email, :display_name, presence: true
 	validates :email, :display_name, uniqueness: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414042040) do
+ActiveRecord::Schema.define(version: 20150414223854) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -71,17 +71,6 @@ ActiveRecord::Schema.define(version: 20150414042040) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", id: false, force: :cascade do |t|
-    t.integer "role_id"
-    t.integer "user_id"
-  end
-
   create_table "static_pages", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -117,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150414042040) do
     t.datetime "locked_at"
     t.string   "provider"
     t.string   "uid"
+    t.integer  "roles_mask"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

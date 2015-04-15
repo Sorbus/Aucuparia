@@ -41,6 +41,11 @@ $view-max-width: 400px;
 	
 	.byline:after {
 		}
+		
+	.comment_body {
+		border-left:.2em solid $primary-foreground-fade;
+		padding-left:.4em;
+		}
 	
 	.children {
 		margin-top:0.1em;
@@ -59,12 +64,14 @@ $view-max-width: 400px;
 		padding-top:1em;
 		@include transition(0.5s, all);
 		width:100%;
-		border-left:.2em solid $primary-foreground-fade;
-		padding-left:.4em;
+		}
+		
+	h1, h2, h3, h4, h5, h6 {
+		@extends p
 		}
 		
 	p:first-of-type {
-		padding-top:0em;
+		padding-top:0.1em;
 		}
 	
 	p:last-of-type {

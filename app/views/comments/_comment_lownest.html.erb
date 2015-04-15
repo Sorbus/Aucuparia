@@ -1,7 +1,7 @@
 <div class="comment">
 	<span class="actions">
 		<% if can? :create, Comment %>
-			<%= link_to 'Reply', url: '#' %>
+			<%= link_to 'Reply', new_item_comment_path(@item, :comment => comment.id) %>
 		<% end %>
 		<% if can? :update, comment %>
 			<span class="htab"></span>
@@ -14,8 +14,11 @@
 		<span class="byline">
 			<%= link_to comment.user.display_name, user_path(comment.user), title: comment.created_at.strftime("%H:%M, %a %b %d, %Y") %>
 			writes:
+			<%= (comment.created_at != comment.updated_at)? '<sup>(edited)</sup>'.html_safe : '' %>
 		</span>
+		<div class="comment_body">
 		<%=  markdown(comment.body).html_safe %>
+		</div>
 	</div>
 	<% if comment.has_children? %>
 		<div class="children">
@@ -23,7 +26,7 @@
 				<div class="comment">
 					<span class="actions">
 						<% if can? :create, Comment %>
-							<%= link_to 'Reply', url: '#' %>
+							<%= link_to 'Reply', new_item_comment_path(@item, comment) %>
 						<% end %>
 						<% if can? :update, comment %>
 							<span class="htab"></span>
@@ -37,7 +40,9 @@
 							<%= link_to child.user.display_name, user_path(child.user), title: child.created_at.strftime("%H:%M, %a %b %d, %Y") %>
 							writes in reply to <%= link_to child.parent.user.display_name, :anchor => child.parent.id %>:
 						</span>
-						<%= markdown(child.body).html_safe %>
+						<div class="comment_body">
+							<%= markdown(child.body).html_safe %>
+						</div>
 					</div>
 				</div>
 			<% end %>

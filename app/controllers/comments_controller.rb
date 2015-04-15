@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
 	
 	def new
 		authorize! :create, Comment
+		@comment = Comment.new
+		@item = Item.find(params[:item_id])
 	end
 	
 	def edit
@@ -11,15 +13,17 @@ class CommentsController < ApplicationController
 	
 	def create
 		authorize! :create, Comment
-		if params.has_key?(:reply_id)
-			if Comment.find(params[:reply_id]).children.create(comment_params)
-				
-			else  	
-			end
-		else
-			@comment = Comment.new(comment_params, item_id: params[:item_id], user_id: current_user.id)
-			@comment.item_id = params[:item_id]
+		if params.has_key?(:reply_id) && (@comment = Comment.find(params[:reply_id]).children.create(comment_params))
 			@comment.user_id = current_user.id
+			@comment.item_id = params[:item_id]
+			@comment.save
+			# this is hacky and horrible.
+			flash[:notice] = "Comment created."
+			redirect_to item_path(:id => @comment.item_id)
+		else
+			@comment = Comment.new(comment_params)
+			@comment.user_id = current_user.id
+			@comment.item_id = params[:item_id]
 			if params[:commit] == 'commit' && @comment.save
 				flash[:notice] = "Comment created."
 				redirect_to item_path(:id => @comment.item_id)
@@ -33,6 +37,13 @@ class CommentsController < ApplicationController
 	def update
 		@comment = Comment.find(params[:id])
 		authorize! :update, @comment
+		if params[:commit] == 'commit' && @comment.update(comment_params)
+				flash[:notice] = "Comment updated."
+				redirect_to item_path(:id => @comment.item_id)
+			else
+				flash[:alert] = "Comment not saved!"
+				redirect_to item_path(:id => @comment.item_id)
+			end
 	end
 	
 	def destroy

@@ -7,7 +7,7 @@ $secondary-background: rgba(238, 238, 238, 1);
 $primary-foreground: rgba(118, 92, 57, 1);
 $secondary-foreground: rgba(132, 107, 77, 1);
 $tertiary-foreground: rgba(78, 61, 38, 1);
-$view-max-width: 400px;
+$view-max-width: 25em;
 
 @mixin boxy {
 	max-width:$view-max-width;
@@ -62,6 +62,34 @@ body {
 		padding:0px;
 		text-align:center;
 		background-color: $primary-background;
+		background-image:
+			linear-gradient(60deg, rgba(0,0,0,.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.05) 75%, rgba(0,0,0,.05)),
+			linear-gradient(120deg, rgba(0,0,0,.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.05) 75%, rgba(0,0,0,.05));
+		background-size: 70px 120px;
+		background-attachment: fixed;
+	}
+	
+.cover {
+	
+	.left, .right {
+		position:fixed;
+		background-color:$primary-foreground;
+		top:0px;
+		z-index:-1;
+		height:100%;
+		width:10%;
+		min-width:5px;
+		max-width:140px;
+		opacity:.7;
+		}
+		
+	.left {
+		left:0px;
+		}
+		
+	.right {
+		right:0px;
+		}
 	}
 	
 .content, .comments {
@@ -154,7 +182,7 @@ notifications:hover {
 		top: 10px;
 	}
 	
-#menu {
+#menua {
 		@include boxy;
 		padding-left:15px;
 		padding-right:15px;
@@ -178,6 +206,11 @@ notifications:hover {
 		text-align:right;
 		opacity:0.3;
 		margin-top:0.5em;
+		@include transition(0.25s, all);
+}
+
+.created:hover {
+		opacity:1;
 }
 
 .category {
@@ -185,6 +218,11 @@ notifications:hover {
 		text-align:right;
 		opacity:.3;
 		margin-top:0.5em;
+		@include transition(0.5s, all);
+}
+
+.category:hover {
+		opacity:1;
 }
 
 .entry {
@@ -327,6 +365,39 @@ span.clear { clear: left; display: block; }
 .left {float:left;}
 
 .right {float:right;} /*Don't look at me, senpai! -Right Shark-chan */
+
+/*Responsive Styles*/
+
+@media screen and (max-width : 30em){
+	body {
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+	
+	.cover {
+	
+		.left, .right {
+			display:none;
+			}
+		}
+		
+	.holder {
+		@extends .account;
+		
+
+		.login {
+				width:100%;
+				margin-top:20px;
+				z-index:2;
+			}
+			
+		.login:hover {
+				opacity:1;
+				margin-top:20px;
+				z-index:5;
+			}
+		}
+	}
 
 @import 'menu';
 

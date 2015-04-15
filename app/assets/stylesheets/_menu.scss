@@ -3,8 +3,32 @@ $secondary-background: rgba(238, 238, 238, 1);
 $primary-foreground: rgba(118, 92, 57, 1);
 $secondary-foreground: rgba(132, 107, 77, 1);
 $tertiary-foreground: rgba(78, 61, 38, 1);
+$view-max-width: 25em;
+
+@mixin transition($time, $attribute) {
+	-moz-transition: $attribute $time ease-in-out;
+	-webkit-transition: $attribute $time ease-in-out;
+	-o-transition: $attribute $time ease-in-out;
+	-ms-transition: $attribute $time ease-in-out;
+	transition: $attribute $time ease-in-out;
+}
+
+@mixin boxy {
+	max-width:$view-max-width;
+	margin:0px auto;
+	text-align:left;
+	border:1px solid $primary-foreground;
+	background-color: $secondary-background;
+	color:$primary-foreground;
+	margin-bottom:20px;
+}
 
 #menu {
+	@include boxy;
+	padding-left:15px;
+	padding-right:15px;
+	text-align:center;
+	
 	ul {
 		text-align: left;
 		display: inline;
@@ -83,4 +107,58 @@ $tertiary-foreground: rgba(78, 61, 38, 1);
 	ul li ul li a:hover {
 		color: $tertiary-foreground!important;
 	}
+}
+	
+.show-menu {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: $primary-background;
+	background: $tertiary-foreground;
+	text-align: center;
+	padding: 10px 0;
+	width: 100%;
+	display: none;
+}
+
+#show-menu{
+	display: none;
+}
+
+input[type=checkbox]:checked ~ #menu .menu{
+	display: block;
+}
+
+/*Responsive Styles*/
+
+@media screen and (max-width : 27em){
+
+	.show-menu {
+		display:block;
+	}
+	
+	#menu {	
+		ul {
+			position: static;
+			display: none;
+		}
+		/*Create vertical spacing*/
+		li {
+			margin-bottom: 0px;
+		}
+		/*Make all menu links full width*/
+		ul li, li a {
+			width: 100%;
+		}
+		
+		ul li ul {
+			display: inline-block;
+			width: 100%;
+		}
+		
+		ul li:hover ul {
+			display: inline-block;
+			opacity: 1;
+			visibility: visible;
+		}
+	}	
 }

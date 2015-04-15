@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable, 
 		:recoverable, :rememberable, :trackable, :validatable,
-		:omniauthable, :omniauth_providers => [:twitter]
+		:omniauthable, :omniauth_providers => []
 	has_many :items
 	has_many :comments
 	# has_one :registration_token

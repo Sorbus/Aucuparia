@@ -7,7 +7,6 @@
 }
 
 @mixin basis {
-	margin: 0.5em 1.5em 0em 1.5em;
 	padding: 1.5em;
 	display:inline-block;
 	background-size: 3em;
@@ -28,6 +27,7 @@
 	#email-link {
 		background: url(<%= asset_data_uri 'Email_logo_brown.png' %>);
 		@include transition(0.5s, all);
+		margin: 0.5em 1.5em 0em 0em;
 		@include basis;
 	}
 	
@@ -39,6 +39,7 @@
 	#github-link {
 		background: url(<%= asset_data_uri 'Github_logo_brown.png' %>);
 		@include transition(0.5s, all);
+		margin: 0.5em 1.5em 0em 1.5em;
 		@include basis;
 	}
 		
@@ -50,6 +51,7 @@
 	#twitter-link {
 		background: url(<%= asset_data_uri 'Twitter_logo_brown.png' %>);
 		@include transition(0.5s, all);
+		margin: 0.5em 0em 0em 1.5em;
 		@include basis;
 	}
 		

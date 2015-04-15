@@ -31,6 +31,6 @@ class Admin::CoreController < ApplicationController
 	
 	private
 		def page_params
-			params.require(:core).permit(:title, :content)
+			params.require(:static_page).permit(:title, :content)
 		end
 end

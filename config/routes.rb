@@ -16,10 +16,6 @@ Rails.application.routes.draw do
 		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
 	end
 	
-#	resource :user_session, :only => [:new, :create, :destroy] do
-#		root 'user_sessions#new'
-#	end
-	
 	resources :users, :only => [:show, :create, :index]
 	
 	resource :profile, :only => [:show, :edit, :update], :controller => 'users'
@@ -28,7 +24,6 @@ Rails.application.routes.draw do
 		root 'core#index'
 		resources :core, :only => [:edit, :update]
 		resources :users, :only => [:index, :show, :edit, :update, :destroy]
-#		resources :keys, :only => [:new, :create, :destroy, :index, :edit, :update]
 		resources :menus, :only => [:index, :update, :create, :new]
 	end
 	

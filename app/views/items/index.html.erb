@@ -7,7 +7,7 @@
 		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
 		<% if can? :create, @item %>
 			<span class="actions">
-				<%= link_to 'Create', new_item_path %>
+				<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_item_path %>
 			</span>
 		<% end %>
 	</p>
@@ -17,9 +17,9 @@
 			<span class="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 				<% if can? :update, item %>
-					<%= link_to 'Change', edit_item_path(item) %>
-					<span class="tab"></span>
-					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
+					<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(item) %>
+					<span class="htab"></span>
+					<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
 				<% end %>
 			</span>
 			<div class="title">

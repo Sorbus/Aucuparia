@@ -5,9 +5,9 @@
 		<% end %>
 		<% if can? :update, comment %>
 			<span class="htab"></span>
-			<%= link_to 'Change', edit_item_comment_path(@item, comment) %>
+			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(@item, comment) %>
 			<span class="htab"></span>
-			<%= link_to 'Destroy', item_comment_path(@item, comment),method: :delete,data: { confirm: 'Are you sure?' } %>
+			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(@item, comment),method: :delete,data: { confirm: 'Are you sure?' } %>
 		<% end %>
 	</span>
 	<div class="comment_core">

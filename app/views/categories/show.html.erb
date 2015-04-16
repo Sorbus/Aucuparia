@@ -4,10 +4,10 @@
  
 <div class="content">
 	<span class="actions">
-		<%= link_to 'All Categories', categories_path %>
+		<%= link_to '<i class="fa fa-list fa-lg"></i>'.html_safe, categories_path %>
 		<% if can? :update, @category %>
 			<span class="tab"></span>
-			<%= link_to 'Create', new_item_path %>
+			<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_item_path %>
 		<% end %>
 	</span>
 	<p class="definition">
@@ -21,9 +21,9 @@
 			<span class="actions">
 				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
 				<% if can? :update, item %>
-					<%= link_to 'Change', edit_item_path(item) %>
+					<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(item) %>
 					<span class="tab"></span>
-					<%= link_to 'Destroy', item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
+					<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
 				<% end %>
 			</span>
 			<div class="title">

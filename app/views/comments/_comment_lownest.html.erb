@@ -1,13 +1,13 @@
 <div class="comment">
 	<span class="actions">
 		<% if can? :create, Comment %>
-			<%= link_to 'Reply', new_item_comment_path(@item, :comment => comment.id) %>
+			<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => comment.id) %>
 		<% end %>
 		<% if can? :update, comment %>
 			<span class="htab"></span>
-			<%= link_to 'Change', edit_item_comment_path(item, comment.id) %>
+			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, comment.id) %>
 			<span class="htab"></span>
-			<%= link_to 'Destroy', item_comment_path(item, comment.id),method: :delete,data: { confirm: 'Are you sure?' } %>
+			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, comment.id),method: :delete,data: { confirm: 'Are you sure?' } %>
 		<% end %>
 	</span>
 	<a name="<%= comment.id %>"></a>
@@ -27,13 +27,13 @@
 				<div class="comment">
 					<span class="actions">
 						<% if can? :create, Comment %>
-							<%= link_to 'Reply', new_item_comment_path(@item, :comment => child.id) %>
+							<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => child.id) %>
 						<% end %>
 						<% if can? :update, comment %>
 							<span class="htab"></span>
-							<%= link_to 'Change', edit_item_comment_path(item, child.id) %>
+							<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, child.id) %>
 							<span class="htab"></span>
-							<%= link_to 'Destroy', item_comment_path(item, child.id),method: :delete,data: { confirm: 'Are you sure?' } %>
+							<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, child.id),method: :delete,data: { confirm: 'Are you sure?' } %>
 						<% end %>
 					</span>
 					<a name="<%= child.id %>"></a>

@@ -5,9 +5,9 @@
 <div class="content">
 	<span class="actions">
 		<% if can? :update, @item %>
-			<%= link_to 'Change', edit_item_path(@item) %>
-			<span class="tab"></span>
-			<%= link_to 'Destroy', item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
+			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(@item) %>
+			<span class="htab"></span>
+			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
 		<% end %>
 	</span>
 	<p id="definition">

@@ -1,13 +1,9 @@
-class UsersController < ApplicationController
+class ProfilesController < ApplicationController
 	load_and_authorize_resource :except => [:new, :create]
 	
 	def index
 		@user = @current_user
 		render :show
-	end
-	
-	def new
-		@user = User.new
 	end
 	
 	def show

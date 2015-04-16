@@ -3,27 +3,32 @@ class Ability
 
 	def initialize(user)
 		user ||= User.new # if necessary, create a guest user
-
-		can :manage, User, :user_id => user.id
-		can :read, [Category, Item, Comment, User]
 		
-		if user.has_role? :superadmin
-			can :manage, :all
+		if user.roles.size == 0 # for guest users with no permissions
+			can :read, [Category, Item, Comment, User]
 		else
-			if user.has_role? :admin
-				can :manage, [Comment, Item, Category, User, StaticPage, Menu]
-			end
-			if user.has_role? :moderator
-				can :manage, Comment
-			end
-			if user.has_role? :editor
-				can :manage, Item
-			end
-			if user.has_role? :author
-				can :manage, Item, :user_id => user.id
-			end
-			if user.has_role? :commenter
-				can :manage, Comment, :user_id => user.id
+			can :manage, User, :user_id => user.id
+			can :timestamp, User, :user_id => user.id
+			can :see_email, User, :user_id => user.id
+
+			if user.has_role? :superadmin
+				can :manage, :all
+			else
+				if user.has_role? :admin
+					can :manage, [Comment, Item, Category, User, StaticPage, Menu]
+				end
+				if user.has_role? :moderator
+					can :manage, Comment
+				end
+				if user.has_role? :editor
+					can :manage, Item
+				end
+				if user.has_role? :author
+					can :manage, Item, :user_id => user.id
+				end
+				if user.has_role? :commenter
+					can :manage, Comment, :user_id => user.id
+				end
 			end
 		end
 		

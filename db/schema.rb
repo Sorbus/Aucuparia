@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414223854) do
+ActiveRecord::Schema.define(version: 20150416030257) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150414223854) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "roles_mask"
+    t.integer  "icon"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

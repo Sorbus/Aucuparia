@@ -1,0 +1,27 @@
+<% content_for :head do %>
+	<title>User Index</title>
+<% end %>
+ 
+<div class="content">
+	<p class="definition">
+		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
+	</p>
+	<% @users.each do |user| %>
+		<hr>
+		<div class="entry user">
+			<i class="fa fa-<%= icon[user.icon.to_i] %> fa-2x left"></i>
+			<div class="title">
+				<%= link_to user.display_name, user_path(user) %>
+			</div>
+			<% if user.biography? %>
+				<div class="sample">
+					<%= markdown(user.biography.first(140)).html_safe %>
+				</div>
+			<% else %>
+				&nbsp
+			<% end %>
+		</div>
+	<% end %>
+	<hr>
+	<%= will_paginate @posts =%>
+</div>

@@ -1,15 +1,15 @@
 <div class="comment">
-	<span class="actions">
-		<% if can? :create, Comment %>
+	<% if can? :create, Comment %>
+		<span class="actions">
 			<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => comment.id) %>
-		<% end %>
-		<% if can? :update, comment %>
-			<span class="htab"></span>
-			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, comment.id) %>
-			<span class="htab"></span>
-			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, comment.id),method: :delete,data: { confirm: 'Are you sure?' } %>
-		<% end %>
-	</span>
+			<% if can? :update, comment %>
+				<span class="htab"></span>
+				<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, comment.id) %>
+				<span class="htab"></span>
+				<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, comment.id),method: :delete,data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		</span>
+	<% end %>
 	<a name="<%= comment.id %>"></a>
 	<div class="comment_core">
 		<span class="byline">
@@ -25,17 +25,17 @@
 		<div class="children">
 			<% comment.descendants.each do |child| %>
 				<div class="comment">
+					<% if can? :create, Comment %>
 					<span class="actions">
-						<% if can? :create, Comment %>
-							<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => child.id) %>
-						<% end %>
-						<% if can? :update, comment %>
+						<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => child.id) %>
+						<% if can? :update, child %>
 							<span class="htab"></span>
-							<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, child.id) %>
-							<span class="htab"></span>
-							<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, child.id),method: :delete,data: { confirm: 'Are you sure?' } %>
-						<% end %>
-					</span>
+								<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, child.id) %>
+								<span class="htab"></span>
+								<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, child.id),method: :delete,data: { confirm: 'Are you sure?' } %>
+							<% end %>
+						</span>
+					<% end %>
 					<a name="<%= child.id %>"></a>
 					<div class="comment_core">
 						<span class="byline">

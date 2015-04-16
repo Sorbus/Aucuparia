@@ -1,8 +1,10 @@
                   Prefix Verb     URI Pattern                                 Controller#Action
+                    root GET      /                                           welcome#index
+                   about GET      /about(.:format)                            welcome#about
         new_user_session GET      /users/sign_in(.:format)                    devise/sessions#new
             user_session POST     /users/sign_in(.:format)                    devise/sessions#create
     destroy_user_session DELETE   /users/sign_out(.:format)                   devise/sessions#destroy
- user_omniauth_authorize GET|POST /users/auth/:provider(.:format)             users/omniauth_callbacks#passthru {:provider=>/twitter/}
+ user_omniauth_authorize GET|POST /users/auth/:provider(.:format)             users/omniauth_callbacks#passthru {:provider=>/(?!)/}
   user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)      users/omniauth_callbacks#:action
            user_password POST     /users/password(.:format)                   devise/passwords#create
        new_user_password GET      /users/password/new(.:format)               devise/passwords#new
@@ -16,8 +18,14 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /users(.:format)                            users/registrations#update
                          PUT      /users(.:format)                            users/registrations#update
                          DELETE   /users(.:format)                            users/registrations#destroy
-                    root GET      /                                           welcome#index
-                   about GET      /about(.:format)                            welcome#about
+                   users GET      /users(.:format)                            users#index
+                         POST     /users(.:format)                            users#create
+                new_user GET      /users/new(.:format)                        users#new
+               edit_user GET      /users/:id/edit(.:format)                   users#edit
+                    user GET      /users/:id(.:format)                        users#show
+                         PATCH    /users/:id(.:format)                        users#update
+                         PUT      /users/:id(.:format)                        users#update
+                         DELETE   /users/:id(.:format)                        users#destroy
               categories GET      /categories(.:format)                       categories#index
                          POST     /categories(.:format)                       categories#create
             new_category GET      /categories/new(.:format)                   categories#new
@@ -40,23 +48,16 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /items/:id(.:format)                        items#update
                          PUT      /items/:id(.:format)                        items#update
                          DELETE   /items/:id(.:format)                        items#destroy
-                   users GET      /users(.:format)                            users#index
+                         GET      /users(.:format)                            users#index
                          POST     /users(.:format)                            users#create
-                    user GET      /users/:id(.:format)                        users#show
-            edit_profile GET      /profile/edit(.:format)                     users#edit
-                 profile GET      /profile(.:format)                          users#show
-                         PATCH    /profile(.:format)                          users#update
-                         PUT      /profile(.:format)                          users#update
+                         GET      /users/:id(.:format)                        users#show
+            edit_profile GET      /profile/edit(.:format)                     profiles#edit
+                 profile PATCH    /profile(.:format)                          profiles#update
+                         PUT      /profile(.:format)                          profiles#update
               admin_root GET      /admin(.:format)                            admin/core#index
          edit_admin_core GET      /admin/core/:id/edit(.:format)              admin/core#edit
               admin_core PATCH    /admin/core/:id(.:format)                   admin/core#update
                          PUT      /admin/core/:id(.:format)                   admin/core#update
-             admin_users GET      /admin/users(.:format)                      admin/users#index
-         edit_admin_user GET      /admin/users/:id/edit(.:format)             admin/users#edit
-              admin_user GET      /admin/users/:id(.:format)                  admin/users#show
-                         PATCH    /admin/users/:id(.:format)                  admin/users#update
-                         PUT      /admin/users/:id(.:format)                  admin/users#update
-                         DELETE   /admin/users/:id(.:format)                  admin/users#destroy
              admin_menus GET      /admin/menus(.:format)                      admin/menus#index
                          POST     /admin/menus(.:format)                      admin/menus#create
           new_admin_menu GET      /admin/menus/new(.:format)                  admin/menus#new

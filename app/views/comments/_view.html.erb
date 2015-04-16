@@ -11,7 +11,7 @@
 			<% end %>
 		<% end %>
 	<% end %>
-	<% if can? :create, @comment %>
+	<% if can? :create, Comment %>
 		<%= render 'comments/form' %>	
 	<% end %>
 </div>

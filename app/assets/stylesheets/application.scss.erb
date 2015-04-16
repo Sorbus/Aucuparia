@@ -58,7 +58,7 @@ $view-max-width: 25em;
  
 body {
 		margin-top:5%;
-		margin-bottom:50px;
+		margin-bottom:100px;
 		padding:0px;
 		text-align:center;
 		background-color: $primary-background;
@@ -182,11 +182,9 @@ notifications:hover {
 		top: 10px;
 	}
 	
-#menua {
-		@include boxy;
-		padding-left:15px;
-		padding-right:15px;
-		text-align:center;
+.user i {
+		float:left;
+		margin-right:.5em;
 	}
 
 .definition {
@@ -280,6 +278,7 @@ a	{
 	
 a:hover {
 		text-decoration: none;
+		color: $primary-foreground;
 	}
 	
 strong, b {

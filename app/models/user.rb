@@ -29,4 +29,12 @@ class User < ActiveRecord::Base
 	def role?(role)
 		return !!self.roles.find_by_name(role.to_s.camelize)
 	end
+	
+	def accessible_roles
+		@accessible_roles = Role.accessible_by(current_ability,:read)
+	end
+ 
+	def get_user
+		@current_user = current_user
+	end
 end

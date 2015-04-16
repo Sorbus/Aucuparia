@@ -8,24 +8,28 @@
 	</p>
 	<hr>
 	<p>
-		<strong>Name:</strong>
+		<%= link_to_if(@user.website?, '<i class="fa fa-'.html_safe + icon[@user.icon.to_i] + ' fa-4x right"></i>'.html_safe, @user.website) %><strong>Name:</strong>
 		<%= @user.display_name %>
 	</p>
 	
+	<% if can?(:see_email, @user) %>
 	<p>
 		<strong>Email:</strong>
 		<%= @user.email %>
 	</p>
-	
-	<p>
-		<strong>Website:</strong>
-		<%= link_to @user.website, @user.website %>
-	</p>
+	<% end %>
 	
 	<p>
 		<strong>Biography:</strong>
 		<%= markdown(@user.biography.to_s).html_safe %>
 	</p>
+	
+	<% if can?(:timestamp, @user) %>
+	<p>
+		<strong>Account created at:</strong>
+		<%= @user.created_at %>
+	</p>
+	<% end %>
 	
 	<p>
 		<strong>Authored Items:</strong>

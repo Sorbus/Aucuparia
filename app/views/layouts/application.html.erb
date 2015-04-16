@@ -3,6 +3,7 @@
 <head>
   <%= yield :head %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' %>
   <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', params[:controller], :media => 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

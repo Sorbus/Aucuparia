@@ -8,7 +8,11 @@
 	</p>
 	<hr>
 	<p>
-		<%= link_to_if(@user.website?, '<i class="fa fa-'.html_safe + icon[@user.icon.to_i] + ' fa-4x right"></i>'.html_safe, @user.website) %><strong>Name:</strong>
+		<% if !@user.use_icon? %>
+			<%= link_to_if(@user.website?, '<i class="fa fa-'.html_safe + icon[@user.icon.to_i] + ' fa-4x right"></i>'.html_safe, @user.website) %><strong>Name:</strong>
+		<% else %>
+			<%= link_to_if(@user.website?, '<i class="user-image user-4x right">&nbsp</i>'.html_safe, @user.website) %><strong>Name:</strong>
+		<% end %>
 		<%= @user.display_name %>
 	</p>
 	

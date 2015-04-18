@@ -74,6 +74,20 @@ $view-max-width: 400px;
 	.byline {
 		margin-left:0em;
 		@include transition(0.5s, all);
+		
+		i {
+			display: inline-block;
+			}
+			
+		fa {
+			height:2em;
+			float:left;
+			}
+			
+		.user-image {
+			border-radius:50% 0% 50% 0%;
+			border: 2px solid $primary-foreground-fade;
+			}
 		}
 	
 	.byline:after {

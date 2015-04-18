@@ -9,7 +9,7 @@
 	<% @users.each do |user| %>
 		<hr>
 		<div class="entry user">
-			<i class="fa fa-<%= icon[user.icon.to_i] %> fa-2x left"></i>
+			<%= display_avatar(user, '2x').html_safe %>
 			<div class="title">
 				<%= link_to user.display_name, user_path(user) %>
 			</div>

@@ -6,7 +6,7 @@
 	<span class="actions">
 		<%= link_to '<i class="fa fa-list fa-lg"></i>'.html_safe, categories_path %>
 		<% if can? :update, @category %>
-			<span class="tab"></span>
+			<span class="htab"></span>
 			<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_item_path %>
 		<% end %>
 	</span>
@@ -17,22 +17,7 @@
 	</p>
 	<% @posts.each do |item| %>
 		<hr>
-		<div class="entry">
-			<span class="actions">
-				<%= item.created_at.strftime("%a %b %d, %Y") %><br>
-				<% if can? :update, item %>
-					<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(item) %>
-					<span class="tab"></span>
-					<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
-				<% end %>
-			</span>
-			<div class="title">
-				<%= link_to item.title, item_path(item) %>
-			</div>
-			<div class="sample">
-				<%= markdown(item.summary).html_safe %>
-			</div>
-		</div>
+		<%= render 'items/single', :item => item %>
 	<% end %>
 	<hr>
 	<%= will_paginate @posts =%>

@@ -1,5 +1,5 @@
 <div class="comment">
-	<% if can? :create, Comment %>
+	<% if (can? :create, Comment) && !comment.user.blank? %>
 		<span class="actions">
 			<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => comment.id) %>
 			<% if can? :update, comment %>
@@ -12,24 +12,27 @@
 	<% end %>
 	<a name="<%= comment.id %>"></a>
 	<div class="comment_core">
-		<span class="byline">
-			<%= link_to comment.user.display_name, user_path(comment.user), title: comment.created_at.strftime("%H:%M, %a %b %d, %Y") %>
-			writes:
-			<%= (comment.created_at != comment.updated_at)? '<sup>(edited)</sup>'.html_safe : '' %>
-		</span>
-		<div class="comment_body">
-		<%=  markdown(comment.body).html_safe %>
-		</div>
+		<% if !comment.user.blank? %>
+			<span class="byline">
+				<%= link_to comment.user.display_name, user_path(comment.user), title: comment.created_at.strftime("%H:%M, %a %b %d, %Y") %> writes:
+				<%= (comment.created_at != comment.updated_at)? '<sup>(edited)</sup>'.html_safe : '' %>
+			</span>
+			<div class="comment_body">
+			<%=  markdown(comment.body).html_safe %>
+			</div>
+		<% else %>
+			<span class="byline deleted">[deleted]</span>
+		<% end %>
 	</div>
 	<% if comment.has_children? %>
 		<div class="children">
 			<% comment.descendants.each do |child| %>
 				<div class="comment">
-					<% if can? :create, Comment %>
+					<% if (can? :create, Comment) && !child.user.blank? %>
 					<span class="actions">
 						<%= link_to '<i class="fa fa-reply fa-lg"></i>'.html_safe, new_item_comment_path(@item, :comment => child.id) %>
-						<% if can? :update, child %>
-							<span class="htab"></span>
+							<% if can? :update, child %>
+								<span class="htab"></span>
 								<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_comment_path(item, child.id) %>
 								<span class="htab"></span>
 								<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_comment_path(item, child.id),method: :delete,data: { confirm: 'Are you sure?' } %>
@@ -38,13 +41,21 @@
 					<% end %>
 					<a name="<%= child.id %>"></a>
 					<div class="comment_core">
-						<span class="byline">
-							<%= link_to child.user.display_name, user_path(child.user), title: child.created_at.strftime("%H:%M, %a %b %d, %Y") %>
-							replies to <%= link_to child.parent.user.display_name, :anchor => child.parent.id %>:
-						</span>
-						<div class="comment_body">
-							<%= markdown(child.body).html_safe %>
-						</div>
+						<% if !child.user.blank? %>
+							<span class="byline">
+								<%= link_to child.user.display_name, user_path(child.user), title: child.created_at.strftime("%H:%M, %a %b %d, %Y") %> replies to 
+								<% if !child.parent.user.blank? %>
+									<%= link_to child.parent.user.display_name, :anchor => child.parent.id %>:
+								<% else %>
+									[deleted]
+								<% end %>
+							</span>
+							<div class="comment_body">
+								<%= markdown(child.body).html_safe %>
+							</div>
+						<% else %>
+							<span class="byline deleted">[deleted]</span>
+						<% end %>
 					</div>
 				</div>
 			<% end %>

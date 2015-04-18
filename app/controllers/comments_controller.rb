@@ -49,7 +49,11 @@ class CommentsController < ApplicationController
 	def destroy
 		@comment = Comment.find(params[:id])
 		if can? :destroy, @comment
-			@comment.destroy
+			begin
+				@comment.destroy
+			rescue Ancestry::AncestryException
+				@comment.update({:user_id => nil})
+			end
 			redirect_to item_path(params[:item_id])
 		else
 			redirect_to item_path(@comment.item)

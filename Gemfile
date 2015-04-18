@@ -17,9 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'redcarpet', '~> 3.2.2'
 # Use will_paginate to manage pagination
 gem 'will_paginate', '~> 3.0.7'
-# Use Authlogic for user authentication and management
-# gem 'authlogic', '~> 3.4.5'
-# Moving to Devise ...
+# Use Devise for user authentication and management
 gem 'devise', '~> 3.4.1'
 gem 'omniauth-twitter'
 # Use RoleModel to deal with user roles
@@ -30,8 +28,11 @@ gem 'cancancan', '~> 1.10'
 gem 'valid_email'
 # Use Validates URL to verify URLs
 gem 'validate_url'
-# User Ancestry for nesting stuff!
+# Use Ancestry for nesting stuff!
 gem 'ancestry'
+# Use CarrierWave for managing uploads (like avatars!)
+gem 'carrierwave'
+gem 'rmagick'
 
 gem 'figaro'
 

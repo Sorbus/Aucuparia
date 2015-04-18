@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417005153) do
+ActiveRecord::Schema.define(version: 20150418210600) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150417005153) do
     t.string   "encrypted_password"
     t.string   "password_salt"
     t.integer  "sign_in_count"
-    t.integer  "failed_attempts"
+    t.integer  "failed_attempts",                    default: 0
     t.datetime "last_request_at"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(version: 20150417005153) do
     t.string   "display_name"
     t.text     "biography"
     t.string   "website"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

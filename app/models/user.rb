@@ -1,11 +1,16 @@
 class User < ActiveRecord::Base
+	# setup roles using RoleModel
 	include RoleModel
 	roles_attribute :roles_mask
+	# this is the master list of all accessible roles
 	roles :superadmin, :admin, :moderator, :editor, :author, :commenter
+	
+	# mount uploader to manage avatars
+	mount_uploader :avatar, AvatarUploader
 	
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
-	devise :database_authenticatable, :registerable, 
+	devise :database_authenticatable, :registerable, :lockable,
 		:recoverable, :rememberable, :trackable, :validatable,
 		:omniauthable, :omniauth_providers => []
 	has_many :items

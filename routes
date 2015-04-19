@@ -18,6 +18,9 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /users(.:format)                            users/registrations#update
                          PUT      /users(.:format)                            users/registrations#update
                          DELETE   /users(.:format)                            users/registrations#destroy
+             user_unlock POST     /users/unlock(.:format)                     devise/unlocks#create
+         new_user_unlock GET      /users/unlock/new(.:format)                 devise/unlocks#new
+                         GET      /users/unlock(.:format)                     devise/unlocks#show
                    users GET      /users(.:format)                            users#index
                     user GET      /users/:id(.:format)                        users#show
               categories GET      /categories(.:format)                       categories#index

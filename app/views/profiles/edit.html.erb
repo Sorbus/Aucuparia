@@ -37,15 +37,15 @@
 		<div id="icon-choices">
 			<% (0..(icon.length - 1)).each do |i| %>
 				<div class="icon-choice">
-					<%= radio_button_tag('user[icon]', i, :checked => (@user.icon == i)) %>
+					<%= radio_button_tag('user[icon]', i, checked = (@user.icon == i)) %>
 					<label for="<%= 'user_icon_' + i.to_s %>"><i class="fa fa-<%= icon[i] %>"></i></label>
 				</div>
 			<% end %>
 		</div>
 		<div id="custom-icon">
-			 <%= image_tag(@user.avatar_url) if @user.avatar? %>
 			<%= f.file_field :avatar %>
 			<%= f.hidden_field :avatar_cache %>
+			<%= image_tag(@user.avatar.x4.url) if @user.avatar? %>
 		</div>
 		<p>
 			<%= f.submit "Commit" %>

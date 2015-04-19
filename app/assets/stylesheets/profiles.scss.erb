@@ -28,16 +28,16 @@ input[type=checkbox]:checked ~ #custom-icon {
 	display: block;
 	border:0px solid $primary-foreground;
 	overflow: auto;
+	max-height:6em;
 	
 	.icon-choice {
 		float:left;
-		min-width:1em;
+		min-width:16%;
 		border:1px dotted $secondary-foreground;
 		text-align:center;
 		
 		label {
 			padding:.5em;
-			width:3em;
 			min-width:1.2em;
 			@include transition(.5s, all);
 		}
@@ -57,4 +57,9 @@ input[type=checkbox]:checked ~ #custom-icon {
 	display: none;
 	border:1px solid $primary-foreground;
 	padding: 1em;
+	overflow:auto;
+	
+	img {
+		margin: 0.5em 0em 0em 0em;
+	}
 }

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class AvatarUploader < CarrierWave::Uploader::Base
 
 	# Include RMagick or MiniMagick support:
@@ -23,6 +21,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 	#
 	#	 "/images/fallback/" + [version_name, "default.png"].compact.join('_')
 	end
+	
+	process resize_to_fit: [512, 512]
 
 	# Process files as they are uploaded:
 	# process :scale => [200, 300]
@@ -32,9 +32,18 @@ class AvatarUploader < CarrierWave::Uploader::Base
 	# end
 
 	# Create different versions of your uploaded files:
-	# version :thumb do
-	#	 process :resize_to_fit => [50, 50]
-	# end
+	
+	version :x4 do
+		process :resize_to_fit => [128, 128]
+	end
+	
+	version :x2 do
+		process :resize_to_fit => [64, 64]
+	end
+	
+	version :x1 do
+		process :resize_to_fit => [32, 32]
+	end
 
 	# Add a white list of extensions which are allowed to be uploaded.
 	# For images you might use something like this:

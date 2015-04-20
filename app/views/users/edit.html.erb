@@ -1,0 +1,39 @@
+<% content_for :head do %>
+	<title>Change</title>
+	<%= stylesheet_link_tag 'application', 'profiles', :media => 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
+<div class="content">
+	<p class="definition">
+		<strong>Change</strong> - <em>v</em>. To be made to become different.
+	</p>
+	<p class="alert">
+		You are modifying another user, <%= current_user.display_name %>. Exercise caution lest you offend, despite your status.
+	</p>
+	<%= form_for @user, url: user_path, html: { multipart: true } do |f| %>
+		<label for="choices_one" class="choices_label"><i class="fa fa-square-o fa-lg"></i> Modify core settings</label>
+		<input type="checkbox" id="choices_one" role="button" class="hidden"><br/>
+		<div class="choices" id="choices_one">
+			<%= render 'profiles/form', :f => f %>
+		</div>
+		<label for="choices_two" class="choices_label"><i class="fa fa-square-o fa-lg"></i> Manage assigned roles</label>
+		<input type="checkbox" id="choices_two" role="button" class="hidden">
+		<div class="choices" id="choices_two">
+			<% User.valid_roles.each do |role| %>
+				<% if can? :assign, role %>
+					<div>
+						<%= f.label role.to_s %>
+						<%= hidden_field_tag('roles[' + role.to_s + ']', value='false') %>
+						<%= check_box_tag('roles[' + role.to_s + ']', value='true', checked = @user.has_role?(role)) %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<p>
+			<%= f.submit "Commit" %>
+		</p>
+	<% end %>
+	<p>
+		<%= link_to 'Modify Account Settings', edit_user_registration_path %>
+	</p>
+</div>

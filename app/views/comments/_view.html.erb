@@ -5,10 +5,7 @@
 		</p>
 		<hr>
 		<% @item.comments.find_each do |comment| %>
-			<% if comment.is_root? %>
-				<%= render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment} %>
-				
-			<% end %>
+			<%= render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment} %>
 		<% end %>
 	<% end %>
 	<% if can? :create, Comment %>

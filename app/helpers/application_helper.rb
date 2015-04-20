@@ -5,7 +5,7 @@ module ApplicationHelper
 	end
 	
 	def icon
-		['genderless','mars','mars-stroke','venus','mercury','transgender','transgender-alt','neuter','ban','mars-double','venus-double','venus-mars','tree','bed','bug','bolt','eye','flask','heart']
+		['genderless','mars','mars-stroke','venus','mercury','transgender','transgender-alt','neuter','ban','mars-double','venus-double','venus-mars','tree','bed','bug','bolt','eye','flask','heart','paw']
 	end
 	
 	def display_avatar(user, size)
@@ -29,5 +29,24 @@ module ApplicationHelper
 	#	else
 	#		image_tag("/path/to/fallback.jpg")
 	#	end		
+	end
+	
+	def display_badge(role)
+		case role
+		when :superadmin
+			'<i class="fa fa-eye fa-lg" title="superadmin"></i>'.html_safe
+		when :admin
+			'<i class="fa fa-heartbeat fa-lg" title="administrator"></i>'.html_safe
+		when :moderator
+			'<i class="fa fa-legal fa-lg" title="moderator"></i>'.html_safe
+		when :editor
+			'<i class="fa fa-magic fa-lg" title="editor"></i>'.html_safe
+		when :author
+			'<i class="fa fa-pencil fa-lg" title="author"></i>'.html_safe
+		when :commenter
+			'<i class="fa fa-comment fa-lg" title="commenter"></i>'.html_safe
+		else
+			'no'
+		end
 	end
 end

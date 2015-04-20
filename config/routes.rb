@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 	get 'about' => 'welcome#about'
 	
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
-	resources :users, :only => [:index, :show]
+	resources :users, :only => [:index, :show, :edit, :update]
 	
 	resources :categories
 	
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 		root 'core#index'
 		resources :core, :only => [:edit, :update]
 		resources :menus, :only => [:index, :update, :create, :new]
-		resources :users, :only => [:index, :update, :edit, :delete]
+	#	resources :users, :only => [:index, :update, :edit, :delete]
 	end
 	
 	# Example of regular route:

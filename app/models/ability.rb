@@ -6,11 +6,13 @@ class Ability
 		
 		if user.roles.size == 0 # for guest users with no permissions
 			can :read, [Category, Item, Comment, User]
+			can :see, [:moderator, :editor, :author, :commenter]
 		else
 			# these permissions are given to every user.
 			can :manage, User, :user_id => user.id
 			can :timestamp, User, :user_id => user.id
 			can :see_email, User, :user_id => user.id
+			can :see, [:admin, :moderator, :editor, :author, :commenter]
 			# now, let's see what special things we can do ...
 			user.roles.each { |role| send(role) }
 		end
@@ -23,6 +25,8 @@ class Ability
 	
 	def admin
 		can :manage, [Comment, Item, Category, User, StaticPage, Menu]
+		can :assign, [:moderator, :editor, :author, :commenter]
+		can :see, :superadmin
 	end
 	
 	def moderator

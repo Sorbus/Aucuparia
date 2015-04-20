@@ -3,20 +3,35 @@
 <% end %>
 
 <div class="content">
+	<% if can?(:assign, :roles) %>
+		<div class="actions">
+			<%= link_to '<i class="fa fa-gear fa-lg"></i>'.html_safe, edit_user_path(@user) %>
+		</div>
+	<% end %>
 	<p class="definition">
 		<strong>Identity</strong> - <em>n</em>. 
 	</p>
 	<hr>
+
 	<p class="username">
 		<%= link_to_if(@user.website?, display_avatar(@user, '4x').html_safe, @user.website) %><strong>Name:</strong>
 		<%= @user.display_name %>
 	</p>
 	
-	<% if can?(:see_email, @user) %>
 	<p>
-		<strong>Email:</strong>
-		<%= @user.email %>
+		<strong>Roles:</strong> 
+		<% User.valid_roles.each do |role| %>
+			<% if (can? :see, role) && @user.has_role?(role) %>
+				<%= display_badge(role) %>
+			<% end %>
+		<% end %>
 	</p>
+	
+	<% if can?(:see_email, @user) %>
+		<p>
+			<strong>Email:</strong>
+			<%= @user.email %>
+		</p>
 	<% end %>
 	
 	<p>
@@ -24,12 +39,14 @@
 		<%= markdown(@user.biography.to_s).html_safe %>
 	</p>
 	
-	<% if can?(:timestamp, @user) %>
 	<p>
-		<strong>Account created at:</strong>
-		<%= @user.created_at %>
+		<strong>Account has existed for</strong> <%= distance_of_time_in_words(Time.now, @user.created_at) %><br/>
+		<% if can?(:timestamp, @user) %>
+			<strong>Account created:</strong>
+			<%= @user.created_at.strftime("%H:%M, %a %b %d, %Y") %>
+		<% end %>
 	</p>
-	<% end %>
+
 	
 	<% if !@posts.blank? %>
 		<p>

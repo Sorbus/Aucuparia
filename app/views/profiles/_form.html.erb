@@ -1,8 +1,40 @@
-<%= f.label :email %><br />
-<%= f.text_field :email %><br />
-<br />
-<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
-<%= f.password_field :password %><br />
-<br />
-<%= f.label :password_confirmation %><br />
-<%= f.password_field :password_confirmation %><br />
+<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<h2>
+			<%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:
+		</h2>
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<p>
+	<%= f.label :display_name %>
+	<%= f.text_field :display_name %>
+</p>
+<p>
+	<%= f.label :website %>
+	<%= f.url_field :website %>
+</p>
+<p>
+	<%= f.label :biography %><em>(may contain markdown)</em><br/>
+	<%= f.text_area :biography %>
+</p>
+<br/>
+<%= f.label 'Use custom icon?' %>
+<%= f.check_box :use_icon %>
+<div id="icon-choices">
+	<% (0..(icon.length - 1)).each do |i| %>
+		<div class="icon-choice">
+			<%= radio_button_tag('user[icon]', i, checked = (@user.icon == i)) %>
+			<label for="<%= 'user_icon_' + i.to_s %>"><i class="fa fa-<%= icon[i] %>"></i></label>
+		</div>
+	<% end %>
+</div>
+<div id="custom-icon">
+	<%= f.file_field :avatar %>
+	<%= f.hidden_field :avatar_cache %>
+	<%= image_tag(@user.avatar.x4.url) if @user.avatar? %>
+</div>

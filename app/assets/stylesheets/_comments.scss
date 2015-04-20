@@ -97,6 +97,17 @@ $view-max-width: 400px;
 	.comment_body {
 		border-left:.3em solid $primary-foreground-fade;
 		padding-left:.4em;
+		
+		.footnotes {
+			hr {
+				border-top: solid 1px $primary-foreground-fade;
+				}
+				
+			ol {
+				margin-top:0em;
+				margin-bottom:0em;
+				}
+			}
 		}
 	
 	.children {

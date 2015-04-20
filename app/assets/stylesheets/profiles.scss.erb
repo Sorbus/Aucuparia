@@ -63,3 +63,31 @@ input[type=checkbox]:checked ~ #custom-icon {
 		margin: 0.5em 0em 0em 0em;
 	}
 }
+
+input[id='choices_one']:checked ~ #choices_one{
+	display: block;
+	height:auto;
+}
+
+input[id='choices_two']:checked ~ #choices_two{
+	display: block;
+	height:auto;
+}
+
+.hidden {
+	display:none!important;
+}
+
+.choices_label {
+	margin: 0em 0em .5em 0em;
+	padding: 0em;
+	width:auto;
+}
+
+.choices, #choices_one, #choices_two {
+	display:none;
+	padding:.5em;
+	margin-bottom:1em;
+	margin-top:0em;
+	border:1px solid $primary-foreground;
+}

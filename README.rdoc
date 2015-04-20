@@ -6,15 +6,17 @@ It primarily exists as a project to help the author learn Ruby on Rails, and is 
 
 It is released under the MIT license.
 
-== Installation
+== Installation & Configuration
 
-Aucuparia is being developed on ruby 2.1.6, and rails 4.2.0. It requires Imagemagick, Rake, and Bundler. Git is always useful. Once those dependencies are met, it can be set up fairly easily:
+Aucuparia is being developed on ruby 2.1.6, and rails 4.2.0. It requires Imagemagick, Rake, and Bundler. Git is strongly suggested. Once those dependencies are met, it can be set up fairly easily:
     
     $ git clone https://github.com/Sorbus/aucuparia
     $ bundle install
     $ rake db:migrate
     $ rake db:seed # the current seed-file contains content specific to Aucuparia.net, and should be modified before being used.
     $ rails server
+	
+Some additional steps must be taken beyond this point to have a functional website; one of these is configuring the server to be accessible to the outside world, daemonizing it (`rails server -d`), and so forth. Rewriting the default CSS to customize the site's appearance is also suggested (in future, I intend to include a minimal version of the CSS to use as a starting point). These are left as an exercise to the reader.
 
 Once an account is created through the web interface it may be marked as a superadmin:
 
@@ -23,30 +25,4 @@ Once an account is created through the web interface it may be marked as a super
     > u.roles << :superadmin
     > u.save
 
-Once at least one superadmin exists, most actions can be performed through the web interface (except for creating new superadmins).
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Once at least one superadmin exists, all role management can be done through the web interface.

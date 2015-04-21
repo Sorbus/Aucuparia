@@ -14,13 +14,12 @@ class Admin::MenusController < ApplicationController
 	def create
 		@menu = Menu.new(menu_params)
 		authorize! :create, @menu
-		if @menu.save(menu_params)
+		if @menu.save
 			flash[:notice] = "Menu successfully created."
-			redirect_to admin_menus_path
 		else
 			flash[:alert] = "Menu creation failed!"
-			redirect_to admin_root_path
 		end
+		redirect_to admin_menus_path
 	end
 	
 	def update
@@ -30,11 +29,10 @@ class Admin::MenusController < ApplicationController
 		
 		if @menu.update(menu_params)
 			flash[:notice] = "Menu successfully updated."
-			redirect_to admin_menus_path
 		else
 			flash[:alert] = "Menu update failed!"
-			redirect_to admin_root_path
 		end
+		redirect_to admin_menus_path
 	end
 	
 	private

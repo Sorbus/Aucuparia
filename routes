@@ -26,6 +26,10 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                     user GET      /users/:id(.:format)                        users#show
                          PATCH    /users/:id(.:format)                        users#update
                          PUT      /users/:id(.:format)                        users#update
+            root_profile GET      /profile(.:format)                          profiles#index
+            edit_profile GET      /profile/edit(.:format)                     profiles#edit
+                 profile PATCH    /profile(.:format)                          profiles#update
+                         PUT      /profile(.:format)                          profiles#update
               categories GET      /categories(.:format)                       categories#index
                          POST     /categories(.:format)                       categories#create
             new_category GET      /categories/new(.:format)                   categories#new
@@ -48,13 +52,6 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /items/:id(.:format)                        items#update
                          PUT      /items/:id(.:format)                        items#update
                          DELETE   /items/:id(.:format)                        items#destroy
-                         GET      /users(.:format)                            users#index
-                         POST     /users(.:format)                            users#create
-                         GET      /users/:id(.:format)                        users#show
-            root_profile GET      /profile(.:format)                          profiles#index
-            edit_profile GET      /profile/edit(.:format)                     profiles#edit
-                 profile PATCH    /profile(.:format)                          profiles#update
-                         PUT      /profile(.:format)                          profiles#update
               admin_root GET      /admin(.:format)                            admin/core#index
          edit_admin_core GET      /admin/core/:id/edit(.:format)              admin/core#edit
               admin_core PATCH    /admin/core/:id(.:format)                   admin/core#update
@@ -64,3 +61,8 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
           new_admin_menu GET      /admin/menus/new(.:format)                  admin/menus#new
               admin_menu PATCH    /admin/menus/:id(.:format)                  admin/menus#update
                          PUT      /admin/menus/:id(.:format)                  admin/menus#update
+    admin_logolink_index GET      /admin/logolink(.:format)                   admin/logolink#index
+                         POST     /admin/logolink(.:format)                   admin/logolink#create
+          admin_logolink PATCH    /admin/logolink/:id(.:format)               admin/logolink#update
+                         PUT      /admin/logolink/:id(.:format)               admin/logolink#update
+                         DELETE   /admin/logolink/:id(.:format)               admin/logolink#destroy

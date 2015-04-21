@@ -20,5 +20,7 @@ Rails.application.routes.draw do
 		root 'core#index'
 		resources :core, :only => [:edit, :update]
 		resources :menus, :only => [:index, :update, :create, :new]
+#		resource :icons, :only => [:index, :update, :create]
+		resources :logolink, :only => [:index, :update, :create, :destroy]
 	end
 end

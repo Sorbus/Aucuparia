@@ -8,31 +8,34 @@ $tertiary-foreground: rgba(78, 61, 38, 1);
 	overflow:auto;
 
 	form {
-			margin: 0.5em;
-			max-width: 10.25em;
-			min-height: 5em;
-			float: left;
-			padding: 0.5em;
-			border: 1px dotted $primary-foreground;
-			background-color:inherit;
+		margin: 0.5em;
+		max-width: 10.25em;
+		min-height: 5em;
+		float: left;
+		padding: 0.5em;
+		border: 1px dotted $primary-foreground;
+		background-color:inherit;
+			
+		.actions {
+			margin-top:-.2em;
+		}
 	}
 	
 	p {
-			margin-top:0em;
-			
+		margin-top:0em;
 	}
 
 	form #tab{
-			width: 4em;
-			float: left;
+		width: 4em;
+		float: left;
 	}
 
 	input, select {
-			width: 100%;
-			max-width: 25em;
-			display: block;
-			background-color: $secondary-background;
-			border: 1px solid $primary-foreground;
+		width: 100%;
+		max-width: 25em;
+		display: block;
+		background-color: $secondary-background;
+		border: 1px solid $primary-foreground;
 	}
 
 	input[readonly="readonly"]
@@ -41,26 +44,26 @@ $tertiary-foreground: rgba(78, 61, 38, 1);
 	}
 
 	label {
-			padding-right:1em;
-			display:inline-block;
-			min-width:3em;
+		padding-right:1em;
+		display:inline-block;
+		min-width:3em;
 	}
 
 	textarea {
-			width: 99%;
-			height: 15em;
-			background-color: $secondary-background;
-			border: 1px solid $primary-foreground;
-			display:block;
+		width: 99%;
+		height: 15em;
+		background-color: $secondary-background;
+		border: 1px solid $primary-foreground;
+		display:block;
 	}
 
 	input[type=submit] {
-			max-width: 5em;
+		max-width: 5em;
 	}
 
 	input[type=checkbox] {
-			width: 1em;
-			display: initial;
+		width: 1em;
+		display: initial;
 	}
 
 }

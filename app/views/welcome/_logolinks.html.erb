@@ -1,13 +1,9 @@
 <% if Core.first.show_icons? %>
 	<div id="linkbar">
-		<% if Core.first.email? %>
-			<%= link_to '&nbsp'.html_safe, 'mailto:' + Core.first.email, :id => 'email-link' %>
-		<% end %>
-		<% if Core.first.github? %>
-			<%= link_to '&nbsp'.html_safe, 'https://github.com/' + Core.first.github, :id => 'github-link' %>
-		<% end %>
-		<% if Core.first.twitter? %>
-			<%= link_to '&nbsp'.html_safe, 'https://twitter.com/' + Core.first.twitter, :id => 'twitter-link' %>
+		<% @links.each do |link| %>
+			<% if link.display? %>
+				<%= link_to '&nbsp'.html_safe, link.url, :id => link.css_id, :class => link.css_class %>
+			<% end %>
 		<% end %>
 	</div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418210600) do
+ActiveRecord::Schema.define(version: 20150420232754) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150418210600) do
     t.boolean  "show_login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "links"
   end
 
   create_table "items", force: :cascade do |t|
@@ -63,6 +64,15 @@ ActiveRecord::Schema.define(version: 20150418210600) do
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
   add_index "items", ["user_id"], name: "index_items_on_user_id"
+
+  create_table "logolinks", force: :cascade do |t|
+    t.string   "url"
+    t.string   "css_id"
+    t.string   "css_class"
+    t.boolean  "display"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string   "title"

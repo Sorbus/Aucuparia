@@ -15,6 +15,7 @@ Rails.application.config.assets.version = '1.0'
 end
 
 Rails.application.config.assets.precompile += %w( reset.css )
+Rails.application.config.assets.precompile += %w( modernizr.custom.94336.js )
 
 #Rails.application.config.assets.precompile += %w( welcome.css )
 #Rails.application.config.assets.precompile += %w( admin/menus.css )

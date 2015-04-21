@@ -7,6 +7,7 @@ class Ability
 		if user.roles.size == 0 # for guest users with no permissions
 			can :read, [Category, Item, Comment, User]
 			can :see, [:moderator, :editor, :author, :commenter]
+			can :create, User
 		else
 			# these permissions are given to every user.
 			can :manage, User, :user_id => user.id

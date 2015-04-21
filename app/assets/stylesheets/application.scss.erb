@@ -2,8 +2,9 @@
  *= require_self
  */
  
+$primary-background-new: rgba(235, 236, 237, 1);
 $primary-background: rgba(239, 237, 235, 1);
-$secondary-background: rgba(238, 238, 238, 1);
+$secondary-background: rgba(238, 238, 238, .9);
 $primary-foreground: rgba(118, 92, 57, 1);
 $secondary-foreground: rgba(132, 107, 77, 1);
 $tertiary-foreground: rgba(78, 61, 38, 1);
@@ -42,7 +43,7 @@ $view-max-width: 25em;
 	padding-bottom:1em;
 	border:1px solid $primary-foreground;
 	background-color: $secondary-background;
-	opacity:0.2;
+	opacity:0.5;
 	z-index:0;
 	position:relative;
 }
@@ -61,35 +62,54 @@ body {
 		margin-bottom:100px;
 		padding:0px;
 		text-align:center;
-		background-color: $primary-background;
-		background-image:
+		background-color: $primary-background-new;
+/*		background-image:
 			linear-gradient(60deg, rgba(0,0,0,.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.05) 75%, rgba(0,0,0,.05)),
 			linear-gradient(120deg, rgba(0,0,0,.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.05) 75%, rgba(0,0,0,.05));
 		background-size: 70px 120px;
-		background-attachment: fixed;
+		background-attachment: fixed;*/
 	}
 	
 .cover {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index:-1;
+	background-image: url('/static/background_optimized_editted.svg');
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+	background-repeat: no-repeat;
+	background-position: bottom right;
 	
-	.left, .right {
+	.top-left, .top-right {
 		position:fixed;
-		background-color:$primary-foreground;
 		top:0px;
-		z-index:-1;
-		height:100%;
-		width:10%;
-		min-width:5px;
-		max-width:140px;
-		opacity:.7;
 		}
 		
-	.left {
+	.top-left, .bottom-left {
 		left:0px;
 		}
 		
-	.right {
+	.top-right, .bottom-right {
 		right:0px;
 		}
+		
+	.bottom-left, .bottom-right {
+		position:fixed;
+		bottom:0px;
+		}
+	}
+	
+.content, .comments, .account, #menu {
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
 	}
 	
 .content, .comments {
@@ -115,7 +135,7 @@ body {
 	
 .account {
 		@extend .content;
-		opacity:0.5;
+		opacity:0.7;
 		@include transition(0.5s, opacity);
 		
 	.tools {
@@ -208,7 +228,7 @@ notifications:hover {
 .created {
 		float:right;
 		text-align:right;
-		opacity:0.3;
+		opacity:0.5;
 		margin-top:0.5em;
 		@include transition(0.25s, all);
 }
@@ -220,7 +240,7 @@ notifications:hover {
 .category {
 		float:left;
 		text-align:right;
-		opacity:.3;
+		opacity:.5;
 		margin-top:0.5em;
 		@include transition(0.5s, all);
 }
@@ -239,7 +259,7 @@ notifications:hover {
 
 .actions {
 		float:right;
-		opacity:0.4;
+		opacity:0.5;
 		font-size:small;
 		margin-left:1em;
 		@include transition(0.5s, all);
@@ -382,11 +402,11 @@ span.clear { clear: left; display: block; }
 		position: fixed;
 		bottom: 0;
 		text-align: center;
+		background-color: rgba(255,255,255,.5);
 	}
 
 .bottom {
-		padding: 0 4px;
-		padding-bottom: 20px;
+		padding: .5em 0 .5em 0;
 		display: inline-block;
 		z-index: 1;
 	}
@@ -405,11 +425,20 @@ span.clear { clear: left; display: block; }
 		margin-bottom:0px;
 	}
 	
-	.cover {
+	.content, .comments, .account {
+		-webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.25);
+		-moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.25);
+		box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.25);
+		}
 	
-		.left, .right {
-			display:none;
-			}
+	#menu {
+		-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
+		-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
+		box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
+		}
+	
+	.cover {
+		display:none;
 		}
 		
 	.holder {

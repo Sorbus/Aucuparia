@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 	end
 	
 	namespace :admin do
-		root 'core#index'
+		root 'admin#index'
 		resources :core, :only => [:edit, :update]
 		resources :menus, :only => [:index, :update, :create, :new]
 #		resource :icons, :only => [:index, :update, :create]

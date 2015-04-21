@@ -8,7 +8,7 @@ It is released under the MIT license.
 
 == Installation & Configuration
 
-Aucuparia is being developed on ruby 2.1.6, and rails 4.2.0. It requires Imagemagick, Rake, and Bundler. Git is strongly suggested. Once those dependencies are met, it can be set up fairly easily:
+Aucuparia is being developed on ruby 2.1.6, rails 4.2.0, and sqlite3 3.8.8. It requires Imagemagick, Rake, and Bundler. Git is strongly suggested. Once those dependencies are met, it can be set up fairly easily:
     
     $ git clone https://github.com/Sorbus/aucuparia
     $ bundle install

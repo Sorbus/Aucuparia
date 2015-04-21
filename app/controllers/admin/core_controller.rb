@@ -11,7 +11,7 @@ class Admin::CoreController < ApplicationController
 	end
 	
 	def preview
-#		@page = Website.new(page_params)
+#		@page = StaticPage.new(page_params)
 #		authorize! :edit, @page
 	end
 	
@@ -25,7 +25,8 @@ class Admin::CoreController < ApplicationController
 			redirect_to root_path
 		else
 			@page = StaticPage.new(page_params)
-			render 'preview'
+			@page.id = params[:id]
+			render 'edit'
 		end
 	end
 	

@@ -1,4 +1,4 @@
-<%= form_for @page, url: admin_core_path do |f| %>
+<%= form_for @page, url: admin_core_path(@page.id) do |f| %>
 	<% if @page.errors.any? %>
 		<div id="error_explanation">
 			<h2>
@@ -23,7 +23,7 @@
 	</p>
 		
 	<p>
-		<%= f.submit 'preview', class: "left" %>
+		<% f.submit 'preview', class: "left" %>
 		<%= f.submit 'commit', class: "right" %>
 	</p>
 	&nbsp

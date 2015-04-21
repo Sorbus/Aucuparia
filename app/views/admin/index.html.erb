@@ -3,14 +3,9 @@
 <% end %>
 
 <div class="content">
+	<%= render 'admin/bar' %>
 	<p class="definition">
 		<strong>Admin Tools</strong>
-	</p>
-	<p>
-	<%= link_to '<i class="fa fa-angle-double-right fa-lg"></i> '.html_safe + :edit_menus, admin_menus_path %>
-	</p>
-	<p>
-	<%= link_to '<i class="fa fa-angle-double-right fa-lg"></i> '.html_safe + :edit_logolinks, admin_logolink_index_path %>
 	</p>
 	<p>
 	Presently, all other administrator tools are accessed from the page to which they apply.

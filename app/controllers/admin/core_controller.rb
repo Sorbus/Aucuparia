@@ -1,18 +1,9 @@
 class Admin::CoreController < ApplicationController
 	before_filter :authenticate_user!
 
-	def index
-		authorize! :update, StaticPage
-	end
-
 	def edit
 		@page = StaticPage.find(params[:id])
 		authorize! :update, @page
-	end
-	
-	def preview
-#		@page = StaticPage.new(page_params)
-#		authorize! :edit, @page
 	end
 	
 	def update

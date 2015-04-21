@@ -1,0 +1,38 @@
+<%= form_for ll, url: path do |f| %>
+	<div class="actions">
+		<% if ll.id? %>
+			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, admin_logolink_path(ll),method: :delete,data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</div>
+	<% if ll.errors.any? %>
+		<div id="error_explanation">
+			<h2>
+				<%= pluralize(ll.errors.count, "error") %> prohibited this article from being saved:
+			</h2>
+			<ul>
+				<% ll.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<p>
+		<%= f.label :url %>
+		<%= f.text_field :url %>
+	</p>
+	<p>
+		<%= f.label 'CSS ID' %>
+		<%= f.text_field :css_id %>
+	</p>
+	<p>
+		<%= f.label :css_class %>
+		<%= f.text_field :css_class %>
+	</p>
+	<p>
+		<%= f.label :display %>
+		<%= f.check_box :display %>
+	</p>	
+	<p>
+		<%= f.submit 'commit', id: "left" %>
+	</p>
+<% end %>

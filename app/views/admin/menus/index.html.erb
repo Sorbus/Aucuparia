@@ -3,62 +3,12 @@
 <% end %>
 
 <div class="content menu_edit">
+	<%= render 'admin/bar' %>
 	<p class="definition">
 		<strong>Menu</strong> - <em>n</em>. A list from which a user can select an option.
 	</p>
 	<%= @menus.each do |menu| %>
-		<%= form_for menu, url: admin_menu_path(menu) do |f| %>
-			<% if menu.errors.any? %>
-				<div id="error_explanation">
-					<h2>
-						<%= pluralize(menu.errors.count, "error") %> prohibited this article from being saved:
-					</h2>
-					<ul>
-						<% menu.errors.full_messages.each do |msg| %>
-							<li><%= msg %></li>
-						<% end %>
-					</ul>
-				</div>
-			<% end %>
-			<p>
-				<%= f.label :title %>
-				<%= f.text_field :title %>
-			</p>
-			<p>
-				<%= f.label :visible %>
-				<%= f.check_box :visible %>
-			</p>
-				
-			<p>
-				<%= f.submit 'commit', id: "left" %>
-			</p>
-		<% end %>
+		<%= render 'form', :menu => menu, :path => admin_menu_path(menu)%>
 	<% end %>
-	<%= form_for @menu, url: admin_menus_path do |f| %>
-		<% if @menu.errors.any? %>
-			<div id="error_explanation">
-				<h2>
-					<%= pluralize(@menu.errors.count, "error") %> prohibited this article from being saved:
-				</h2>
-				<ul>
-					<% @menu.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-				</ul>
-			</div>
-		<% end %>
-		<p>
-			<%= f.label :title %>
-			<%= f.text_field :title %>
-		</p>
-		<p>
-			<%= f.label :visible %>
-			<%= f.check_box :visible %>
-		</p>
-			
-		<p>
-			<%= f.submit 'commit', class: "left" %>
-		</p>
-		&nbsp
-	<% end %>
+	<%= render 'form', :menu => @menu, :path => admin_menus_path %>
 </div>

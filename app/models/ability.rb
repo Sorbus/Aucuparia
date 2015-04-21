@@ -27,7 +27,7 @@ class Ability
 	def admin
 		can :manage, [Comment, Item, Category, User, StaticPage, Menu]
 		can :assign, [:moderator, :editor, :author, :commenter]
-		can :see, :superadmin
+		can :see, [:superadmin, :admin_tools]
 	end
 	
 	def moderator

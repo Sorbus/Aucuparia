@@ -3,79 +3,12 @@
 <% end %>
 
 <div class="content menu_edit">
+	<%= render 'admin/bar' %>
 	<p class="definition">
 		<strong>Logolink</strong> - <em>n</em>. A link which takes the form of a logo.
 	</p>
 	<%= @logolinks.each do |ll| %>
-		<%= form_for ll, url: admin_logolink_path(ll) do |f| %>
-			<div class="actions">
-				<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, admin_logolink_path(ll),method: :delete,data: { confirm: 'Are you sure?' } %>
-			</div>
-			<% if ll.errors.any? %>
-				<div id="error_explanation">
-					<h2>
-						<%= pluralize(ll.errors.count, "error") %> prohibited this article from being saved:
-					</h2>
-					<ul>
-						<% ll.errors.full_messages.each do |msg| %>
-							<li><%= msg %></li>
-						<% end %>
-					</ul>
-				</div>
-			<% end %>
-			<p>
-				<%= f.label :url %>
-				<%= f.text_field :url %>
-			</p>
-			<p>
-				<%= f.label 'CSS ID' %>
-				<%= f.text_field :css_id %>
-			</p>
-			<p>
-				<%= f.label :css_class %>
-				<%= f.text_field :css_class %>
-			</p>
-			<p>
-				<%= f.label :display %>
-				<%= f.check_box :display %>
-			</p>	
-			<p>
-				<%= f.submit 'commit', id: "left" %>
-			</p>
-		<% end %>
+		<%= render 'form', :ll => ll, :path => admin_logolink_path(ll) %>
 	<% end %>
-	<%= form_for @ll_new, url: admin_logolink_index_path do |f| %>
-		<% if @ll_new.errors.any? %>
-			<div id="error_explanation">
-				<h2>
-					<%= pluralize(@ll_new.errors.count, "error") %> prohibited this article from being saved:
-				</h2>
-				<ul>
-					<% @ll_new.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-				</ul>
-			</div>
-		<% end %>
-		<p>
-			<%= f.label :url %>
-			<%= f.text_field :url %>
-		</p>
-		<p>
-			<%= f.label 'CSS ID' %>
-			<%= f.text_field :css_id %>
-		</p>
-		<p>
-			<%= f.label :css_class %>
-			<%= f.text_field :css_class %>
-		</p>
-		<p>
-			<%= f.label :display %>
-			<%= f.check_box :display %>
-		</p>
-		<p>
-			<%= f.submit 'commit', class: "left" %>
-		</p>
-		&nbsp
-	<% end %>
+	<%= render 'form', :ll => @ll_new, :path => admin_logolink_index_path %>
 </div>

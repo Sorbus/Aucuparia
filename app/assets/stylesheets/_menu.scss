@@ -98,10 +98,10 @@ header {
 		color: inherit;
 		font-style: normal;
 		text-decoration: none;
-		}
 		
-	a:hover {
-		color: $secondary-background;
+		&:hover {
+			color: $secondary-background;
+			}
 		}
 
 	ul li ul li a:hover {

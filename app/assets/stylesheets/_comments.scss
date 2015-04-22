@@ -40,10 +40,10 @@ $view-max-width: 400px;
 		border-top: 1px solid $primary-foreground;
 		border-bottom: 1px solid $primary-foreground;
 		border-radius: 5px 0px 0px 5px;
-		}
 		
-	.actions:hover {
-		padding-right:2em;
+		&:hover {
+			padding-right:2em;
+			}
 		}
 		
 	.comment:nth-child(even) {
@@ -134,46 +134,35 @@ $view-max-width: 400px;
 		padding-top:1em;
 		@include transition(0.5s, all);
 		width:100%;
+		
+		&:first-of-type {
+			padding-top:0.1em;
+			}
+			
+		&:last-of-type {
+			padding-bottom:.5em;
+			}
 		}
 		
 	h1, h2, h3, h4, h5, h6 {
 		@extends p
 		}
 		
-	p:first-of-type {
-		padding-top:0.1em;
-		}
-	
-	p:last-of-type {
-		padding-bottom:.5em;
-		}
-		
 	.comment_core {
 		padding-bottom:0.2em;
 		}
-		
-	/*.comment_core:hover {
-		p {
-			padding-left:1em;
-			padding-right:-1em;
-			}
-			
-		.byline {
-			margin-left:2em;
-			}
-		}*/
 		
 	.actions {
 		position:relative;
 		z-index:5
 		}
-	}
-	
-.odd {
-	background-color: $secondary-background;
-	}
+		
+	.odd {
+		background-color: $secondary-background;
+		}
 
-.even {
-	background-color: $primary-background;
+	.even {
+		background-color: $primary-background;
+		}
 	}
 	

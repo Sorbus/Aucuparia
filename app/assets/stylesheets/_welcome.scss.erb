@@ -29,11 +29,11 @@
 		@include transition(0.5s, all);
 		margin: 0.5em 1.5em 0em 0em;
 		@include basis;
-		}
-	
-	#email-link:hover {
-		background: url(<%= asset_data_uri 'Email_logo_red.png' %>);
-		@include scale;
+		
+		&:hover {
+			background: url(<%= asset_data_uri 'Email_logo_red.png' %>);
+			@include scale;
+			}
 		}
 	
 	#github-link {
@@ -41,11 +41,11 @@
 		@include transition(0.5s, all);
 		margin: 0.5em 1.5em 0em 1.5em;
 		@include basis;
-		}
 		
-	#github-link:hover {
-		background: url(<%= asset_data_uri 'Github_logo_black.png' %>);
-		@include scale;
+		&:hover {
+			background: url(<%= asset_data_uri 'Github_logo_black.png' %>);
+			@include scale;
+			}
 		}
 		
 	#twitter-link {
@@ -53,10 +53,10 @@
 		@include transition(0.5s, all);
 		margin: 0.5em 0em 0em 1.5em;
 		@include basis;
-		}
 		
-	#twitter-link:hover {
-		background: url(<%= asset_data_uri 'Twitter_logo_blue.png' %>);
-		@include scale;
+		&:hover {
+			background: url(<%= asset_data_uri 'Twitter_logo_blue.png' %>);
+			@include scale;
+			}
 		}
 	}

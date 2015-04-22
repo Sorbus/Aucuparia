@@ -83,7 +83,7 @@ body {
 	background-position: bottom right;
 	}
 	
-.content, .comments, .account, header {
+.content, .comments, header {
 	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
 	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.25);
@@ -110,40 +110,6 @@ body {
 		}
 	}
 	
-.account {
-	@extend .content;
-	opacity:0.7;
-	@include transition(0.5s, opacity);
-		
-	.tools {
-		float:left;
-		}
-		
-	.logout {
-		float:right;
-		}
-	}
-
-.account:hover {
-		opacity: 1;
-	}
-	
-.holder {
-	max-width:$view-max-width;
-	margin:0px auto;
-	margin-top:-3em;
-
-	.login {
-		width:10em;
-		@include session-core(right);
-		@include transition(0.5s, all);
-		}
-		
-	.login:hover {
-		@include slide-in(1em);
-		}
-	}
-	
 .notice-wrapper {
 	width: 100%;
 	position:fixed;
@@ -158,10 +124,10 @@ body {
 		@include session-core(center);
 		@include transition(0.5s, all);
 		border:1px dotted $primary-foreground;
-		}
 		
-	.notice:hover {
-		@include slide-in(1em);
+		&:hover {
+			@include slide-in(1em);
+			}
 		}
 		
 	.alert {
@@ -173,10 +139,10 @@ body {
 		border:1px dotted red;
 		background-color: #f9e3e3;
 		color:red;
-		}
 		
-	.alert:hover {
-		@include slide-in(1em);
+		&:hover {
+			@include slide-in(1em);
+			}
 		}
 	}
 
@@ -186,6 +152,10 @@ notifications:hover {
 	
 .user i {
 	float:left;
+	}
+	
+.username i {
+	float:right;
 	}
 
 .definition {
@@ -206,10 +176,10 @@ notifications:hover {
 	opacity:0.5;
 	margin-top:0.5em;
 	@include transition(0.25s, all);
-	}
-
-.created:hover {
-	opacity:1;
+	
+	&:hover {
+		opacity:1;
+		}
 	}
 
 .category {
@@ -218,10 +188,10 @@ notifications:hover {
 	opacity:.5;
 	margin-top:0.5em;
 	@include transition(0.5s, all);
-	}
-
-.category:hover {
-	opacity:1;
+	
+	&:hover {
+		opacity:1;
+		}
 	}
 	
 .title {
@@ -235,10 +205,10 @@ notifications:hover {
 	margin-left:1em;
 	@include transition(0.5s, all);
 	text-align:right;
-	}
-
-.actions:hover {
-	opacity:1;
+	
+	&:hover {
+		opacity:1;
+		}
 	}
 
 .dangerous {
@@ -256,14 +226,14 @@ a	{
 	font-style: italic;
 	text-decoration: underline;
 	color: $secondary-foreground;
-	@include transition(0.25s, color)
-	}
+	@include transition(0.25s, color);
 	
-a:hover {
-	text-decoration: none;
-	color: $primary-foreground;
+	&:hover {
+		text-decoration: none;
+		color: $primary-foreground;
+		}
 	}
-	
+		
 strong, b {
 	font-weight: 700;
 	color: #484d55;
@@ -307,13 +277,13 @@ ul.dashed {
 	list-style: none;
 	margin-left: 0;
 	padding-left: 1em;
-	}
-
-ul.dashed li:before {
-	display: inline-block;
-	content: "-";
-	width: 1em;
-	margin-left: -1em;
+	
+	li:before {
+		display: inline-block;
+		content: "-";
+		width: 1em;
+		margin-left: -1em;
+		}
 	}
 	
 span.tab{
@@ -415,27 +385,6 @@ footer {
 		display:none;
 		}
 		
-	.wrapper {
-		z-index:5;
-		}
-		
-	.holder {
-		@extends .account;
-		
-
-		.login {
-			width:100%;
-			margin-top:20px;
-			z-index:2;
-			}
-			
-		.login:hover {
-			opacity:1;
-			margin-top:20px;
-			z-index:2;
-			}
-		}
-		
 	.created {
 		float:left;
 		text-align:left;
@@ -451,3 +400,11 @@ footer {
 @import 'comments';
 
 @import 'keyframes';
+
+@import 'welcome';
+
+@import 'profiles';
+
+@import 'admin/logolink';
+
+@import 'admin/menus';

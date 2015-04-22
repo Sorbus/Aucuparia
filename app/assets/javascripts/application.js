@@ -16,6 +16,12 @@
 //= require turboboost
 //= require_tree .
 
- $(window).on('popstate', function () {
-    $.get(document.location.href)
+$(window).on('popstate', function () {
+	$.get(document.location.href)
+});
+
+$(function() {
+  $("a").on("ajax:before", function() {
+    $('#spinner').removeClass('hidden');
   });
+});

@@ -17,10 +17,16 @@
 <div class="cover">
 </div>
 
+
+
 <div class="pagewrap">
 
 	<%= render "shared/menu" %>
-
+	
+	<section class="refresh hidden" id="spinner">
+		<i class="fa fa-refresh fa-spin fa-4x"></i>
+	</section>
+	
 	<section id="yield">
 		<%= yield %>
 	</section>

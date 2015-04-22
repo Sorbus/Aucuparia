@@ -36,18 +36,17 @@ $tertiary-foreground: rgba(78, 61, 38, 1);
 		display: block;
 		background-color: $secondary-background;
 		border: 1px solid $primary-foreground;
-	}
+		}
 
-	input[readonly="readonly"]
-	{
+	input[readonly="readonly"] {
 		opacity: 0.5;
-	}
+		}
 
 	label {
 		padding-right:1em;
 		display:inline-block;
 		min-width:3em;
-	}
+		}
 
 	textarea {
 		width: 99%;
@@ -55,15 +54,14 @@ $tertiary-foreground: rgba(78, 61, 38, 1);
 		background-color: $secondary-background;
 		border: 1px solid $primary-foreground;
 		display:block;
-	}
+		}
 
 	input[type=submit] {
 		max-width: 5em;
-	}
+		}
 
 	input[type=checkbox] {
 		width: 1em;
 		display: initial;
+		}
 	}
-
-}

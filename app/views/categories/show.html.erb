@@ -2,23 +2,4 @@
 	<title><%= @category.name %></title>
 <% end %>
  
-<div class="content">
-	<span class="actions">
-		<%= link_to '<i class="fa fa-list fa-lg"></i>'.html_safe, categories_path %>
-		<% if can? :update, @category %>
-			<span class="htab"></span>
-			<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_item_path %>
-		<% end %>
-	</span>
-	<p class="definition">
-		<strong><%= @category.name %></strong><br/>
-		<hr>
-		<%= markdown(@category.summary).html_safe %>
-	</p>
-	<% @posts.each do |item| %>
-		<hr>
-		<%= render 'items/single', :item => item %>
-	<% end %>
-	<hr>
-	<%= will_paginate @posts =%>
-</div>
+<%= render 'show' %>

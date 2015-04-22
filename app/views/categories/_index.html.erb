@@ -1,0 +1,20 @@
+<div class="content">
+	<p class="definition">
+		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
+	</p>
+	<% @categories.each do |category| %>
+		<hr>
+		<%= render 'single', :category => category %>
+	<% end %>
+	<% if can? :create, @category %>
+	<hr>
+		<div class="entry">
+			<div class="title">
+				<span class="actions">
+					<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_category_path %>
+				</span>
+			</div>
+			&nbsp
+		</div>
+	<% end %>
+</div>

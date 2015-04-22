@@ -4,7 +4,10 @@ class ProfilesController < ApplicationController
 		if !current_user.blank?
 			@user = current_user
 			@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
-			render :show
+			respond_to do |format|
+				format.js { render :action => 'show' }
+				format.html { render :action => 'show' }
+			end
 		else
 			redirect_to new_user_session_path
 		end
@@ -12,6 +15,10 @@ class ProfilesController < ApplicationController
 
 	def edit
 		@user = current_user
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def update

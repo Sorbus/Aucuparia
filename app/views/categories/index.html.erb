@@ -2,34 +2,4 @@
 	<title>Category Index</title>
 <% end %>
  
-<div class="content">
-	<p class="definition">
-		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
-	</p>
-	<% @categories.each do |category| %>
-	<hr>
-	<div class="entry">
-		<div class="title">
-			<%= link_to category.name, category_path(category) %>
-			<% if can? :update, @category %>
-				<span class="actions">
-					<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_category_path(category) %>
-					<span class="htab"></span>
-					<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, category_path(category),method: :delete,data: { confirm: 'Are you sure?' } %>
-				</span>
-			<% end %>
-		</div>
-	</div>
-	<% end %>
-	<% if can? :create, @category %>
-	<hr>
-		<div class="entry">
-			<div class="title">
-				<span class="actions">
-					<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_category_path %>
-				</span>
-			</div>
-			&nbsp
-		</div>
-	<% end %>
-</div>
+<%= render 'index' %>

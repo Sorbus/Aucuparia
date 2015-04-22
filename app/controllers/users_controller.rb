@@ -3,17 +3,27 @@ class UsersController < ApplicationController
  
 	def index
 		@users = User.paginate(:page => params[:page], :per_page => 20)
-		render 'index'
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 
 	def show
 		@item = Item.find(params[:id])
 		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
-		render 'profiles/show'
+		respond_to do |format|
+			format.js { render :action => 'profiles/show' }
+			format.html { render :action => 'profiles/show' }
+		end
 	end
 	
 	def edit
 		@user = User.find(params[:id])
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def update

@@ -2,13 +2,4 @@
 	<title>Manage Logolinks</title>
 <% end %>
 
-<div class="content menu_edit">
-	<%= render 'admin/bar' %>
-	<p class="definition">
-		<strong>Logolink</strong> - <em>n</em>. A link which takes the form of a logo.
-	</p>
-	<%= @logolinks.each do |ll| %>
-		<%= render 'form', :ll => ll, :path => admin_logolink_path(ll) %>
-	<% end %>
-	<%= render 'form', :ll => @ll_new, :path => admin_logolink_index_path %>
-</div>
+<%= render 'index' %>

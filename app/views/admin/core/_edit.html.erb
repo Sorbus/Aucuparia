@@ -1,0 +1,11 @@
+<div class="content">
+	<p class="definition">
+		<strong>Change</strong> - <em>v</em>. To become different.
+	</p>
+	<%= render 'form' %>
+</div>
+<% if @page.content.present? %>
+	<div class="content">
+		<%= markdown(@page.content).html_safe =%>
+	</div>
+<% end %>

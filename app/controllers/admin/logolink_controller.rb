@@ -5,6 +5,10 @@ class Admin::LogolinkController < ApplicationController
 		authorize! :update, ::Logolink
 		@logolinks = Logolink.find_each
 		@ll_new = Logolink.new
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def create

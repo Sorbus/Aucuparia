@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	# root pages
 	root 'welcome#index'
 	get 'about' => 'welcome#about'
+	get '/fetch' => 'welcome#fetch', as: 'fetch'
 	
 	# user stuff
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }

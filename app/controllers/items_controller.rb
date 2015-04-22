@@ -5,22 +5,38 @@ class ItemsController < ApplicationController
 
 	def index 
 		@posts = Item.paginate(:page => params[:page], :per_page => 5)
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def show
 		@item = Item.find(params[:id])
 		@comment = Comment.new
 		@comment.item_id = @item.id
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def new
 		@item = Item.new
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 
 	def edit
 		@item = Item.find(params[:id])
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
  
 	def create

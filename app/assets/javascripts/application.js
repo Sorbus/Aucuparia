@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require turboboost
 //= require_tree .
+
+ $(window).on('popstate', function () {
+    $.get(document.location.href)
+  });

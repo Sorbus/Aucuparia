@@ -8,8 +8,8 @@
 		<% end %>
 	</span>
 	<div class="title">
-		<%= link_to item.title, item_path(item) %>
-		<span class="byline">by <%= link_to(item.user.display_name, user_path(item.user.id)) %></span>
+		<%= link_to item.title, item_path(item), :remote => true %>
+		<span class="byline">by <%= link_to item.user.display_name, user_path(item.user.id), :remote => true %></span>
 	</div>
 	<div class="sample">
 		<%= markdown(item.summary).html_safe %>

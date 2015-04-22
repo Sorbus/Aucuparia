@@ -1,20 +1,20 @@
 ﻿<label for="show-menu" class="show-menu">Show Menu</label>
 <input type="checkbox" id="show-menu" role="button">
 
-<div id="menu">
+<header>
 	<ul class="menu">
-		<li><a href="/">Home</a></li>
-		<li><a href="/about">About</a></li>
+		<li><%= link_to 'Home', root_path, :remote => true %></li>
+		<li><%= link_to 'About', about_path, :remote => true %></li>
 		<% Menu.find_each do |menu| %>
 			<% if menu.visible? %>
 				<li><%= link_to menu.title, '#' %>
 				<ul class="submenu">
 					<% menu.categories.each do |category| %>
-						<li><%= link_to category.name, category_path(category) %></li>
+						<li><%= link_to category.name, category_path(category), :remote => true %></li>
 					<% end %>
 				</ul></li>
 			<% end %>
 		<% end %>
 	</ul>
 	<span class="clear"></span>
-</div>
+</header>

@@ -5,6 +5,10 @@ class Admin::MenusController < ApplicationController
 		authorize! :update, ::Menu
 		@menus = Menu.find_each
 		@menu = Menu.new
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def new

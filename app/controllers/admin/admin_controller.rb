@@ -1,6 +1,9 @@
 class Admin::AdminController < ApplicationController
 	def index
 		authorize! :see, :admin_tools
-		render 'admin/index'
+		respond_to do |format|
+			format.js { render :action => 'index' }
+			format.html { render :action => 'index' }
+		end
 	end
 end

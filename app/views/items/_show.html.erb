@@ -1,0 +1,33 @@
+<div class="content">
+	<span class="actions">
+		<% if can? :update, @item %>
+			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(@item) %>
+			<span class="htab"></span>
+			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</span>
+	<p id="definition">
+		<strong><%= @item.title %></strong>
+	</p>
+	<hr>
+ 
+	<%= markdown(@item.content).html_safe %>
+
+	<div class="created">
+		Written by: <%= link_to User.find_by_id(@item.user).display_name, user_path(@item.user) %><br>
+		Created: <%= @item.created_at.strftime("%H:%M, %a %b %d, %Y") %><br>
+		<% show_modified = (@item.created_at != @item.updated_at) %>
+		<% if show_modified %>
+			Modified: <%= @item.updated_at.strftime("%H:%M, %a %b %d, %Y") %>
+		<% end %>
+	</div>
+	<div class="category">
+		<%= link_to Category.find_by_id(@item.category).name, category_path(@item.category) %>
+	</div><br>
+	<% if show_modified %>
+		<br>
+	<% end %>
+	&nbsp
+</div>
+
+<%= render 'comments/view' %>

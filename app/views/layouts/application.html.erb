@@ -15,21 +15,17 @@
 <%= render "shared/flash" if !flash.empty? %>
 
 <div class="cover">
-
-	<div class="top-left">&nbsp</div>
-	<div class="top-right">&nbsp</div>
-	<div class="bottom-left">&nbsp</div>
-	<div class="bottom-right">&nbsp</div>
-
 </div>
 
 <div class="pagewrap">
 
 	<%= render "shared/menu" %>
 
-	<%= yield %>
+	<section id="yield">
+		<%= yield %>
+	</section>
 
-	<%= render "shared/account" %>
+	<% render "shared/account" %>
 
 </div>
 	

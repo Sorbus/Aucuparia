@@ -11,7 +11,7 @@ $view-max-width: 25em;
 	-o-transition: $attribute $time ease-in-out;
 	-ms-transition: $attribute $time ease-in-out;
 	transition: $attribute $time ease-in-out;
-}
+	}
 
 @mixin boxy {
 	max-width:$view-max-width;
@@ -21,9 +21,9 @@ $view-max-width: 25em;
 	background-color: $secondary-background;
 	color:$primary-foreground;
 	margin-bottom:20px;
-}
+	}
 
-#menu {
+header {
 	@include boxy;
 	padding-left:15px;
 	padding-right:15px;
@@ -44,19 +44,19 @@ $view-max-width: 25em;
 		background: $secondary-background;
 		cursor: pointer;
 		text-align:center;
-	}
+		}
 
 	ul li a {
 		padding: 15px 20px;
 		display: inline-block;
 		width: auto;
 		min-width: 60px;
-	}
+		}
 
 	ul li:hover {
 		background: $tertiary-foreground;
 		/*color: $secondary-background;*/
-	}
+		}
 
 	ul li ul {
 		padding: 0;
@@ -73,41 +73,41 @@ $view-max-width: 25em;
 		opacity: 0;
 		visibility: hidden;
 		z-index:100;
-	}
+		}
 
 	ul li ul li { 
 		background: $tertiary-foreground; 
 		display: block; 
 		color: $secondary-background;
 		opacity:0.9;
-	}
+		}
 
 	ul li ul li:hover {
 		background: #695a46;
 		color: $tertiary-foreground;
 		text-shadow: 0 -1px 0 #000;
-	}
+		}
 
 	ul li:hover ul {
 		display: block;
 		opacity: 1;
 		visibility: visible;
-	}
+		}
 
 	a {
 		color: inherit;
 		font-style: normal;
 		text-decoration: none;
-	}
+		}
 		
 	a:hover {
 		color: $secondary-background;
-	}
+		}
 
 	ul li ul li a:hover {
 		color: $tertiary-foreground!important;
+		}
 	}
-}
 	
 .show-menu {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -118,15 +118,15 @@ $view-max-width: 25em;
 	padding: 10px 0;
 	width: 100%;
 	display: none;
-}
+	}
 
 #show-menu{
 	display: none;
-}
+	}
 
-input[type=checkbox]:checked ~ #menu .menu{
+input[type=checkbox]:checked ~ header .menu {
 	display: block;
-}
+	}
 
 /*Responsive Styles*/
 
@@ -136,29 +136,29 @@ input[type=checkbox]:checked ~ #menu .menu{
 		display:block;
 	}
 	
-	#menu {	
+	header {	
 		ul {
 			position: static;
 			display: none;
-		}
-		/*Create vertical spacing*/
+			}
+
 		li {
 			margin-bottom: 0px;
-		}
-		/*Make all menu links full width*/
+			}
+			
 		ul li, li a {
 			width: 100%;
-		}
+			}
 		
 		ul li ul {
 			display: inline-block;
 			width: 100%;
-		}
+			}
 		
 		ul li:hover ul {
 			display: inline-block;
 			opacity: 1;
 			visibility: visible;
-		}
-	}	
-}
+			}
+		}	
+	}

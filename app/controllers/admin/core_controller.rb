@@ -4,6 +4,10 @@ class Admin::CoreController < ApplicationController
 	def edit
 		@page = StaticPage.find(params[:id])
 		authorize! :update, @page
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def update

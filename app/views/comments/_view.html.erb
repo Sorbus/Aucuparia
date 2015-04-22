@@ -1,14 +1,16 @@
-<div class="comments">
-	<% if !@item.comments.blank? %>
-		<p id="definition">
-			<strong>Comments</strong>
-		</p>
-		<hr>
-		<% @item.comments.find_each do |comment| %>
-			<%= render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment} %>
+<% if !@item.comments.blank? | can?(:create, Comment) %>
+	<div class="comments">
+		<% if !@item.comments.blank? %>
+			<p id="definition">
+				<strong>Comments</strong>
+			</p>
+			<hr>
+			<% @item.comments.find_each do |comment| %>
+				<%= render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment} %>
+			<% end %>
 		<% end %>
-	<% end %>
-	<% if can? :create, Comment %>
-		<%= render 'comments/form' %>	
-	<% end %>
-</div>
+		<% if can? :create, Comment %>
+			<%= render 'comments/form' %>	
+		<% end %>
+	</div>
+<% end %>

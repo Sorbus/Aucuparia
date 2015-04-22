@@ -4,7 +4,7 @@
 	-o-transition: $attribute $time ease-in-out;
 	-ms-transition: $attribute $time ease-in-out;
 	transition: $attribute $time ease-in-out;
-}
+	}
 
 @mixin basis {
 	padding: 1.5em;
@@ -12,12 +12,12 @@
 	background-size: 3em;
 	background-repeat: no-repeat;
 	color: rgba(1,1,1,0);
-}
+	}
 
 @mixin scale {
 	background-size: 3em;
 	background-repeat: no-repeat;
-}
+	}
 
 #linkbar {
 	height:4em;
@@ -29,34 +29,34 @@
 		@include transition(0.5s, all);
 		margin: 0.5em 1.5em 0em 0em;
 		@include basis;
-	}
+		}
 	
 	#email-link:hover {
 		background: url(<%= asset_data_uri 'Email_logo_red.png' %>);
 		@include scale;
-	}
+		}
 	
 	#github-link {
 		background: url(<%= asset_data_uri 'Github_logo_brown.png' %>);
 		@include transition(0.5s, all);
 		margin: 0.5em 1.5em 0em 1.5em;
 		@include basis;
-	}
+		}
 		
 	#github-link:hover {
 		background: url(<%= asset_data_uri 'Github_logo_black.png' %>);
 		@include scale;
-	}
+		}
 		
 	#twitter-link {
 		background: url(<%= asset_data_uri 'Twitter_logo_brown.png' %>);
 		@include transition(0.5s, all);
 		margin: 0.5em 0em 0em 1.5em;
 		@include basis;
-	}
+		}
 		
 	#twitter-link:hover {
 		background: url(<%= asset_data_uri 'Twitter_logo_blue.png' %>);
 		@include scale;
+		}
 	}
-}

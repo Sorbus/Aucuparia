@@ -1,0 +1,12 @@
+<div class="content">
+	<p>
+		<%= link_to 'Recent Posts', fetch_path(:magic_id => '1'), :remote => true %>
+		<span class="htab"></span>
+		<%= link_to 'All Categories', fetch_path(:magic_id => '2'), :remote => true %>
+		<span class="htab"></span>
+		<%= link_to 'All Posts', items_path %>
+	</p>
+	<div id="items">
+		<%= render 'recent_block', :recent => @recent %>
+	</div>
+</div>

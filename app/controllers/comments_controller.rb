@@ -4,11 +4,19 @@ class CommentsController < ApplicationController
 		authorize! :create, Comment
 		@comment = Comment.new
 		@item = Item.find(params[:item_id])
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def edit
 		@comment = Comment.find(params[:id])
 		authorize! :update, @comment
+		respond_to do |format|
+			format.js
+			format.html
+		end
 	end
 	
 	def create

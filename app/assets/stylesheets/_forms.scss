@@ -5,46 +5,45 @@ $secondary-foreground: rgba(132, 107, 77, 1);
 $tertiary-foreground: rgba(78, 61, 38, 1);
 
 form {
-		margin-top: 1em;
+	margin-top: 1em;
 	}
 
 form #tab{
-		width: 4em;
-		float: left;
+	width: 4em;
+	float: left;
 	}
 
 input, select {
-		width: 100%;
-		max-width: 25em;
-		display: block;
-		background-color: $secondary-background;
-		border: 1px solid $primary-foreground;
-}
+	width: 100%;
+	max-width: 25em;
+	display: block;
+	background-color: $secondary-background;
+	border: 1px solid $primary-foreground;
+	}
 
-input[readonly="readonly"]
-{
+input[readonly="readonly"] {
     opacity: 0.5;
-}
+	}
 
 label {
-		padding-right:1em;
-		display:inline-block;
-		min-width:7em;
-}
+	padding-right:1em;
+	display:inline-block;
+	min-width:7em;
+	}
 
 textarea {
-		width: 99%;
-		height: 15em;
-		background-color: $secondary-background;
-		border: 1px solid $primary-foreground;
-		display:block;
-}
+	width: 99%;
+	height: 15em;
+	background-color: $secondary-background;
+	border: 1px solid $primary-foreground;
+	display:block;
+	}
 
 input[type=submit] {
-		width: 10em;
-}
+	width: 10em;
+	}
 
 input[type=checkbox] {
-		width: 1em;
-		display: initial;
-}
+	width: 1em;
+	display: initial;
+	}

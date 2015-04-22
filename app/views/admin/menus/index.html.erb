@@ -2,13 +2,4 @@
 	<title>Manage Menus</title>
 <% end %>
 
-<div class="content menu_edit">
-	<%= render 'admin/bar' %>
-	<p class="definition">
-		<strong>Menu</strong> - <em>n</em>. A list from which a user can select an option.
-	</p>
-	<%= @menus.each do |menu| %>
-		<%= render 'form', :menu => menu, :path => admin_menu_path(menu)%>
-	<% end %>
-	<%= render 'form', :menu => @menu, :path => admin_menus_path %>
-</div>
+<%= render 'index' %>

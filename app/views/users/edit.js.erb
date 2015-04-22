@@ -1,0 +1,2 @@
+$("#yield").html("<%= escape_javascript(render partial: 'edit' ) %>"); 
+history.pushState( null, "Aucuparia", "/users/<%= params[:id] %>/edit" )

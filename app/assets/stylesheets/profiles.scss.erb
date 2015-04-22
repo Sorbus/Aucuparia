@@ -10,19 +10,19 @@ $tertiary-foreground: rgba(78, 61, 38, 1);
 	-o-transition: $attribute $time ease-in-out;
 	-ms-transition: $attribute $time ease-in-out;
 	transition: $attribute $time ease-in-out;
-}
+	}
 
 input[type=checkbox]:checked ~ #icon-choices {
 	display:none;
-}
+	}
 
 input[type=checkbox]:checked ~ #custom-icon {
 	display:block;
-}
+	}
 
 .username i {
 	float:right;
-}
+	}
 
 #icon-choices {
 	display: block;
@@ -41,18 +41,18 @@ input[type=checkbox]:checked ~ #custom-icon {
 			width:100%;
 			min-width:1.2em;
 			@include transition(.5s, all);
-		}
+			}
 		
 		input {
 			display: none;
-		}
+			}
 		
 		input[type="radio"]:checked+label {
 			background-color:$primary-foreground;
 			color:$secondary-background;
-		} 
+			} 
+		}
 	}
-}
 
 #custom-icon {
 	display: none;
@@ -62,28 +62,28 @@ input[type=checkbox]:checked ~ #custom-icon {
 	
 	img {
 		margin: 0.5em 0em 0em 0em;
+		}
 	}
-}
 
 input[id='choices_one']:checked ~ #choices_one{
 	display: block;
 	height:auto;
-}
+	}
 
 input[id='choices_two']:checked ~ #choices_two{
 	display: block;
 	height:auto;
-}
+	}
 
 .hidden {
 	display:none!important;
-}
+	}
 
 .choices_label {
 	margin: 0em 0em .5em 0em;
 	padding: 0em;
 	width:auto;
-}
+	}
 
 .choices, #choices_one, #choices_two {
 	display:none;
@@ -91,4 +91,4 @@ input[id='choices_two']:checked ~ #choices_two{
 	margin-bottom:1em;
 	margin-top:0em;
 	border:1px solid $primary-foreground;
-}
+	}

@@ -21,7 +21,13 @@ $(window).on('popstate', function () {
 });
 
 $(function() {
-  $("a").on("ajax:before", function() {
-    $('#spinner').removeClass('hidden');
-  });
+	$(document).on('ajax:before', function() {
+		$('#spinner').removeClass('hidden');
+		$('#yield').addClass('faded');
+	});
+	
+	$(document).bind('ajaxComplete', function() {
+		$('#spinner').addClass('hidden');
+		$('#yield').removeClass('faded');
+	});
 });

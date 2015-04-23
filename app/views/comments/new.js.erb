@@ -1,0 +1,2 @@
+$("#yield").html("<%= escape_javascript(render partial: 'new' ) %>"); 
+history.pushState( null, "Create", "/items/<%= params[:item_id] %>/comments/new" )

@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 		@item = Item.find(params[:id])
 		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
 		respond_to do |format|
-			format.js { render :action => 'profiles/show' }
-			format.html { render :action => 'profiles/show' }
+			format.js
+			format.html
 		end
 	end
 	

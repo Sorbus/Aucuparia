@@ -1,7 +1,7 @@
 <div class="content">
 	<span class="actions">
 		<% if can? :update, @item %>
-			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(@item) %>
+			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(@item), :remote => true %>
 			<span class="htab"></span>
 			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(@item),method: :delete,data: { confirm: 'Are you sure?' } %>
 		<% end %>
@@ -14,7 +14,7 @@
 	<%= markdown(@item.content).html_safe %>
 
 	<div class="created">
-		Written by: <%= link_to User.find_by_id(@item.user).display_name, user_path(@item.user) %><br>
+		Written by: <%= link_to User.find_by_id(@item.user).display_name, user_path(@item.user), :remote => true %><br>
 		Created: <%= @item.created_at.strftime("%H:%M, %a %b %d, %Y") %><br>
 		<% show_modified = (@item.created_at != @item.updated_at) %>
 		<% if show_modified %>
@@ -22,7 +22,7 @@
 		<% end %>
 	</div>
 	<div class="category">
-		<%= link_to Category.find_by_id(@item.category).name, category_path(@item.category) %>
+		<%= link_to Category.find_by_id(@item.category).name, category_path(@item.category), :remote => true %>
 	</div><br>
 	<% if show_modified %>
 		<br>

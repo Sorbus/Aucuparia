@@ -2,7 +2,7 @@
 	<% if @item.errors.any? %>
 		<div id="error_explanation">
 			<h2>
-				<%= pluralize(@item.errors.count, "error") %> prohibited this article from being saved:
+				<%= pluralize(@item.errors.count, "error") + ' ' + t(:save_failed) %>
 			</h2>
 			<ul>
 				<% @item.errors.full_messages.each do |msg| %>
@@ -33,8 +33,8 @@
 	</p>
 		
 	<p>
-		<%= f.submit 'preview', class: "left" %>
-		<%= f.submit 'commit', class: "right" %>
+		<%= f.submit t(:preview), class: "left" %>
+		<%= f.submit t(:commit), class: "right" %>
 	</p>
 	&nbsp
 <% end %>

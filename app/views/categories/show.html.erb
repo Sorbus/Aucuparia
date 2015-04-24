@@ -1,5 +1,5 @@
 <% content_for :head do %>
-	<title><%= @category.name %></title>
+	<title><%= (t :view_category_title_before) + @category.name + (t :view_category_title_after) %></title>
 <% end %>
  
 <%= render 'show' %>

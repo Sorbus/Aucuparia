@@ -1,12 +1,12 @@
 <div class="content">
 	<p class="definition">
-		<strong>Change</strong> - <em>v</em>. To become different.
+		<%= t(:change_definition) %>
 	</p>
 	<%= form_for @comment, url: item_comment_path(@comment.item_id, @comment) do |f| %>
 		<% if @comment.errors.any? %>
 			<div id="error_explanation">
 				<h2>
-					<%= pluralize(@comment.errors.count, "error") %> prohibited this article from being saved:
+					<%= pluralize(@comment.errors.count, "error") + ' ' + t(:save_failed) %>
 				</h2>
 				<ul>
 					<% @comment.errors.full_messages.each do |msg| %>
@@ -17,13 +17,13 @@
 		<% end %>
 
 		<p>
-			<% f.label :new_comment %>
+			<% f.label :comment %>
 			<%= f.text_area :body %>
 		</p>
 			
 		<p>
-			<% f.submit 'preview', class: "left" %>
-			<%= f.submit 'commit', class: "right" %>
+			<% f.submit t(:preview), class: "left" %>
+			<%= f.submit t(:commit), class: "right" %>
 		</p>
 		&nbsp
 	<% end %>

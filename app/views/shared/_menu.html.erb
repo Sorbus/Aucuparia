@@ -3,8 +3,8 @@
 
 <header>
 	<ul class="menu">
-		<li><%= link_to 'Home', root_path, :remote => true %></li>
-		<li><%= link_to 'About', about_path, :remote => true %></li>
+		<li><%= link_to t(:home_nav), root_path, :remote => true %></li>
+		<li><%= link_to t(:about_nav), about_path, :remote => true %></li>
 		<% Menu.find_each do |menu| %>
 			<% if menu.visible? %>
 				<li><%= link_to menu.title, '#' %>

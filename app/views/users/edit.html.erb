@@ -1,6 +1,5 @@
 <% content_for :head do %>
-	<title>Change</title>
-	<%= stylesheet_link_tag 'application', 'profiles', :media => 'all', 'data-turbolinks-track' => true %>
+	<title><%= (t :edit_user_title) + @user.display_name %></title>
 <% end %>
 
 <%= render 'edit' %>

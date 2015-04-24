@@ -1,15 +1,5 @@
 <% content_for :head do %>
-	<title>Creation</title>
+	<title><%= t :new_item_title %></title>
 <% end %>
 
-<div class="content">
-	<p class="definition">
-		<strong>Creation</strong> - <em>n</em>. The act of causing something that does not exist to exist.
-	</p>
-	<%= render 'form' %>
-</div>
-<% if @item.content.present? %>
-	<div class="content">
-		<%= markdown(@item.content).html_safe =%>
-	</div>
-<% end %>
+<%= render 'new' %>

@@ -1,6 +1,6 @@
 <div class="content">
 	<p class="definition">
-		<strong>Change</strong> - <em>v</em>. To be made to become different.
+		<%= t(:change_definition) %>
 	</p>
 	<p class="alert">
 		You are modifying another user, <%= current_user.display_name %>. Exercise caution lest you offend, despite your status.
@@ -25,10 +25,7 @@
 			<% end %>
 		</div>
 		<p>
-			<%= f.submit "Commit" %>
+			<%= f.submit t(:commit) %>
 		</p>
 	<% end %>
-	<p>
-		<%= link_to 'Modify Account Settings', edit_user_registration_path %>
-	</p>
 </div>

@@ -1,10 +1,10 @@
 <div class="entry">
 	<span class="actions">
-		<%= item.created_at.strftime("%a %b %d, %Y") %><br>
+		<%= l(item.created_at, format: :midi) %><br>
 		<% if can? :update, item %>
-			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_item_path(item) %>
+			<%= link_to t(:change_nav).html_safe, edit_item_path(item) %>
 			<span class="htab"></span>
-			<%= link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, item_path(item),method: :delete,data: { confirm: 'Are you sure?' } %>
+			<%= link_to t(:delete_nav).html_safe, item_path(item),method: :delete,data: { confirm: t(:confirm_deletion) } %>
 		<% end %>
 	</span>
 	<div class="title">

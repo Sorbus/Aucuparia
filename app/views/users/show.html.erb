@@ -1,5 +1,5 @@
 <% content_for :head do %>
-	<title><%= @user.display_name %></title>
+	<title><%= (t :view_user_title) + @user.display_name %></title>
 <% end %>
 
 <%= render 'profiles/show' %>

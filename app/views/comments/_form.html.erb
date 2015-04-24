@@ -6,7 +6,7 @@
 	<% if @comment.errors.any? %>
 		<div id="error_explanation">
 			<h2>
-				<%= pluralize(@comment.errors.count, "error") %> prohibited this article from being saved:
+				<%= pluralize(@comment.errors.count, "error") + ' ' + t(:save_failed) %>
 			</h2>
 			<ul>
 				<% @comment.errors.full_messages.each do |msg| %>
@@ -18,12 +18,12 @@
 
 	<p>
 		<% f.label :comment_body %>
-		<%= f.text_area :body, :placeholder => 'speak your mind' %>
+		<%= f.text_area :body, :placeholder => t(:comment_placeholder) %>
 	</p>
 		
 	<p>
-		<% f.submit 'preview', class: "left" %>
-		<%= f.submit 'commit', class: "right" %>
+		<% f.submit t(:preview), class: "left" %>
+		<%= f.submit t(:commit), class: "right" %>
 	</p>
 	&nbsp
 <% end %>

@@ -1,7 +1,7 @@
 <div class="content">
 	<% if can?(:assign, :roles) %>
 		<div class="actions">
-			<%= link_to '<i class="fa fa-gear fa-lg"></i>'.html_safe, edit_user_path(@user), :remote => true %>
+			<%= link_to t(:settings_nav).html_safe, edit_user_path(@user), :remote => true %>
 		</div>
 	<% end %>
 	<p class="definition">
@@ -39,7 +39,7 @@
 		<strong>Account has existed for</strong> <%= distance_of_time_in_words(Time.now, @user.created_at) %><br/>
 		<% if can?(:timestamp, @user) %>
 			<strong>Account created:</strong>
-			<%= @user.created_at.strftime("%H:%M, %a %b %d, %Y") %>
+			<%= l(@user.created_at, format: :full) %>
 		<% end %>
 	</p>
 

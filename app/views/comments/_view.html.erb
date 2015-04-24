@@ -2,7 +2,7 @@
 	<div class="comments">
 		<% if !@item.comments.blank? %>
 			<p id="definition">
-				<strong>Comments</strong>
+				<strong><%= t :comment_section %></strong>
 			</p>
 			<hr>
 			<% @item.comments.find_each do |comment| %>

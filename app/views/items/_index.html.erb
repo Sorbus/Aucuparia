@@ -1,9 +1,9 @@
 <div class="content">
 	<p class="definition">
-		<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.
+		<%= t(:index_definition) %>
 		<% if can? :create, @item %>
 			<span class="actions">
-				<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_item_path %>
+				<%= link_to t(:create_nav).html_safe, new_item_path %>
 			</span>
 		<% end %>
 	</p>

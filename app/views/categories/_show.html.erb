@@ -1,9 +1,9 @@
 <div class="content">
 	<span class="actions">
-		<%= link_to '<i class="fa fa-list fa-lg"></i>'.html_safe, categories_path, :remote => true %>
+		<%= link_to t(:index_nav).html_safe, categories_path, :remote => true %>
 		<% if can? :update, @category %>
 			<span class="htab"></span>
-			<%= link_to '<i class="fa fa-plus fa-lg"></i>'.html_safe, new_item_path %>
+			<%= link_to t(:create_nav).html_safe, new_item_path %>
 		<% end %>
 	</span>
 	<p class="definition">

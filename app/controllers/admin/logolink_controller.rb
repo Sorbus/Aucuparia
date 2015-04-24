@@ -12,8 +12,8 @@ class Admin::LogolinkController < ApplicationController
 	end
 	
 	def create
+		authorize! :create, ::Logolink
 		@ll_new = Logolink.new(ll_params)
-		authorize! :create, @ll_new
 		if @ll_new.save
 			flash[:notice] = "Logolink successfully created."
 			redirect_to admin_logolink_index_path
@@ -26,8 +26,6 @@ class Admin::LogolinkController < ApplicationController
 	def update
 		@ll_up = Logolink.find(params[:id])
 		authorize! :update, @ll_up
-#		render plain: params[:item].inspect
-		
 		if @ll_up.update(ll_params)
 			flash[:notice] = "Logolink successfully updated."
 			redirect_to admin_logolink_index_path

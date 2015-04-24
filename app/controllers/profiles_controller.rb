@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-	
 	def index
 		if !current_user.blank?
 			@user = current_user
@@ -14,21 +13,29 @@ class ProfilesController < ApplicationController
 	end
 
 	def edit
-		@user = current_user
-		respond_to do |format|
-			format.js
-			format.html
+		if !current_user.blank?
+			@user = current_user
+			respond_to do |format|
+				format.js
+				format.html
+			end
+		else
+			redirect_to new_user_session_path
 		end
 	end
 	
 	def update
-		@user = current_user
-		if @user.update_attributes(user_params)
-			flash[:notice] = "Account updated!"
-			redirect_to profile_path
+		if !current_user.blank?
+			@user = current_user
+			if @user.update_attributes(user_params)
+				flash[:notice] = "Account updated!"
+				redirect_to profile_path
+			else
+				flash[:alert] = "Account update failed."
+				render 'edit'
+			end
 		else
-			flash[:alert] = "Account update failed."
-			render 'edit'
+			redirect_to new_user_session_path
 		end
 	end
 	

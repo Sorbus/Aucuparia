@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	load_and_authorize_resource
+	before_filter :authenticate_user!, :except => [:index, :show]
  
 	def index
 		@users = User.paginate(:page => params[:page], :per_page => 20)
@@ -28,7 +29,6 @@ class UsersController < ApplicationController
 	
 	def update
 		@user = User.find(params[:id])
-#		render plain: params.inspect
 		User.valid_roles.each do |role|
 			if params[:roles].has_key?(role.to_s) && (can? :assign, role)
 				if params[:roles][role.to_s] == 'true'

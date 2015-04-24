@@ -13,8 +13,6 @@ class Admin::CoreController < ApplicationController
 	def update
 		@page = StaticPage.find(params[:id])
 		authorize! :update, @page
-#		render plain: params[:item].inspect
-		
 		if params[:commit] == 'commit' && @page.update(page_params)
 			flash[:notice] = "Page updated"
 			redirect_to root_path

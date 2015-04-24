@@ -16,8 +16,8 @@ class Admin::MenusController < ApplicationController
 	end
 	
 	def create
+		authorize! :create, ::Menu
 		@menu = Menu.new(menu_params)
-		authorize! :create, @menu
 		if @menu.save
 			flash[:notice] = "Menu successfully created."
 		else
@@ -29,8 +29,6 @@ class Admin::MenusController < ApplicationController
 	def update
 		@menu = Menu.find(params[:id])
 		authorize! :update, @menu
-#		render plain: params[:item].inspect
-		
 		if @menu.update(menu_params)
 			flash[:notice] = "Menu successfully updated."
 		else

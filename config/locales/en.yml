@@ -20,4 +20,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  main_page_title: 'Aucuparia'
+  about_page_title: 'About Aucuparia'
+  create_comment_title: 'Create a comment'
+  edit_comment_title: 'Modify your comment'
+  view_user_title: 'Looking at '
+  edit_user_title: 'Changing '
+  view_self_title: 'Peer into the mirror'
+  edit_self_title: 'Remake yourself'
+  user_index_title: 'All Users'
+  category_index_title: 'All Categories'
+  edit_category_title: 'Modify a Category'
+  edit_item_title: 'Modify an Item'
+  new_item_title: 'Author a new Item'
+  item_index_title: 'All Items'
+  view_item_title_before: ''
+  view_item_title_after: ' at Aucuparia'
+  view_category_title_before: ''
+  view_category_title_after: ' at Aucuparia'
+  admin_logolink_index_title: 'Modify Logolinks'
+  admin_menu_index_title: 'Modify Menus'
+  admin_edit_core_title: 'Modify a Page'
+  admin_index_title: 'Admin Tools'

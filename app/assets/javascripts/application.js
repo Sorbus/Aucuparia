@@ -29,5 +29,6 @@ $(function() {
 	$(document).bind('ajaxComplete', function() {
 		$('#spinner').addClass('hidden');
 		$('#yield').removeClass('faded');
+		document.title = title;
 	});
 });

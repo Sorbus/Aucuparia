@@ -18,13 +18,13 @@ class WelcomeController < ApplicationController
 	end
 	
 	def fetch
-		if params[:magic_id] == '1'
+		if params[:node] == '1'
 			@selected = Item.order('created_at DESC').limit(3)
 			respond_to do |format|
 				format.js { render :action => "fetch_recent" }
 				format.html { redirect_to(items_path) }
 			end
-		elsif params[:magic_id] == '2'
+		elsif params[:node] == '2'
 			@categories = Category.all
 			respond_to do |format|
 				format.js { render :action => "fetch_categories" }

@@ -1,2 +1,3 @@
-$("#yield").html("<%= escape_javascript(render partial: 'edit' ) %>"); 
-history.pushState( null, "Aucuparia", "/categories/<%= params[:id] %>/edit" )
+$('#yield').html('<%= escape_javascript(render partial: 'edit' ) %>'); 
+var title = '<%= t :edit_category_title %>'
+history.pushState( null, title, '/categories/<%= params[:id] %>/edit' )

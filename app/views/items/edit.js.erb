@@ -1,2 +1,3 @@
-$("#yield").html("<%= escape_javascript(render partial: 'edit' ) %>"); 
-history.pushState( null, "Edit Item", "/items/<%= params[:id] %>/edit" )
+$('#yield').html('<%= escape_javascript(render partial: 'edit' ) %>'); 
+var title = '<%= t :edit_item_title %>'
+history.pushState( null, title '/items/<%= params[:id] %>/edit' )

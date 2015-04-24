@@ -1,2 +1,3 @@
-$("#yield").html("<%= escape_javascript(render partial: 'index' ) %>"); 
-history.pushState( null, "Aucuparia", "/admin/logolink" )
+$('#yield').html('<%= escape_javascript(render partial: 'index' ) %>'); 
+var title = '<%= (t :admin_logolink_index_title) %>'
+history.pushState( null, title, '/admin/logolink' )

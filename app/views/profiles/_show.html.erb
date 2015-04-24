@@ -1,5 +1,5 @@
 <div class="content">
-	<% if can?(:assign, :roles) %>
+	<% if can?(:see, :admin_tools) %>
 		<div class="actions">
 			<%= link_to t(:settings_nav).html_safe, edit_user_path(@user), :remote => true %>
 		</div>

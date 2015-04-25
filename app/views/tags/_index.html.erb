@@ -1,0 +1,12 @@
+<div class="content">
+	<p class="definition">
+		<%= t(:index_definition).html_safe %>
+	</p>
+	<hr>
+	<div class="tags">
+		<% @tags.each do |tag| %>
+			<div class="tag"><%= link_to tag, tag_path(tag.name), :remote => true %></div>
+		<% end %>
+	</div>
+	<%= will_paginate @items =%>
+</div>

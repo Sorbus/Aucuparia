@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
 	end
 	
+	resources :tags, :only => [:index, :show], :param => :tag
+	
 	namespace :admin do
 		root 'admin#index'
 		resources :core, :only => [:edit, :update]

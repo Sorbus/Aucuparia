@@ -1,0 +1,5 @@
+<% content_for :head do %>
+	<title><%= (t :view_tag_title_before) + params[:tag] + (t :view_tag_title_after) %></title>
+<% end %>
+ 
+<%= render 'show' %>

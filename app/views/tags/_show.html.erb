@@ -1,0 +1,19 @@
+<div class="content">
+	<span class="actions">
+		<%= link_to t(:index_nav).html_safe, tags_path, :remote => true %>
+	</span>
+	<p class="definition">
+		<%= 'All items tagged with "' + params[:tag] + '".' %>
+	</p>
+	<% if !@items.empty? %>
+		<% @items.each do |item| %>
+			<hr>
+			<%= render 'items/single', :item => item %>
+		<% end %>
+		<hr>
+		<%= will_paginate @items =%>
+	<% else %>
+		<br/>
+		There's nothing here ...
+	<% end %>
+</div>

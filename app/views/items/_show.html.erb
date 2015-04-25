@@ -13,6 +13,16 @@
  
 	<%= markdown(@item.content).html_safe %>
 
+	<% if !@item.tag_list.empty? %>
+		<hr>
+		<div class="tags fade expand">
+			<div class="heading"><%= t(:tags_heading).html_safe %></div>
+			<% @item.tag_list.each do |tag| %>
+				<div class="tag"><%= link_to tag, tag_path(tag), :remote => true %></div>
+			<% end %>
+		</div>
+	<% end %>
+	
 	<div class="created">
 		Written by: <%= link_to User.find_by_id(@item.user).display_name, user_path(@item.user), :remote => true %><br>
 		Created: <%= l(@item.created_at, format: :full) %><br>
@@ -28,6 +38,7 @@
 		<br>
 	<% end %>
 	&nbsp
+	
 </div>
 
 <%= render 'comments/view' %>

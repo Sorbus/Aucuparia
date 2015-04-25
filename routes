@@ -1,6 +1,7 @@
                   Prefix Verb     URI Pattern                                 Controller#Action
                     root GET      /                                           welcome#index
                    about GET      /about(.:format)                            welcome#about
+                   fetch GET      /fetch(.:format)                            welcome#fetch
         new_user_session GET      /users/sign_in(.:format)                    devise/sessions#new
             user_session POST     /users/sign_in(.:format)                    devise/sessions#create
     destroy_user_session DELETE   /users/sign_out(.:format)                   devise/sessions#destroy
@@ -52,16 +53,19 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /items/:id(.:format)                        items#update
                          PUT      /items/:id(.:format)                        items#update
                          DELETE   /items/:id(.:format)                        items#destroy
-         edit_admin_core GET      /admin/core/:id/edit(.:format)              core#edit
-              admin_core PATCH    /admin/core/:id(.:format)                   core#update
-                         PUT      /admin/core/:id(.:format)                   core#update
-             admin_menus GET      /admin/menus(.:format)                      menus#index
-                         POST     /admin/menus(.:format)                      menus#create
-          new_admin_menu GET      /admin/menus/new(.:format)                  menus#new
-              admin_menu PATCH    /admin/menus/:id(.:format)                  menus#update
-                         PUT      /admin/menus/:id(.:format)                  menus#update
-    admin_logolink_index GET      /admin/logolink(.:format)                   logolink#index
-                         POST     /admin/logolink(.:format)                   logolink#create
-          admin_logolink PATCH    /admin/logolink/:id(.:format)               logolink#update
-                         PUT      /admin/logolink/:id(.:format)               logolink#update
-                         DELETE   /admin/logolink/:id(.:format)               logolink#destroy
+                    tags GET      /tags(.:format)                             tags#index
+                     tag GET      /tags/:tag(.:format)                        tags#show
+              admin_root GET      /admin(.:format)                            admin/admin#index
+         edit_admin_core GET      /admin/core/:id/edit(.:format)              admin/core#edit
+              admin_core PATCH    /admin/core/:id(.:format)                   admin/core#update
+                         PUT      /admin/core/:id(.:format)                   admin/core#update
+             admin_menus GET      /admin/menus(.:format)                      admin/menus#index
+                         POST     /admin/menus(.:format)                      admin/menus#create
+          new_admin_menu GET      /admin/menus/new(.:format)                  admin/menus#new
+              admin_menu PATCH    /admin/menus/:id(.:format)                  admin/menus#update
+                         PUT      /admin/menus/:id(.:format)                  admin/menus#update
+    admin_logolink_index GET      /admin/logolink(.:format)                   admin/logolink#index
+                         POST     /admin/logolink(.:format)                   admin/logolink#create
+          admin_logolink PATCH    /admin/logolink/:id(.:format)               admin/logolink#update
+                         PUT      /admin/logolink/:id(.:format)               admin/logolink#update
+                         DELETE   /admin/logolink/:id(.:format)               admin/logolink#destroy

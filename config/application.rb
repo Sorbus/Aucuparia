@@ -24,5 +24,8 @@ module Aucuparia
     config.active_record.raise_in_transactional_callbacks = true
 	config.time_zone = 'Pacific Time (US & Canada)'
 	Rails.application.routes.default_url_options[:host] = ENV['host_url']
+	
+	ActsAsTaggableOn.force_lowercase = true
+	ActsAsTaggableOn.remove_unused_tags = true
   end
 end

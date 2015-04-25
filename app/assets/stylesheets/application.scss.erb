@@ -197,6 +197,15 @@ notifications:hover {
 		opacity:1;
 		}
 	}
+	
+.fade {
+	opacity:.5;
+	@include transition(0.25s, all);
+	
+	&:hover {
+		opacity:1;
+		}
+	}
 
 .category {
 	float:left;
@@ -252,7 +261,6 @@ a	{
 		
 strong, b {
 	font-weight: 700;
-	color: #484d55;
 	}
 	
 mark {
@@ -412,6 +420,8 @@ footer {
 @import 'pagination';
 
 @import 'forms';
+
+@import 'tags';
 
 @import 'comments';
 

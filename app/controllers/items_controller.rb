@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 #		render plain: params[:item].inspect
 		
 		if params[:commit] == 'commit' && @item.save
-			flash[:notice] = "New item created!"
+#			flash[:notice] = "New item created!"
 			redirect_to @item
 		else
 			@cat_options = Category.all.map{|c| [ c.name, c.id ] }
@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
 		
 		if can? :update, @item
 			if (params[:commit] == 'commit') && @item.update(item_params)
-				flash[:notice] = "Item updated!"
+#				flash[:notice] = "Item updated!"
 				redirect_to @item
 			else
 				@item = Item.new(item_params)
@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
 				render 'edit'
 			end
 		else
-			flash[:alert] = "You can't do that!"
+#			flash[:alert] = "You can't do that!"
 			redirect_to @item
 		end
 	end
@@ -78,16 +78,16 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		if can? :destroy, @item
 			@item.destroy
-			flash[:notice] = "Item destroyed"
+#			flash[:notice] = "Item destroyed"
 			redirect_to items_path
 		else
-			flash[:alert] = "You can't do that!"
+#			flash[:alert] = "You can't do that!"
 			redirect_to @item
 		end
 	end
 	
 	private
 		def item_params
-			params.require(:item).permit(:title, :content, :summary, :category_id)
+			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list)
 		end
 end

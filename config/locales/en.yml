@@ -42,13 +42,17 @@ en:
   view_item_title_after: ' at Aucuparia'
   view_category_title_before: ''
   view_category_title_after: ' at Aucuparia'
+  view_tag_title_before: 'Items tagged as "'
+  view_tag_title_after: '" at Aucuparia'
+  tag_index_title: 'All Tags'
   admin_logolink_index_title: 'Modify Logolinks'
   admin_menu_index_title: 'Modify Menus'
   admin_edit_core_title: 'Modify a Page'
   admin_index_title: 'Admin Tools'
   
-  # sections
+  # sections and tags
   comment_section: 'Comments'
+  tags_heading: '<strong>Tags:</strong>'
   
   # definitions
   menu_definition: '<strong>Menu</strong> - <em>n</em>. A list from which a user can select an option.'
@@ -57,6 +61,7 @@ en:
   change_definition: '<strong>Change</strong> - <em>v</em>. To become different.'
   creation_definition: '<strong>Creation</strong> - <em>n</em>. The act of causing something that does not exist to exist.'
   index_definition: '<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.'
+  tag_definition: '<strong>Tag</strong> - <em>n</em>. A detached fragmentary peice used for identification or classification.'
   
   # navigation elements
   recent_posts_nav: 'recent posts'

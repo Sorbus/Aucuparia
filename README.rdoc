@@ -26,3 +26,5 @@ Once an account is created through the web interface it may be marked as a super
     > u.save
 
 Once at least one superadmin exists, all role management can be done through the web interface.
+
+For item tagging, we use the [jQuery Tags Input Plugin](https://github.com/xoxco/jQuery-Tags-Input). It is not distributed with a license, and so must be downloaded seperately. This amounts to putting the minified JS somewhere on the server, modifying app/view/layouts/application.html.erb to point to it, and changing a few values in it to stop it from trying to set the size of the tag box.

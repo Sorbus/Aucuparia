@@ -3,7 +3,7 @@
 		<%= t(:index_definition).html_safe %>
 		<% if can? :create, @item %>
 			<span class="actions">
-				<%= link_to t(:create_nav).html_safe, new_item_path %>
+				<%= link_to t(:create_nav).html_safe, new_item_path, :remote => true %>
 			</span>
 		<% end %>
 	</p>

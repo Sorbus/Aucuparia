@@ -5,10 +5,4 @@
 		<% end %>
 	</span>
 	<%= markdown(@page.content).html_safe %>
-	<br>
-	<div class="navigation">
-		<%= link_to 'All Categories', categories_path, :remote => true %>
-		<span class="tab"></span>
-		<%= link_to 'All Items', items_path, :remote => true %>
-	</div>
 </div>

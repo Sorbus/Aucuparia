@@ -1,6 +1,6 @@
 <div class="content">
 	<p class="definition">
-		<%= t(:change_definition) %>
+		<%= t(:change_definition).html_safe %>
 	</p>
 	<%= form_for @user, url: profile_path, html: { multipart: true } do |f| %>
 		<%= render 'form', :f => f %>

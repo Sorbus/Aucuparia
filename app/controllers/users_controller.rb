@@ -39,10 +39,10 @@ class UsersController < ApplicationController
 			end
 		end
 		if @user.update_attributes(user_params)
-			flash[:notice] = "Account updated!"
+#			flash[:notice] = "Account updated!"
 			redirect_to user_path(@user)
 		else
-			flash[:alert] = "Account update failed."
+#			flash[:alert] = "Account update failed."
 			render 'edit'
 		end
 	end

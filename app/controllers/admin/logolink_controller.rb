@@ -15,10 +15,10 @@ class Admin::LogolinkController < ApplicationController
 		authorize! :create, ::Logolink
 		@ll_new = Logolink.new(ll_params)
 		if @ll_new.save
-			flash[:notice] = "Logolink successfully created."
+#			flash[:notice] = "Logolink successfully created."
 			redirect_to admin_logolink_index_path
 		else
-			flash[:alert] = "Logolink creation failed!"
+#			flash[:alert] = "Logolink creation failed!"
 			redirect_to admin_logolink_index_path
 		end
 	end
@@ -27,10 +27,10 @@ class Admin::LogolinkController < ApplicationController
 		@ll_up = Logolink.find(params[:id])
 		authorize! :update, @ll_up
 		if @ll_up.update(ll_params)
-			flash[:notice] = "Logolink successfully updated."
+#			flash[:notice] = "Logolink successfully updated."
 			redirect_to admin_logolink_index_path
 		else
-			flash[:alert] = "Logolink update failed!"
+#			flash[:alert] = "Logolink update failed!"
 			redirect_to admin_logolink_index_path
 		end
 	end
@@ -39,10 +39,10 @@ class Admin::LogolinkController < ApplicationController
 		@ll_del = Logolink.find(params[:id])
 		if can? :destroy, @ll_del
 			@ll_del.destroy
-			flash[:notice] = "Logolink destroyed"
+#			flash[:notice] = "Logolink destroyed"
 			redirect_to admin_logolink_index_path
 		else
-			flash[:alert] = "You can't do that!"
+#			flash[:alert] = "You can't do that!"
 			redirect_to root_path
 		end
 	end

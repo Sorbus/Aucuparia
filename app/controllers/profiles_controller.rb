@@ -28,10 +28,10 @@ class ProfilesController < ApplicationController
 		if !current_user.blank?
 			@user = current_user
 			if @user.update_attributes(user_params)
-				flash[:notice] = "Account updated!"
+#				flash[:notice] = "Account updated!"
 				redirect_to profile_path
 			else
-				flash[:alert] = "Account update failed."
+#				flash[:alert] = "Account update failed."
 				render 'edit'
 			end
 		else

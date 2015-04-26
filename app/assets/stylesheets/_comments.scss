@@ -105,6 +105,10 @@ $view-max-width: 400px;
 				margin-bottom:0em;
 				}
 			}
+			
+		form {
+			margin-right:1em;
+			}
 		}
 	
 	.children {
@@ -121,6 +125,10 @@ $view-max-width: 400px;
 		.comment:nth-child(even) {
 			
 			}
+		}
+		
+	.reply {
+		margin-right:1em;
 		}
 		
 	p {

@@ -47,10 +47,18 @@ class CommentsController < ApplicationController
 		authorize! :update, @comment
 		if params[:commit] == 'commit' && @comment.update(comment_params)
 #				flash[:notice] = "Comment updated."
-				redirect_to item_path(:id => @comment.item_id)
+				respond_to do |format|
+					format.js { render 'replace_single' }
+					format.html { redirect_to item_path(:id => @comment.item_id) }
+				end
+#				redirect_to item_path(:id => @comment.item_id)
 			else
 #				flash[:alert] = "Comment not saved!"
-				redirect_to item_path(:id => @comment.item_id)
+#				redirect_to item_path(:id => @comment.item_id)
+				respond_to do |format|
+					format.js { render 'replace_single' }
+					format.html { redirect_to item_path(:id => @comment.item_id) }
+				end
 			end
 	end
 	

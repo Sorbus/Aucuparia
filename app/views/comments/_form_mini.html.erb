@@ -1,0 +1,12 @@
+<%= form_for @comment, url: item_comments_path(@item, :reply_id => params[:comment]) do |f| %>
+	<p>
+		<% f.label :comment_body %>
+		<%= f.text_area :body, :placeholder => t(:comment_placeholder) %>
+	</p>
+		
+	<p>
+		<% f.submit t(:preview), class: "left" %>
+		<%= f.submit t(:commit), class: "right" %>
+	</p>
+	&nbsp
+<% end %>

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable, :lockable,
 		:recoverable, :rememberable, :trackable, :validatable,
-		:omniauthable, :omniauth_providers => []
+		:omniauthable, :omniauth_providers => [:twitter]
 	has_many :items
 	has_many :comments
 	# has_one :registration_token
@@ -24,10 +24,14 @@ class User < ActiveRecord::Base
 	
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+			user.provider = auth.provider
+			user.uid = auth.uid
 			user.email = auth.info.email
+			user.website = auth.info.urls.Twitter
+			user.biography = auth.info.description
 			user.password = Devise.friendly_token[0,20]
-			user.display_name = auth.info.name	 # assuming the user model has a name
-			user.avatar = auth.info.image # assuming the user model has an image
+			user.display_name = auth.info.name
+			user.roles << :commenter
 		end
 	end
 	

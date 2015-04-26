@@ -81,6 +81,7 @@ en:
   user_nav: '<i class="fa fa-user fa-lg"></i>'
   register_nav: '<i class="fa fa-user-plus fa-lg"></i>'
   logout_nav: '<i class="fa fa-user-times fa-lg"></i>'
+  oauth_twitter_nav: '<i class="fa fa-twitter fa-lg"></i>'
   home_nav: 'Home'
   about_nav: 'About'
   

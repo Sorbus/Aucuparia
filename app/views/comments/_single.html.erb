@@ -2,9 +2,7 @@
 	<span class="actions">
 		<%= link_to t(:reply_nav).html_safe, new_item_comment_path(comment.item_id, :comment => comment.id), :remote => true %>
 		<% if can? :update, comment %>
-			<span class="htab"></span>
 			<%= link_to t(:change_nav).html_safe, edit_item_comment_path(comment.item_id, comment.id), :remote => true %>
-			<span class="htab"></span>
 			<%= link_to t(:delete_nav).html_safe, item_comment_path(comment.item_id, comment.id),method: :delete,data: { confirm: t(:confirm_deletion) } %>
 		<% end %>
 	</span>

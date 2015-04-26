@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 	# this is the master list of all accessible roles
 	roles :superadmin, :admin, :moderator, :editor, :author, :commenter
 	
+	before_save :set_default_role
+	before_destroy :clean_up_possessions
+	
 	# mount uploader to manage avatars
 	mount_uploader :avatar, AvatarUploader
 	
@@ -41,5 +44,23 @@ class User < ActiveRecord::Base
  
 	def get_user
 		@current_user = current_user
+	end
+	
+	private
+	
+	def set_default_role
+		# Gives all users the default role of commenter.
+		self.roles << :commenter
+	end
+	
+	def clean_up_possessions
+		# Before a user is destroyed, clean up all of their items and comments.
+		# Consider changing this to just remove user ids? Or that alongside tagging them as deleted and hiding them from most users.
+		self.items.each do |item|
+			item.destroy
+		end
+		self.comments.each do |comment|
+			comment.destroy
+		end
 	end
 end

@@ -63,6 +63,9 @@ en:
   index_definition: '<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.'
   tag_definition: '<strong>Tag</strong> - <em>n</em>. A detached fragmentary peice used for identification or classification.'
   
+  create_identity_definition: '<strong>Create an Identity</strong>'
+  authentication_definition: '<strong>Authentication</strong> - <em>n</em>. The process of determining whether an entity is what it claims to be.'
+  
   # navigation elements
   recent_posts_nav: 'recent posts'
   all_categories_nav: 'all categories'

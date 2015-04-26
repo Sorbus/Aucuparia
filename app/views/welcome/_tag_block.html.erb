@@ -1,0 +1,5 @@
+<div class="tags">
+	<% tags.each do |tag| %>
+		<div class="tag"><%= link_to tag, tag_path(tag.name), :remote => true %></div>
+	<% end %>
+</div>

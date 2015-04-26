@@ -30,6 +30,12 @@ class WelcomeController < ApplicationController
 				format.js { render :action => "fetch_categories" }
 				format.html { redirect_to(categories_path) }
 			end
+		elsif params[:node] == '3'
+			@tags = ActsAsTaggableOn::Tag.most_used(10)
+			respond_to do |format|
+				format.js { render :action => "fetch_tags" }
+				format.html { redirect_to(tags_path) }
+			end
 		else
 			
 		end

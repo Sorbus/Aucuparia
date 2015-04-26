@@ -67,6 +67,8 @@ en:
   recent_posts_nav: 'recent posts'
   all_categories_nav: 'all categories'
   all_posts_nav: 'all posts'
+  all_tags_nav: 'all tags'
+  top_tags_nav: 'top tags'
   
   delete_nav: '<i class="fa fa-times fa-lg"></i>'
   change_nav: '<i class="fa fa-pencil-square-o fa-lg"></i>'

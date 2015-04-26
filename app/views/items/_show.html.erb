@@ -2,7 +2,6 @@
 	<span class="actions">
 		<% if can? :update, @item %>
 			<%= link_to t(:change_nav).html_safe, edit_item_path(@item), :remote => true %>
-			<span class="htab"></span>
 			<%= link_to t(:delete_nav).html_safe, item_path(@item),method: :delete,data: { confirm: t(:confirm_deletion) } %>
 		<% end %>
 	</span>

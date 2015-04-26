@@ -2,7 +2,6 @@
 	<span class="actions">
 		<%= link_to t(:index_nav).html_safe, categories_path, :remote => true %>
 		<% if can? :update, @category %>
-			<span class="htab"></span>
 			<%= link_to t(:create_nav).html_safe, new_item_path, :remote => true %>
 		<% end %>
 	</span>

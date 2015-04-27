@@ -19,10 +19,10 @@ class Admin::MenusController < ApplicationController
 		authorize! :create, ::Menu
 		@menu = Menu.new(menu_params)
 		if @menu.save
-			current_user.notify('success',I18n.t(:noti_created))
+			flash[:success] = I18n.t(:noti_created)
 			redirect_to admin_menus_path
 		else
-			current_user.notify('error',I18n.t(:noti_creation_failed))
+			flash[:error] = I18n.t(:noti_creation_failed)
 			redirect_to admin_menus_path
 		end
 	end
@@ -31,10 +31,10 @@ class Admin::MenusController < ApplicationController
 		@menu = Menu.find(params[:id])
 		authorize! :update, @menu
 		if @menu.update(menu_params)
-			current_user.notify('success',I18n.t(:noti_updated))
+			flash[:success] = I18n.t(:noti_updated)
 			redirect_to admin_menus_path
 		else
-			current_user.notify('error',I18n.t(:noti_update_failed))
+			flash[:error] = I18n.t(:noti_update_failed)
 			redirect_to admin_menus_path
 		end
 	end

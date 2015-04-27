@@ -28,10 +28,10 @@ class ProfilesController < ApplicationController
 		if !current_user.blank?
 			@user = current_user
 			if @user.update_attributes(user_params)
-				current_user.notify('success',I18n.t(:noti_account_updated))
+				flash[:success] = I18n.t(:noti_account_updated)
 				redirect_to profile_path
 			else
-				current_user.notify('error',I18n.t(:noti_account_update_failed))
+				flash[:error] = I18n.t(:noti_account_update_failed)
 				render 'edit'
 			end
 		else

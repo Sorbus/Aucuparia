@@ -42,10 +42,10 @@ class CategoriesController < ApplicationController
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
 	  
 		if @category.save
-			current_user.notify('success',I18n.t(:noti_category_created))
+			flash[:success] = I18n.t(:noti_category_created)
 			redirect_to @category
 		else
-			current_user.notify('error',I18n.t(:noti_creation_failed))
+			flash[:error] = I18n.t(:noti_creation_failed)
 			render 'new'
 		end
 	end
@@ -55,10 +55,10 @@ class CategoriesController < ApplicationController
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
  
 		if @category.update(category_params)
-			current_user.notify('success',I18n.t(:noti_category_updated))
+			flash[:success] = I18n.t(:noti_category_updated)
 			redirect_to @category
 		else
-			current_user.notify('success',I18n.t(:noti_update_failed))
+			flash[:success] = I18n.t(:noti_update_failed)
 			render 'edit'
 		end
 	end
@@ -67,10 +67,10 @@ class CategoriesController < ApplicationController
 		@category = Category.find(params[:id])
 		if can? :destroy, @category
 			@category.destroy
-			current_user.notify('success',I18n.t(:noti_category_deleted))
+			flash[:success] = I18n.t(:noti_category_deleted)
 			redirect_to categories_path
 		else
-			current_user.notify('error',I18n.t(:noti_no_permissions))
+			flash[:error] = I18n.t(:noti_no_permissions)
 			redirect_to categories_path
 		end
 	end

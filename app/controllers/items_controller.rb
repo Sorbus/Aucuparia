@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 #		render plain: params[:item].inspect
 		
 		if params[:commit] == 'commit' && @item.save
-			current_user.notify('success',I18n.t(:noti_item_created))
+			flash[:success] = I18n.t(:noti_item_created)
 			redirect_to @item
 		else
 			@cat_options = Category.all.map{|c| [ c.name, c.id ] }
@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
 		
 		if can? :update, @item
 			if (params[:commit] == 'commit') && @item.update(item_params)
-				current_user.notify('success',I18n.t(:noti_item_updated))
+				flash[:success] = I18n.t(:noti_item_updated)
 				redirect_to @item
 			else
 				@item = Item.new(item_params)
@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
 				render 'edit'
 			end
 		else
-			current_user.notify('warning',I18n.t(:noti_no_permissions))
+			flash[:warning] = I18n.t(:noti_no_permissions)
 			redirect_to @item
 		end
 	end
@@ -78,10 +78,10 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		if can? :destroy, @item
 			@item.destroy
-			current_user.notify('success',I18n.t(:noti_item_deleted))
+			flash[:success] = I18n.t(:noti_item_deleted)
 			redirect_to items_path
 		else
-			current_user.notify('warning',I18n.t(:noti_no_permissions))
+			flash[:warning] = I18n.t(:noti_no_permissions)
 			redirect_to @item
 		end
 	end

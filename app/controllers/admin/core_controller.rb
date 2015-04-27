@@ -14,7 +14,7 @@ class Admin::CoreController < ApplicationController
 		@page = StaticPage.find(params[:id])
 		authorize! :update, @page
 		if params[:commit] == 'commit' && @page.update(page_params)
-			current_user.notify('success',I18n.t(:noti_updated))
+			flash[:success] = I18n.t(:noti_updated)
 			redirect_to root_path
 		else
 			@page = StaticPage.new(page_params)

@@ -1,4 +1,4 @@
-<% if current_user && !current_user.mailbox.notifications.blank? %>
+<% if  !flash.empty? %>
 	toastr.options = {
 		"closeButton": false,
 		"debug": false,
@@ -15,8 +15,7 @@
 		"showMethod": "slideDown",
 		"hideMethod": "fadeOut",
 	}
-	<% current_user.mailbox.notifications.unread.each do |noti| %>
-		toastr['<%= noti.subject %>']('<%= noti.body %>')
-		<% noti.mark_as_read(current_user) %>
+	<% flash.each do |name, msg| %>
+		toastr['<%= name %>']('<%= msg %>')
 	<% end %>
 <% end %>

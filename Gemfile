@@ -37,6 +37,8 @@ gem 'carrierwave'
 gem 'rmagick'
 # Use ActsAsTaggableOn to manage item tagging. Could role my own solution, but this seems better.
 gem 'acts-as-taggable-on', '~> 3.4'
+# Using Mailboxer for notifications - 
+gem 'mailboxer'
 
 gem 'figaro'
 

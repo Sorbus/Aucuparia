@@ -5,7 +5,7 @@
         new_user_session GET      /users/sign_in(.:format)                    devise/sessions#new
             user_session POST     /users/sign_in(.:format)                    devise/sessions#create
     destroy_user_session DELETE   /users/sign_out(.:format)                   devise/sessions#destroy
- user_omniauth_authorize GET|POST /users/auth/:provider(.:format)             users/omniauth_callbacks#passthru {:provider=>/(?!)/}
+ user_omniauth_authorize GET|POST /users/auth/:provider(.:format)             users/omniauth_callbacks#passthru {:provider=>/twitter/}
   user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)      users/omniauth_callbacks#:action
            user_password POST     /users/password(.:format)                   devise/passwords#create
        new_user_password GET      /users/password/new(.:format)               devise/passwords#new
@@ -53,6 +53,7 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /items/:id(.:format)                        items#update
                          PUT      /items/:id(.:format)                        items#update
                          DELETE   /items/:id(.:format)                        items#destroy
+                 message DELETE   /messages/:id(.:format)                     messages#destroy
                     tags GET      /tags(.:format)                             tags#index
                      tag GET      /tags/:tag(.:format)                        tags#show
               admin_root GET      /admin(.:format)                            admin/admin#index

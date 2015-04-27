@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 	# root pages
 	root 'welcome#index'
 	get 'about' => 'welcome#about'
-	get '/fetch' => 'welcome#fetch', as: 'fetch'
+	get '/fetch' => 'welcome#fetch', :as => 'fetch'
 	
 	# user stuff
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 	resources :items do
 		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
 	end
+	
+	resources :messages, :only => [:destroy, :index]
 	
 	resources :tags, :only => [:index, :show], :param => :tag
 	

@@ -39,10 +39,10 @@ class UsersController < ApplicationController
 			end
 		end
 		if @user.update_attributes(user_params)
-#			flash[:notice] = "Account updated!"
+			current_user.notify('success',I18n.t(:noti_updated))
 			redirect_to user_path(@user)
 		else
-#			flash[:alert] = "Account update failed."
+			current_user.notify('error',I18n.t(:noti_update_failed))
 			render 'edit'
 		end
 	end

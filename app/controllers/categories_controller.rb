@@ -42,10 +42,10 @@ class CategoriesController < ApplicationController
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
 	  
 		if @category.save
-#			flash[:notice] = "Category created."
+			current_user.notify('success',I18n.t(:noti_category_created))
 			redirect_to @category
 		else
-#			flash[:alert] = "Category not created!"
+			current_user.notify('error',I18n.t(:noti_creation_failed))
 			render 'new'
 		end
 	end
@@ -55,19 +55,24 @@ class CategoriesController < ApplicationController
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
  
 		if @category.update(category_params)
-#			flash[:notice] = "Category updated."
+			current_user.notify('success',I18n.t(:noti_category_updated))
 			redirect_to @category
 		else
-#			flash[:alert] = "Category not updated!"
+			current_user.notify('success',I18n.t(:noti_update_failed))
 			render 'edit'
 		end
 	end
 	
 	def destroy
 		@category = Category.find(params[:id])
-		@category.destroy
- 
-		redirect_to categories_path
+		if can? :destroy, @category
+			@category.destroy
+			current_user.notify('success',I18n.t(:noti_category_deleted))
+			redirect_to categories_path
+		else
+			current_user.notify('error',I18n.t(:noti_no_permissions))
+			redirect_to categories_path
+		end
 	end
 	
 	private

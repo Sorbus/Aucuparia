@@ -55,7 +55,7 @@ $view-max-width: 25em;
 	}
 
 @charset 'UTF-8';
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
+@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
  
 body {
 	margin-top:5%;
@@ -130,46 +130,6 @@ body {
 		padding:.7em;
 		text-align:center;
 		}
-	}
-	
-.notice-wrapper {
-	width: 100%;
-	position:fixed;
-	left: 0;
-	width: 100%;
-	z-index:1;
-	top:-1em;
-	.notice {
-		padding:1em;
-		width:15em;
-		margin:0px auto;
-		@include session-core(center);
-		@include transition(0.5s, all);
-		border:1px dotted $primary-foreground;
-		
-		&:hover {
-			@include slide-in(1em);
-			}
-		}
-		
-	.alert {
-		padding:1em;
-		width:15em;
-		margin:0px auto;
-		@include session-core(center);
-		@include transition(0.5s, all);
-		border:1px dotted red;
-		background-color: #f9e3e3;
-		color:red;
-		
-		&:hover {
-			@include slide-in(1em);
-			}
-		}
-	}
-
-notifications:hover {
-	top: 10px;
 	}
 
 .created {

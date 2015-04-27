@@ -32,3 +32,13 @@ $(function() {
 		document.title = title;
 	});
 });
+
+setInterval(function() {
+    $.ajax({
+		url: '/messages',
+		type: 'GET',
+		success: function(result) {
+		}
+	});
+	title = $(document).find("title").text();
+}, 10000);

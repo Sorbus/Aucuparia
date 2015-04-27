@@ -62,7 +62,6 @@ en:
   creation_definition: '<strong>Creation</strong> - <em>n</em>. The act of causing something that does not exist to exist.'
   index_definition: '<strong>Index</strong> - <em>n</em>. A list of items that gives for each item the location where it may be found.'
   tag_definition: '<strong>Tag</strong> - <em>n</em>. A detached fragmentary peice used for identification or classification.'
-  
   create_identity_definition: '<strong>Create an Identity</strong>'
   authentication_definition: '<strong>Authentication</strong> - <em>n</em>. The process of determining whether an entity is what it claims to be.'
   
@@ -73,6 +72,7 @@ en:
   all_tags_nav: 'all tags'
   top_tags_nav: 'top tags'
   
+  # font awesome nav tags
   delete_nav: '<i class="fa fa-times fa-lg"></i>'
   change_nav: '<i class="fa fa-pencil-square-o fa-lg"></i>'
   create_nav: '<i class="fa fa-plus fa-lg"></i>'
@@ -96,20 +96,41 @@ en:
   save_failed: 'prohibited this item from being saved:'
   commit: 'commit'
   preview: 'preview'
-  
   comment_placeholder: 'speak your mind'
-  
   menu_visible: 'visible'
   menu_title: 'menu title'
-  
   ll_url: 'destination URL'
   ll_css_id: 'CSS ID'
   ll_css_class: 'CSS Class'
   ll_display: 'display'
-  
   core_content: 'content'
   core_title: 'title'
   
+  # notifications
+  noti_saved: 'Successfully saved'
+  noti_save_failed: 'Save failed'
+  noti_created: 'Successfully created'
+  noti_creation_failed: 'Creation failed'
+  noti_updated: 'Successfully updated'
+  noti_update_failed: 'Update failed'
+  noti_deleted: 'Successfully deleted'
+  noti_deletion_failed: 'Deletion failed'
+  noti_account_updated: 'Account updated'
+  noti_account_update_failed: 'Account update failed'
+  noti_item_created: 'New item created'
+  noti_item_updated: 'Item updated'
+  noti_item_deleted: 'Item deleted'
+  noti_comment_created: 'Comment created'
+  noti_comment_updated: 'Comment updated'
+  noti_comment_deleted: 'Comment deleted'
+  noti_comment_failed: 'Comment not saved'
+  noti_category_created: 'Category created'
+  noti_category_updated: 'Category updated'
+  noti_category_deleted: 'Category deleted'
+  
+  noti_no_permissions: "You can't do that"
+  
+  # time formats
   time:
     formats:
       full: '%H:%M, %a %b %d, %Y'

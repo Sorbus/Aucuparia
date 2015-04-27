@@ -6,14 +6,18 @@
   <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' %>
   <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'modernizr.custom.94336', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery.tagsinput.min.js', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<% render "shared/flash" if !flash.empty? %>
+<script>
+<%= render "shared/notifications" %>
+</script>
 
 <div class="cover">
 </div>

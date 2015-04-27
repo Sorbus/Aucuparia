@@ -1,14 +1,12 @@
 <% if comment.is_root? %>
-	<div class="comment">
+	<div class='comment'>
 		<%= render 'comments/single', :comment => comment %>
-		<% if comment.has_children? %>
-			<div class="children">
-				<% comment.descendants.each do |child| %>
-					<div class="comment">
-						<%= render 'comments/single', :comment => child %>
-					</div>
-				<% end %>
-			</div>
-		<% end %>
+		<div class='children' id='children-<%= comment.id %>'>
+			<% comment.descendants.each do |child| %>
+				<div class='comment'>
+					<%= render 'comments/single', :comment => child %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 <% end %>

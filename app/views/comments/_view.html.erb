@@ -9,6 +9,8 @@
 				<%= render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment} %>
 			<% end %>
 		<% end %>
+		<div id="comment-new">
+		</div>
 		<% if can? :create, Comment %>
 			<%= render 'comments/form' %>	
 		<% end %>

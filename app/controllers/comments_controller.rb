@@ -24,19 +24,24 @@ class CommentsController < ApplicationController
 		if params.has_key?(:reply_id) && (@comment = Comment.find(params[:reply_id]).children.create(comment_params))
 			@comment.user_id = current_user.id
 			@comment.item_id = params[:item_id]
-			@comment.save
-			# this is hacky and horrible.
-#			flash[:notice] = "Comment created."
-			redirect_to item_path(:id => @comment.item_id)
+			@comment.save # this is hacky and horrible.
+			current_user.notify('success',I18n.t(:noti_comment_created))
+			respond_to do |format|
+				format.js { render 'insert_single' }
+				format.html { redirect_to item_path(:id => @comment.item_id) }
+			end
 		else
 			@comment = Comment.new(comment_params)
 			@comment.user_id = current_user.id
 			@comment.item_id = params[:item_id]
 			if params[:commit] == 'commit' && @comment.save
-#				flash[:notice] = "Comment created."
-				redirect_to item_path(:id => @comment.item_id)
+				current_user.notify('success',I18n.t(:noti_comment_created))
+				respond_to do |format|
+					format.js { render 'insert_single' }
+					format.html { redirect_to item_path(:id => @comment.item_id) }
+				end
 			else
-#				flash[:alert] = "Comment not saved!"
+				current_user.notify('error',I18n.t(:noti_comment_failed))
 				redirect_to item_path(:id => @comment.item_id)
 			end
 		end
@@ -46,17 +51,15 @@ class CommentsController < ApplicationController
 		@comment = Comment.find(params[:id])
 		authorize! :update, @comment
 		if params[:commit] == 'commit' && @comment.update(comment_params)
-#				flash[:notice] = "Comment updated."
+				current_user.notify('success',I18n.t(:noti_comment_updated))
 				respond_to do |format|
-					format.js { render 'replace_single' }
+					format.js
 					format.html { redirect_to item_path(:id => @comment.item_id) }
 				end
-#				redirect_to item_path(:id => @comment.item_id)
 			else
-#				flash[:alert] = "Comment not saved!"
-#				redirect_to item_path(:id => @comment.item_id)
+				current_user.notify('error',I18n.t(:noti_comment_failed))
 				respond_to do |format|
-					format.js { render 'replace_single' }
+					format.js
 					format.html { redirect_to item_path(:id => @comment.item_id) }
 				end
 			end
@@ -70,8 +73,10 @@ class CommentsController < ApplicationController
 			rescue Ancestry::AncestryException
 				@comment.update({:user_id => nil})
 			end
+			current_user.notify('success',I18n.t(:noti_comment_deleted))
 			redirect_to item_path(params[:item_id])
 		else
+			current_user.notify('error',I18n.t(:noti_no_permissions))
 			redirect_to item_path(@comment.item)
 		end
 	end

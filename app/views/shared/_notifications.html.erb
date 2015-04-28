@@ -1,4 +1,29 @@
-<% if  !flash.empty? %>
+<% if current_user && !current_user.mailbox.notifications.blank? %>
+	toastr.clear()
+	toastr.options = {
+		"closeButton": false,
+		"debug": false,
+		"newestOnTop": true,
+		"progressBar": false,
+		"positionClass": "toast-top-right",
+		"preventDuplicates": false,
+		"showDuration": "5000",
+		"hideDuration": "1000",
+		"timeOut": "60000",
+		"extendedTimeOut": "1000",
+		"showEasing": "swing",
+		"hideEasing": "linear",
+		"showMethod": "slideDown",
+		"hideMethod": "fadeOut",
+	}
+	<% current_user.mailbox.notifications.unread.each do |noti| %>
+		toastr['info']('<%= noti.subject %>', '<%= noti.body %>', 
+			{onclick: function() {$.ajax({url: '<%= message_path(noti.id) %>', type: 'delete', dataType: 'script', success: console.log('deleted') })}}
+		);
+	<% end %>
+<% end %>
+
+<% if !flash.empty? %>
 	toastr.options = {
 		"closeButton": false,
 		"debug": false,
@@ -20,3 +45,4 @@
 	<% end %>
 	<% flash.clear %>
 <% end %>
+

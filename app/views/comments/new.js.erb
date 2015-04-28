@@ -1,7 +1,7 @@
 <% if params[:comment].blank? %>
 	$('#yield').html('<%= escape_javascript(render partial: 'new' ) %>');
 	var title = '<%= t :create_comment_title %>' 
-	history.pushState( null, title, '/items/<%= params[:item_id] %>/comments/new' )
+	history.pushState( null, title, '<%= new_item_comment_path(params[:item_id]) %>' )
 <% else %>
 	$('#reply-<%= params[:comment] %>').html('<%= escape_javascript(render partial: 'form' ) %>');
 	$('#reply-<%= params[:comment] %>').removeClass('hidden');

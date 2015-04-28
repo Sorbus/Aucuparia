@@ -1,7 +1,7 @@
 <div class="content" id="main">
 	<span class="actions">
 		<% if can? :update, @page %>
-			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_admin_core_path(@page) %>
+			<%= link_to '<i class="fa fa-pencil-square-o fa-lg"></i>'.html_safe, edit_admin_core_path(@page), :remote => true %>
 		<% end %>
 	</span>
 	<%= markdown(@page.content).html_safe %>

@@ -5,4 +5,4 @@
 <% end %>
 
 var title = '<%= @comment.item.title %>'
-history.pushState( null, title, "/items/<%= params[:item_id] %>" )
+history.pushState( null, title, "<%= item_path(params[:item_id]) %>" )

@@ -18,4 +18,5 @@
 	<% flash.each do |name, msg| %>
 		toastr['<%= name %>']('<%= msg %>')
 	<% end %>
+	<% flash.clear %>
 <% end %>

@@ -1,0 +1,3 @@
+$('#yield').html('<%= escape_javascript(render partial: 'errors/error_404' ) %>'); 
+var title = '<%= t :error_404_title %>'
+history.pushState( null, title, '<%= request.original_fullpath %>' )

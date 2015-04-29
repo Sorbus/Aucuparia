@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@item = Item.find(params[:id])
-		@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
+		@user = User.find_by_id(params[:id])
+		@posts = @user.items.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
 		respond_to do |format|
 			format.js
 			format.html
@@ -38,12 +38,12 @@ class UsersController < ApplicationController
 				end
 			end
 		end
-		if @user.update_attributes(user_params)
+		if @user.update_without_password(user_params)
 			flash[:success] = I18n.t(:noti_updated)
 			redirect_to user_path(@user)
 		else
 			flash[:error] = I18n.t(:noti_update_failed)
-			render 'edit'
+			redirect_to edit_user_path(@user)
 		end
 	end
 	

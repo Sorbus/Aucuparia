@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
 	def index
 		if !current_user.blank?
 			@user = current_user
-			@posts = @user.items.paginate(:page => params[:page], :per_page => 5)
+			@posts = @user.items.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
+			@unpub = @user.items.where(:published => false, :deleted => false)
 			respond_to do |format|
 				format.js { render :action => 'show' }
 				format.html { render :action => 'show' }
@@ -35,6 +36,7 @@ class ProfilesController < ApplicationController
 				render 'edit'
 			end
 		else
+			flash[:alert] = I18n.t(:noti_no_permissions)
 			redirect_to new_user_session_path
 		end
 	end

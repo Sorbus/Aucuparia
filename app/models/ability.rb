@@ -4,7 +4,9 @@ class Ability
 	def initialize(user)
 		user ||= User.new # if necessary, create a guest user
 		
-		can :read, [Category, Item, Comment, User]
+		can :read, [Category, User]
+		can :read, [Comment], :deleted => false
+		can :read, [Item], :deleted => false, :published => true
 		can :see, [:moderator, :editor, :author, :commenter]
 		
 		if user.id == nil # for guest users
@@ -12,9 +14,9 @@ class Ability
 		else
 			# these permissions are given to every user.
 			can :see, [:admin]
-			can :manage, User, :user_id => user.id
-			can :timestamp, User, :user_id => user.id
-			can :see_email, User, :user_id => user.id
+			can :manage, User, :id => user.id
+			can :timestamp, User, :id => user.id
+			can :see_email, User, :id => user.id
 			# now, let's see what special things we can do ...
 			user.roles.each do |role|
 				self.send role, user # need to pass the user object along, or things break.
@@ -36,18 +38,18 @@ class Ability
 	end
 	
 	def moderator(user)
-		can :manage, Comment
+		can :manage, Comment, :deleted => false
 	end
 	
 	def editor(user)
-		can :manage, Item
+		can :manage, Item, :deleted => false
 	end
 	
 	def author(user)
-		can :manage, Item, :user_id => user.id
+		can :manage, Item, :user_id => user.id, :deleted => false
 	end
 	
 	def commenter(user)
-		can :manage, Comment, :user_id => user.id
+		can :manage, Comment, :user_id => user.id, :deleted => false
 	end
 end

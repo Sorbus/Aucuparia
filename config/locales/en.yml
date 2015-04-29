@@ -127,8 +127,10 @@ en:
   noti_category_created: 'Category created'
   noti_category_updated: 'Category updated'
   noti_category_deleted: 'Category deleted'
+  noti_roles_updated: 'User roles updated'
   
   noti_no_permissions: "You can't do that"
+  note_generic_failure: "Something went wrong"
   
   # time formats
   time:

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 	# hooks
-	before_save :set_default_role
+	before_create :set_default_role
 	before_destroy :clean_up_possessions
+	before_save :set_roles
 	
 	# setup roles using RoleModel
 	include RoleModel
@@ -23,12 +24,14 @@ class User < ActiveRecord::Base
 	# relationships
 	has_many :items
 	has_many :comments
+	
+	attr_accessor :mask
 
 	# validation
 	validates :password, presence: true, on: :create
-	validates :email, :display_name, presence: true
+	validates :email, :display_name, presence: true, on: create
 	validates :email, :display_name, uniqueness: true
-	validates :email, email: true
+#	validates :email, email: true, if !self.provider.nil?
 	validates :website, :url => {:allow_blank => true}
 	
 	# omniauth login & registration
@@ -60,9 +63,17 @@ class User < ActiveRecord::Base
 	
 	private
 	
+	def email_required?
+      true unless !self.provider.nil?
+    end
+	
 	# Gives all users the default role of commenter.
 	def set_default_role
 		self.roles << :commenter
+	end
+	
+	def set_roles
+		#self.roles_mask = self.mask
 	end
 	
 	# Before a user is destroyed, clean up all of their items and comments.

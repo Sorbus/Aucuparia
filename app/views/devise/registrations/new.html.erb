@@ -3,6 +3,7 @@
 <% end %>
 
 <div class="content">
+	<%= render "devise/shared/links" %>
 	<p class="definition">
 		<%= t(:create_identity_definition).html_safe %>
 	</p>
@@ -34,10 +35,6 @@
 		</p>
 		<p>
 			<%= f.submit "Sign up" %>
-		</p>
-		
-		<%= render "devise/shared/links" %>
+		</p>	
 	<% end %>
-
-	
 </div>

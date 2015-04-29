@@ -343,6 +343,25 @@ span.clear {
 .hidden {display:none!important;}
 .left{float:left;}
 .right{float:right;}/*Don't look at me, senpai! -Right Shark-chan */
+	
+.devise-actions {
+	margin-left: .5em;
+	margin-top: -.5em;
+	
+	.box {
+		width:2em;
+		float:left;
+		padding:.5em;
+		height:2em;
+		overflow:hidden;
+		@include transition(.3s, all);
+		
+		&:first-of-type {
+			padding-left:0em;
+			}
+		}
+	}
+
 
 /*Responsive Styles*/
 

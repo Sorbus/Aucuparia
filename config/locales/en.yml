@@ -93,6 +93,10 @@ en:
   home_nav: 'Home'
   about_nav: 'About'
   
+  devise_login_nav: '<span class="fa-stack fa-lg left" title="Sign In"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span>'
+  devise_register_nav: '<span class="fa-stack fa-lg left" title="Create Identity"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-user-plus fa-stack-1x"></i></span>'
+  devise_forgot_password: '<span class="fa-stack fa-lg left" title="Forgotten your password?"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x"></i></span>'
+  
   # confirmations
   confirm_deletion: 'Are you sure you want to delete this?'
   confirm_logout: 'Are you sure?'

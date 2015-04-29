@@ -3,6 +3,7 @@
 <% end %>
 
 <div class="content">
+	<%= render "devise/shared/links" %>
 	<p class="definition">
 		<%= t(:authentication_definition).html_safe %>
 	</p>
@@ -27,8 +28,6 @@
 		
 		<p>
 			<%= f.submit "Log in" %>
-		</p>
-		
-		<%= render "devise/shared/links" %>
+		</p>	
 	<% end %>
 </div>

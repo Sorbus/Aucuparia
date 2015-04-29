@@ -3,6 +3,7 @@
 <% end %>
 
 <div class="content">
+	<%= render "devise/shared/links" %>
 	<p class="definition">
 		<strong>Resend unlock instructions</strong>
 	</p>
@@ -19,6 +20,4 @@
 			<%= f.submit "Resend" %>
 		</p>
 	<% end %>
-
-	<%= render "devise/shared/links" %>
 </div>

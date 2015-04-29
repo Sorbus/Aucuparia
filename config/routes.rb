@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	resources :categories
 	resources :items do
 		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
+		post '/publish' => 'items#publish'
 	end
 	
 	resources :messages, :only => [:destroy, :index]
@@ -28,4 +29,6 @@ Rails.application.routes.draw do
 #		resource :icons, :only => [:index, :update, :create]
 		resources :logolink, :only => [:index, :update, :create, :destroy]
 	end
+	
+	match '*unmatched_route', :to => 'application#raise_not_found!', :via => :all
 end

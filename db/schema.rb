@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427010116) do
+ActiveRecord::Schema.define(version: 20150428215613) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(version: 20150427010116) do
   add_index "categories", ["menu_id"], name: "index_categories_on_menu_id"
 
   create_table "comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "item_id"
     t.integer  "user_id"
     t.text     "body"
     t.string   "ancestry"
+    t.boolean  "deleted",    default: false
   end
 
   add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
@@ -58,9 +59,10 @@ ActiveRecord::Schema.define(version: 20150427010116) do
     t.string   "summary"
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "published"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "published",   default: false
+    t.boolean  "deleted",     default: false
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"

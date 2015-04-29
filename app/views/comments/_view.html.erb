@@ -5,7 +5,7 @@
 				<strong><%= t :comment_section %></strong>
 			</p>
 			<hr>
-			<% @item.comments.find_each do |comment| %>
+			<% @item.comments.where(:ancestry => nil).each do |comment| %>
 				<%= render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment} %>
 			<% end %>
 		<% end %>

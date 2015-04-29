@@ -36,6 +36,12 @@
 		<%= f.text_field :tag_list, :value => @item.tag_list.join(', ') %>
 		<script>$('#item_tag_list').tagsInput();</script>
 	</p>
+	<% if !@item.published? %>
+		<p class="publish">
+			<%= f.label :published, t(:publish_immediately) %>
+			<%= f.check_box :published, class: "right" %>
+		</p>
+	<% end %>
 	<p>
 		<%= f.submit t(:preview), class: "left" %>
 		<%= f.submit t(:commit), class: "right" %>

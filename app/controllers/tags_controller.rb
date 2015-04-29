@@ -8,7 +8,7 @@ class TagsController < ApplicationController
 	end
 	
 	def show
-		@items = Item.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
+		@items = Item.where(:deleted => false, :published => true).tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
 		respond_to do |format|
 			format.js
 			format.html

@@ -55,4 +55,16 @@
 		<% end %>
 		<%= will_paginate @posts =%>
 	<% end %>
+	
+	<% if !@unpub.blank? %>
+		<p>
+			<strong>Unpublished Items:</strong>
+		</p>
+		
+		<% @unpub.each do |item| %>
+			<hr>
+			<%= render 'items/single', :item => item %>
+		<% end %>
+		<%= will_paginate @posts =%>
+	<% end %>
 </div>

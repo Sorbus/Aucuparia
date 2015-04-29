@@ -1,10 +1,9 @@
 class ItemsController < ApplicationController
 	load_and_authorize_resource
-#	before_action :require_user, except: [:index, :show]
 	before_filter :authenticate_user!, :except => [:index, :show]
 
 	def index 
-		@posts = Item.paginate(:page => params[:page], :per_page => 5)
+		@posts = Item.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
 		respond_to do |format|
 			format.js
 			format.html
@@ -43,8 +42,6 @@ class ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		@item.category = Category.find(params[:item][:category_id])
 		@item.user = User.find(current_user.id)
-#		render plain: params[:item].inspect
-		
 		if params[:commit] == 'commit' && @item.save
 			flash[:success] = I18n.t(:noti_item_created)
 			redirect_to @item
@@ -57,37 +54,33 @@ class ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		@item.category = Category.find(params[:item][:category_id])
-#		render plain: params[:item].inspect
-		
-		if can? :update, @item
-			if (params[:commit] == 'commit') && @item.update(item_params)
-				flash[:success] = I18n.t(:noti_item_updated)
-				redirect_to @item
-			else
-				@item = Item.new(item_params)
-				@cat_options = Category.all.map{|c| [ c.name, c.id ] }
-				render 'edit'
-			end
-		else
-			flash[:warning] = I18n.t(:noti_no_permissions)
+		if (params[:commit] == 'commit') && @item.update(item_params)
+			flash[:success] = I18n.t(:noti_item_updated)
 			redirect_to @item
+		else
+			@item = Item.new(item_params)
+			@cat_options = Category.all.map{|c| [ c.name, c.id ] }
+			render 'edit'
 		end
+	end
+	
+	def publish
+		@item = Item.find(params[:item_id])
+		if !@item.published
+			@item.update(:published => true)
+		end
+		redirect_to @item
 	end
 	
 	def destroy
 		@item = Item.find(params[:id])
-		if can? :destroy, @item
-			@item.destroy
-			flash[:success] = I18n.t(:noti_item_deleted)
-			redirect_to items_path
-		else
-			flash[:warning] = I18n.t(:noti_no_permissions)
-			redirect_to @item
-		end
+		@item.update(:deleted => true)
+		flash[:success] = I18n.t(:noti_item_deleted)
+		redirect_to items_path
 	end
 	
 	private
 		def item_params
-			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list)
+			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list, :published)
 		end
 end

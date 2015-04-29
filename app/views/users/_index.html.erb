@@ -7,7 +7,7 @@
 		<div class="entry user">
 			<%= display_avatar(user, '2x').html_safe %>
 			<div class="title">
-				<%= link_to user.display_name, user_path(user) %>
+				<%= link_to user.display_name, user_path(user), :remote => true %>
 			</div>
 			<% if user.biography? %>
 				<div class="sample">

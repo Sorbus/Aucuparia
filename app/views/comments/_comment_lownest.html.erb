@@ -1,4 +1,4 @@
-<% if comment.is_root? %>
+<% if !comment.deleted? || (comment.has_children? && (comment.ancestry == nil)) %>
 	<div class='comment'>
 		<%= render 'comments/single', :comment => comment %>
 		<div class='children' id='children-<%= comment.id %>'>

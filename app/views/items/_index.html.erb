@@ -1,7 +1,7 @@
 <div class="content">
 	<p class="definition">
 		<%= t(:index_definition).html_safe %>
-		<% if can? :create, @item %>
+		<% if can? :create, Item %>
 			<span class="actions">
 				<%= link_to t(:create_nav).html_safe, new_item_path, :remote => true %>
 			</span>

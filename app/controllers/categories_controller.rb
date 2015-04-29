@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 	
 	def show
 		@category = Category.find(params[:id])
-		@posts = @category.items.paginate(:page => params[:page], :per_page => 5)
+		@posts = @category.items.where(:deleted => false, :published => true).paginate(:page => params[:page], :per_page => 5)
 		respond_to do |format|
 			format.js
 			format.html
@@ -40,7 +40,6 @@ class CategoriesController < ApplicationController
 	def create
 		@category = Category.new(category_params)
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
-	  
 		if @category.save
 			flash[:success] = I18n.t(:noti_category_created)
 			redirect_to @category
@@ -53,7 +52,6 @@ class CategoriesController < ApplicationController
 	def update
 		@category = Category.find(params[:id])
 		@menu_options = Menu.all.map{|c| [ c.title, c.id ] }
- 
 		if @category.update(category_params)
 			flash[:success] = I18n.t(:noti_category_updated)
 			redirect_to @category
@@ -65,14 +63,9 @@ class CategoriesController < ApplicationController
 	
 	def destroy
 		@category = Category.find(params[:id])
-		if can? :destroy, @category
-			@category.destroy
-			flash[:success] = I18n.t(:noti_category_deleted)
-			redirect_to categories_path
-		else
-			flash[:error] = I18n.t(:noti_no_permissions)
-			redirect_to categories_path
-		end
+		@category.destroy
+		flash[:success] = I18n.t(:noti_category_deleted)
+		redirect_to categories_path
 	end
 	
 	private

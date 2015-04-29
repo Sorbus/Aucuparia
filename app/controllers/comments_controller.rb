@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 	def new
 		authorize! :create, Comment
 		@comment = Comment.new
-		@item = Item.find(params[:item_id])
+		@item = Item.where(:published => true, :deleted => false).find(params[:item_id])
 		respond_to do |format|
 			format.js
 			format.html
@@ -21,11 +21,13 @@ class CommentsController < ApplicationController
 	
 	def create
 		authorize! :create, Comment
-		if params.has_key?(:reply_id) && (@comment = Comment.find(params[:reply_id]).children.create(comment_params))
+		if params.has_key?(:reply_id) && (@comment = Comment.where(:deleted => false).find(params[:reply_id]).children.create(comment_params))
 			@comment.user_id = current_user.id
 			@comment.item_id = params[:item_id]
 			@comment.save # this is hacky and horrible.
 			flash[:success] = I18n.t(:noti_comment_created)
+			tell_parent(@comment)
+			tell_author(@comment)
 			respond_to do |format|
 				format.js { render 'insert_single' }
 				format.html { redirect_to item_path(:id => @comment.item_id) }
@@ -36,6 +38,7 @@ class CommentsController < ApplicationController
 			@comment.item_id = params[:item_id]
 			if params[:commit] == 'commit' && @comment.save
 				flash[:success] = I18n.t(:noti_comment_created)
+				tell_author(@comment)
 				respond_to do |format|
 					format.js { render 'insert_single' }
 					format.html { redirect_to item_path(:id => @comment.item_id) }
@@ -68,11 +71,7 @@ class CommentsController < ApplicationController
 	def destroy
 		@comment = Comment.find(params[:id])
 		if can? :destroy, @comment
-			begin
-				@comment.destroy
-			rescue Ancestry::AncestryException
-				@comment.update({:user_id => nil})
-			end
+			@comment.update(:deleted => true)
 			flash[:success] = I18n.t(:noti_comment_deleted)
 			redirect_to item_path(params[:item_id])
 		else
@@ -84,5 +83,13 @@ class CommentsController < ApplicationController
 	private
 		def comment_params
 			params.require(:comment).permit(:body)
+		end
+		
+		def tell_author(comment)
+			#comment.item.user.notify('info', ('New comment on your post "<a href="' + app.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
+		end
+		
+		def tell_parent(comment)
+			#comment.parent.user.notify('info', (New reply to your comment on "<a href="' + app.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
 		end
 end

@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 	def index
 		@page = StaticPage.first
 		@links = Logolink.all
-		@recent = Item.order('created_at DESC').limit(3)
+		@recent = Item.order('created_at DESC').where(:published => true, :deleted => false).limit(3)
 		respond_to do |format|
 			format.js
 			format.html
@@ -19,7 +19,7 @@ class WelcomeController < ApplicationController
 	
 	def fetch
 		if params[:node] == '1'
-			@selected = Item.order('created_at DESC').limit(3)
+			@selected = Item.order('created_at DESC').where(:published => true, :deleted => false).limit(3)
 			respond_to do |format|
 				format.js { render :action => "fetch_recent" }
 				format.html { redirect_to(items_path) }

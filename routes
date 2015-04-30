@@ -19,9 +19,6 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /users(.:format)                            users/registrations#update
                          PUT      /users(.:format)                            users/registrations#update
                          DELETE   /users(.:format)                            users/registrations#destroy
-             user_unlock POST     /users/unlock(.:format)                     devise/unlocks#create
-         new_user_unlock GET      /users/unlock/new(.:format)                 devise/unlocks#new
-                         GET      /users/unlock(.:format)                     devise/unlocks#show
                    users GET      /users(.:format)                            users#index
                edit_user GET      /users/:id/edit(.:format)                   users#edit
                     user GET      /users/:id(.:format)                        users#show
@@ -54,6 +51,7 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
                          PATCH    /items/:id(.:format)                        items#update
                          PUT      /items/:id(.:format)                        items#update
                          DELETE   /items/:id(.:format)                        items#destroy
+         message_refresh GET      /messages/:message_id/refresh(.:format)     messages#refresh
                 messages GET      /messages(.:format)                         messages#index
                  message DELETE   /messages/:id(.:format)                     messages#destroy
                     tags GET      /tags(.:format)                             tags#index
@@ -72,3 +70,4 @@ cancel_user_registration GET      /users/cancel(.:format)                     us
           admin_logolink PATCH    /admin/logolink/:id(.:format)               admin/logolink#update
                          PUT      /admin/logolink/:id(.:format)               admin/logolink#update
                          DELETE   /admin/logolink/:id(.:format)               admin/logolink#destroy
+                                  /*unmatched_route(.:format)                 application#raise_not_found!

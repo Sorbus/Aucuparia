@@ -1,4 +1,4 @@
-<% if current_user && !current_user.mailbox.notifications.blank? %>
+<% if current_user && !current_user.mailbox.notifications.blank? && controller_name != 'messages' %>
 	toastr.clear()
 	toastr.options = {
 		"closeButton": false,
@@ -16,10 +16,16 @@
 		"showMethod": "slideDown",
 		"hideMethod": "fadeOut",
 	}
-	<% current_user.mailbox.notifications.unread.each do |noti| %>
-		toastr['info']('<%= noti.subject %>', '<%= noti.body %>', 
-			{onclick: function() {$.ajax({url: '<%= message_path(noti.id) %>', type: 'delete', dataType: 'script', success: console.log('deleted') })}}
-		);
+	<% if current_user.mailbox.notifications.unread.count > 3 %>
+		toastr['info']('<%= t(:noti_many_events_body).html_safe %>', '<%= t(:noti_many_events) %>', 
+				{onclick: function() {$.ajax({url: '<%= messages_path %>', type: 'get', dataType: 'script', success: console.log('moved') })}}
+			);
+	<% else %>
+		<% current_user.mailbox.notifications.unread.each do |noti| %>
+			toastr['info']('<%= noti.body.html_safe %>', '<%= noti.subject %>', 
+				{onclick: function() {$.ajax({url: '<%= message_path(noti.id) %>', type: 'delete', dataType: 'script', success: console.log('deleted') })}}
+			);
+		<% end %>
 	<% end %>
 <% end %>
 

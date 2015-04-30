@@ -35,10 +35,10 @@ $(function() {
 
 setInterval(function() {
     $.ajax({
-		url: '/messages',
+		url: '/messages/refresh',
 		type: 'GET',
 		success: function(result) {
 		}
 	});
 	title = $(document).find("title").text();
-}, 10000);
+}, 600000);

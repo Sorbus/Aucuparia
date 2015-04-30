@@ -49,6 +49,7 @@ en:
   admin_menu_index_title: 'Modify Menus'
   admin_edit_core_title: 'Modify a Page'
   admin_index_title: 'Admin Tools'
+  messages_index_title: 'Recent Events'
   
   error_404_title: 'Error 404: Peering into the void'
   error_500_title: 'Error 500: The machine falls silent'
@@ -70,7 +71,7 @@ en:
   
   # navigation elements
   recent_posts_nav: 'recent posts'
-  all_categories_nav: 'all categories'
+  all_categories_nav: 'categories'
   all_posts_nav: 'all posts'
   all_tags_nav: 'all tags'
   top_tags_nav: 'top tags'
@@ -140,9 +141,11 @@ en:
   noti_category_updated: 'Category updated'
   noti_category_deleted: 'Category deleted'
   noti_roles_updated: 'User roles updated'
-  
-  noti_no_permissions: "You can't do that"
-  note_generic_failure: "Something went wrong"
+  noti_no_permissions: "You can't do that!"
+  noti_generic_failure: 'Something went wrong'
+  noti_new_event: 'Something has happened!'
+  noti_many_events: 'Many things have happened!'
+  noti_many_events_body: 'Click here to learn more.'
   
   # time formats
   time:

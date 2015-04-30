@@ -1,0 +1,9 @@
+<div class="content silent messages">
+	<% @notifications.each do |noti| %>
+		<div class="notify" id="notify-<%= noti.id %>">
+			<%= link_to '<i class="fa fa-times fa-2x right"></i>'.html_safe, message_path(noti.id), method: :delete, :remote => true %>
+			<strong><%= noti.subject %></strong><br/>
+			<%= noti.body.html_safe %>
+		</div>
+	<% end %>
+</div>

@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 		post '/publish' => 'items#publish'
 	end
 	
-	resources :messages, :only => [:destroy, :index]
+	resources :messages, :only => [:destroy, :index] do
+		get '/refresh' => 'messages#refresh'
+	end
 	
 	resources :tags, :only => [:index, :show], :param => :tag
 	

@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		@comment = Comment.new
-		@comment.item_id = @item.id
 		respond_to do |format|
 			format.js
 			format.html
@@ -68,6 +67,8 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:item_id])
 		if !@item.published
 			@item.update(:published => true)
+		elsif can? :retract, @item
+			@item.update(:published => false)
 		end
 		redirect_to @item
 	end

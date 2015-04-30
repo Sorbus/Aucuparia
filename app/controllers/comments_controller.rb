@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	delegate :url_helpers, to: 'Rails.application.routes' 
 	
 	def new
 		authorize! :create, Comment
@@ -86,10 +87,10 @@ class CommentsController < ApplicationController
 		end
 		
 		def tell_author(comment)
-			#comment.item.user.notify('info', ('New comment on your post "<a href="' + app.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
+			comment.item.user.notify(I18n.t(:noti_new_event), ('New comment on your post "<a href="' + url_helpers.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
 		end
 		
 		def tell_parent(comment)
-			#comment.parent.user.notify('info', (New reply to your comment on "<a href="' + app.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
+			comment.parent.user.notify(I18n.t(:noti_new_event), ('New reply to your comment on "<a href="' + url_helpers.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
 		end
 end

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 	end
 	
 	resources :messages, :only => [:destroy, :index] do
-		get '/refresh' => 'messages#refresh'
+		collection do
+			get 'refresh'
+		end
 	end
 	
 	resources :tags, :only => [:index, :show], :param => :tag

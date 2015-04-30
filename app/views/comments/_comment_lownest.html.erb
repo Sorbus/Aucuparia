@@ -2,7 +2,7 @@
 	<div class='comment'>
 		<%= render 'comments/single', :comment => comment %>
 		<div class='children' id='children-<%= comment.id %>'>
-			<% comment.descendants.each do |child| %>
+			<% comment.descendants.where(:deleted => false).each do |child| %>
 				<div class='comment'>
 					<%= render 'comments/single', :comment => child %>
 				</div>

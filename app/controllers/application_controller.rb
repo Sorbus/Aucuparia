@@ -29,10 +29,10 @@ class ApplicationController < ActionController::Base
 
 	#render 500 error 
 	def render_error(e)
-		# puts e
+		puts e
 		respond_to do |f| 
-			f.html{ render :template => "errors/500", :status => 500 }
-			f.js{ render :partial => "errors/500", :status => 500 }
+			f.html{ render :template => "errors/error_500", :status => 500 }
+			f.js{ render :partial => "errors/error_500", :status => 500 }
 		end
 	end
 
@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
 	def render_not_found(e)
 		# puts e
 		respond_to do |f| 
-			f.html{ render :template => "errors/404", :status => 404 }
-			f.js{ render :partial => "errors/404", :status => 404 }
+			f.html{ render :template => "errors/error_404", :status => 404 }
+			f.js{ render :partial => "errors/error_404", :status => 404 }
 		end
 	end
 end

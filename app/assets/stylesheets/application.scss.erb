@@ -64,7 +64,6 @@ body {
 	margin-top:5%;
 	margin-bottom:100px;
 	padding:0px;
-	text-align:center;
 	background-color: $primary-background-new;
 	}
 	
@@ -206,13 +205,16 @@ footer {
 	width: 100%;
 	position: fixed;
 	bottom: 0;
-	text-align: center;
 	background-color: rgba(255,255,255,.5);
 	
 	.bottom {
 		padding: .5em 0 .5em 0;
 		display: inline-block;
 		z-index: 1;
+		position: absolute;
+		left: 50%;
+		margin-right: -50%;
+		transform: translate(-50%, 0%);
 		}
 	
 	.tools 	{
@@ -433,6 +435,16 @@ span.clear {
 	.created {
 		float:left;
 		text-align:left;
+		}
+		
+	footer .bottom {
+		padding: .5em 0 .5em 0;
+		display: inline-block;
+		z-index: 1;
+		position: absolute;
+		left: 1em;
+		margin-right: 0%;
+		transform: translate(00%, 0%);
 		}
 	}
 	

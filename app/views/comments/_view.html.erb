@@ -1,6 +1,6 @@
-<% if !@item.comments.blank? | can?(:create, Comment) %>
+<% if !@item.comments.where(:deleted => false).blank? | can?(:create, Comment) %>
 	<div class="comments">
-		<% if !@item.comments.blank? %>
+		<% if !@item.comments.where(:deleted => false).blank? %>
 			<p id="definition">
 				<strong><%= t :comment_section %></strong>
 			</p>
@@ -11,7 +11,7 @@
 		<% end %>
 		<div id="comment-new">
 		</div>
-		<% if can? :create, Comment %>
+		<% if can?(:create, Comment) && @item.published? %>
 			<%= render 'comments/form' %>	
 		<% end %>
 	</div>

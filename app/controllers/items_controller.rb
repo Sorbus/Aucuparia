@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 	end
  
 	def create
-		@item = Item.new(item_params)
+		@item = Item.new(create_item_params)
 		@item.category = Category.find(params[:item][:category_id])
 		@item.user = User.find(current_user.id)
 		if params[:commit] == 'commit' && @item.save
@@ -53,11 +53,11 @@ class ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		@item.category = Category.find(params[:item][:category_id])
-		if (params[:commit] == 'commit') && @item.update(item_params)
+		if (params[:commit] == 'commit') && @item.update(update_item_params)
 			flash[:success] = I18n.t(:noti_item_updated)
 			redirect_to @item
 		else
-			@item = Item.new(item_params)
+			@item = Item.new(update_item_params)
 			@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 			render 'edit'
 		end
@@ -65,10 +65,10 @@ class ItemsController < ApplicationController
 	
 	def publish
 		@item = Item.find(params[:item_id])
-		if !@item.published
-			@item.update(:published => true)
-		elsif can? :retract, @item
-			@item.update(:published => false)
+		if !item.published
+			item.update(:published => true)
+		elsif can? :retract, item
+			item.update(:published => false)
 		end
 		redirect_to @item
 	end
@@ -81,7 +81,11 @@ class ItemsController < ApplicationController
 	end
 	
 	private
-		def item_params
+		def create_item_params
 			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list, :published)
+		end
+		
+		def update_item_params
+			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list)
 		end
 end

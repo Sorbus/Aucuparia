@@ -1,11 +1,5 @@
 <div class="entry">
-	<span class="actions">
-		<%= l(item.created_at, format: :midi) %><br>
-		<% if can? :update, item %>
-			<%= link_to t(:change_nav).html_safe, edit_item_path(item), :remote => true %>
-			<%= link_to t(:delete_nav).html_safe, item_path(item),method: :delete,data: { confirm: t(:confirm_deletion) } %>
-		<% end %>
-	</span>
+	<%= render 'items/actions', :item => item %>
 	<div class="title">
 		<%= link_to item.title, item_path(item), :remote => true %>
 		<span class="byline">by <%= link_to item.user.display_name, user_path(item.user.id), :remote => true %></span>

@@ -33,12 +33,12 @@ $(function() {
 	});
 });
 
-setInterval(function() {
-    $.ajax({
-		url: '/messages/refresh',
-		type: 'GET',
-		success: function(result) {
-		}
-	});
-	title = $(document).find("title").text();
-}, 600000);
+//setInterval(function() {
+//    $.ajax({
+//		url: '/messages/refresh',
+//		type: 'GET',
+//		success: function(result) {
+//		}
+//	});
+//	title = $(document).find("title").text();
+//}, 600000);

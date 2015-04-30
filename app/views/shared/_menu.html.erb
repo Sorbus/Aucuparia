@@ -1,7 +1,7 @@
 ﻿<label for="show-menu" class="show-menu">Show Menu</label>
 <input type="checkbox" id="show-menu" role="button">
 
-<header>
+<nav>
 	<ul class="menu">
 		<li><%= link_to t(:home_nav), root_path, :remote => true %></li>
 		<li><%= link_to t(:about_nav), about_path, :remote => true %></li>
@@ -17,4 +17,4 @@
 		<% end %>
 	</ul>
 	<span class="clear"></span>
-</header>
+</nav>

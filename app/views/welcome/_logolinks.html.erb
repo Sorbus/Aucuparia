@@ -2,7 +2,7 @@
 	<div id="linkbar">
 		<% @links.each do |link| %>
 			<% if link.display? %>
-				<%= link_to '&nbsp'.html_safe, link.url, :id => link.css_id, :class => link.css_class %>
+				<%= link_to '', link.url, :id => link.css_id, :class => link.css_class + ' fa-3x fa-fw' %>
 			<% end %>
 		<% end %>
 	</div>

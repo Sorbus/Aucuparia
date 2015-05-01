@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
 
 	#render 404 error 
 	def render_not_found(e)
-		# puts e
+		puts e
 		respond_to do |f| 
 			f.html{ render :template => "errors/error_404", :status => 404 }
 			f.js{ render :partial => "errors/error_404", :status => 404 }

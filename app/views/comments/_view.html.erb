@@ -12,7 +12,9 @@
 		<div id="comment-new">
 		</div>
 		<% if can?(:create, Comment) && @item.published? %>
-			<%= render 'comments/form' %>	
+			<%= render 'comments/form' %>
+		<% else %>
+			<%= link_to 'Log in to comment', new_user_session_path %>
 		<% end %>
 	</div>
 <% end %>

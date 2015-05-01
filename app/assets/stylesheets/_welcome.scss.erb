@@ -7,11 +7,7 @@
 	}
 
 @mixin basis {
-	padding: 1.5em;
 	display:inline-block;
-	background-size: 3em;
-	background-repeat: no-repeat;
-	color: rgba(1,1,1,0);
 	}
 
 @mixin scale {
@@ -25,39 +21,31 @@
 	text-align:center;
 	@include transition(0.5s, all);
 	
-	#email-link {
-		background: url(<%= asset_data_uri 'Email_logo_brown.png' %>);
+	a {
+		text-decoration:none!important;
+		margin-left:.1em;
+		margin-right:.1em;
 		@include transition(0.5s, all);
-		margin: 0.5em 1.5em 0em 0em;
 		@include basis;
 		
-		&:hover {
-			background: url(<%= asset_data_uri 'Email_logo_red.png' %>);
-			@include scale;
+		&:first-of-type {
+			margin-left:0em;
+			}
+			
+		&:last-of-type {
+			margin-right:0em;
 			}
 		}
 	
-	#github-link {
-		background: url(<%= asset_data_uri 'Github_logo_brown.png' %>);
-		@include transition(0.5s, all);
-		margin: 0.5em 1.5em 0em 1.5em;
-		@include basis;
-		
-		&:hover {
-			background: url(<%= asset_data_uri 'Github_logo_black.png' %>);
-			@include scale;
-			}
+	.fa-envelope:hover {
+		color:#c9252c;
+		}
+	
+	.fa-github:hover {
+		color:black;
 		}
 		
-	#twitter-link {
-		background: url(<%= asset_data_uri 'Twitter_logo_brown.png' %>);
-		@include transition(0.5s, all);
-		margin: 0.5em 0em 0em 1.5em;
-		@include basis;
-		
-		&:hover {
-			background: url(<%= asset_data_uri 'Twitter_logo_blue.png' %>);
-			@include scale;
-			}
+	.fa-twitter:hover {
+		color:#55acee;
 		}
 	}

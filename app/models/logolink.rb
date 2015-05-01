@@ -1,3 +1,3 @@
 class Logolink < ActiveRecord::Base
-	validates :url, :css_id, presence: true
+	validates :url, presence: true
 end

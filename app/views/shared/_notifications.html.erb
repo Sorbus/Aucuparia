@@ -1,4 +1,4 @@
-<% if current_user && !current_user.mailbox.notifications.blank? && controller_name != 'messages' %>
+<% if current_user && !current_user.mailbox.notifications.unread.blank? && controller_name != 'messages' %>
 	toastr.clear()
 	toastr.options = {
 		"closeButton": false,
@@ -28,7 +28,6 @@
 		<% end %>
 	<% end %>
 <% end %>
-
 <% if !flash.empty? %>
 	toastr.options = {
 		"closeButton": false,
@@ -51,4 +50,3 @@
 	<% end %>
 	<% flash.clear %>
 <% end %>
-

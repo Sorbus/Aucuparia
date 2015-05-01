@@ -1,8 +1,9 @@
 <div class='content<%= !@item.published ? ' unpublished' : '' %>'>
 	<%= render 'actions', :item => @item %>
-	<p id='definition'>
+	<p class='definition'>
 		<strong><%= @item.title %></strong>
 	</p>
+	<%= markdown(@item.summary).html_safe %>
 	<hr>
  
 	<%= markdown(@item.content).html_safe %>

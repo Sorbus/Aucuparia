@@ -1,5 +1,5 @@
 $primary-background: rgba(239, 237, 235, 1);
-$secondary-background: rgba(238, 238, 238, 1);
+$secondary-background: rgba(238, 238, 238, .9);
 $primary-foreground: rgba(118, 92, 57, 1);
 $secondary-foreground: rgba(132, 107, 77, 1);
 $tertiary-foreground: rgba(78, 61, 38, 1);
@@ -41,7 +41,7 @@ nav {
 		display: inline-block;
 		margin-right: -4px;
 		position: relative;
-		background: $secondary-background;
+		/* background: $secondary-background; */
 		cursor: pointer;
 		text-align:center;
 		@include transition(.1s, all);
@@ -50,15 +50,15 @@ nav {
 			background: $tertiary-foreground;
 			color: $secondary-background;
 			}
+			
+		a {
+			padding: 15px 20px;
+			display: inline-block;
+			width: auto;
+			min-width: 60px;
+			}
 		}
-
-	ul li a {
-		padding: 15px 20px;
-		display: inline-block;
-		width: auto;
-		min-width: 60px;
-		}
-
+	
 	ul li ul {
 		padding: 0;
 		position: absolute;
@@ -70,29 +70,36 @@ nav {
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
 		box-shadow: none;
-		display: none;
+
 		opacity: 0;
 		visibility: hidden;
 		z-index:100;
 		@include transition(.1s, all);
-		}
-
-	ul li ul li { 
-		background: $tertiary-foreground; 
-		display: block; 
-		color: $secondary-background;
-		opacity:0.9;
-		@include transition(.2s, all);
+		-webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.25);
+		-moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.25);
+		box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.25);
 		
-		&:hover {
-			background: #695a46;
-			color: $tertiary-foreground;
-			text-shadow: 0 -1px 0 #000;
+		li { 
+			background: $tertiary-foreground; 
+			display: block; 
+			color: $secondary-background;
+			opacity:0.9;
+			@include transition(.2s, all);
+			
+			&:hover {
+				background: #695a46;
+				color: $tertiary-foreground;
+				text-shadow: 0 -1px 0 #000;
+				}
+				
+			a:hover {
+				color: $tertiary-foreground!important;
+				}
 			}
 		}
 
 	ul li:hover ul {
-		display: block;
+
 		opacity: 1;
 		visibility: visible;
 		}
@@ -105,10 +112,6 @@ nav {
 		&:hover {
 			color: $secondary-background;
 			}
-		}
-
-	ul li ul li a:hover {
-		color: $tertiary-foreground!important;
 		}
 	}
 	

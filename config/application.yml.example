@@ -1,0 +1,8 @@
+
+twitter_api_key: # self-explanatory
+twitter_api_secret: # self-explanatory
+
+host_url: # root url of website; necessary for some oath stuff to work
+site_name: # the website's name
+
+SECRET_KEY_BASE: # secret key for production; generate with `rake secret`

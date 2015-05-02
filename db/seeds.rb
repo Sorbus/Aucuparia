@@ -26,3 +26,5 @@ Category.create(name: 'Somniatus', summary: 'What exists within dream.', menu_id
 Category.create(name: 'Mindless', summary: 'What does not exist.', menu_id: Menu.second.id)
 
 Core.create(show_icons: true, show_login: true)
+
+Group.create(title: 'Registered Users')

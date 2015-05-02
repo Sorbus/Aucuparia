@@ -39,6 +39,8 @@ gem 'rmagick'
 gem 'acts-as-taggable-on', '~> 3.4'
 # Using Mailboxer for notifications - 
 gem 'mailboxer'
+# Using Groupify for group management
+gem 'groupify'
 
 gem 'figaro'
 

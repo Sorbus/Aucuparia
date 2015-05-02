@@ -1,0 +1,26 @@
+
+	<a id="expand" onclick="
+		j = $('#group-members-<%= group.id %>');
+		l = $('#expand', '#group-<%= group.id %>').find('i')
+		if(j.hasClass('hidden')) {
+			j.removeClass('hidden');
+			l.removeClass('fa-plus-square');
+			l.addClass('fa-minus-square');
+		}
+		else {
+			j.addClass('hidden');
+			l.removeClass('fa-minus-square');
+			l.addClass('fa-plus-square');
+		}
+	">
+		<%= t(:expand_nav).html_safe %> <%= group.title %>
+	</a><br/>
+	<div class="members hidden" id="group-members-<%= group.id %>">
+		<% group.users.each do |user| %>
+			<div class="entry user">
+				<%= display_avatar(user, 'lg').html_safe %>
+				<%= link_to user.display_name, user_path(user), :remote => true %>
+			</div>
+		<% end %>
+	</div>
+</div>

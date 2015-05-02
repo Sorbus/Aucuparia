@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
 
 	#render 500 error 
 	def render_error(e)
-		puts e
+		puts e.message
+		#puts e.backtrace.join("\n")
 		respond_to do |f| 
 			f.html{ render :template => "errors/error_500", :status => 500 }
 			f.js{ render :partial => "errors/error_500", :status => 500 }

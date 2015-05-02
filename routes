@@ -1,73 +1,84 @@
-                  Prefix Verb     URI Pattern                                 Controller#Action
-                    root GET      /                                           welcome#index
-                   about GET      /about(.:format)                            welcome#about
-                   fetch GET      /fetch(.:format)                            welcome#fetch
-        new_user_session GET      /users/sign_in(.:format)                    devise/sessions#new
-            user_session POST     /users/sign_in(.:format)                    devise/sessions#create
-    destroy_user_session DELETE   /users/sign_out(.:format)                   devise/sessions#destroy
- user_omniauth_authorize GET|POST /users/auth/:provider(.:format)             users/omniauth_callbacks#passthru {:provider=>/twitter/}
-  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)      users/omniauth_callbacks#:action
-           user_password POST     /users/password(.:format)                   devise/passwords#create
-       new_user_password GET      /users/password/new(.:format)               devise/passwords#new
-      edit_user_password GET      /users/password/edit(.:format)              devise/passwords#edit
-                         PATCH    /users/password(.:format)                   devise/passwords#update
-                         PUT      /users/password(.:format)                   devise/passwords#update
-cancel_user_registration GET      /users/cancel(.:format)                     users/registrations#cancel
-       user_registration POST     /users(.:format)                            users/registrations#create
-   new_user_registration GET      /users/sign_up(.:format)                    users/registrations#new
-  edit_user_registration GET      /users/edit(.:format)                       users/registrations#edit
-                         PATCH    /users(.:format)                            users/registrations#update
-                         PUT      /users(.:format)                            users/registrations#update
-                         DELETE   /users(.:format)                            users/registrations#destroy
-                   users GET      /users(.:format)                            users#index
-               edit_user GET      /users/:id/edit(.:format)                   users#edit
-                    user GET      /users/:id(.:format)                        users#show
-                         PATCH    /users/:id(.:format)                        users#update
-                         PUT      /users/:id(.:format)                        users#update
-            root_profile GET      /profile(.:format)                          profiles#index
-            edit_profile GET      /profile/edit(.:format)                     profiles#edit
-                 profile PATCH    /profile(.:format)                          profiles#update
-                         PUT      /profile(.:format)                          profiles#update
-              categories GET      /categories(.:format)                       categories#index
-                         POST     /categories(.:format)                       categories#create
-            new_category GET      /categories/new(.:format)                   categories#new
-           edit_category GET      /categories/:id/edit(.:format)              categories#edit
-                category GET      /categories/:id(.:format)                   categories#show
-                         PATCH    /categories/:id(.:format)                   categories#update
-                         PUT      /categories/:id(.:format)                   categories#update
-                         DELETE   /categories/:id(.:format)                   categories#destroy
-           item_comments POST     /items/:item_id/comments(.:format)          comments#create
-        new_item_comment GET      /items/:item_id/comments/new(.:format)      comments#new
-       edit_item_comment GET      /items/:item_id/comments/:id/edit(.:format) comments#edit
-            item_comment PATCH    /items/:item_id/comments/:id(.:format)      comments#update
-                         PUT      /items/:item_id/comments/:id(.:format)      comments#update
-                         DELETE   /items/:item_id/comments/:id(.:format)      comments#destroy
-            item_publish POST     /items/:item_id/publish(.:format)           items#publish
-                   items GET      /items(.:format)                            items#index
-                         POST     /items(.:format)                            items#create
-                new_item GET      /items/new(.:format)                        items#new
-               edit_item GET      /items/:id/edit(.:format)                   items#edit
-                    item GET      /items/:id(.:format)                        items#show
-                         PATCH    /items/:id(.:format)                        items#update
-                         PUT      /items/:id(.:format)                        items#update
-                         DELETE   /items/:id(.:format)                        items#destroy
-        refresh_messages GET      /messages/refresh(.:format)                 messages#refresh
-                messages GET      /messages(.:format)                         messages#index
-                 message DELETE   /messages/:id(.:format)                     messages#destroy
-                    tags GET      /tags(.:format)                             tags#index
-                     tag GET      /tags/:tag(.:format)                        tags#show
-              admin_root GET      /admin(.:format)                            admin/admin#index
-         edit_admin_core GET      /admin/core/:id/edit(.:format)              admin/core#edit
-              admin_core PATCH    /admin/core/:id(.:format)                   admin/core#update
-                         PUT      /admin/core/:id(.:format)                   admin/core#update
-             admin_menus GET      /admin/menus(.:format)                      admin/menus#index
-                         POST     /admin/menus(.:format)                      admin/menus#create
-          new_admin_menu GET      /admin/menus/new(.:format)                  admin/menus#new
-              admin_menu PATCH    /admin/menus/:id(.:format)                  admin/menus#update
-                         PUT      /admin/menus/:id(.:format)                  admin/menus#update
-    admin_logolink_index GET      /admin/logolink(.:format)                   admin/logolink#index
-                         POST     /admin/logolink(.:format)                   admin/logolink#create
-          admin_logolink PATCH    /admin/logolink/:id(.:format)               admin/logolink#update
-                         PUT      /admin/logolink/:id(.:format)               admin/logolink#update
-                         DELETE   /admin/logolink/:id(.:format)               admin/logolink#destroy
-                                  /*unmatched_route(.:format)                 application#raise_not_found!
+                  Prefix Verb     URI Pattern                                    Controller#Action
+                    root GET      /                                              welcome#index
+                   about GET      /about(.:format)                               welcome#about
+                   fetch GET      /fetch(.:format)                               welcome#fetch
+        new_user_session GET      /users/sign_in(.:format)                       devise/sessions#new
+            user_session POST     /users/sign_in(.:format)                       devise/sessions#create
+    destroy_user_session DELETE   /users/sign_out(.:format)                      devise/sessions#destroy
+ user_omniauth_authorize GET|POST /users/auth/:provider(.:format)                users/omniauth_callbacks#passthru {:provider=>/twitter/}
+  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)         users/omniauth_callbacks#:action
+           user_password POST     /users/password(.:format)                      devise/passwords#create
+       new_user_password GET      /users/password/new(.:format)                  devise/passwords#new
+      edit_user_password GET      /users/password/edit(.:format)                 devise/passwords#edit
+                         PATCH    /users/password(.:format)                      devise/passwords#update
+                         PUT      /users/password(.:format)                      devise/passwords#update
+cancel_user_registration GET      /users/cancel(.:format)                        users/registrations#cancel
+       user_registration POST     /users(.:format)                               users/registrations#create
+   new_user_registration GET      /users/sign_up(.:format)                       users/registrations#new
+  edit_user_registration GET      /users/edit(.:format)                          users/registrations#edit
+                         PATCH    /users(.:format)                               users/registrations#update
+                         PUT      /users(.:format)                               users/registrations#update
+                         DELETE   /users(.:format)                               users/registrations#destroy
+                   users GET      /users(.:format)                               users#index
+               edit_user GET      /users/:id/edit(.:format)                      users#edit
+                    user GET      /users/:id(.:format)                           users#show
+                         PATCH    /users/:id(.:format)                           users#update
+                         PUT      /users/:id(.:format)                           users#update
+                  groups GET      /groups(.:format)                              groups#index
+                         POST     /groups(.:format)                              groups#create
+               new_group GET      /groups/new(.:format)                          groups#new
+              edit_group GET      /groups/:id/edit(.:format)                     groups#edit
+                   group GET      /groups/:id(.:format)                          groups#show
+                         PATCH    /groups/:id(.:format)                          groups#update
+                         PUT      /groups/:id(.:format)                          groups#update
+                         DELETE   /groups/:id(.:format)                          groups#destroy
+            root_profile GET      /profile(.:format)                             profiles#index
+            edit_profile GET      /profile/edit(.:format)                        profiles#edit
+                 profile PATCH    /profile(.:format)                             profiles#update
+                         PUT      /profile(.:format)                             profiles#update
+              categories GET      /categories(.:format)                          categories#index
+                         POST     /categories(.:format)                          categories#create
+            new_category GET      /categories/new(.:format)                      categories#new
+           edit_category GET      /categories/:id/edit(.:format)                 categories#edit
+                category GET      /categories/:id(.:format)                      categories#show
+                         PATCH    /categories/:id(.:format)                      categories#update
+                         PUT      /categories/:id(.:format)                      categories#update
+                         DELETE   /categories/:id(.:format)                      categories#destroy
+           item_comments POST     /items/:item_id/comments(.:format)             comments#create
+        new_item_comment GET      /items/:item_id/comments/new(.:format)         comments#new
+       edit_item_comment GET      /items/:item_id/comments/:id/edit(.:format)    comments#edit
+            item_comment PATCH    /items/:item_id/comments/:id(.:format)         comments#update
+                         PUT      /items/:item_id/comments/:id(.:format)         comments#update
+                         DELETE   /items/:item_id/comments/:id(.:format)         comments#destroy
+           item_lock_add POST     /items/:item_id/lock/:lock_id/add(.:format)    locks#add
+        item_lock_remove POST     /items/:item_id/lock/:lock_id/remove(.:format) locks#remove
+         item_lock_index GET      /items/:item_id/lock(.:format)                 locks#index
+            item_publish POST     /items/:item_id/publish(.:format)              items#publish
+                   items GET      /items(.:format)                               items#index
+                         POST     /items(.:format)                               items#create
+                new_item GET      /items/new(.:format)                           items#new
+               edit_item GET      /items/:id/edit(.:format)                      items#edit
+                    item GET      /items/:id(.:format)                           items#show
+                         PATCH    /items/:id(.:format)                           items#update
+                         PUT      /items/:id(.:format)                           items#update
+                         DELETE   /items/:id(.:format)                           items#destroy
+        refresh_messages GET      /messages/refresh(.:format)                    messages#refresh
+                messages GET      /messages(.:format)                            messages#index
+                 message DELETE   /messages/:id(.:format)                        messages#destroy
+                    tags GET      /tags(.:format)                                tags#index
+                     tag GET      /tags/:tag(.:format)                           tags#show
+              admin_root GET      /admin(.:format)                               admin/admin#index
+         edit_admin_core GET      /admin/core/:id/edit(.:format)                 admin/core#edit
+              admin_core PATCH    /admin/core/:id(.:format)                      admin/core#update
+                         PUT      /admin/core/:id(.:format)                      admin/core#update
+             admin_menus GET      /admin/menus(.:format)                         admin/menus#index
+                         POST     /admin/menus(.:format)                         admin/menus#create
+          new_admin_menu GET      /admin/menus/new(.:format)                     admin/menus#new
+              admin_menu PATCH    /admin/menus/:id(.:format)                     admin/menus#update
+                         PUT      /admin/menus/:id(.:format)                     admin/menus#update
+    admin_logolink_index GET      /admin/logolink(.:format)                      admin/logolink#index
+                         POST     /admin/logolink(.:format)                      admin/logolink#create
+          admin_logolink PATCH    /admin/logolink/:id(.:format)                  admin/logolink#update
+                         PUT      /admin/logolink/:id(.:format)                  admin/logolink#update
+                         DELETE   /admin/logolink/:id(.:format)                  admin/logolink#destroy
+                                  /*unmatched_route(.:format)                    application#raise_not_found!

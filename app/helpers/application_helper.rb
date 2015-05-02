@@ -31,6 +31,10 @@ module ApplicationHelper
 	#	end		
 	end
 	
+	def test_group?(item)
+		(item.groups.first.nil? || (!current_user.nil? && (current_user.id == item.user_id || current_user.shares_any_group?(item))))
+	end
+	
 	def display_badge(role)
 		case role
 		when :superadmin

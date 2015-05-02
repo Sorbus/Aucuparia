@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 	load_and_authorize_resource
 	before_filter :authenticate_user!, :except => [:index, :show]
+	before_filter :verify_group, :except => [:index, :new, :create, :publish]
 
 	def index 
 		@posts = Item.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
@@ -11,7 +12,7 @@ class ItemsController < ApplicationController
 	end
 	
 	def show
-		@item = Item.find(params[:id])
+		#@item = Item.find(params[:id])
 		@comment = Comment.new
 		respond_to do |format|
 			format.js
@@ -20,7 +21,7 @@ class ItemsController < ApplicationController
 	end
 	
 	def new
-		@item = Item.new
+		#@item = Item.new
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 		respond_to do |format|
 			format.js
@@ -29,7 +30,7 @@ class ItemsController < ApplicationController
 	end
 
 	def edit
-		@item = Item.find(params[:id])
+		#@item = Item.find(params[:id])
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 		respond_to do |format|
 			format.js
@@ -51,7 +52,7 @@ class ItemsController < ApplicationController
 	end
 	
 	def update
-		@item = Item.find(params[:id])
+		#@item = Item.find(params[:id])
 		@item.category = Category.find(params[:item][:category_id])
 		if (params[:commit] == 'commit') && @item.update(update_item_params)
 			flash[:success] = I18n.t(:noti_item_updated)
@@ -65,22 +66,30 @@ class ItemsController < ApplicationController
 	
 	def publish
 		@item = Item.find(params[:item_id])
-		if !item.published
-			item.update(:published => true)
-		elsif can? :retract, item
-			item.update(:published => false)
+		if !@item.published
+			@item.update(:published => true)
+		elsif can? :retract, @item
+			@item.update(:published => false)
 		end
 		redirect_to @item
 	end
 	
 	def destroy
-		@item = Item.find(params[:id])
+		#@item = Item.find(params[:id])
 		@item.update(:deleted => true)
 		flash[:success] = I18n.t(:noti_item_deleted)
 		redirect_to items_path
 	end
 	
 	private
+		def verify_group
+			redirect_to new_user_session_path unless test_group?(@item)
+		end
+		
+		def test_group?(item)
+			(item.groups.first.nil? || (!current_user.nil? && (current_user.id == item.user_id || current_user.shares_any_group?(item))))
+		end
+		
 		def create_item_params
 			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list, :published)
 		end
@@ -88,4 +97,6 @@ class ItemsController < ApplicationController
 		def update_item_params
 			params.require(:item).permit(:title, :content, :summary, :category_id, :tag_list)
 		end
+		
+		
 end

@@ -1,0 +1,23 @@
+<div class="content lock-edit">
+	<p class="definition">
+		<%= t :edit_permissions_message %>
+	</p>
+	<hr>
+	<% @item.groups.each do |group| %>
+		<div class="group" id="group-<%= group.id %>">
+			<div class="actions">
+				<%= link_to t(:lock_remove_nav).html_safe, item_lock_remove_path(@item.id, group.id), method: :post %>
+			</div>
+		<%= render 'groups/single', :group => group %>
+	<% end %>
+	<hr>
+	<% current_user.groups.each do |group| %>
+		<% if !@item.in_group?(group) %>
+			<div class="group" id="group-<%= group.id %>">
+			<div class="actions">
+				<%= link_to t(:lock_add_nav).html_safe, item_lock_add_path(@item.id, group.id), method: :post %>
+			</div>
+			<%= render 'groups/single', :group => group %>
+		<% end %>
+	<% end %>
+</div>

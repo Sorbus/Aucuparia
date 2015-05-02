@@ -50,6 +50,7 @@ en:
   admin_edit_core_title: 'Modify a Page'
   admin_index_title: 'Admin Tools'
   messages_index_title: 'Recent Events'
+  edit_permissions_title: 'Edit permissions for '
   
   error_404_title: 'Error 404: Peering into the void'
   error_500_title: 'Error 500: The machine falls silent'
@@ -68,6 +69,8 @@ en:
   tag_definition: '<strong>Tag</strong> - <em>n</em>. A detached fragmentary peice used for identification or classification.'
   create_identity_definition: '<strong>Create an Identity</strong>'
   authentication_definition: '<strong>Authentication</strong> - <em>n</em>. The process of determining whether an entity is what it claims to be.'
+  
+  edit_permissions_message: 'Select which groups should have access to this item. If no group is selected, anyone will be able to view it (default).'
   
   # navigation elements
   recent_posts_nav: 'recent posts'
@@ -88,11 +91,24 @@ en:
   admin_settings_nav: '<i class="fa fa-gears fa-lg"></i>'
   account_settings_nav: 'Modify Account Settings'
   user_nav: '<i class="fa fa-user fa-lg"></i>'
+  login_nav: '<i class="fa fa-sign-in fa-lg"></i>'
   register_nav: '<i class="fa fa-user-plus fa-lg"></i>'
-  logout_nav: '<i class="fa fa-user-times fa-lg"></i>'
+  logout_nav: '<i class="fa fa-sign-out fa-lg"></i>'
   oauth_twitter_nav: '<i class="fa fa-twitter fa-lg"></i>'
+  groups_nav: '<i class="fa fa-users fa-lg"></i>'
+  tag_nav: '<i class="fa fa-tag fa-lg"></i>'
+  tags_nav: '<i class="fa fa-tags fa-lg"></i>'
   home_nav: 'Home'
   about_nav: 'About'
+  
+  expand_nav: '<i class="fa fa-plus-square fa-lg"></i>'
+  collapse_nav: '<i class="fa fa-minus-square fa-lg"></i>'
+  
+  locked_nav: '<i class="fa fa-lock fa-lg" title="not available to you"></i>'
+  unlocked_nav: '<i class="fa fa-unlock-alt fa-lg" title="available to you, but not publicly"></i>'
+  key_nav: '<i class="fa fa-key fa-lg"></i>'
+  lock_remove_nav: '<i class="fa fa-times fa-lg"></i>'
+  lock_add_nav: '<i class="fa fa-plus fa-lg"></i>'
   
   devise_login_nav: '<span class="fa-stack fa-lg left" title="Sign In"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span>'
   devise_register_nav: '<span class="fa-stack fa-lg left" title="Create Identity"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-user-plus fa-stack-1x"></i></span>'

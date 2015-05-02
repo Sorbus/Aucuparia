@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	# user stuff
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
 	resources :users, :only => [:index, :show, :edit, :update]
+	resources :groups
 	
 	resource :profile, :only => [:index, :edit, :update] do
 		root 'profiles#index'
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
 	resources :categories
 	resources :items do
 		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
+		resources :lock, :only => [:index], :controller => "locks" do
+			post '/add' => 'locks#add'
+			post '/remove' => 'locks#remove'
+		end
 		post '/publish' => 'items#publish'
 	end
 	

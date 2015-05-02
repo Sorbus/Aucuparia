@@ -1,7 +1,7 @@
 <div class='content<%= !@item.published ? ' unpublished' : '' %>'>
 	<%= render 'actions', :item => @item %>
 	<p class='definition'>
-		<strong><%= @item.title %></strong>
+		<strong><%= !@item.groups.first.nil? ? t(:unlocked_nav).html_safe : '' %> <%= @item.title %></strong>
 	</p>
 	<%= markdown(@item.summary).html_safe %>
 	<hr>

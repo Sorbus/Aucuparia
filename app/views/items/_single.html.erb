@@ -1,7 +1,13 @@
 <div class="entry">
 	<%= render 'items/actions', :item => item %>
 	<div class="title">
-		<%= link_to item.title, item_path(item), :remote => true %>
+		<% if !test_group?(item) %>
+			<em><%= t(:locked_nav).html_safe + ' ' + item.title %></em>
+		<% elsif item.groups.first.nil? %>
+			<%= link_to item.title, item_path(item), :remote => true %>
+		<% else %>
+			<%= link_to t(:unlocked_nav).html_safe + ' ' + item.title, item_path(item), :remote => true %>
+		<% end %>
 		<span class="byline">by <%= link_to item.user.display_name, user_path(item.user.id), :remote => true %></span>
 	</div>
 	<div class="sample">

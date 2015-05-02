@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+	groupify :group_member
 	acts_as_taggable
 	belongs_to :category
 	belongs_to :user

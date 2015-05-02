@@ -13,6 +13,7 @@
 		</div>
 		<% if can?(:create, Comment) && @item.published? %>
 			<%= render 'comments/form' %>
+		<% elsif !@item.published? %>
 		<% else %>
 			<%= link_to 'Log in to comment', new_user_session_path %>
 		<% end %>

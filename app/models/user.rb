@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	# hooks
-	before_create :set_default_role
+	before_create :set_defaults
 	before_destroy :clean_up_possessions
 	before_save :set_roles
 	
@@ -25,7 +25,9 @@ class User < ActiveRecord::Base
 	has_many :items
 	has_many :comments
 	
-	attr_accessor :mask
+	# group stuff
+	groupify :group_member
+	groupify :named_group_member
 
 	# validation
 	validates :password, presence: true, on: :create
@@ -67,13 +69,10 @@ class User < ActiveRecord::Base
       true unless !self.provider.nil?
     end
 	
-	# Gives all users the default role of commenter.
-	def set_default_role
+	# Gives all users the default role of commenter and puts them in the registered users group
+	def set_defaults
 		self.roles << :commenter
-	end
-	
-	def set_roles
-		#self.roles_mask = self.mask
+		self.groups << Group.first
 	end
 	
 	# Before a user is destroyed, clean up all of their items and comments.

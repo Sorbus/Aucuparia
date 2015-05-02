@@ -65,9 +65,10 @@ body {
 	margin-bottom:100px;
 	padding:0px;
 	background-color: $primary-background-new;
+	color:$primary-foreground;
 	}
 	
-.cover {
+#bg {
 	width: 100%;
 	height: 100%;
 	position: fixed;
@@ -450,6 +451,19 @@ span.clear {
 		left: 1em;
 		margin-right: 0%;
 		transform: translate(00%, 0%);
+		
+		#background-attribution {
+			display:none;
+			}
+		}
+	}
+	
+@media screen and (max-width : 60em){
+
+	footer .bottom {
+		left: 1em;
+		margin-right: 0%;
+		transform: translate(00%, 0%);
 		}
 	}
 	
@@ -470,6 +484,8 @@ span.clear {
 @import 'welcome';
 
 @import 'profiles';
+
+@import 'groups';
 
 @import 'admin/logolink';
 

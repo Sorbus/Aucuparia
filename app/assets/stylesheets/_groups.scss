@@ -18,6 +18,9 @@ $view-max-width: 25em;
 	}
 
 .lock-edit {
+	.new {
+		margin-top:-2em;
+		}
 	.group {
 		margin-bottom:.5em;
 		border: 1px dotted $primary-foreground;
@@ -31,10 +34,10 @@ $view-max-width: 25em;
 			
 		.members {
 			border: 1px dotted $primary-foreground;
-			border-radius: 1.2em;
+			border-radius: .5em;
 			margin-left: 1em;
 			margin-top: .2em;
-			margin-bottom: .2em;
+			margin-bottom: .5em;
 			margin-right: .2em;
 			padding-bottom: .3em;
 			padding-left: .2em;
@@ -50,6 +53,43 @@ $view-max-width: 25em;
 		
 		.actions {
 			opacity:1;
+			}
+		}
+				
+	a {
+		text-decoration:none;
+		}
+	}
+	
+.groups {
+	.group {
+		
+		position:relative;
+		padding-left:1em;
+		
+		&:before {
+			content: "\f054";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			text-decoration: inherit;
+			/*--adjust as necessary--*/
+			color: #000;
+			font-size: 18px;
+			padding-right: 0.5em;
+			position: absolute;
+			top: 0px;
+			left: 0;
+			}
+			
+		a {
+			text-decoration: none;
+			}
+			
+		div {
+			&:first-of-type {
+				border-bottom: 1px dotted $primary-foreground;
+				}
 			}
 		}
 	}

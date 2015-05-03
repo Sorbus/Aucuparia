@@ -1,10 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Main Pages:
 StaticPage.create(title: 'Aucuparia', content: '**Aucuparia** - *n*. A deciduous tree in the <em>Rosaceae</em> family, often called the rowan or mountain-ash, more properly referred to by its full binomial name, *Sorbus aucuparia*. *Lit.* "birdcatcher", from <em>avis</em> (latin, "bird") and *capere* (latin, present infinitive form of *capio*, "to capture"), named as such because of the use of its fruit as bait for fowling.')
@@ -25,6 +20,6 @@ Category.create(name: 'Otherwhen', summary: 'What exists in other times.', menu_
 Category.create(name: 'Somniatus', summary: 'What exists within dream.', menu_id: Menu.second.id)
 Category.create(name: 'Mindless', summary: 'What does not exist.', menu_id: Menu.second.id)
 
-Core.create(show_icons: true, show_login: true)
+Core.create(show_icons: true, show_login: true) 
 
-Group.create(title: 'Registered Users')
+Group.create(title: 'Registered Users') # All registered users will be assigned to the first group.

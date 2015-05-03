@@ -1,17 +1,16 @@
-<div class="content">
+<div class="content categories">
 	<p class="definition">
 		<%= t(:index_definition).html_safe %>
 	</p>
 	<% @categories.each do |category| %>
-		<hr>
 		<%= render 'single', :category => category %>
 	<% end %>
 	<% if can? :create, @category %>
 	<hr>
-		<div class="entry">
+		<div class="entry final">
 			<div class="title">
 				<span class="actions">
-					<%= link_to t(:create_nav).html_safe, new_category_path %>
+					<%= link_to t(:create_nav).html_safe, new_category_path, :remote => true %>
 				</span>
 			</div>
 			&nbsp

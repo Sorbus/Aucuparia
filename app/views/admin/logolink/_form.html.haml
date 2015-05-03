@@ -1,0 +1,25 @@
+= form_for ll, url: path do |f|
+  .actions
+    - if ll.id?
+      = link_to '<i class="fa fa-times fa-lg"></i>'.html_safe, admin_logolink_path(ll),method: :delete,data: { confirm: t(:confirm_deletion) }
+  - if ll.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(ll.errors.count, "error") + ' ' + t(:save_failed)
+      %ul
+        - ll.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label t(:ll_url)
+    = f.text_field :url
+  %p
+    = f.label t(:ll_css_id)
+    = f.text_field :css_id
+  %p
+    = f.label t(:ll_css_class)
+    = f.text_field :css_class
+  %p
+    = f.label t(:ll_display)
+    = f.check_box :display
+  %p
+    = f.submit t(:commit), id: "left"

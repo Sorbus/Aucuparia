@@ -1,0 +1,16 @@
+.content
+  %p.definition
+    = t(:index_definition).html_safe
+  - @users.each do |user|
+    %hr/
+    .entry.user
+      = display_avatar(user, '2x').html_safe
+      .title
+        = link_to user.display_name, user_path(user), :remote => true
+      - if user.biography?
+        .sample
+          = markdown(user.biography.first(140)).html_safe
+      - else
+        \&amp;nbsp
+  %hr/
+  = paginate @posts, :remote => true

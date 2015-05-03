@@ -1,0 +1,7 @@
+.content.menu_edit.narrow
+  = render 'admin/admin/bar'
+  %p.definition
+    = (t :menu_definition).html_safe
+  = @menus.each do |menu|
+    = render 'form', :menu => menu, :path => admin_menu_path(menu)
+  = render 'form', :menu => @menu, :path => admin_menus_path

@@ -1,0 +1,7 @@
+.content.narrow
+  %p.definition
+    = t(:change_definition).html_safe
+  = render 'form'
+- if @page.content.present?
+  .content
+    = markdown(@page.content).html_safe

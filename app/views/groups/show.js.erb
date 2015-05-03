@@ -1,3 +1,0 @@
-$('#yield').html('<%= escape_javascript(render partial: 'show' ) %>'); 
-var title = '<%= (t :show_group_title) + @group.title %>'
-history.pushState( null, title, '<%= group_path(params[:id]) %>' )

@@ -1,0 +1,5 @@
+- if Core.first.show_icons?
+  #linkbar
+    - @links.each do |link|
+      - if link.display?
+        = link_to '', link.url, :id => link.css_id, :class => 'fa ' + link.css_class + ' fa-3x fa-fw'

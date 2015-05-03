@@ -1,0 +1,30 @@
+%div{:class => "content#{!@item.published ? ' unpublished' : ''}"}
+  = render 'actions', :item => @item
+  %p.definition
+    %strong
+      = !@item.groups.first.nil? ? t(:unlocked_nav).html_safe : ''
+      = @item.title
+  = markdown(@item.summary).html_safe
+  %hr/
+  = markdown(@item.content).html_safe
+  - if !@item.tag_list.empty?
+    %hr/
+    .tags.fade.expand
+      .heading= t(:tags_heading).html_safe
+      - @item.tag_list.each do |tag|
+        .tag= link_to tag, tag_path(tag), :remote => true
+  .created
+    Written by: #{link_to User.find_by_id(@item.user).display_name, user_path(@item.user), :remote => true}
+    %br/
+    Created: #{l(@item.created_at, format: :full)}
+    %br/
+    - show_modified = (@item.created_at != @item.updated_at)
+    - if show_modified
+      Modified: #{l(@item.updated_at, format: :full)}
+  .category
+    = link_to Category.find_by_id(@item.category).name, category_path(@item.category), :remote => true
+  %br/
+  - if show_modified
+    %br/
+  \&amp;nbsp
+= render 'comments/view'

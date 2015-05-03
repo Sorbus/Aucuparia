@@ -1,0 +1,14 @@
+- if !@item.comments.where(:deleted => false).blank? | can?(:create, Comment)
+  .comments
+    - if !@item.comments.where(:deleted => false).blank?
+      %p#definition
+        %strong= t :comment_section
+      %hr/
+      - @item.comments.where(:ancestry => nil).each do |comment|
+        = render partial: 'comments/comment_lownest', locals: {item: @comment.item_id, comment: comment}
+    #comment-new
+    - if can?(:create, Comment) && @item.published?
+      = render 'comments/form'
+    - elsif !@item.published?
+    - else
+      = link_to 'Log in to comment', new_user_session_path

@@ -1,3 +1,0 @@
-$('#yield').html('<%= escape_javascript(render partial: 'show' ) %>'); 
-var title = '<%= (t :view_tag_title_before) + params[:tag] + (t :view_tag_title_after) %>'
-history.pushState( null, title, '<%= tag_path(params[:tag]) %>' )

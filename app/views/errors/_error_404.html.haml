@@ -1,0 +1,27 @@
+.content
+  %i.fa.fa-exclamation-triangle.fa-4x.right
+  %strong 404
+  \-
+  = succeed "." do
+    %em n
+  %ul.dashed
+    %li
+      %em 401
+      = succeed "Unauthorized" do
+        %span.tab
+    %li
+      %em 403
+      = succeed "Forbidden" do
+        %span.tab
+    %li
+      %em 410
+      = succeed "Gone" do
+        %span.tab
+    %li
+      %em 412
+      = succeed "Precondition" do
+        %span.tab
+    %li
+      %em 418
+      = succeed "I'm" do
+        %span.tab

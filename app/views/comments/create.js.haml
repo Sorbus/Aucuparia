@@ -1,0 +1,7 @@
+- if !@comment.is_root?
+  $("#children-#{@comment.}
+    ").append("#{escape_javascript(render partial: 'single_midi' )}");
+  - else
+    $("#comment-new").append("#{escape_javascript(render partial: 'single_midi' )}");
+  var title = '#{@comment.item.title}'
+  history.pushState( null, title, "#{item_path(params[:item_id])}" )

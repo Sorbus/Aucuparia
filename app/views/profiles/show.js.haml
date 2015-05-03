@@ -1,0 +1,3 @@
+$('#yield').html('#{escape_javascript(render partial: 'show' )}');
+var title = '#{t(:view_self_title)}'
+history.pushState( null, title, '#{root_profile_path}' )

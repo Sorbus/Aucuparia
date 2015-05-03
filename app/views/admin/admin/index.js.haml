@@ -1,0 +1,3 @@
+$('#yield').html('#{escape_javascript(render partial: 'index' )}');
+var title = '#{(t :admin_index_title)}'
+history.pushState( null, title, '#{admin_root_path}' )

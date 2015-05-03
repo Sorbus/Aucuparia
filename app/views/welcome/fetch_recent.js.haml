@@ -1,0 +1,2 @@
+- cache(cache_key_for_recent_items) do
+  $('#items').html('#{escape_javascript(render partial: 'recent_block', locals: { recent: @selected } )}');

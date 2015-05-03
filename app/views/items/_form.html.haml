@@ -1,0 +1,36 @@
+= form_for @item do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@item.errors.count, "error") + ' ' + t(:save_failed)
+      %ul
+        - @item.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label :title
+    = f.text_field :title
+  %p
+    = f.label :summary
+    = f.text_field :summary
+  %p
+    = f.label :content
+    %br/
+    = f.text_area :content
+  %p
+    = f.label :category_id
+    %br/
+    = f.select :category_id, options_for_select(@cat_options, @item.category_id)
+  %p.form_tags
+    = f.label :tags
+    %br/
+    = f.text_field :tag_list, :value => @item.tag_list.join(', ')
+    :javascript
+      $('#item_tag_list').tagsInput();
+  - if !@item.published?
+    %p.publish
+      = f.label :published, t(:publish_immediately)
+      = f.check_box :published, class: "right"
+  %p
+    = f.submit t(:preview), class: "left"
+    = f.submit t(:commit), class: "right"
+  \&amp;nbsp

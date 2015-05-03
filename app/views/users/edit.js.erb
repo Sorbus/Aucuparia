@@ -1,3 +1,0 @@
-$('#yield').html('<%= escape_javascript(render partial: 'edit' ) %>'); 
-var title = '<%= (t :edit_user_title) + @user.display_name %>'
-history.pushState( null, title, '<%= edit_user_path(params[:id]) %>' )

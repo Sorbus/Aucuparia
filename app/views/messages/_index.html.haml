@@ -1,0 +1,7 @@
+.content.silent.messages.narrow
+  - @notifications.each do |noti|
+    .notify{:id => "notify-#{noti.id}"}
+      = link_to '<i class="fa fa-times fa-2x right"></i>'.html_safe, message_path(noti.id), method: :delete, :remote => true
+      %strong= noti.subject
+      %br/
+      = noti.body.html_safe

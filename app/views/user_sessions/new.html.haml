@@ -1,0 +1,9 @@
+- content_for :head do
+  %title Authentication
+.content
+  %p.definition
+    %strong Authentication
+    \-
+    = succeed "." do
+      %em n
+  = render 'form'

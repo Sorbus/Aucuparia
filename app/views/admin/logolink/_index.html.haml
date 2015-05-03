@@ -1,0 +1,7 @@
+.content.menu_edit.narrow
+  = render 'admin/admin/bar'
+  %p.definition
+    = t(:logolink_definition).html_safe
+  = @logolinks.each do |ll|
+    = render 'form', :ll => ll, :path => admin_logolink_path(ll)
+  = render 'form', :ll => @ll_new, :path => admin_logolink_index_path

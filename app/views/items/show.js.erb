@@ -1,3 +1,0 @@
-$('#yield').html('<%= escape_javascript(render partial: 'show' ) %>'); 
-var title = '<%= (t :view_item_title_before) + @item.title + (t :view_item_title_after) %>'
-history.pushState( null, title, '<%= item_path(params[:id]) %>' )

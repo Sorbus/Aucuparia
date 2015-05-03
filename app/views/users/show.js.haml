@@ -1,0 +1,3 @@
+$('#yield').html('#{escape_javascript(render partial: 'profiles/show' )}');
+var title = '#{(t :view_user_title) + @user.display_name}'
+history.pushState( null, title, '#{user_path(params[:id])}' )

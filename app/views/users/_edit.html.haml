@@ -1,0 +1,26 @@
+.content
+  %p.definition
+    = t(:change_definition).html_safe
+  %p.alert
+    You are modifying another user, #{current_user.display_name}. Exercise caution lest you offend, despite your status.
+  = form_for @user, url: user_path, html: { multipart: true } do |f|
+    %label.choices_label{:for => "choices_one"}
+      %i.fa.fa-square-o.fa-lg
+      Modify core settings
+    %input#choices_one.hidden{:role => "button", :type => "checkbox"}/
+    %br/
+    #choices_one.choices
+      = render 'profiles/form', :f => f
+    %label.choices_label{:for => "choices_two"}
+      %i.fa.fa-square-o.fa-lg
+      Manage assigned roles
+    %input#choices_two.hidden{:role => "button", :type => "checkbox"}/
+    #choices_two.choices
+      - User.valid_roles.each do |role|
+        - if can? :assign, role
+          %div
+            = f.label role.to_s
+            = hidden_field_tag('roles[' + role.to_s + ']', value='false')
+            = check_box_tag('roles[' + role.to_s + ']', value='true', checked = @user.has_role?(role))
+    %p
+      = f.submit t(:commit)

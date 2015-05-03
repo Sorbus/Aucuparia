@@ -1,0 +1,3 @@
+$('#yield').html('#{escape_javascript(render partial: 'errors/error_500' )}');
+var title = '#{t :error_500_title}'
+history.pushState( null, title, '#{request.original_fullpath}' )

@@ -1,0 +1,3 @@
+- content_for :head do
+  %title= (t :view_item_title_before) + @item.title + (t :view_item_title_after)
+= render 'show'

@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    = yield :head
+    = csrf_meta_tags
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
+    = stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css', 'data-turbolinks-track' => true
+    = javascript_include_tag 'modernizr.custom.94336', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'jquery.tagsinput.min.js', 'data-turbolinks-track' => true
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', 'data-turbolinks-track' => true
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body
+    :javascript
+      #{render "shared/notifications"}
+    #bg
+    #wrapper
+      = render "shared/menu"
+      %section#spinner.refresh.hidden
+        %i.fa.fa-refresh.fa-spin.fa-4x
+      %section#yield
+        = yield
+      - render "shared/account"
+    = render "shared/footer"

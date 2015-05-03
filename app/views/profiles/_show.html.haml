@@ -1,0 +1,45 @@
+.content
+  - if can?(:see, :admin_tools)
+    .actions
+      = link_to t(:settings_nav).html_safe, edit_user_path(@user), :remote => true
+  %p.definition
+    = t(:identity_definition).html_safe
+  %hr/
+  %p.username
+    = link_to_if(@user.website?, display_avatar(@user, '4x').html_safe, @user.website)
+    %strong Name:
+    = @user.display_name
+  %p
+    %strong Roles:
+    - User.valid_roles.each do |role|
+      - if (can? :see, role) && @user.has_role?(role)
+        = display_badge(role)
+  - if can?(:see_email, @user)
+    %p
+      %strong Email:
+      = @user.email
+  %p
+    %strong Biography:
+    = markdown(@user.biography.to_s).html_safe
+  %p
+    %strong Account has existed for
+    = distance_of_time_in_words(Time.now, @user.created_at)
+    %br/
+    - if can?(:timestamp, @user)
+      %strong Account created:
+      = l(@user.created_at, format: :full)
+- if !@posts.blank?
+  .content
+    %p
+      %strong Authored Items:
+    - @posts.each do |item|
+      %hr/
+      = render 'items/single', :item => item
+    = paginate @posts, :remote => true
+- if !@unpub.blank?
+  .content
+    %p
+      %strong Unpublished Items:
+    - @unpub.each do |item|
+      %hr/
+      = render 'items/single', :item => item

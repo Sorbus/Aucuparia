@@ -1,0 +1,23 @@
+= form_for @category do |f|
+  - if @category.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@category.errors.count, "error") + ' ' + t(:save_failed)
+      %ul
+        - @category.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :summary
+    %br/
+    = f.text_field :summary
+  - if can? :update, Menu
+    %p
+      = f.label 'Include in menu?'
+      %br/
+      = f.select :menu_id, options_for_select(@menu_options, @category.menu_id)
+  %p
+    = f.submit t(:commit)

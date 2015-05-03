@@ -1,0 +1,16 @@
+= form_for menu, url: path do |f|
+  - if menu.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(menu.errors.count, "error") + ' ' + t(:save_failed)
+      %ul
+        - menu.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label (t :menu_title)
+    = f.text_field :title
+  %p
+    = f.label (t :menu_visible)
+    = f.check_box :visible
+  %p
+    = f.submit (t :commit), id: "left"

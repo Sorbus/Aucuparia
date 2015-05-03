@@ -1,0 +1,6 @@
+%div{:class => "comment #{((comment.depth % 2) == 0)? 'odd' : 'even'}"}
+  = render 'comments/single', :comment => comment
+  - if comment.has_children?
+    .children
+      - comment.children.each do |child|
+        = render partial: 'comments/comment_recursive', :comment => child

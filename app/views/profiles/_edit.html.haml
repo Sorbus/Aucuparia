@@ -1,0 +1,9 @@
+.content
+  %p.definition
+    = t(:change_definition).html_safe
+  = form_for @user, url: profile_path, html: { multipart: true } do |f|
+    = render 'form', :f => f
+    %p
+      = f.submit t(:commit)
+  %p
+    = link_to t(:account_settings_nav), edit_user_registration_path

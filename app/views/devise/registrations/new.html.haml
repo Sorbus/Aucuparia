@@ -1,0 +1,29 @@
+- content_for :head do
+  %title Create an Identity
+.content.narrow
+  = render "devise/shared/links"
+  %p.definition
+    = t(:create_identity_definition).html_safe
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    %p.field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true
+    %p.field
+      = f.label :display_name
+      %br/
+      = f.text_field :display_name
+    %p.field
+      = f.label :password
+      - if @validatable
+        %em
+          (#{@minimum_password_length} characters minimum)
+      %br/
+      = f.password_field :password, autocomplete: "off"
+    %p.field
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "off"
+    %p
+      = f.submit "Sign up"

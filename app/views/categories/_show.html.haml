@@ -1,0 +1,15 @@
+.content.narrow
+  %span.actions
+    = link_to t(:index_nav).html_safe, categories_path, :remote => true
+    - if can? :update, @category
+      = link_to t(:create_nav).html_safe, new_item_path, :remote => true
+  %p.definition
+    %strong= @category.name
+    %br/
+  %hr/
+  = markdown(@category.summary).html_safe
+  - @posts.each do |item|
+    %hr/
+    = render 'items/single', :item => item
+  %hr/
+  = paginate @posts, :remote => true

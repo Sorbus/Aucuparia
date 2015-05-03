@@ -1,0 +1,19 @@
+= form_for @page, url: admin_core_path(@page.id) do |f|
+  - if @page.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@page.errors.count, "error") + ' ' + t(:save_failed)
+      %ul
+        - @page.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label t(:core_title)
+    = f.text_field :title
+  %p
+    = f.label t(:core_content)
+    %br/
+    = f.text_area :content
+  %p
+    - f.submit t(:preview), class: "left"
+    = f.submit t(:commit), class: "right"
+  \&amp;nbsp

@@ -1,0 +1,7 @@
+- if !comment.deleted? || (comment.has_children? && (comment.ancestry == nil))
+  .comment
+    = render 'comments/single', :comment => comment
+    .children{:id => "children-#{comment.id}"}
+      - comment.descendants.where(:deleted => false).each do |child|
+        .comment
+          = render 'comments/single', :comment => child

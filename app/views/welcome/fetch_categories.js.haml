@@ -1,0 +1,2 @@
+- cache(cache_key_for_categories) do
+  $('#items').html('#{escape_javascript(render partial: 'category_block', locals: { cat: @categories } )}');

@@ -1,0 +1,3 @@
+$('#comment-#{params[:id]}').html('#{escape_javascript(render partial: 'edit_mini' )}');
+var title = '#{t :edit_comment_title}'
+history.pushState( null, title, '#{edit_item_comment_path(params[:item_id], params[:id])}' )

@@ -1,0 +1,21 @@
+- content_for :head do
+  %title Authentication
+.content.narrow
+  = render "devise/shared/links"
+  %p.definition
+    = t(:authentication_definition).html_safe
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    %p.field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true
+    %p.field
+      = f.label :password
+      %br/
+      = f.password_field :password, autocomplete: "off"
+    - if devise_mapping.rememberable?
+      %p.field
+        = f.check_box :remember_me
+        = f.label :remember_me
+    %p
+      = f.submit "Log in"

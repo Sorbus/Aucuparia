@@ -1,0 +1,7 @@
+.entry
+  .title
+    = link_to category.name, category_path(category), :remote => true
+    - if can? :update, category
+      %span.actions
+        = link_to t(:change_nav).html_safe, edit_category_path(category), :remote => true
+        = link_to t(:delete_nav).html_safe, category_path(category),method: :delete,data: { confirm: t(:confirm_deletion) }

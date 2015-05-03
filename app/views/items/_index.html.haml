@@ -1,0 +1,11 @@
+.content.narrow
+  %p.definition
+    = t(:index_definition).html_safe
+    - if can? :create, Item
+      %span.actions
+        = link_to t(:create_nav).html_safe, new_item_path, :remote => true
+  - @posts.each do |item|
+    %hr/
+    = render 'items/single', :item => item
+  %hr/
+  = paginate @posts, :remote => true

@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
 	load_and_authorize_resource
 	before_filter :authenticate_user!, :except => [:index, :show]
-	before_filter :verify_group, :except => [:index, :new, :create, :publish]
+	#before_filter :verify_group, :except => [:index, :new, :create, :publish]
 
 	def index 
-		@posts = Item.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
+		@posts = Item.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 2)
 		respond_to do |format|
 			format.js
 			format.html

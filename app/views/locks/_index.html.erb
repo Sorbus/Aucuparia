@@ -1,23 +1,32 @@
-<div class="content lock-edit">
+<div class="content lock-edit narrow">
+	<div class="actions">
+		<%= link_to 'Go back to the post', item_path(@item), :remote => true %>
+	</div>
 	<p class="definition">
+		<%= (t :edit_permissions_title) + @item.title %>
+	</p>
+	<p>
 		<%= t :edit_permissions_message %>
 	</p>
 	<hr>
+	<h3><%= t :groups_added_message %></h3>
 	<% @item.groups.each do |group| %>
 		<div class="group" id="group-<%= group.id %>">
 			<div class="actions">
-				<%= link_to t(:lock_remove_nav).html_safe, item_lock_remove_path(@item.id, group.id), method: :post %>
+				<%= link_to t(:lock_remove_nav).html_safe, item_lock_remove_path(@item.id, group.id), method: :post, :remote => true %>
 			</div>
 		<%= render 'groups/single', :group => group %>
 	<% end %>
 	<hr>
+	<h3><%= t :groups_available_message %></h3>
+	<%= link_to t(:create_group_nav).html_safe, new_group_path, :class => 'new right', :remote => true %>
 	<% current_user.groups.each do |group| %>
 		<% if !@item.in_group?(group) %>
 			<div class="group" id="group-<%= group.id %>">
 			<div class="actions">
-				<%= link_to t(:lock_add_nav).html_safe, item_lock_add_path(@item.id, group.id), method: :post %>
+				<%= link_to t(:lock_add_nav).html_safe, item_lock_add_path(@item.id, group.id), method: :post, :remote => true %>
 			</div>
-			<%= render 'groups/single', :group => group %>
+			<%= render 'groups/single_mini', :group => group %>
 		<% end %>
 	<% end %>
 </div>

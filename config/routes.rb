@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	# user stuff
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
 	resources :users, :only => [:index, :show, :edit, :update]
-	resources :groups
+	resources :groups, :except => [:edit]
 	
 	resource :profile, :only => [:index, :edit, :update] do
 		root 'profiles#index'

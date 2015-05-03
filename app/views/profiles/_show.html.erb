@@ -5,7 +5,7 @@
 		</div>
 	<% end %>
 	<p class="definition">
-		<strong>Identity</strong> - <em>n</em>. 
+		<%= t(:identity_definition).html_safe %> 
 	</p>
 	<hr>
 
@@ -42,9 +42,11 @@
 			<%= l(@user.created_at, format: :full) %>
 		<% end %>
 	</p>
+</div>
 
 	
-	<% if !@posts.blank? %>
+<% if !@posts.blank? %>
+	<div class="content">
 		<p>
 			<strong>Authored Items:</strong>
 		</p>
@@ -54,9 +56,11 @@
 			<%= render 'items/single', :item => item %>
 		<% end %>
 		<%= will_paginate @posts =%>
-	<% end %>
-	
-	<% if !@unpub.blank? %>
+	</div>
+<% end %>
+
+<% if !@unpub.blank? %>
+	<div class="content">
 		<p>
 			<strong>Unpublished Items:</strong>
 		</p>
@@ -66,5 +70,5 @@
 			<%= render 'items/single', :item => item %>
 		<% end %>
 		<%= will_paginate @posts =%>
-	<% end %>
-</div>
+	</div>
+<% end %>

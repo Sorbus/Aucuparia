@@ -51,6 +51,9 @@ en:
   admin_index_title: 'Admin Tools'
   messages_index_title: 'Recent Events'
   edit_permissions_title: 'Edit permissions for '
+  new_group_title: 'Create a new group'
+  show_group_title: 'Veiwing '
+  group_index_title: 'Group membership'
   
   error_404_title: 'Error 404: Peering into the void'
   error_500_title: 'Error 500: The machine falls silent'
@@ -69,8 +72,15 @@ en:
   tag_definition: '<strong>Tag</strong> - <em>n</em>. A detached fragmentary peice used for identification or classification.'
   create_identity_definition: '<strong>Create an Identity</strong>'
   authentication_definition: '<strong>Authentication</strong> - <em>n</em>. The process of determining whether an entity is what it claims to be.'
+  identity_definition: '<strong>Identity</strong> - <em>n</em>. The state of being associated with an entity or object.'
+  group_definition: '<strong>Group</strong> - <em>n</em>. A collection of entities or objects.'
   
   edit_permissions_message: 'Select which groups should have access to this item. If no group is selected, anyone will be able to view it (default).'
+  groups_added_message: 'Selected groups'
+  groups_available_message: 'Available groups'
+  groups_managed_message: 'Groups you manage'
+  groups_member_message: "Groups you're in"
+  groups_create_message: 'Creaet a new group'
   
   # navigation elements
   recent_posts_nav: 'recent posts'
@@ -109,6 +119,8 @@ en:
   key_nav: '<i class="fa fa-key fa-lg"></i>'
   lock_remove_nav: '<i class="fa fa-times fa-lg"></i>'
   lock_add_nav: '<i class="fa fa-plus fa-lg"></i>'
+  
+  create_group_nav: '<i class="fa fa-users"></i> New Group'
   
   devise_login_nav: '<span class="fa-stack fa-lg left" title="Sign In"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span>'
   devise_register_nav: '<span class="fa-stack fa-lg left" title="Create Identity"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-user-plus fa-stack-1x"></i></span>'
@@ -162,6 +174,8 @@ en:
   noti_new_event: 'Something has happened!'
   noti_many_events: 'Many things have happened!'
   noti_many_events_body: 'Click here to learn more.'
+  noti_group_added: 'Group added'
+  noti_group_removed: 'Group removed'
   
   # time formats
   time:

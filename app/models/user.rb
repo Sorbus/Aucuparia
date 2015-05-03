@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
 	# hooks
 	before_create :set_defaults
 	before_destroy :clean_up_possessions
-	before_save :set_roles
 	
 	# setup roles using RoleModel
 	include RoleModel

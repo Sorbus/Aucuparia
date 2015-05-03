@@ -19,5 +19,5 @@
 		</div>
 	<% end %>
 	<hr>
-	<%= will_paginate @posts =%>
+	<%= paginate @posts, :remote => true =%>
 </div>

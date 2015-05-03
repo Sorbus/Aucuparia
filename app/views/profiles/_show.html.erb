@@ -55,7 +55,7 @@
 			<hr>
 			<%= render 'items/single', :item => item %>
 		<% end %>
-		<%= will_paginate @posts =%>
+		<%= paginate @posts, :remote => true =%>
 	</div>
 <% end %>
 
@@ -69,6 +69,5 @@
 			<hr>
 			<%= render 'items/single', :item => item %>
 		<% end %>
-		<%= will_paginate @posts =%>
 	</div>
 <% end %>

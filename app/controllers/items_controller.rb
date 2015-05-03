@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 	#before_filter :verify_group, :except => [:index, :new, :create, :publish]
 
 	def index 
-		@posts = Item.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 2)
+		@posts = Item.where(:published => true, :deleted => false).page(params[:page])
 		respond_to do |format|
 			format.js
 			format.html

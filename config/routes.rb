@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 	get 'about' => 'welcome#about'
 	get '/fetch' => 'welcome#fetch', :as => 'fetch'
 	
+	concern :paginatable do
+		get '(page/:page)', :action => :index, :on => :collection, :as => ''
+	end
+	
 	# user stuff
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
-	resources :users, :only => [:index, :show, :edit, :update]
+	resources :users, :only => [:index, :show, :edit, :update], :concerns => :paginatable
 	resources :groups, :except => [:edit]
 	
 	resource :profile, :only => [:index, :edit, :update] do
@@ -14,11 +18,11 @@ Rails.application.routes.draw do
 	end
 	
 	resources :categories
-	resources :items do
+	resources :items, :concerns => :paginatable do
 		resources :comments, :only => [:new, :create, :edit, :update, :destroy]
 		resources :lock, :only => [:index], :controller => "locks" do
-			post '/add' => 'locks#add'
-			post '/remove' => 'locks#remove'
+			post '/add', :action => :add
+			post '/remove', :action => :remove
 		end
 		post '/publish' => 'items#publish'
 	end
@@ -29,7 +33,7 @@ Rails.application.routes.draw do
 		end
 	end
 	
-	resources :tags, :only => [:index, :show], :param => :tag
+	resources :tags, :only => [:index, :show], :param => :tag, :concerns => :paginatable
 	
 	namespace :admin do
 		root 'admin#index'

@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content narrow">
 	<p class="definition">
 		<%= t(:index_definition).html_safe %>
 		<% if can? :create, Item %>
@@ -12,5 +12,5 @@
 		<%= render 'items/single', :item => item %>
 	<% end %>
 	<hr>
-	<%= will_paginate @posts =%>
+	<%= paginate @posts, :remote => true =%>
 </div>

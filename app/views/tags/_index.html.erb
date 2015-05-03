@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content narrow">
 	<p class="definition">
 		<%= t(:index_definition).html_safe %>
 	</p>
@@ -8,5 +8,6 @@
 			<div class="tag"><%= link_to tag, tag_path(tag.name), :remote => true %></div>
 		<% end %>
 	</div>
-	<%= will_paginate @items =%>
+	<hr>
+	<%= paginate @tags, :remote => true =%>
 </div>

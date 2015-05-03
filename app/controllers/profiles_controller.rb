@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 	def index
 		if !current_user.blank?
 			@user = current_user
-			@posts = @user.items.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
+			@posts = @user.items.where(:published => true, :deleted => false).page params[:page]
 			@unpub = @user.items.where(:published => false, :deleted => false)
 			respond_to do |format|
 				format.js { render :action => 'show' }

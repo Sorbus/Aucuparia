@@ -19,7 +19,8 @@ cancel_user_registration GET      /users/cancel(.:format)                       
                          PATCH    /users(.:format)                               users/registrations#update
                          PUT      /users(.:format)                               users/registrations#update
                          DELETE   /users(.:format)                               users/registrations#destroy
-                   users GET      /users(.:format)                               users#index
+                   users GET      /users(/page/:page)(.:format)                  users#index
+                         GET      /users(.:format)                               users#index
                edit_user GET      /users/:id/edit(.:format)                      users#edit
                     user GET      /users/:id(.:format)                           users#show
                          PATCH    /users/:id(.:format)                           users#update
@@ -53,7 +54,8 @@ cancel_user_registration GET      /users/cancel(.:format)                       
         item_lock_remove POST     /items/:item_id/lock/:lock_id/remove(.:format) locks#remove
          item_lock_index GET      /items/:item_id/lock(.:format)                 locks#index
             item_publish POST     /items/:item_id/publish(.:format)              items#publish
-                   items GET      /items(.:format)                               items#index
+                   items GET      /items(/page/:page)(.:format)                  items#index
+                         GET      /items(.:format)                               items#index
                          POST     /items(.:format)                               items#create
                 new_item GET      /items/new(.:format)                           items#new
                edit_item GET      /items/:id/edit(.:format)                      items#edit
@@ -64,7 +66,8 @@ cancel_user_registration GET      /users/cancel(.:format)                       
         refresh_messages GET      /messages/refresh(.:format)                    messages#refresh
                 messages GET      /messages(.:format)                            messages#index
                  message DELETE   /messages/:id(.:format)                        messages#destroy
-                    tags GET      /tags(.:format)                                tags#index
+                    tags GET      /tags(/page/:page)(.:format)                   tags#index
+                         GET      /tags(.:format)                                tags#index
                      tag GET      /tags/:tag(.:format)                           tags#show
               admin_root GET      /admin(.:format)                               admin/admin#index
          edit_admin_core GET      /admin/core/:id/edit(.:format)                 admin/core#edit

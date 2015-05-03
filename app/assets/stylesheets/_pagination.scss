@@ -1,11 +1,17 @@
 .pagination {
+	-webkit-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0);
+	-moz-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0);
+	box-shadow: 5px 5px 2px 0px rgba(0,0,0,0);
 	text-align:center;
+	border: 0px solid black;
+	background: none;
+	margin-bottom:0px;
 
-	.previous_page {
+	.previous {
 		padding: 2px;
 		}
 
-	.next_page {
+	.next {
 		padding: 2px;
 		}
 
@@ -15,7 +21,7 @@
 		font-style: normal;
 		}
 
-	a {
+	.page {
 		padding: 2px;
 		}
 	}

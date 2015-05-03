@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
 #	validates :email, email: true, if !self.provider.nil?
 	validates :website, :url => {:allow_blank => true}
 	
+	paginates_per 10
+	
 	# omniauth login & registration
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

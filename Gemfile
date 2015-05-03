@@ -17,8 +17,8 @@ gem 'rails-i18n', '~> 4.0.0'
 
 # Use RedCarpet for markdown interpreation
 gem 'redcarpet', '~> 3.2.2'
-# Use will_paginate to manage pagination
-gem 'will_paginate', '~> 3.0.7'
+# Use kaminari to manage pagination
+gem 'kaminari'
 # Use Devise for user authentication and management
 gem 'devise', '~> 3.4.1'
 gem 'omniauth-twitter'

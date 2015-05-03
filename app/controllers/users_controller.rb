@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_filter :authenticate_user!, :except => [:index, :show]
  
 	def index
-		@users = User.paginate(:page => params[:page], :per_page => 20)
+		@users = User.page params[:page]
 		respond_to do |format|
 			format.js
 			format.html
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
 	def show
 		#@user = User.find_by_id(params[:id])
-		@posts = @user.items.where(:published => true, :deleted => false).paginate(:page => params[:page], :per_page => 5)
+		@posts = @user.items.where(:published => true, :deleted => false).page params[:page]
 		respond_to do |format|
 			format.js
 			format.html

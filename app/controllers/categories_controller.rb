@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 	
 	def show
 		#@category = Category.find(params[:id])
-		@posts = @category.items.where(:deleted => false, :published => true).paginate(:page => params[:page], :per_page => 5)
+		@posts = @category.items.where(:deleted => false, :published => true).page params[:page]
 		respond_to do |format|
 			format.js
 			format.html

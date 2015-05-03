@@ -11,6 +11,6 @@
         .sample
           = markdown(user.biography.first(140)).html_safe
       - else
-        \&amp;nbsp
+        &nbsp
   %hr/
   = paginate @posts, :remote => true

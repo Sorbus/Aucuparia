@@ -20,7 +20,7 @@ $view-max-width: 25em;
 	border:1px solid $primary-foreground;
 	background-color: $secondary-background;
 	color:$primary-foreground;
-	margin-bottom:20px;
+	margin-bottom:2em;
 	}
 
 @mixin transition($time, $attribute) {
@@ -58,14 +58,16 @@ $view-max-width: 25em;
 	}
 
 @charset 'UTF-8';
-@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
+@import url('//fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,900');
+@import url('//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,900');
  
 body {
-	margin-top:5%;
-	margin-bottom:100px;
+	margin-top:4em;
+	margin-bottom:4em;
 	padding:0px;
 	background-color: $primary-background-new;
 	color:$primary-foreground;
+    font-family: 'Gentium Book Basic', serif;
 	}
 	
 #bg {
@@ -119,10 +121,10 @@ body {
 .content, .comments {
 	@include boxy;
 	text-align:left;
-	padding:15px;
+	padding:1.5em 2em;
 	position:relative;
 	z-index:3;
-	margin-bottom:20px;
+	margin-bottom:2em;
 	overflow:auto;
 		
 	p:first-of-type {
@@ -139,7 +141,8 @@ body {
 	
 .content {
 	&:first-of-type {
-		max-width:33em;
+		max-width:31em;
+		padding:2em 2em;
 		}
 	}
 	
@@ -190,6 +193,8 @@ body {
 	
 .title {
 	margin-top:0.5em;
+    padding-bottom: .4em;
+    border-bottom: 1px dotted $primary-foreground;
 	}
 
 .actions {
@@ -251,26 +256,47 @@ footer {
 	
 .categories {
 	.entry {
-		padding-bottom: .5em;
-		margin-bottom: .5em;
+		padding-bottom: 1em;
+		/*margin-bottom: 1em;
 		border-bottom: 1px dotted $primary-foreground;
-		border-right: 1px dotted $primary-foreground;
+		border-right: 1px dotted $primary-foreground;*/
 		float: left;
-		min-width: 43.5%;
+		min-width: 41%;
 		padding-right: 3%;
-		padding-left: 2%;
-		margin-right: 2%;
+		padding-left: 1.5em;
+		margin-right: 5%;
+        position:relative;
 				
-		&:nth-child(odd) {
-			margin-right: 0%
+		&:nth-child(even) {
+			margin-right: 0em;
+            padding-right: 0em;
 			}
-		}
-	
-	.final {
-		border: none;
-		margin-bottom: 0em;
-		padding-bottom: 0em;
-		float:none;
+           
+        &:before {
+            content: "\f054";
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: inherit;
+            /*--adjust as necessary--*/
+            font-size: 1em;
+            padding-right: 0.5em;
+            position: absolute;
+            top: .5em;
+            left: 0em;
+            }
+            
+        &:last-of-type {
+            border: none;
+            margin-bottom: 0em;
+            padding-bottom: 0em;
+            margin-right: 0em;
+            padding-right: 0em;
+            float:right;
+            &:before {
+                content: ''
+                }
+            }
 		}
 	}
 
@@ -386,17 +412,22 @@ span.clear {
 .username i {float:right;}
 
 .definition {text-align:justify;}
+
 .navigation {text-align:center;}
 .definition+p {
 	text-align:center;
 	font-style: italic;
 	margin: .5em 4em 0em 4em;
 	}
-	
+    
+strong {font-family: 'Merriweather', serif;}
+
 .deleted {opacity:.5;}
 .hidden {display:none!important;}
 .left{float:left;}
 .right{float:right;}/*Don't look at me, senpai! -Right Shark-chan */
+.fright{text-align:right;}
+.fleft{text-align:left;}
 	
 .devise-actions {
 	margin-left: .5em;
@@ -459,19 +490,22 @@ span.clear {
 		margin-bottom:2em;
 	}
 	
-	.content, .comments, .account {
+	.content, .comments {
 		-webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.25);
 		-moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.25);
 		box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.25);
+		padding:.5em!important;
+		margin-bottom:1em;
 		}
 	
 	nav {
 		-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
 		-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
 		box-shadow: 10px 10px 5px 0px rgba(0,0,0,0);
+		margin-bottom:1em!important;
 		}
 	
-	.cover {
+	#bg {
 		display:none;
 		}
 		
@@ -484,6 +518,7 @@ span.clear {
 		.entry {
 			float:none;
 			border-right:none;
+            width:90%;
 			}
 		}
 		
@@ -498,6 +533,13 @@ span.clear {
 		
 		#background-attribution {
 			display:none;
+			}
+		}
+		
+	#linkbar {
+		a {
+			margin-left:.1em;
+			margin-right:.1em;
 			}
 		}
 	}

@@ -87,10 +87,10 @@ class CommentsController < ApplicationController
 		end
 		
 		def tell_author(comment)
-			comment.item.user.notify(I18n.t(:noti_new_event), ('New comment on your post "<a href="' + url_helpers.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
+			comment.item.user.notify(I18n.t(:noti_new_event), I18n.t(:noti_new_comment_message, :path => url_helpers.item_path(comment.item.id), :title => comment.item.title))
 		end
 		
 		def tell_parent(comment)
-			comment.parent.user.notify(I18n.t(:noti_new_event), ('New reply to your comment on "<a href="' + url_helpers.item_path(comment.item.id) + '">' + comment.item.title + '</a>"'))
+			comment.parent.user.notify(I18n.t(:noti_new_event), I18n.t(:noti_new_reply_message, :path => url_helpers.item_path(comment.item.id), :title => comment.item.title))
 		end
 end

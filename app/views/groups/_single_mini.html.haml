@@ -1,15 +1,16 @@
-%a#expand{:onclick => "j = $('#group-members-#{group.id}');
-		l = $('#expand', '#group-#{group.id}').find('i')
-		if(j.hasClass('hidden')) {
-			j.removeClass('hidden');
-			l.removeClass('fa-plus-square');
-			l.addClass('fa-minus-square');
-		}
-		else {
-			j.addClass('hidden');
-			l.removeClass('fa-minus-square');
-			l.addClass('fa-plus-square');
-		}"}
+%a#expand{:onclick => "  |
+        j = $('#group-members-#{group.id}');  |
+		l = $('#expand', '#group-#{group.id}').find('i');  |
+		if(j.hasClass('hidden')) {  |
+			j.removeClass('hidden');  |
+			l.removeClass('fa-plus-square');  |
+			l.addClass('fa-minus-square');  |
+		}  |
+		else {  |
+			j.addClass('hidden');  |
+			l.removeClass('fa-minus-square');  |
+			l.addClass('fa-plus-square');  |
+		}"}  |
   = t(:expand_nav).html_safe
   = group.title
   = can?(:manage, group) ? (link_to '(edit)', group_path(group.id), :remote => true) : ''

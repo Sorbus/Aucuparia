@@ -20,7 +20,7 @@ $view-max-width: 25em;
 	border:1px solid $primary-foreground;
 	background-color: $secondary-background;
 	color:$primary-foreground;
-	margin-bottom:20px;
+	margin-bottom:2em;
 	}
 
 nav {
@@ -130,7 +130,7 @@ nav {
 	display: none;
 	}
 
-input[type=checkbox]:checked ~ header .menu {
+input[type=checkbox]:checked ~ nav .menu {
 	display: block;
 	}
 

@@ -10,18 +10,18 @@ module ApplicationHelper
 	
 	def display_avatar(user, size)
 		if !user.use_icon
-			'<i class="fa fa-' + icon[user.icon.to_i] + ' fa-' + size + ' fa-fw"></i>'
+            I18n.t(:user_icon_helper, :icon => icon[user.icon.to_i], :size => size)
 		elsif user.avatar.nil?
-			'<i class="fa fa-' + icon[user.icon.to_i] + ' fa-' + size + ' fa-fw"></i>'
+			I18n.t(:user_icon_helper, :icon => icon[user.icon.to_i], :size => size)
 		else
 			if size == '4x'
-				'<i class="user-image user-4x" style="' + 'background-image:url(' + user.avatar.x4.url + ')">&nbsp</i>'
+                I18n.t(:user_avatar_helper, :url => user.avatar.x4.url, :size => size)
 			elsif size =='2x'
-				'<i class="user-image user-2x" style="' + 'background-image:url(' + user.avatar.x2.url + ')">&nbsp</i>'
+				I18n.t(:user_avatar_helper, :url => user.avatar.x2.url, :size => size)
 			elsif size =='1x'
-				'<i class="user-image user-1x" style="' + 'background-image:url(' + user.avatar.x1.url + ')">&nbsp</i>'
+				I18n.t(:user_avatar_helper, :url => user.avatar.x1.url, :size => size)
 			else
-				'<i class="user-image user-' + size + '" style="' + 'background-image:url(' + user.avatar.x4.url + ')">&nbsp</i>'
+				I18n.t(:user_avatar_helper, :url => user.avatar.x4.url, :size => size)
 			end
 		end
 	#	unless user.avatar.nil? 

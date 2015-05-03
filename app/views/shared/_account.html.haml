@@ -10,7 +10,7 @@
       = link_to t(:settings_nav).html_safe, edit_profile_path
       %span.htab
       = link_to t(:logout_nav).html_safe, destroy_user_session_path, method: :delete,data: { confirm: t(:confirm_logout) }
-    \&amp;nbsp
+    &nbsp
 - elsif Core.first.show_login? && (controller_name != 'sessions') && (controller_name != 'registrations')
   .holder
     .login

@@ -1,12 +1,12 @@
 .content.categories
   %p.definition
     = t(:index_definition).html_safe
+  %hr/
   - @categories.each do |category|
     = render 'single', :category => category
   - if can? :create, @category
-    %hr/
-    .entry.final
+    .entry
       .title
         %span.actions
           = link_to t(:create_nav).html_safe, new_category_path, :remote => true
-      \&amp;nbsp
+      &nbsp

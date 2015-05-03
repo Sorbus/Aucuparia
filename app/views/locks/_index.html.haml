@@ -2,7 +2,7 @@
   .actions
     = link_to 'Go back to the post', item_path(@item), :remote => true
   %p.definition
-    = (t :edit_permissions_title) + @item.title
+    = t(:edit_permissions_title, :title => @item.title)
   %p
     = t :edit_permissions_message
   %hr/
@@ -11,13 +11,13 @@
     .group{:id => "group-#{group.id}"}
       .actions
         = link_to t(:lock_remove_nav).html_safe, item_lock_remove_path(@item.id, group.id), method: :post, :remote => true
-      = render 'groups/single', :group => group
-      %hr/
-      %h3= t :groups_available_message
-      = link_to t(:create_group_nav).html_safe, new_group_path, :class => 'new right', :remote => true
-      - current_user.groups.each do |group|
-        - if !@item.in_group?(group)
-          .group{:id => "group-#{group.id}"}
-            .actions
-              = link_to t(:lock_add_nav).html_safe, item_lock_add_path(@item.id, group.id), method: :post, :remote => true
-            = render 'groups/single_mini', :group => group
+      = render 'groups/single_mini', :group => group
+  %hr/
+  %h3= t :groups_available_message
+  = link_to t(:create_group_nav).html_safe, new_group_path, :class => 'new right', :remote => true
+  - current_user.groups.each do |group|
+    - if !@item.in_group?(group)
+      .group{:id => "group-#{group.id}"}
+        .actions
+          = link_to t(:lock_add_nav).html_safe, item_lock_add_path(@item.id, group.id), method: :post, :remote => true
+        = render 'groups/single_mini', :group => group

@@ -27,8 +27,8 @@ en:
   about_page_title: 'About Aucuparia'
   create_comment_title: 'Create a comment'
   edit_comment_title: 'Modify your comment'
-  view_user_title: 'Looking at '
-  edit_user_title: 'Changing '
+  view_user_title: 'Looking at %{user}'
+  edit_user_title: 'Changing %{user}'
   view_self_title: 'Peer into the mirror'
   edit_self_title: 'Remake yourself'
   user_index_title: 'All Users'
@@ -38,21 +38,18 @@ en:
   edit_item_title: 'Modify an Item'
   new_item_title: 'Author a new Item'
   item_index_title: 'All Items'
-  view_item_title_before: ''
-  view_item_title_after: ' at Aucuparia'
-  view_category_title_before: ''
-  view_category_title_after: ' at Aucuparia'
-  view_tag_title_before: 'Items tagged as "'
-  view_tag_title_after: '" at Aucuparia'
+  view_item_title: '%{title} at Aucuparia'
+  view_category_title: '%{title} at Aucuparia'
+  view_tag_title: 'Items tagged as "%{title}" at Aucuparia'
   tag_index_title: 'All Tags'
   admin_logolink_index_title: 'Modify Logolinks'
   admin_menu_index_title: 'Modify Menus'
   admin_edit_core_title: 'Modify a Page'
   admin_index_title: 'Admin Tools'
   messages_index_title: 'Recent Events'
-  edit_permissions_title: 'Edit permissions for '
+  edit_permissions_title: 'Edit permissions for %{title}'
   new_group_title: 'Create a new group'
-  show_group_title: 'Veiwing '
+  show_group_title: 'Veiwing %{group}'
   group_index_title: 'Group membership'
   
   error_404_title: 'Error 404: Peering into the void'
@@ -72,7 +69,7 @@ en:
   tag_definition: '<strong>Tag</strong> - <em>n</em>. A detached fragmentary peice used for identification or classification.'
   create_identity_definition: '<strong>Create an Identity</strong>'
   authentication_definition: '<strong>Authentication</strong> - <em>n</em>. The process of determining whether an entity is what it claims to be.'
-  identity_definition: '<strong>Identity</strong> - <em>n</em>. The state of being associated with an entity or object.'
+  identity_definition: '<strong>Identity</strong> - <em>n</em>. The state of being who or what an entity or object is.'
   group_definition: '<strong>Group</strong> - <em>n</em>. A collection of entities or objects.'
   
   edit_permissions_message: 'Select which groups should have access to this item. If no group is selected, anyone will be able to view it (default).'
@@ -176,6 +173,14 @@ en:
   noti_many_events_body: 'Click here to learn more.'
   noti_group_added: 'Group added'
   noti_group_removed: 'Group removed'
+  
+  noti_new_comment_message: 'New reply to your comment on "<a href="%{path}">%{title}</a>'
+  noti_new_reply_message: 'New comment on your post "<a href="%{path}">%{title}</a>"'
+  
+  # helper stuff
+  user_icon_helper: '<i class="fa fa-%{icon} fa-%{size} fa-fw"></i>'
+  user_avatar_helper: '<i class="user-image user-%{size}" style="background-image:url(%{usr})">&nbsp</i>'
+  logolink_class_helper: 'fa %{link} fa-3x fa-fw'
   
   # time formats
   time:

@@ -7,31 +7,31 @@
   %hr/
   %p.username
     = link_to_if(@user.website?, display_avatar(@user, '4x').html_safe, @user.website)
-    %strong Name:
+    %span.strong Name:
     = @user.display_name
   %p
-    %strong Roles:
+    %span.strong Roles:
     - User.valid_roles.each do |role|
       - if (can? :see, role) && @user.has_role?(role)
         = display_badge(role)
-  - if can?(:see_email, @user)
-    %p
-      %strong Email:
-      = @user.email
   %p
-    %strong Biography:
+    %h3 Biography:
     = markdown(@user.biography.to_s).html_safe
-  %p
-    %strong Account has existed for
+  %p.fright
+    - if can?(:see_email, @user)
+      %span.strong Email:
+      = @user.email
+      %br/  
+    %span.strong Account has existed for
     = distance_of_time_in_words(Time.now, @user.created_at)
     %br/
     - if can?(:timestamp, @user)
-      %strong Account created:
+      %span.strong Account created:
       = l(@user.created_at, format: :full)
 - if !@posts.blank?
   .content
     %p
-      %strong Authored Items:
+      %h3 Authored Items:
     - @posts.each do |item|
       %hr/
       = render 'items/single', :item => item
@@ -39,7 +39,7 @@
 - if !@unpub.blank?
   .content
     %p
-      %strong Unpublished Items:
+      %h3 Unpublished Items:
     - @unpub.each do |item|
       %hr/
       = render 'items/single', :item => item

@@ -1,0 +1,32 @@
+.messages {
+
+	.notify {
+		background-color: rgba($info-background, .75);
+		color:white;
+		padding:.5em;
+		padding-right:.7em;
+		-moz-border-radius: 3px 3px 3px 3px;
+		-webkit-border-radius: 3px 3px 3px 3px;
+		border-radius: 3px 3px 3px 3px;
+		margin:.5em;
+		margin-bottom:1em;
+		@include shadow(10px, 10px, 5px, 0px, rgba($primary-foreground, .25));
+		@include transition(0.5s, all);
+		height:2em;
+		
+		a {
+			color:white!important;
+			}
+		
+		&:last-of-type{
+			margin-bottom:.5em;
+			}
+		}
+		
+	.collapsed {
+		padding:0em .5em;
+		margin:0em .5em;
+		height:0px;
+		overflow:hidden;
+		}
+	}

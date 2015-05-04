@@ -1,0 +1,59 @@
+.created {
+	float:right;
+	text-align:right;
+	opacity:0.5;
+	margin-top:0.5em;
+	@include transition(0.25s, all);
+	
+	&:hover {
+		opacity:1;
+		}
+	}
+	
+.fade {
+	opacity:.5;
+	@include transition(0.25s, all);
+	
+	&:hover {
+		opacity:1;
+		}
+	}
+
+.category {
+	float:left;
+	text-align:right;
+	opacity:.5;
+	margin-top:0.5em;
+	@include transition(0.5s, all);
+	
+	&:hover {
+		opacity:1;
+		}
+	}
+	
+.title {
+	margin-top:0.5em;
+    padding-bottom: .4em;
+    border-bottom: 1px dotted $primary-foreground;
+	}
+
+.actions {
+	float:right;
+	opacity:0.5;
+	font-size:small;
+	margin-left:1em;
+	@include transition(0.5s, all);
+	text-align:right;
+	
+	&:hover {
+		opacity:1;
+		}
+		
+	a {
+		margin-left:1em;
+		
+		&:first-of-type {
+			margin-left:0em;
+			}
+		}
+	}

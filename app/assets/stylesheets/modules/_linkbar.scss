@@ -1,0 +1,34 @@
+#linkbar {
+	height:4em;
+	margin-top:2em;
+	text-align:center;
+	@include transition(0.5s, all);
+	
+	a {
+		text-decoration:none!important;
+		margin-left:.3em;
+		margin-right:.3em;
+		@include transition(0.5s, all);
+		display:inline-block;
+		
+		&:first-of-type {
+			margin-left:0em;
+			}
+			
+		&:last-of-type {
+			margin-right:0em;
+			}
+		}
+	
+	.fa-at:hover {
+		color:#c9252c;
+		}
+	
+	.fa-github:hover {
+		color:black;
+		}
+		
+	.fa-twitter:hover {
+		color:#55acee;
+		}
+	}

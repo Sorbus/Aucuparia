@@ -1,0 +1,154 @@
+.comments {
+	overflow:hidden;
+
+	form {
+		margin-top:0em;
+		}
+		
+	textarea {
+		height:5em;
+		}
+	
+	.actions {
+		margin-top:.5em;
+		margin-right:-1.2em;
+		padding:.5em;
+		padding-right:2.2em;
+		border-left: 1px solid $primary-foreground;
+		border-top: 1px solid $primary-foreground;
+		border-bottom: 1px solid $primary-foreground;
+		border-radius: 5px 0px 0px 5px;
+		
+		&:hover {
+			padding-right:3.2em;
+			}
+		}
+		
+	.comment:nth-child(even) > .comment_core {
+		// background-color:$tertiary-background;
+		
+		.actions {
+			background-color:$secondary-background;
+			}
+		}
+		
+	.comment:nth-child(odd) > .comment_core {
+		background-color:rgba($secondary-background,.6);
+		margin-left: -2em;
+		padding-left: 2em;
+		margin-right: -1em;
+		
+		.actions {
+			background-color:$tertiary-background;
+			}
+		}
+	}
+	
+
+.comment {
+	padding-bottom: 5px;
+	padding-top:0.1em;
+	padding-left: 1em;
+	margin-left: -1em;
+	margin-right: -1em;
+	
+	.byline {
+		margin-left:0em;
+		@include transition(0.5s, all);
+		
+		i {
+			display: inline-block;
+			}
+			
+		fa {
+			height:2em;
+			float:left;
+			}
+			
+		.user-image {
+			border-radius:50% 0% 50% 0%;
+			border: 0px solid rgba($primary-foreground, .5);
+			float: left;
+			}
+		}
+		
+	.comment_body {
+		border-left:.3em solid rgba($primary-foreground, .5);
+		padding-left:.4em;
+		
+		.footnotes {
+			hr {
+				border-top: solid 1px rgba($primary-foreground, .5);
+				}
+				
+			ol {
+				margin-top:0em;
+				margin-bottom:0em;
+				}
+			}
+			
+		form {
+			margin-right:1em;
+			}
+		}
+	
+	.children {
+		padding-top:0.1em;
+		padding-left: 0.5em;
+		//border-left: .3em solid rgba($primary-foreground, .2);
+		
+		.comment {
+			margin-right:0em;
+			margin-left:0em;
+			padding-left:0em;
+			}
+			
+		.comment:nth-child(even) {
+			
+			}
+		}
+		
+	.reply {
+		margin-right:1em;
+		}
+		
+	p {
+		position:relative;
+		z-index:4;
+		margin-left:0em;
+		margin-top:0em;
+		padding-top:1em;
+		@include transition(0.5s, all);
+		width:100%;
+		
+		&:first-of-type {
+			padding-top:0.1em;
+			}
+			
+		&:last-of-type {
+			padding-bottom:.5em;
+			}
+		}
+		
+	h1, h2, h3, h4, h5, h6 {
+		@extends p
+		}
+		
+	.comment_core {
+		padding-bottom:0.2em;
+		}
+		
+	.actions {
+		position:relative;
+		z-index:5
+		}
+		
+	.odd {
+		background-color: $secondary-background;
+		}
+
+	.even {
+		background-color: $primary-background;
+		}
+	}
+	

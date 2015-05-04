@@ -1,0 +1,72 @@
+input[type=checkbox]:checked ~ #icon-choices {
+	display:none;
+	}
+
+input[type=checkbox]:checked ~ #custom-icon {
+	display:block;
+	}
+
+#icon-choices {
+	display: block;
+	border:0px solid $primary-foreground;
+	overflow: auto;
+	max-height:6em;
+	
+	.icon-choice {
+		float:left;
+		min-width:16%;
+		border:1px dotted $secondary-foreground;
+		text-align:center;
+		
+		label {
+			padding: 0.5em 0em .5em 0em;
+			width:100%;
+			min-width:1.2em;
+			@include transition(.5s, all);
+			}
+		
+		input {
+			display: none;
+			}
+		
+		input[type="radio"]:checked+label {
+			background-color:$primary-foreground;
+			color:$secondary-background;
+			} 
+		}
+	}
+
+#custom-icon {
+	display: none;
+	border:1px solid $primary-foreground;
+	padding: 1em;
+	overflow:auto;
+	
+	img {
+		margin: 0.5em 0em 0em 0em;
+		}
+	}
+
+input[id='choices_one']:checked ~ #choices_one{
+	display: block;
+	height:auto;
+	}
+
+input[id='choices_two']:checked ~ #choices_two{
+	display: block;
+	height:auto;
+	}
+
+.choices_label {
+	margin: 0em 0em .5em 0em;
+	padding: 0em;
+	width:auto;
+	}
+
+.choices, #choices_one, #choices_two {
+	display:none;
+	padding:.5em;
+	margin-bottom:1em;
+	margin-top:0em;
+	border:1px solid $primary-foreground;
+	}

@@ -1,0 +1,41 @@
+.categories {
+	.entry {
+		padding-bottom: 1em;
+		float: left;
+		min-width: 41%;
+		padding-right: 3%;
+		padding-left: 1.5em;
+		margin-right: 5%;
+        position:relative;
+				
+		&:nth-child(even) {
+			margin-right: 0em;
+            padding-right: 0em;
+			}
+           
+        &:before {
+            content: "\f054";
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: inherit;
+            font-size: 1em;
+            padding-right: 0.5em;
+            position: absolute;
+            top: .5em;
+            left: 0em;
+            }
+            
+        &:last-of-type {
+            border: none;
+            margin-bottom: 0em;
+            padding-bottom: 0em;
+            margin-right: 0em;
+            padding-right: 0em;
+            float:right;
+            &:before {
+                content: ''
+                }
+            }
+		}
+	}

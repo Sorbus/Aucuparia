@@ -1,4 +1,4 @@
-%span.actions
+.actions
   - if can? :update, item
     - if !item.published?
       = link_to t(:publish_nav).html_safe, item_publish_path(item),method: :post,data: { confirm: t(:confirm_publication) }

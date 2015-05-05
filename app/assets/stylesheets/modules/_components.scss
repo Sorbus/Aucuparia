@@ -50,10 +50,33 @@
 		}
 		
 	a {
-		margin-left:1em;
+		margin:.5em .5em 0em;
+        @include transition(0.2s, all);
+        float:left;
+        
+        &:hover {
+            font-size:1.5em;
+            margin:.1em .1em 0em;
+            }
 		
 		&:first-of-type {
-			margin-left:0em;
+			
 			}
+            
+        &:last-of-type {
+            margin-right:0em;
+            &:hover {
+                margin-right:-.15em;
+                }
+            }
 		}
 	}
+    
+.comments, .lock-edit { 
+    .actions {
+        a {
+            margin:0em .5em 0em!important;
+            font-size:1em!important;
+            }
+        }
+    }

@@ -1,6 +1,6 @@
 #linkbar {
 	height:4em;
-	margin-top:2em;
+	margin-top:1em;
 	text-align:center;
 	@include transition(0.5s, all);
 	
@@ -10,6 +10,11 @@
 		margin-right:.3em;
 		@include transition(0.5s, all);
 		display:inline-block;
+        width: 1.5em;
+        height: 0;
+        padding-bottom: 1.5em;
+        border: 1px solid rgba($primary-foreground,.3);
+        border-radius: 50%;
 		
 		&:first-of-type {
 			margin-left:0em;
@@ -18,17 +23,30 @@
 		&:last-of-type {
 			margin-right:0em;
 			}
+            
+        &:before {
+            position: relative;
+            top: .25em;
+            }
+            
+        &:hover {
+            background-color:lighten($secondary-background,1%);
+            @include shadow(1px,1px,5px,0px,rgba(black,.25));
+            }
 		}
 	
 	.fa-at:hover {
 		color:#c9252c;
+        border: 1px solid #c9252c;
 		}
 	
 	.fa-github:hover {
 		color:black;
+        border: 1px solid black;
 		}
 		
 	.fa-twitter:hover {
 		color:#55acee;
+        border: 1px solid #55acee;
 		}
 	}

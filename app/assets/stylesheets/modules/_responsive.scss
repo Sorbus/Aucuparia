@@ -11,8 +11,12 @@
 		border-left:0px solid black;
 		border-right:0px solid black;
 		}
+        
+    .show-menu {
+        display:block;
+		}
     
-    nav {
+    nav {  
         @include shadow(0px,0px,0px,0px,rgba(0,0,0,0));
         margin-bottom:1em!important;
 		border-left:0px solid black;
@@ -20,14 +24,8 @@
 		border-top:0px solid black;
 		max-width:100%;
 		margin-left:0px;
-		margin-right:0px;
-		}
+		margin-right:0px;  
         
-    .show-menu {
-        display:block;
-		}
-    
-    nav {    
         ul {
             position: static;
             display: none;
@@ -102,6 +100,8 @@
 		}
         
     #linkbar {
+        padding-bottom:1em;
+    
         a {
             margin-left:.1em;
             margin-right:.1em;

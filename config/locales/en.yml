@@ -80,14 +80,14 @@ en:
   groups_create_message: 'Creaet a new group'
   
   # navigation elements
-  recent_posts_nav: 'recent posts'
+  recent_posts_nav: 'recent&nbspposts'
   all_categories_nav: 'categories'
-  all_posts_nav: 'all posts'
-  all_tags_nav: 'all tags'
-  top_tags_nav: 'top tags'
+  all_posts_nav: 'all&nbspposts'
+  all_tags_nav: 'all&nbsptags'
+  top_tags_nav: 'top&nbsptags'
   
   # font awesome nav tags
-  delete_nav: '<i class="fa fa-times-circle fa-lg"></i>'
+  delete_nav: '<i class="fa fa-times-circle-o fa-lg"></i>'
   change_nav: '<i class="fa fa-pencil-square-o fa-lg"></i>'
   create_nav: '<i class="fa fa-plus fa-lg"></i>'
   index_nav: '<i class="fa fa-list fa-lg"></i>'
@@ -128,6 +128,7 @@ en:
   confirm_logout: 'Are you sure?'
   confirm_publication: 'Are you sure you want to publish this item?'
   confirm_retraction: 'Are you sure you want to retract this item?'
+  confirm_permadeath: 'Are you sure you want to delete your account?'
   
   # form elements
   save_failed: 'prohibited this item from being saved:'

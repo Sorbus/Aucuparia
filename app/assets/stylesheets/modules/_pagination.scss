@@ -1,7 +1,5 @@
 .pagination {
-	-webkit-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0);
-	-moz-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0);
-	box-shadow: 5px 5px 2px 0px rgba(0,0,0,0);
+	@include shadow(0px,0px,0px,0px,rgba(0,0,0,0));
 	text-align:center;
 	border: 0px solid black;
 	background: none;

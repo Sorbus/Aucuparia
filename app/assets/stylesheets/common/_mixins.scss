@@ -1,0 +1,49 @@
+@mixin boxy {
+	max-width:$view-max-width;
+	margin:0px auto;
+	text-align:left;
+	border:1px solid $primary-foreground;
+	background-color: $secondary-background;
+	color:$primary-foreground;
+	margin-bottom:2em;
+	}
+
+@mixin transition($time, $attribute) {
+	-moz-transition: $attribute $time ease-in-out;
+	-webkit-transition: $attribute $time ease-in-out;
+	-o-transition: $attribute $time ease-in-out;
+	-ms-transition: $attribute $time ease-in-out;
+	transition: $attribute $time ease-in-out;
+	}
+
+@mixin animation($time, $name){
+	animation: $name $time;
+    -moz-animation: $name $time;
+    -webkit-animation: $name $time;
+    -o-animation: $name $time;
+	-ms-animation: $name $time;
+	}
+
+@mixin session-core($side) {
+	text-align:center;
+	float:$side;
+	padding-top:1em;
+	padding-bottom:1em;
+	border:1px solid $primary-foreground;
+	background-color: $secondary-background;
+	opacity:0.5;
+	z-index:0;
+	position:relative;
+	}
+
+@mixin slide-in ($distance) {
+	opacity:1;
+	margin-top:$distance;
+	z-index:5;
+	}
+	
+@mixin shadow ($h-shadow, $v-shadow, $blur, $spread, $color, $inset:"") {
+	-webkit-box-shadow: $h-shadow $v-shadow $blur $spread $color unquote($inset);
+	-moz-box-shadow: $h-shadow $v-shadow $blur $spread $color unquote($inset);
+	box-shadow: $h-shadow $v-shadow $blur $spread $color unquote($inset);
+	}

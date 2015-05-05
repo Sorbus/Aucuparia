@@ -1,0 +1,138 @@
+.faded {opacity:0.5;}
+
+.narrow {
+	max-width:$view-max-width!important;
+	}
+	
+.silent {
+	border:0px solid black;
+	background-color:transparent;
+	@include shadow(0px, 0px, 0px, 0px, rgba(0,0,0,0.0));
+	}
+
+.dangerous {
+	border: 1px solid red;
+	margin-top: 1em;
+	padding: 0em 1em 1em 1em;
+	}
+	
+.unpublished {
+	background-color: $alert-background;
+	}
+	
+p	{
+	text-align:justify;
+	margin-bottom:0px;
+	}
+	
+a	{
+	font-style: italic;
+	text-decoration: underline;
+	color: $secondary-foreground;
+	@include transition(0.25s, color);
+	
+	&:hover {
+		text-decoration: none;
+		color: $primary-foreground;
+		}
+	}
+		
+strong, b {font-weight: 700;}
+
+em, i {font-style: italic;}
+	
+mark {color: $primary-foreground;}
+	
+blockquote {
+	border-left: solid 0.5em #ddd;
+	padding: 1em 0 1em 1em;
+	font-style: italic;
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+	margin-left: 1em;
+	}
+
+hr {
+	border: 0;
+	border-top: solid 1px #ddd;
+	}
+	
+sub {
+	position: relative;
+	top: 0.5em;
+	font-size: 0.8em;
+	}
+	
+sup {
+	position: relative;
+	top: -0.5em; 
+	font-size: 0.8em;
+	}
+	
+ul.dashed {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+	
+	li:before {
+		display: inline-block;
+		content: "-";
+		width: 1em;
+		margin-left: -1em;
+		}
+	}
+	
+span.tab{padding: 0 1em;}
+span.htab{padding: 0 0.5em;}
+span.qtab{padding: 0 0.25em;}
+	
+span.clear {
+	clear: left;
+	display: block;
+	}
+
+.footnotes ol {
+	font-size:small;
+	}
+
+.user-image {
+	border-radius:0% 50% 0% 50%;
+	border: 0px solid $primary-foreground;
+	margin-right: .5em;
+	}
+	
+.user-4x {
+	width:4em;
+	height:4em;
+	}
+	
+.user-2x {
+	width:2em;
+	height:2em;
+	}
+	
+.user-1x {
+	width:1em;
+	height:1em;
+	}
+	
+.user i {float:left;}
+.username i {float:right;}
+
+.definition {text-align:justify;}
+
+.navigation {text-align:center;}
+.definition+p {
+	text-align:center;
+	font-style: italic;
+	margin: .5em 4em 0em 4em;
+	}
+    
+strong {font-family: 'Merriweather', serif;}
+
+.deleted {opacity:.5;}
+.hidden {display:none!important;}
+.left{float:left;}
+.right{float:right;}/*Don't look at me, senpai! -Right Shark-chan */
+.fright{text-align:right;}
+.fleft{text-align:left;}

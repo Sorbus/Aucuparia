@@ -23,16 +23,12 @@ class User < ActiveRecord::Base
 	# relationships
 	has_many :items
 	has_many :comments
-	
-	# group stuff
-	groupify :group_member
-	groupify :named_group_member
 
 	# validation
 	validates :password, presence: true, on: :create
 	validates :email, :display_name, presence: true, on: create
 	validates :email, :display_name, uniqueness: true
-#	validates :email, email: true, if !self.provider.nil?
+	validates :email, :email => {:allow_blank => true}
 	validates :website, :url => {:allow_blank => true}
 	
 	paginates_per 10

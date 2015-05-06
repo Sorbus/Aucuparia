@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501220853) do
+ActiveRecord::Schema.define(version: 20150506022138) do
 
   create_table "admin_menus", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -51,23 +51,6 @@ ActiveRecord::Schema.define(version: 20150501220853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "links"
-  end
-
-  create_table "group_memberships", force: :cascade do |t|
-    t.string  "member_type"
-    t.integer "member_id"
-    t.integer "group_id"
-    t.string  "group_name"
-    t.string  "membership_type"
-  end
-
-  add_index "group_memberships", ["group_id"], name: "index_group_memberships_on_group_id"
-  add_index "group_memberships", ["group_name"], name: "index_group_memberships_on_group_name"
-  add_index "group_memberships", ["member_id", "member_type"], name: "index_group_memberships_on_member_id_and_member_type"
-
-  create_table "groups", force: :cascade do |t|
-    t.string "type"
-    t.string "title"
   end
 
   create_table "items", force: :cascade do |t|

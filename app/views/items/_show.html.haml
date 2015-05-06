@@ -2,7 +2,6 @@
   = render 'actions', :item => @item
   %p.definition
     %strong
-      = !@item.groups.first.nil? ? t(:unlocked_nav).html_safe : ''
       = @item.title
   = markdown(@item.summary).html_safe
   %hr/

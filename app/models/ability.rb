@@ -39,7 +39,6 @@ class Ability
 		can :manage, [Comment, Item, Category, User, StaticPage, Menu]
 		can :assign, [:moderator, :editor, :author, :commenter]
 		can :see, [:superadmin, :admin_tools]
-		can :manage, Group
 	end
 	
 	def moderator(user)
@@ -48,20 +47,10 @@ class Ability
 	
 	def editor(user)
 		can :manage, Item, :deleted => false
-		can :read, Group do |group|
-			user.in_group?(group)
-		end
 	end
 	
 	def author(user)
 		can :manage, Item, :user_id => user.id, :deleted => false
-		can :create, Group
-		can :manage, Group do |group|
-			user.in_group?(group, as: 'manager')
-		end
-		can :read, Group do |group|
-			user.in_group?(group)
-		end
 	end
 	
 	def commenter(user)

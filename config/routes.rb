@@ -11,12 +11,6 @@
     # user stuff
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
     resources :users, :only => [:index, :show, :edit, :update], :concerns => :paginatable
-    resources :groups, :except => [:edit] do
-        post '/add/:user_id' => :add, :as => 'add'
-        post '/remove/:user_id' => :remove, :as => 'remove'
-        post '/op/:user_id' => :power, :as => 'op'
-        post '/deop/:user_id' => :power, :as => 'deop'
-    end
     
     resource :profile, :only => [:index, :edit, :update] do
         root 'profiles#index'
@@ -25,10 +19,6 @@
     resources :categories
     resources :items, :concerns => :paginatable do
         resources :comments, :only => [:new, :create, :edit, :update, :destroy]
-        resources :lock, :only => [:index], :controller => "locks" do
-            post '/add', :action => :add
-            post '/remove', :action => :remove
-        end
         post '/publish' => 'items#publish'
     end
     

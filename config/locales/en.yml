@@ -107,6 +107,7 @@ en:
   tags_nav: '<i class="fa fa-tags fa-lg"></i>'
   home_nav: 'Home'
   about_nav: 'About'
+  crown_nav: '<i class="fa fa-star"></i>'
   
   expand_nav: '<i class="fa fa-plus-square fa-lg"></i>'
   collapse_nav: '<i class="fa fa-minus-square fa-lg"></i>'

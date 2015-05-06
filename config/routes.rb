@@ -11,11 +11,11 @@
     # user stuff
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
     resources :users, :only => [:index, :show, :edit, :update], :concerns => :paginatable
-    resources :groups, :except => [:edit, :update] do
-        post '/add/:user_id' => :add
-        post '/remove/:user_id' => :remove
-        post '/op/:user_id' => :power
-        post '/deop/:user_id' => :power
+    resources :groups, :except => [:edit] do
+        post '/add/:user_id' => :add, :as => 'add'
+        post '/remove/:user_id' => :remove, :as => 'remove'
+        post '/op/:user_id' => :power, :as => 'op'
+        post '/deop/:user_id' => :power, :as => 'deop'
     end
     
     resource :profile, :only => [:index, :edit, :update] do

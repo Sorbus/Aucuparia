@@ -1,0 +1,7 @@
+= form_for group do |f|
+  %p
+    = f.label :name
+    %em (Will be visible to group members).
+    = f.text_field :title
+  %p
+    = f.submit t(:commit), class: "left"

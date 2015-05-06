@@ -25,14 +25,16 @@ cancel_user_registration GET      /users/cancel(.:format)                       
                     user GET      /users/:id(.:format)                           users#show
                          PATCH    /users/:id(.:format)                           users#update
                          PUT      /users/:id(.:format)                           users#update
-                         POST     /groups/:group_id/add/:user_id(.:format)       groups#add
-                         POST     /groups/:group_id/remove/:user_id(.:format)    groups#remove
-                         POST     /groups/:group_id/op/:user_id(.:format)        groups#power
-                         POST     /groups/:group_id/deop/:user_id(.:format)      groups#power
+               group_add POST     /groups/:group_id/add/:user_id(.:format)       groups#add
+            group_remove POST     /groups/:group_id/remove/:user_id(.:format)    groups#remove
+                group_op POST     /groups/:group_id/op/:user_id(.:format)        groups#power
+              group_deop POST     /groups/:group_id/deop/:user_id(.:format)      groups#power
                   groups GET      /groups(.:format)                              groups#index
                          POST     /groups(.:format)                              groups#create
                new_group GET      /groups/new(.:format)                          groups#new
                    group GET      /groups/:id(.:format)                          groups#show
+                         PATCH    /groups/:id(.:format)                          groups#update
+                         PUT      /groups/:id(.:format)                          groups#update
                          DELETE   /groups/:id(.:format)                          groups#destroy
             root_profile GET      /profile(.:format)                             profiles#index
             edit_profile GET      /profile/edit(.:format)                        profiles#edit

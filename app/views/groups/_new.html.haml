@@ -1,9 +1,4 @@
 .content.narrow
   %p.definition
     = t(:creation_definition).html_safe
-  = form_for @group do |f|
-    %p
-      = f.label :title
-      = f.text_field :title
-    %p
-      = f.submit t(:commit), class: "left"
+  = render 'form', :group => @group

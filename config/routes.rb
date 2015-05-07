@@ -1,5 +1,4 @@
 ﻿Rails.application.routes.draw do
-    # root pages
     root 'welcome#index'
     get 'about' => 'welcome#about'
     get '/fetch' => 'welcome#fetch', :as => 'fetch'

@@ -11,7 +11,7 @@
     .tags.fade.expand
       .heading= t(:tags_heading).html_safe
       - @item.tag_list.each do |tag|
-        .tag= link_to tag, tag_path(tag), :remote => true
+        = render 'tags/single', :tag => tag
   .created
     Written by: #{link_to User.find_by_id(@item.user).display_name, user_path(@item.user), :remote => true}
     %br/

@@ -2,6 +2,8 @@
   %span.actions
     = link_to t(:index_nav).html_safe, categories_path, :remote => true
     - if can? :update, @category
+      = link_to t(:change_nav).html_safe, edit_category_path(@category), :remote => true
+    - if can? :create, Item
       = link_to t(:create_nav).html_safe, new_item_path, :remote => true
   %p.definition
     %strong= @category.name

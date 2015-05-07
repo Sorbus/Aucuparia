@@ -6,11 +6,7 @@ class Ability
 		
 		can :read, [Category, User]
 		can :read, [Comment], :deleted => false
-		can :read, [Item] do |item|
-			user.shares_any_group?(item) || item.groups.first.nil?
-			!item.deleted?
-			item.published?
-		end
+		can :read, [Item], :deleted => false, :published => true
 		can :see, [:moderator, :editor, :author, :commenter]
 		
 		if user.id == nil # for guest users

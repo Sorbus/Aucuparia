@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 	delegate :url_helpers, to: 'Rails.application.routes' 
 	
 	def new
-		authorize! :create, Comment
+    authorize! :create, Comment
 		@comment = Comment.new
 		@item = Item.where(:published => true, :deleted => false).find(params[:item_id])
 		respond_to do |format|
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 	end
 	
 	def edit
-		@comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
 		authorize! :update, @comment
 		respond_to do |format|
 			format.js
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 	end
 	
 	def create
-		authorize! :create, Comment
+    authorize! :create, Comment
 		if params.has_key?(:reply_id) && (@comment = Comment.where(:deleted => false).find(params[:reply_id]).children.create(comment_params))
 			@comment.user_id = current_user.id
 			@comment.item_id = params[:item_id]
@@ -34,9 +34,8 @@ class CommentsController < ApplicationController
 				format.html { redirect_to item_path(:id => @comment.item_id) }
 			end
 		else
-			@comment = Comment.new(comment_params)
+			@comment = @item.comments.new(comment_params)
 			@comment.user_id = current_user.id
-			@comment.item_id = params[:item_id]
 			if params[:commit] == 'commit' && @comment.save
 				flash[:success] = I18n.t(:noti_comment_created)
 				tell_author(@comment)
@@ -52,7 +51,7 @@ class CommentsController < ApplicationController
 	end
 	
 	def update
-		@comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
 		authorize! :update, @comment
 		if params[:commit] == 'commit' && @comment.update(comment_params)
 				flash[:success] = I18n.t(:noti_comment_updated)

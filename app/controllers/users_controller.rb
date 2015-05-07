@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-	load_and_authorize_resource
-	before_filter :authenticate_user!, :except => [:index, :show]
+	load_and_authorize_resource # remember, this also loads resources! 
  
 	def index
 		@users = User.page params[:page]
@@ -11,7 +10,6 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		#@user = User.find_by_id(params[:id])
 		@posts = @user.items.where(:published => true, :deleted => false).page params[:page]
 		respond_to do |format|
 			format.js
@@ -20,7 +18,6 @@ class UsersController < ApplicationController
 	end
 	
 	def edit
-		#@user = User.find(params[:id])
 		respond_to do |format|
 			format.js
 			format.html
@@ -28,7 +25,6 @@ class UsersController < ApplicationController
 	end
 	
 	def update
-		#@user = User.find(params[:id])
 		User.valid_roles.each do |role|
 			if params[:roles].has_key?(role.to_s) && (can? :assign, role)
 				if params[:roles][role.to_s] == 'true'

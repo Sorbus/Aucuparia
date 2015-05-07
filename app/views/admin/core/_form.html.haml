@@ -1,10 +1,10 @@
-= form_for @page, url: admin_core_path(@page.id) do |f|
-  - if @page.errors.any?
+= form_for page, url: admin_core_path(page.id) do |f|
+  - if page.errors.any?
     #error_explanation
       %h2
-        = pluralize(@page.errors.count, "error") + ' ' + t(:save_failed)
+        = pluralize(page.errors.count, "error") + ' ' + t(:save_failed)
       %ul
-        - @page.errors.full_messages.each do |msg|
+        - page.errors.full_messages.each do |msg|
           %li= msg
   %p
     = f.label t(:core_title)

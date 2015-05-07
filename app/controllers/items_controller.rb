@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
 	load_and_authorize_resource
-	before_filter :authenticate_user!, :except => [:index, :show]
-	#before_filter :verify_group, :except => [:index, :new, :create, :publish]
 
 	def index 
 		@posts = Item.where(:published => true, :deleted => false).page(params[:page])
@@ -12,7 +10,6 @@ class ItemsController < ApplicationController
 	end
 	
 	def show
-		#@item = Item.find(params[:id])
 		@comment = Comment.new
 		respond_to do |format|
 			format.js
@@ -21,7 +18,6 @@ class ItemsController < ApplicationController
 	end
 	
 	def new
-		#@item = Item.new
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 		respond_to do |format|
 			format.js
@@ -30,7 +26,6 @@ class ItemsController < ApplicationController
 	end
 
 	def edit
-		#@item = Item.find(params[:id])
 		@cat_options = Category.all.map{|c| [ c.name, c.id ] }
 		respond_to do |format|
 			format.js
@@ -52,7 +47,6 @@ class ItemsController < ApplicationController
 	end
 	
 	def update
-		#@item = Item.find(params[:id])
 		@item.category = Category.find(params[:item][:category_id])
 		if (params[:commit] == 'commit') && @item.update(update_item_params)
 			flash[:success] = I18n.t(:noti_item_updated)
@@ -75,10 +69,13 @@ class ItemsController < ApplicationController
 	end
 	
 	def destroy
-		#@item = Item.find(params[:id])
-		@item.update(:deleted => true)
-		flash[:success] = I18n.t(:noti_item_deleted)
-		redirect_to items_path
+    if @item.update(:deleted => true)
+      flash[:success] = I18n.t(:noti_item_deleted)
+      redirect_to items_path
+    else
+      flash[:error] = I18n.t(:noti_deletion_failed)
+      redirect_to @item
+    end
 	end
 	
 	private

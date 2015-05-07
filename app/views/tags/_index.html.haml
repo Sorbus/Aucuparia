@@ -4,6 +4,6 @@
   %hr/
   .tags
     - @tags.each do |tag|
-      .tag= link_to tag, tag_path(tag.name), :remote => true
+      = render 'tags/single', :tag => tag
   %hr/
   = paginate @tags, :remote => true

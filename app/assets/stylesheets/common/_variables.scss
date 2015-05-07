@@ -1,6 +1,6 @@
 $primary-background: rgb(235, 236, 237);
 $secondary-background: rgba(lighten($primary-background, 1%), .9); // previously rgba(238, 238, 238, .9);
-$tertiary-background: desaturate(lighten(#69200d, 20%), 30%); //rgba(227, 225, 223, .5);
+$tertiary-background: desaturate(lighten(#69200d, 25%), 30%); //rgba(227, 225, 223, .5);
 $primary-foreground: #61210F; // previously rgb(118, 92, 57)
 $secondary-foreground: #A05221; // previously rgb(132, 107, 77);
 $tertiary-foreground: #69200d; //rgb(78, 61, 38);
@@ -8,3 +8,5 @@ $prime-alert-background: rgb(201, 32, 30);
 $alert-background: rgb(227, 194, 194);
 $info-background: rgb(47, 150, 180);
 $view-max-width: 25em;
+$none: rgba(0,0,0,0);
+$link-hover: #C9201E;

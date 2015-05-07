@@ -80,23 +80,11 @@ nav {
         
     .nav {
         a {
-            margin:0em 1em 0em 0em;
+            margin:0em;
             position:relative;
-            padding-left:.5em;
-            
-            &:before {
-                content: "\f0da";
-                font-family: FontAwesome;
-                font-style: normal;
-                font-weight: normal;
-                text-decoration: none;
-                /*--adjust as necessary--*/
-                font-size: 1em;
-                padding-right: 0.5em;
-                position: absolute;
-                top: -.1em;
-                left: 0;
-                }
+            width:20%;
+            max-width: 4.3em;
+            text-align:center;
             }
         }
 	}
@@ -143,3 +131,5 @@ nav {
 @import 'admin/menus';
 
 @import 'modules/responsive';
+
+@import 'modules/colorful';

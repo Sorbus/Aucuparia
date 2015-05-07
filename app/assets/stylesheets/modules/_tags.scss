@@ -69,22 +69,22 @@
 	.tag {
 		float:left;
 		display:block;
-		margin-top:.5em;
-		margin-bottom:.3em;
+	//	margin-top:.5em;
+		margin-bottom:.1em;
 		
 		a {
 			margin: .1em .2em;
 			padding: .1em .6em;
-			border: 1px solid $primary-foreground;
+		//	border: 1px solid $primary-foreground;
 			border-radius: 0%;
-			background-color: $secondary-background;
+		//	background-color: $secondary-background;
 			color: $primary-foreground;
 			text-decoration:none;
 			font-style:normal;
 			
 			&:hover {
-				color: $primary-background;
-				background-color: $secondary-foreground;
+			//	color: $primary-background;
+			//	background-color: $secondary-foreground;
 				}
 			}
 		}

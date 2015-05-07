@@ -53,4 +53,10 @@ module ApplicationHelper
 			'no'
 		end
 	end
+  
+  def cache_key_for_menus
+    count          = Menu.count
+		max_updated_at = Menu.maximum(:updated_at).try(:utc).try(:to_s, :number)
+		"menus/all-#{count}-#{max_updated_at}"
+	end
 end

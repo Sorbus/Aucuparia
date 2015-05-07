@@ -1,7 +1,8 @@
 module WelcomeHelper
 	def cache_key_for_recent_items
+    count          = Item.count
 		max_updated_at = Item.where(:deleted => false, :published => true).maximum(:updated_at).try(:utc).try(:to_s, :number)
-		"items/recent-#{max_updated_at}"
+		"items/recent-#{count}-#{max_updated_at}"
 	end
 	
 	def cache_key_for_categories

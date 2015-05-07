@@ -1,9 +1,10 @@
-.content.narrow
-  %p.definition
-    = t(:index_definition).html_safe
-  %hr/
-  .tags
-    - @tags.each do |tag|
-      = render 'tags/single', :tag => tag
-  %hr/
-  = paginate @tags, :remote => true
+- cache(cache_key_for_tags) do
+  .content.narrow
+    %p.definition
+      = t(:index_definition).html_safe
+    %hr/
+    .tags
+      - @tags.each do |tag|
+        = render 'tags/single', :tag => tag
+    %hr/
+    = paginate @tags, :remote => true

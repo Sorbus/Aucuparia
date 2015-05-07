@@ -1,26 +1,27 @@
 .comment
-  - if (can? :create, Comment) && !@comment.user.blank?
+  - if (can? :create, Comment) && !@comment.deleted?
     %span.actions
       = link_to t(:reply_nav).html_safe, new_item_comment_path(@comment.item_id, :comment => @comment.id), :remote => true
       - if can? :update, @comment
         = link_to t(:change_nav).html_safe, edit_item_comment_path(@comment.item_id, @comment.id), :remote => true
         = link_to t(:delete_nav).html_safe, item_comment_path(@comment.item_id, @comment.id),method: :delete,data: { confirm: t(:confirm_deletion) }
-  %a{:name => "#{@comment.id}"}
-  .comment_core{:id => "full-#{@comment.id}"}
-    - if !@comment.user.blank?
-      %span.byline
-        = link_to display_avatar(@comment.user, '1x').html_safe + ' ' + @comment.user.display_name, user_path(@comment.user), title: @comment.created_at.strftime('%H:%M, %a %b %d, %Y'), :remote => true
-        - if !@comment.is_root?
-          replies#{(@comment.created_at != @comment.updated_at)? '<span title=''.html_safe + l(@comment.updated_at, format: :full) + ''>*</span>'.html_safe : ''} to
-          - if (!@comment.parent.user.blank?)
-            = link_to @comment.parent.user.display_name, :anchor => @comment.parent.id
-            \:
+  - cache(@comment) do
+    %a{:name => "#{@comment.id}"}
+    .comment_core{:id => "full-#{@comment.id}"}
+      - if !@comment.deleted?
+        %span.byline
+          = link_to display_avatar(@comment.user, '1x').html_safe + ' ' + @comment.user.display_name, user_path(@comment.user), title: @comment.created_at.strftime('%H:%M, %a %b %d, %Y'), :remote => true
+          - if !@comment.is_root?
+            replies#{(@comment.created_at != @comment.updated_at)? '<span title=''.html_safe + l(@comment.updated_at, format: :full) + ''>*</span>'.html_safe : ''} to
+            - if (!@comment.parent.user.blank?)
+              = link_to @comment.parent.user.display_name, :anchor => @comment.parent.id
+              \:
+            - else
+              [deleted]
           - else
-            [deleted]
-        - else
-          writes#{(@comment.created_at != @comment.updated_at)? '<span title=''.html_safe + l(@comment.updated_at, format: :full) + ''>*</span>'.html_safe : ''}:
-      .comment_body{:id => "@comment-#{@comment.id}"}
-        = markdown(@comment.body).html_safe
-    - else
-      %span.byline.deleted [deleted]
-  .reply.hidden{:id => "reply-#{@comment.id}"}
+            writes#{(@comment.created_at != @comment.updated_at)? '<span title=''.html_safe + l(@comment.updated_at, format: :full) + ''>*</span>'.html_safe : ''}:
+        .comment_body{:id => "@comment-#{@comment.id}"}
+          = markdown(@comment.body).html_safe
+      - else
+        %span.byline.deleted [deleted]
+    .reply.hidden{:id => "reply-#{@comment.id}"}

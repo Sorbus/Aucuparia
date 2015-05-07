@@ -1,8 +1,9 @@
 .entry
   = render 'items/actions', :item => item
-  .title
-    = link_to item.title, item_path(item), :remote => true
-    %span.byline
-      by #{link_to item.user.display_name, user_path(item.user.id), :remote => true}
-  .sample
-    = markdown(item.summary).html_safe
+  - cache(item) do
+    .title
+      = link_to item.title, item_path(item), :remote => true
+      %span.byline
+        by #{link_to item.user.display_name, user_path(item.user.id), :remote => true}
+    .sample
+      = markdown(item.summary).html_safe

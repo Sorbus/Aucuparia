@@ -5,11 +5,12 @@
       = link_to t(:change_nav).html_safe, edit_category_path(@category), :remote => true
     - if can? :create, Item
       = link_to t(:create_nav).html_safe, new_item_path, :remote => true
-  %p.definition
-    %strong= @category.name
-    %br/
-  %hr/
-  = markdown(@category.summary).html_safe
+  -cache(@category) do
+    %p.definition
+      %strong= @category.name
+      %br/
+    %hr/
+    = markdown(@category.summary).html_safe
   - @posts.each do |item|
     %hr/
     = render 'items/single', :item => item

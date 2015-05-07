@@ -1,1 +1,2 @@
-.tag= link_to tag, tag_path(tag), :remote => true, :class => 'btn btn-lh btn-border-o'
+- cache(tag) do
+  .tag= link_to tag, tag_path(tag), :remote => true, :class => 'btn btn-lh btn-border-o'

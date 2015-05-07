@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
 		if params[:commit] == 'commit' && @comment.update(comment_params)
 				flash[:success] = I18n.t(:noti_comment_updated)
 				respond_to do |format|
-					format.js
+					format.js 
 					format.html { redirect_to item_path(:id => @comment.item_id) }
 				end
 			else

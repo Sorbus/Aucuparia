@@ -1,16 +1,18 @@
-.content
-  %p.definition
-    = t(:index_definition).html_safe
-  - @users.each do |user|
+- cache(cache_key_for_users) do
+  .content
+    %p.definition
+      = t(:index_definition).html_safe
+    - @users.each do |user|
+      %hr/
+      - cache(user) do
+        .entry.user
+          = display_avatar(user, '2x').html_safe
+          .title
+            = link_to user.display_name, user_path(user), :remote => true
+          - if user.biography?
+            .sample
+              = markdown(user.biography.first(140)).html_safe
+          - else
+            &nbsp
     %hr/
-    .entry.user
-      = display_avatar(user, '2x').html_safe
-      .title
-        = link_to user.display_name, user_path(user), :remote => true
-      - if user.biography?
-        .sample
-          = markdown(user.biography.first(140)).html_safe
-      - else
-        &nbsp
-  %hr/
-  = paginate @posts, :remote => true
+    = paginate @users, :remote => true

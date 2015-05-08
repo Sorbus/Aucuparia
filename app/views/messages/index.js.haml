@@ -1,3 +1,4 @@
 $('#yield').html('#{escape_javascript(render partial: 'index' )}');
-var title = '#{t :messages_index_title}'
-history.pushState( null, title, '#{messages_path}' )
+- cache do
+  var title = '#{t :messages_index_title}'
+  history.pushState( null, title, '#{messages_path}' )

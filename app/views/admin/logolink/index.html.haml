@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t(:admin_logolink_index_title)
+- cache do
+  - content_for :head do
+    %title= t(:admin_logolink_index_title)
 = render 'index'

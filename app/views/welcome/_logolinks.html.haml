@@ -1,9 +1,10 @@
-- if Core.first.show_icons?
-  //:javascript
-  //  $('#linkbar').find('a').each(function(i) {$(this)
-  //      .css({"top":"-1em","position":"relative","opacity":"0"})
-  //      .delay(i*150).animate({"opacity":"1","top":"0em"}, 250);});
-  #linkbar
-    - @links.each do |link|
-      - if link.display?
-        = link_to '', link.url, :id => link.css_id, :class => t(:logolink_class_helper, :link => link.css_class)
+- cache(@links) do
+  - if Core.first.show_icons?
+    //:javascript
+    //  $('#linkbar').find('a').each(function(i) {$(this)
+    //      .css({"top":"-1em","position":"relative","opacity":"0"})
+    //      .delay(i*150).animate({"opacity":"1","top":"0em"}, 250);});
+    #linkbar
+      - @links.each do |link|
+        - if link.display?
+          = link_to '', link.url, :id => link.css_id, :class => t(:logolink_class_helper, :link => link.css_class)

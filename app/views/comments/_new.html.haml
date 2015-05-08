@@ -1,4 +1,5 @@
 .content.narrow
-  %p.definition
-    = t(:creation_definition).html_safe
-  = render 'form'
+  - cache do
+    %p.definition
+      = t(:creation_definition).html_safe
+    = render 'form'

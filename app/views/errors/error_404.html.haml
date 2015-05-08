@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t :error_404_title
-= render 'errors/error_404'
+- cache do
+  - content_for :head do
+    %title= t :error_404_title
+  = render 'errors/error_404'

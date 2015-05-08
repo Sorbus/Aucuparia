@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t :error_500_title
-= render 'errors/error_500'
+- cache do
+  - content_for :head do
+    %title= t :error_500_title
+  = render 'errors/error_500'

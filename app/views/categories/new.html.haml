@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t :new_category_title
+- cache do
+  - content_for :head do
+    %title= t :new_category_title
 = render 'new'

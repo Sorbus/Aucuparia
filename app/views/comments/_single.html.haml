@@ -19,8 +19,9 @@
             [deleted]
         - else
           writes#{(comment.created_at != comment.updated_at)? '<span title=''.html_safe + l(comment.updated_at, format: :full) + ''>*</span>'.html_safe : ''}:
-      .comment_body{:id => "comment-#{comment.id}"}
-        = markdown(comment.body).html_safe
+      - cache(comment) do
+        .comment_body{:id => "comment-#{comment.id}"}
+          = markdown(comment.body).html_safe
     - else
       %span.byline.deleted [deleted]
   .reply.hidden{:id => "reply-#{comment.id}"}

@@ -4,5 +4,6 @@
       = link_to t(:publish_nav).html_safe, item_publish_path(item),method: :post,data: { confirm: t(:confirm_publication) }
     - elsif can? :retract, item
       = link_to t(:unpublish_nav).html_safe, item_publish_path(item),method: :post,data: { confirm: t(:confirm_retraction) }
-    = link_to t(:change_nav).html_safe, edit_item_path(item), :remote => true
-    = link_to t(:delete_nav).html_safe, item_path(item),method: :delete,data: { confirm: t(:confirm_deletion) }
+    - cache(item) do
+      = link_to t(:change_nav).html_safe, edit_item_path(item), :remote => true
+      = link_to t(:delete_nav).html_safe, item_path(item),method: :delete,data: { confirm: t(:confirm_deletion) }

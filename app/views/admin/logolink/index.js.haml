@@ -1,3 +1,4 @@
 $('#yield').html('#{escape_javascript(render partial: 'index' )}');
-var title = '#{(t :admin_logolink_index_title)}'
-history.pushState( null, title, '#{admin_logolink_index_path}' )
+- cache do
+  var title = '#{(t :admin_logolink_index_title)}'
+  history.pushState( null, title, '#{admin_logolink_index_path}' )

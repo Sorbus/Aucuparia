@@ -1,6 +1,7 @@
-%div
-  = link_to_if((controller_name != 'admin'), :admin_index, admin_root_path, :remote => true)
-  %span.htab
-  = link_to_if((controller_name != 'menus'), :edit_menus, admin_menus_path, :remote => true)
-  %span.htab
-  = link_to_if((controller_name != 'logolink'), :edit_logolinks, admin_logolink_index_path, :remote => true)
+%div.admin-nav
+  %span.link
+    = link_to_if((controller_name != 'admin'), :admin_index, admin_root_path, :remote => true)
+  %span.link
+    = link_to_if((controller_name != 'menus'), :edit_menus, admin_menus_path, :remote => true)
+  %span.link
+    = link_to_if((controller_name != 'logolink'), :edit_logolinks, admin_logolink_index_path, :remote => true)

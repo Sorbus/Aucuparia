@@ -1,8 +1,9 @@
 .content
-  %p.nav
-    = link_to t(:recent_posts_nav).html_safe, fetch_path(:node => '1'), :remote => true, :class => "btn btn-lh btn-border-o"
-    = link_to t(:all_categories_nav).html_safe, fetch_path(:node => '2'), :remote => true, :class => "btn btn-lh btn-border-o"
-    = link_to t(:top_tags_nav).html_safe, fetch_path(:node => '3'), :remote => true, :class => "btn btn-lh btn-border-o"
-    = link_to t(:all_posts_nav).html_safe, items_path, :remote => true, :class => "btn btn-lh btn-border-o"
+  - cache do
+    %p.nav
+      = link_to t(:recent_posts_nav).html_safe, fetch_path(:node => '1'), :remote => true, :class => "btn btn-lh btn-border-o"
+      = link_to t(:all_categories_nav).html_safe, fetch_path(:node => '2'), :remote => true, :class => "btn btn-lh btn-border-o"
+      = link_to t(:top_tags_nav).html_safe, fetch_path(:node => '3'), :remote => true, :class => "btn btn-lh btn-border-o"
+      = link_to t(:all_posts_nav).html_safe, items_path, :remote => true, :class => "btn btn-lh btn-border-o"
   #items
     = render 'recent_block', :recent => @recent

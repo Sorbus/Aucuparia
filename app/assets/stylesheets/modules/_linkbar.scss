@@ -50,3 +50,19 @@
         border: 1px solid #55acee;
 		}
 	}
+  
+.admin-nav {
+  margin-bottom:.5em;
+
+  .link {
+    margin:0em 1em;
+    
+    &:first-of-type {
+      margin-left:0em;
+      }
+      
+    &:last-of-type {
+      margin-right:0em;
+      }
+    }
+  }

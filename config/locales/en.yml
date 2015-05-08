@@ -70,14 +70,9 @@ en:
   create_identity_definition: '<strong>Create an Identity</strong>'
   authentication_definition: '<strong>Authentication</strong> - <em>n</em>. The process of determining whether an entity is what it claims to be.'
   identity_definition: '<strong>Identity</strong> - <em>n</em>. The state of being who or what an entity or object is.'
-  group_definition: '<strong>Group</strong> - <em>n</em>. A collection of entities or objects.'
   
-  edit_permissions_message: 'Select which groups should have access to this item. If no group is selected, anyone will be able to view it (default).'
-  groups_added_message: 'Selected groups'
-  groups_available_message: 'Available groups'
-  groups_managed_message: 'Groups you manage'
-  groups_member_message: "Groups you're in"
-  groups_create_message: 'Creaet a new group'
+  admin_tools_message: 'Presently, all other administrative  tools are accessed from the page to which they apply.'
+  nothing_here_message: "There's nothing here ..."
   
   # navigation elements
   recent_posts_nav: 'recent&nbspposts'

@@ -8,7 +8,9 @@ class TagsController < ApplicationController
 	end
 	
 	def show
-		@items = Item.where(:deleted => false, :published => true).tagged_with(params[:tag]).page params[:page]
+    @tag = (ActsAsTaggableOn::Tag).find_by_id(params[:tag])
+    @tag ||= params[:tag]
+		@items = Item.where(:deleted => false, :published => true).tagged_with(@tag).page params[:page]
 		respond_to do |format|
 			format.js
 			format.html

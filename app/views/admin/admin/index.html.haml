@@ -1,3 +1,4 @@
 - content_for :head do
   %title= t(:admin_index_title)
-= render 'index'
+- cache do
+  = render 'index'

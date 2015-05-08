@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t(:admin_edit_core_title)
+- cache do
+  - content_for :head do
+    %title= t(:admin_edit_core_title)
 = render 'edit'

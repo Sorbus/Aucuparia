@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= (t :category_index_title)
+- cache do
+  - content_for :head do
+    %title= (t :category_index_title)
 = render 'index'

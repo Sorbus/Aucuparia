@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t(:view_user_title, :user => @user.display_name)
+- cache(@user) do
+  - content_for :head do
+    %title= t(:view_user_title, :user => @user.display_name)
 = render 'profiles/show'

@@ -1,3 +1,4 @@
 $('#yield').html('#{escape_javascript(render partial: 'index', locals: { page: @page } )}');
-var title = '#{@page.title}'
-history.pushState( null, title, '#{root_path}' )
+- cache(@page) do
+  var title = '#{@page.title}'
+  history.pushState( null, title, '#{root_path}' )

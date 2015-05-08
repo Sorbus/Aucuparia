@@ -1,3 +1,4 @@
-- content_for :head do
-  %title= t :edit_self_title
+- cache do
+  - content_for :head do
+    %title= t :edit_self_title
 = render 'edit'

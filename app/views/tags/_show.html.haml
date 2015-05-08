@@ -2,7 +2,7 @@
   %span.actions
     = link_to t(:index_nav).html_safe, tags_path, :remote => true
   %p.definition
-    = 'All items tagged with "' + params[:tag] + '".'
+    = "All items tagged with \"#{@tag}\""
   - if !@items.empty?
     - @items.each do |item|
       %hr/
@@ -11,4 +11,4 @@
     = paginate @items, :remote => true
   - else
     %br/
-    There's nothing here ...
+    = t :nothing_here_message

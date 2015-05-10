@@ -16,8 +16,9 @@
 !/log/.keep
 /tmp
 
-/config/secrets.yml
 # Ignore application configuration
+/config/secrets.yml
 /config/application.yml
+/db/seeds.rb
 
 /public/uploads/**

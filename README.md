@@ -2,7 +2,7 @@
 
 Aucuparia is a simple weblog-like website, with support for multiple users, configurable menus, categories, comments, tags, and a variety of other fun things.
 
-It primarily exists as a project to help the author learn Ruby on Rails, and is current under active development - not all advertised features are present, but they are in the process of being added. It should not be used in any sort of production environment.
+It primarily exists as a project to help the author learn Ruby on Rails. While it is mostly complete, it's probably not suitable for use in any sort of serious environment. Not that you're crazy enough to want to do that, right?
 
 It is released under the MIT license.
 
@@ -12,11 +12,14 @@ Aucuparia is being developed on ruby 2.1.6, rails 4.2.0, and sqlite3 3.8.8. It r
     
     $ git clone https://github.com/Sorbus/aucuparia
     $ bundle install
+
+At this point, you'll want to rename config/secrets.yml.example to config/secrets.yml, and db/seeds.rb.example to db/seeds.rb, as well as filling each out appropriately.
+    
     $ rake db:migrate
     $ rake db:seed # the current seed-file contains content specific to Aucuparia.net, and should be modified before being used.
     $ rails server
 	
-Some additional steps must be taken beyond this point to have a functional website; one of these is configuring the server to be accessible to the outside world, daemonizing it (`rails server -d`), and so forth. Rewriting the default CSS to customize the site's appearance is also suggested (in future, I intend to include a minimal version of the CSS to use as a starting point). These are left as an exercise to the reader.
+Some additional steps must be taken beyond this point to have a functional website, including configuring the server to be accessible to the outside world, daemonizing it (`rails server -d`), and so forth. Rewriting the default CSS to customize the site's appearance is also suggested (in future, I intend to include a minimal version of the CSS to use as a starting point). These are left as an exercise to the reader.
 
 Once an account is created through the web interface it may be marked as a superadmin:
 

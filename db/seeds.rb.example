@@ -1,0 +1,16 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+
+# Main Pages:
+StaticPage.create(title: 'Main Page Title', content: 'Main Page Text')
+StaticPage.create(title: 'About Page Title', content: 'About Page Text')
+
+# Menu Headings
+Menu.create(title: 'Menu one', visible: true)
+Menu.create(title: 'Menu two', visible: true)
+Menu.create(title: 'None', visible: false)
+
+# Categories
+Category.create(name: 'Uncategorized Items', summary: 'Default category for items', menu_id: Menu.third.id)
+
+Core.create(show_icons: true, show_login: true) 
